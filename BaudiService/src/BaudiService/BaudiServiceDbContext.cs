@@ -1,7 +1,9 @@
 ﻿
 using BaudiService.Models;
 using System;
+using System.Data;
 using System.Data.Entity;
+
 
 namespace BaudiService
 {
@@ -19,11 +21,8 @@ namespace BaudiService
         public DbSet<Payment> Payment { get; set; }
         public DbSet<PaymentType> PaymentType { get; set; }
         public DbSet<Specialization> Specialization { get; set; }
-        protected override void OnConfiguring(DbContextOptions options)
-        {
-            options.UseSqlServer(Startup.Configuration.Get("Data:DefaultConnection:ConnectionString"));
-        }
-        protected override void OnModelCreating(ModelBuilder builder)
+        public BaudiServiceDbContext() : base("Data Source =.\\sqlexpress; Initial Catalog = BaudiDB; Integrated Security = True;") { }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             builder.Entity<Building>(a =>
             {
