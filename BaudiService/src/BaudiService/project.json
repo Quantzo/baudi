@@ -14,8 +14,7 @@
     },
 
     "frameworks": {
-        "aspnet50": { },
-        "aspnetcore50": { }
+        "aspnet50": { }        
     },
     "bundleExclude": [
         "node_modules",

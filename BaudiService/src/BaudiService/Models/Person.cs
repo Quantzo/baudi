@@ -7,6 +7,6 @@ namespace BaudiService.Models
     {
         public int PersonID { get; set; }
         public string PESEL { get; set; }
-        public List<Inhabitancy> Inhabitancies { get; set; }
+        
     }
 }

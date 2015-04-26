@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BaudiService.Models
 {
@@ -8,15 +9,15 @@ namespace BaudiService.Models
         public string LastChanged { get; set; }
         public string FilingDate { get; set; }
         public string Description { get; set; }
-        public Status Status { get; set; }
-        public virtual Building Building { get; set; }
-        public virtual Local Local { get; set; }
+        public NotificationStatus Status { get; set; }
+        public virtual NotificationTarget NotificationTarget { get; set; }
         public virtual Owner Owner { get; set; }
         public virtual Dispatcher Dispatcher { get; set; }
+        public virtual List<Order> Orders { get; set; }
 
 
-}
-    public enum Status
+    }
+    public enum NotificationStatus
     {
 
     }
