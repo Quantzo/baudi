@@ -30,7 +30,7 @@ namespace BaudiService
         public DbSet<Ownership> Ownerships { get; set; }        
         public DbSet<Specialization> Specializations { get; set; }
 
-        public BaudiServiceDbContext() : base("BaudiDB")
+        public BaudiServiceDbContext() : base("Server=(localdb)\\MSSQLLocalDB;Database=BaudiDB;Trusted_Connection=True;MultipleActiveResultSets=true")
         {
             Database.SetInitializer<BaudiServiceDbContext>(new CreateDatabaseIfNotExists<BaudiServiceDbContext>());
 
