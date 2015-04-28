@@ -15,7 +15,6 @@ namespace BaudiService
 
         public Startup(IHostingEnvironment env)
         {
-            Configuration = new Configuration().AddJsonFile("DBconnection.json").AddEnvironmentVariables();
             BaudiServiceDbContext dbcontext = new BaudiServiceDbContext();
             dbcontext.Buildings.Add(new Building());
 

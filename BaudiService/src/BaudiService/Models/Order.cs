@@ -19,6 +19,9 @@ namespace BaudiService.Models
     }
     public enum OrderStatus
     {
-
+        Accepted,
+        InProgress,
+        Validation,
+        Completed
     }
 }

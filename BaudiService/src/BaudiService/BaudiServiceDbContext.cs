@@ -9,7 +9,7 @@ namespace BaudiService
 {
     public class BaudiServiceDbContext : DbContext
     {
-        public DbSet<NotificationTarget> NotificationTargets { get; set; }
+        //public DbSet<INotificationTarget> NotificationTargets { get; set; }
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Local> Locals { get; set; }
 
@@ -32,16 +32,18 @@ namespace BaudiService
 
         public BaudiServiceDbContext() : base("Server=(localdb)\\MSSQLLocalDB;Database=BaudiDB;Trusted_Connection=True;MultipleActiveResultSets=true")
         {
-            Database.SetInitializer<BaudiServiceDbContext>(new CreateDatabaseIfNotExists<BaudiServiceDbContext>());
+            //Database.SetInitializer<BaudiServiceDbContext>(new CreateDatabaseIfNotExists<BaudiServiceDbContext>());
 
             //Database.SetInitializer<BaudiServiceDbContext>(new DropCreateDatabaseIfModelChanges<BaudiServiceDbContext>());
-            //Database.SetInitializer<BaudiServiceDbContext>(new DropCreateDatabaseAlways<BaudiServiceDbContext>());
+            Database.SetInitializer<BaudiServiceDbContext>(new DropCreateDatabaseAlways<BaudiServiceDbContext>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Owner>().ToTable("Owners");
+
             modelBuilder.Entity<Employee>()
-                .Map<Employee>(m => m.Requires("Type").HasValue("Employee"))
+                .ToTable("Employees")
                 .Map<Administrator>(m => m.Requires("Type").HasValue("Administrator"))
                 .Map<Menager>(m => m.Requires("Type").HasValue("Menager"))
                 .Map<Dispatcher>(m => m.Requires("Type").HasValue("Dispatcher"));
@@ -54,7 +56,7 @@ namespace BaudiService
 
             modelBuilder.Entity<CyclicOrder>().ToTable("CyclicOrders");
             modelBuilder.Entity<Order>().ToTable("Orders");
-            
+
 
             modelBuilder.Entity<Owner>().ToTable("Owners");
             modelBuilder.Entity<Person>().ToTable("Peoples");
@@ -63,14 +65,15 @@ namespace BaudiService
 
             modelBuilder.Entity<Building>()
                 .HasMany(b => b.Locals)
-                .WithRequired(l => l.Building);
+                .WithOptional(l => l.Building);
             modelBuilder.Entity<Building>()
                 .HasMany(b => b.CyclicOrders)
                 .WithRequired(c => c.Building);
+            modelBuilder.Entity<Building>()
+                .HasMany(b => b.Notifactions)
+                .WithRequired(n => (Building)n.NotificationTarget);
 
 
-            modelBuilder.Entity<Notification>()
-                .HasRequired(n => n.NotificationTarget);
             modelBuilder.Entity<Notification>()
                 .HasMany(n => n.Orders)
                 .WithRequired(o => o.Notification);
@@ -81,6 +84,9 @@ namespace BaudiService
             modelBuilder.Entity<Local>()
                 .HasMany(l => l.Rents)
                 .WithRequired(r => r.Local);
+            modelBuilder.Entity<Local>()
+                .HasMany(l => l.Notifactions)
+                .WithRequired(n => (Local)n.NotificationTarget);
 
             modelBuilder.Entity<Owner>()
                 .HasMany(o => o.Ownerships)
@@ -103,8 +109,9 @@ namespace BaudiService
                 .HasMany(m => m.MenagerExpenses)
                 .WithRequired(e => e.Menager);
 
-           // modelBuilder.Entity<Employee>()
-           //     .HasMany(e => e.Expenses);
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.Expenses)
+                .WithOptional(et => (Employee)et.ExpenseTarget);
 
             modelBuilder.Entity<OrderType>()
                  .HasMany(o => o.Orders)
@@ -120,9 +127,18 @@ namespace BaudiService
                 .HasMany(c => c.CyclicOrders)
                 .WithRequired(c => c.Company);
 
-           // modelBuilder.Entity<Expense>()
-            //    .HasRequired(e => e.ExpenseTarget);
-                
+            //   modelBuilder.Entity<Expense>()
+            //       .HasRequired(e => e.ExpenseTarget)
+            // .WithMany(et => et.Expenses);
+
+            modelBuilder.Entity<Order>()
+                .HasMany(e => e.Expenses)
+                .WithOptional(et => (Order)et.ExpenseTarget);
+
+            modelBuilder.Entity<CyclicOrder>()
+                .HasMany(e => e.Expenses)
+                .WithOptional(et => (CyclicOrder)et.ExpenseTarget);
+
 
 
         }

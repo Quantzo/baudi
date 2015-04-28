@@ -7,7 +7,9 @@ namespace BaudiService.Models
     {
         public int CompanyID { get; set; }
         public string City { get; set; }
-        public string Adres { get; set; }
+        public string HouseNumber { get; set; }
+        public string Street { get; set; }
+        public string LocalNumber { get; set; }
         public string NIP { get; set; }
         public string TelephoneNumber { get; set; }
         public string Owner { get; set; }
