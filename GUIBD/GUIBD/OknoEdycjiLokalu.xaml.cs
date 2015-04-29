@@ -12,22 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfApplication1
+namespace GUIBD
 {
     /// <summary>
-    /// Interaction logic for OknoEdycjiZgloszenia.xaml
+    /// Interaction logic for OknoEdycjiLokalu.xaml
     /// </summary>
-    public partial class OknoEdycjiZgloszenia : Window
+    public partial class OknoEdycjiLokalu : Window
     {
-        public OknoEdycjiZgloszenia()
+        public OknoEdycjiLokalu()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            GUIBD.Selector Wnd = new GUIBD.Selector();
-            Wnd.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

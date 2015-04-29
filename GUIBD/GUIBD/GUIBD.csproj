@@ -53,8 +53,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="OknoEdycjiBudynku.xaml.cs">
+      <DependentUpon>OknoEdycjiBudynku.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OknoEdycjiLokalu.xaml.cs">
+      <DependentUpon>OknoEdycjiLokalu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OknoEdycjiMieszkanca.xaml.cs">
+      <DependentUpon>OknoEdycjiMieszkanca.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OknoEdycjiPlatnosci.xaml.cs">
+      <DependentUpon>OknoEdycjiPlatnosci.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OknoEdycjiZlecenia.xaml.cs">
+      <DependentUpon>OknoEdycjiZlecenia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OknoEdycjiZleceniaStale.xaml.cs">
+      <DependentUpon>OknoEdycjiZleceniaStale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OwnershipEditWindow.xaml.cs">
+      <DependentUpon>OwnershipEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReallyMainWindow.xaml.cs">
       <DependentUpon>ReallyMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Selector.xaml.cs">
+      <DependentUpon>Selector.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -68,9 +92,25 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OknoEdycjiBudynku.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OknoEdycjiFirmy.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OknoEdycjiLokalu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OknoEdycjiMieszkanca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OknoEdycjiPlatnosci.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OknoEdycjiPracownika.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -80,9 +120,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="OknoEdycjiZlecenia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OknoEdycjiZleceniaStale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OwnershipEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ReallyMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Selector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
