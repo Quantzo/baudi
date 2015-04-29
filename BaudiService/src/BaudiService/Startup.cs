@@ -4,6 +4,7 @@ using Microsoft.AspNet.Http;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.ConfigurationModel;
 using Microsoft.AspNet.Hosting;
+using BaudiService.Models;
 
 namespace BaudiService
 {
@@ -14,7 +15,9 @@ namespace BaudiService
 
         public Startup(IHostingEnvironment env)
         {
-            Configuration = new Configuration().AddJsonFile("DBconnection.json").AddEnvironmentVariables();
+            BaudiServiceDbContext dbcontext = new BaudiServiceDbContext();
+            dbcontext.Buildings.Add(new Building());
+
         }
         public void ConfigureServices(IServiceCollection services)
         {

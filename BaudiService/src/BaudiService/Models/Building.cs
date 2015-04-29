@@ -3,13 +3,14 @@ using System.Collections.Generic;
 
 namespace BaudiService.Models
 {
-    public class Building
+    public class Building : INotificationTarget
     {
         public int BuildingID { get; set; }
         public string City { get; set; }
-        public string Adres { get; set; }
+        public string HouseNumber { get; set; }
+        public string Street { get; set; }
         public virtual List<Local> Locals { get; set; }
-        public virtual List<Notification> Notifactions { get; set; }
         public virtual List<CyclicOrder> CyclicOrders { get; set; }
+        public virtual List<Notification> Notifactions { get; set; }
     }
 }
