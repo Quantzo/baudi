@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22609.0
+VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E64C4769-B4A6-4265-80B4-01EBE92BF928}"
 EndProject
@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BaudiService", "src\BaudiService\BaudiService.kproj", "{6D82BBE8-EFF3-42BB-9AB5-295F559A3A8E}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BaudiService", "src\BaudiService\BaudiService.xproj", "{6D82BBE8-EFF3-42BB-9AB5-295F559A3A8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
