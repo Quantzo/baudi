@@ -18,9 +18,9 @@ namespace WpfApplication1
     /// <summary>
     /// Interaction logic for ReallyMainWindow.xaml
     /// </summary>
-    public partial class ReallyMainWindow : Window
+    public partial class MainWindow : Window
     {
-        public ReallyMainWindow()
+        public MainWindow()
         {
             InitializeComponent();
         }
@@ -32,25 +32,25 @@ namespace WpfApplication1
 
         private void Button_Click_Zgloszenia(object sender, RoutedEventArgs e)
         {
-            OknoEdycjiZgloszenia OE = new OknoEdycjiZgloszenia();
+            NotificationEditWindow OE = new NotificationEditWindow();
             OE.Show();
         }
 
         private void Button_Click_Firma(object sender, RoutedEventArgs e)
         {
-            OknoEdycjiFirmy OF = new OknoEdycjiFirmy();
+            CompanyEditWindow OF = new CompanyEditWindow();
             OF.Show();
         }
 
         private void Button_Click_Pracownik(object sender, RoutedEventArgs e)
         {
-            OknoEdycjiPracownika OP = new OknoEdycjiPracownika();
+            EmployeeEditWindow OP = new EmployeeEditWindow();
             OP.Show();
         }
 
         private void Button_Click_Zlecenia(object sender, RoutedEventArgs e)
         {
-            OknoEdycjiZlecenia OP = new OknoEdycjiZlecenia();
+            OrderEditWindow OP = new OrderEditWindow();
             OP.Show();
         }
 
@@ -62,19 +62,19 @@ namespace WpfApplication1
 
         private void Button_Click_Budynki(object sender, RoutedEventArgs e)
         {
-            OknoEdycjiBudynku OP = new OknoEdycjiBudynku();
+            BuildingEditWindow OP = new BuildingEditWindow();
             OP.Show();
         }
 
         private void Button_Click_Mieszkancy(object sender, RoutedEventArgs e)
         {
-            OknoEdycjiMieszkanca OP = new OknoEdycjiMieszkanca();
+            OwnerEditWindow OP = new OwnerEditWindow();
             OP.Show();
         }
 
         private void Button_Click_Platnosci(object sender, RoutedEventArgs e)
         {
-            OknoEdycjiPlatnosci OP = new OknoEdycjiPlatnosci();
+            PaymentEditWindow OP = new PaymentEditWindow();
             OP.Show();
         }
 

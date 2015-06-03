@@ -15,22 +15,21 @@ using System.Windows.Shapes;
 namespace WpfApplication1
 {
     /// <summary>
-    /// Interaction logic for OknoEdycjiZgloszenia.xaml
+    /// Interaction logic for OknoEdycjiFirmy.xaml
     /// </summary>
-    public partial class OknoEdycjiZgloszenia : Window
+    public partial class CompanyEditWindow : Window
     {
-        public OknoEdycjiZgloszenia()
+        public CompanyEditWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            GUIBD.Selector Wnd = new GUIBD.Selector();
-            Wnd.Show();
+            this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

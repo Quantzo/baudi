@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace GUIBD
 {
     /// <summary>
-    /// Interaction logic for OknoEdycjiMieszkanca.xaml
+    /// Interaction logic for OknoEdycjiZlecenia.xaml
     /// </summary>
-    public partial class OknoEdycjiMieszkanca : Window
+    public partial class OrderEditWindow : Window
     {
-        public OknoEdycjiMieszkanca()
+        public OrderEditWindow()
         {
             InitializeComponent();
         }
@@ -27,12 +27,6 @@ namespace GUIBD
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            OwnershipEditWindow OEW = new OwnershipEditWindow();
-            OEW.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

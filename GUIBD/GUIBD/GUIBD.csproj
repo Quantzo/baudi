@@ -53,34 +53,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="OknoEdycjiBudynku.xaml.cs">
-      <DependentUpon>OknoEdycjiBudynku.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\BuildingEditWindow.xaml.cs">
+      <DependentUpon>BuildingEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OknoEdycjiLokalu.xaml.cs">
-      <DependentUpon>OknoEdycjiLokalu.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\LocalEditWindow.xaml.cs">
+      <DependentUpon>LocalEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OknoEdycjiMieszkanca.xaml.cs">
-      <DependentUpon>OknoEdycjiMieszkanca.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\OwnerEditWindow.xaml.cs">
+      <DependentUpon>OwnerEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OknoEdycjiPlatnosci.xaml.cs">
-      <DependentUpon>OknoEdycjiPlatnosci.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\PaymentsEditWindow.xaml.cs">
+      <DependentUpon>PaymentsEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OknoEdycjiZlecenia.xaml.cs">
-      <DependentUpon>OknoEdycjiZlecenia.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\OrderEditWindow.xaml.cs">
+      <DependentUpon>OrderEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OknoEdycjiZleceniaStale.xaml.cs">
-      <DependentUpon>OknoEdycjiZleceniaStale.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\CyclicOrderEditWindow.xaml.cs">
+      <DependentUpon>CyclicOrderEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OwnershipEditWindow.xaml.cs">
+    <Compile Include="View\EditWindows\OwnershipEditWindow.xaml.cs">
       <DependentUpon>OwnershipEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ReallyMainWindow.xaml.cs">
-      <DependentUpon>ReallyMainWindow.xaml</DependentUpon>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Selector.xaml.cs">
+    <Compile Include="View\EditWindows\Selector.xaml.cs">
       <DependentUpon>Selector.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -88,68 +88,68 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="OknoEdycjiBudynku.xaml">
+    <Page Include="View\EditWindows\BuildingEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OknoEdycjiFirmy.xaml">
+    <Page Include="View\EditWindows\CompanyEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="OknoEdycjiLokalu.xaml">
+    <Page Include="View\EditWindows\LocalEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OknoEdycjiMieszkanca.xaml">
+    <Page Include="View\EditWindows\OwnerEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OknoEdycjiPlatnosci.xaml">
+    <Page Include="View\EditWindows\PaymentsEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OknoEdycjiPracownika.xaml">
+    <Page Include="View\EditWindows\EmployeeEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="OknoEdycjiZgloszenia.xaml">
+    <Page Include="View\EditWindows\NotificationEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="OknoEdycjiZlecenia.xaml">
+    <Page Include="View\EditWindows\OrderEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OknoEdycjiZleceniaStale.xaml">
+    <Page Include="View\EditWindows\CyclicOrderEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OwnershipEditWindow.xaml">
+    <Page Include="View\EditWindows\OwnershipEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ReallyMainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Selector.xaml">
+    <Page Include="View\EditWindows\Selector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OknoEdycjiFirmy.xaml.cs">
-      <DependentUpon>OknoEdycjiFirmy.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\CompanyEditWindow.xaml.cs">
+      <DependentUpon>CompanyEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OknoEdycjiPracownika.xaml.cs">
-      <DependentUpon>OknoEdycjiPracownika.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\EmployeeEditWindow.xaml.cs">
+      <DependentUpon>EmployeeEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OknoEdycjiZgloszenia.xaml.cs">
-      <DependentUpon>OknoEdycjiZgloszenia.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\NotificationEditWindow.xaml.cs">
+      <DependentUpon>NotificationEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -177,9 +177,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

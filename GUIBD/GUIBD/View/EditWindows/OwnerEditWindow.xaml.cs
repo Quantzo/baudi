@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfApplication1
+namespace GUIBD
 {
     /// <summary>
-    /// Interaction logic for OknoEdycjiFirmy.xaml
+    /// Interaction logic for OwnerEditWindow.xaml
     /// </summary>
-    public partial class OknoEdycjiFirmy : Window
+    public partial class OwnerEditWindow : Window
     {
-        public OknoEdycjiFirmy()
+        public OwnerEditWindow()
         {
             InitializeComponent();
         }
@@ -29,9 +29,16 @@ namespace WpfApplication1
             this.Close();
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            OwnershipEditWindow OEW = new OwnershipEditWindow();
+            OEW.Show();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Selector Wnd = new Selector();
+            Wnd.Show(); 
         }
     }
 }

@@ -18,16 +18,16 @@ namespace WpfApplication1
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        public MainWindow()
+        public LoginWindow()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ReallyMainWindow RMW = new ReallyMainWindow();
+            MainWindow RMW = new MainWindow();
             RMW.Show();
             this.Close();
         }

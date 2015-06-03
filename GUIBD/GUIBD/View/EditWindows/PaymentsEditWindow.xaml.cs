@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace GUIBD
 {
     /// <summary>
-    /// Interaction logic for OknoEdycjiBudynku.xaml
+    /// Interaction logic for OknoEdycjiPlatnosci.xaml
     /// </summary>
-    public partial class OknoEdycjiBudynku : Window
+    public partial class PaymentEditWindow : Window
     {
-        public OknoEdycjiBudynku()
+        public PaymentEditWindow()
         {
             InitializeComponent();
         }
@@ -31,7 +31,7 @@ namespace GUIBD
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OknoEdycjiLokalu Wnd = new OknoEdycjiLokalu();
+            Selector Wnd = new Selector();
             Wnd.Show();
         }
     }

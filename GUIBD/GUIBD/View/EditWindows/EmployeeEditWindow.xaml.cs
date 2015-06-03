@@ -17,9 +17,9 @@ namespace WpfApplication1
     /// <summary>
     /// Interaction logic for OknoEdycjiPracownika.xaml
     /// </summary>
-    public partial class OknoEdycjiPracownika : Window
+    public partial class EmployeeEditWindow : Window
     {
-        public OknoEdycjiPracownika()
+        public EmployeeEditWindow()
         {
             InitializeComponent();
         }
