@@ -1,7 +1,0 @@
-﻿{
-    "Data": {
-        "DefaultConnection": {
-            "Connectionstring": "Data Source=.\\sqlexpress;Initial Catalog=BaudiDB;Integrated Security=True;"
-        }
-    }
-}
