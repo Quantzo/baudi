@@ -5,13 +5,13 @@
         /// <summary>
         ///     Exception message's new line seperator - chanege if needed
         /// </summary>
-        private readonly string LineSeperator = "\n";
+        private readonly string _lineSeperator = System.Environment.NewLine;
 
         public bool IsSalaryCorrect(string salary, ref string exceptionMessage)
         {
             if (!IsDoubleStringCorrect(salary))
             {
-                exceptionMessage += "Niepoprawnie podano pensje" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano pensje" + _lineSeperator;
                 return false;
             }
             return true;
@@ -21,7 +21,7 @@
         {
             if (!IsDoubleStringCorrect(costValue))
             {
-                exceptionMessage += "Niepoprawnie podano wartość kosztów" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano wartość kosztów" + _lineSeperator;
                 return false;
             }
             return true;
@@ -39,7 +39,7 @@
         {
             if (!IsAlphabeticStringCorrect(name))
             {
-                exceptionMessage += "Niepoprawnie podano imię" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano imię" + _lineSeperator;
                 return false;
             }
             return true;
@@ -55,7 +55,7 @@
         {
             if (!IsAlphabeticStringCorrect(surname))
             {
-                exceptionMessage += "Niepoprawnie podano nazwisko" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano nazwisko" + _lineSeperator;
                 return false;
             }
             return true;
@@ -65,7 +65,7 @@
         {
             if (!IsNumericStringCorrect(telefon))
             {
-                exceptionMessage += "Niepoprawnie podano numer telefonu" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano numer telefonu" + _lineSeperator;
                 return false;
             }
             return true;
@@ -75,7 +75,7 @@
         {
             if (!IsPESELStringCorrect(PESEL))
             {
-                exceptionMessage += "Niepoprawnie podano PESEL" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano PESEL" + _lineSeperator;
                 return false;
             }
             return true;
@@ -85,7 +85,7 @@
         {
             if (!IsAlphabeticStringCorrect(owner))
             {
-                exceptionMessage += "Niepoprawnie podano nazwę właściciela" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano nazwę właściciela" + _lineSeperator;
                 return false;
             }
             return true;
@@ -95,7 +95,7 @@
         {
             if (!IsNIPStringCorrect(NIP))
             {
-                exceptionMessage += "Niepoprawnie podano NIP" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano NIP" + _lineSeperator;
                 return false;
             }
             return true;
@@ -109,7 +109,7 @@
         {
             if (!IsAlphabeticStringCorrect(city))
             {
-                exceptionMessage += "Niepoprawnie podano nazwę miejscowości" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano nazwę miejscowości" + _lineSeperator;
                 return false;
             }
             return true;
@@ -119,7 +119,7 @@
         {
             if (!IsPostalCodeStringCorrect(postalCode))
             {
-                exceptionMessage += "Niepoprawnie podano imię" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano imię" + _lineSeperator;
                 return false;
             }
             return true;
@@ -129,7 +129,7 @@
         {
             if (!IsAlphabeticStringCorrect(street))
             {
-                exceptionMessage += "Niepoprawnie podano nazwę ulicy" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano nazwę ulicy" + _lineSeperator;
                 return false;
             }
             return true;
@@ -139,7 +139,7 @@
         {
             if (!IsNumericStringCorrect(houseNumber))
             {
-                exceptionMessage += "Niepoprawnie podano numer mieszkania" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano numer mieszkania" + _lineSeperator;
                 return false;
             }
             return true;
@@ -149,7 +149,7 @@
         {
             if (!IsNumericStringCorrect(localNumber))
             {
-                exceptionMessage += "Niepoprawnie podano numer lokalu" + LineSeperator;
+                exceptionMessage += "Niepoprawnie podano numer lokalu" + _lineSeperator;
                 return false;
             }
             return true;
