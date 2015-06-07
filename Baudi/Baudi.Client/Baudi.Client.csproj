@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\Validation\DataFields\DataFieldsValidator.cs" />
+    <Compile Include="ViewModels\Validation\DataFields\DataTypeValidator.cs" />
+    <Compile Include="ViewModels\Validation\Exceptions\WrongDataException.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
