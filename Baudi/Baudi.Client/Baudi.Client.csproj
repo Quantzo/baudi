@@ -63,7 +63,46 @@
     <Compile Include="ViewModels\Validation\DataFields\DataFieldsValidator.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataTypeValidator.cs" />
     <Compile Include="ViewModels\Validation\Exceptions\WrongDataException.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="View\EditWindows\BuildingEditWindow.xaml.cs">
+      <DependentUpon>BuildingEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\CompanyEditWindow.xaml.cs">
+      <DependentUpon>CompanyEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\CyclicOrderEditWindow.xaml.cs">
+      <DependentUpon>CyclicOrderEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\EmployeeEditWindow.xaml.cs">
+      <DependentUpon>EmployeeEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\LocalEditWindow.xaml.cs">
+      <DependentUpon>LocalEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\NotificationEditWindow.xaml.cs">
+      <DependentUpon>NotificationEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\OrderEditWindow.xaml.cs">
+      <DependentUpon>OrderEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\OwnerEditWindow.xaml.cs">
+      <DependentUpon>OwnerEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\OwnershipEditWindow.xaml.cs">
+      <DependentUpon>OwnershipEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\PaymentsEditWindow.xaml.cs">
+      <DependentUpon>PaymentsEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\Selector.xaml.cs">
+      <DependentUpon>Selector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindowOld.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -71,10 +110,62 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MainWindowOld.xaml.cs">
+      <DependentUpon>MainWindowOld.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\EditWindows\BuildingEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\CompanyEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\CyclicOrderEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\EmployeeEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\LocalEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\NotificationEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\OrderEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\OwnerEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\OwnershipEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\PaymentsEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\Selector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

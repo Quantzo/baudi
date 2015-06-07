@@ -12,26 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Baudi.DAL;
-using Baudi.DAL.Models;
 
-namespace Baudi.Client
+namespace WpfApplication1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        public MainWindow()
+        public LoginWindow()
         {
-            Building local;
             InitializeComponent();
-            using (var con = new BaudiDbContext())
-            {
-                local = con.Buildings.First();
-                return;
-            }
-            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow RMW = new MainWindow();
+            RMW.Show();
+            this.Close();
         }
     }
 }
