@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Baudi.Client.ViewModels;
+using Baudi.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,20 +21,21 @@ namespace GUIBD
     /// </summary>
     public partial class BuildingEditWindow : Window
     {
-        public BuildingEditWindow()
+        public BuildingEditWindow(Building selectedBuilding, MainWindowCode owner)
         {
             InitializeComponent();
+            this.DataContext = new BuildingEditWindowCode(selectedBuilding, this, owner);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LocalEditWindow Wnd = new LocalEditWindow();
-            Wnd.Show();
+            //LocalEditWindow Wnd = new LocalEditWindow();
+            //Wnd.Show();
         }
     }
 }

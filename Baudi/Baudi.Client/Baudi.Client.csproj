@@ -60,7 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\BuildingEditWindowCode.cs" />
     <Compile Include="ViewModels\Connection.cs" />
+    <Compile Include="ViewModels\LocalEditWindowCode.cs" />
     <Compile Include="ViewModels\MainWindowCode.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataFieldsValidator.cs" />
@@ -188,6 +190,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -29,7 +29,6 @@ namespace WpfApplication1
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
 
         private void Button_Click_Zgloszenia(object sender, RoutedEventArgs e)
@@ -64,8 +63,8 @@ namespace WpfApplication1
 
         private void Button_Click_Budynki(object sender, RoutedEventArgs e)
         {
-            BuildingEditWindow OP = new BuildingEditWindow();
-            OP.Show();
+            //BuildingEditWindow OP = new BuildingEditWindow();
+            //OP.Show();
         }
 
         private void Button_Click_Mieszkancy(object sender, RoutedEventArgs e)

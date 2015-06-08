@@ -12,7 +12,7 @@ namespace Baudi.Client.ViewModels
 {
     sealed class Connection
     {
-        private static readonly BaudiDbContext con = new BaudiDbContext();
+        private static BaudiDbContext con = new BaudiDbContext();
         public static BaudiDbContext Con
         {
             get

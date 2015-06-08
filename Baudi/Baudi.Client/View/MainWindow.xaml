@@ -4,8 +4,7 @@
         Title="Aplikacja" Height="393.175" Width="632">
 
     <Grid>
-        <TabControl TabStripPlacement="Left" Margin="0, 0, 0, 0" >
-
+        <TabControl TabStripPlacement="Left" Margin="0, 0, 0, 0" SelectedIndex="{Binding SelectedTabIndex}">
             <TabItem Name="NotificationsTab" Header="Zgłoszenia">
                 <TabItem.Content>
                     <Grid Margin="10, 10, 10, 10">
@@ -151,7 +150,7 @@
                             <RowDefinition Height="22*" />
                         </Grid.RowDefinitions>
                         <Grid>
-                            <DataGrid Name="BuildingsList" ItemsSource="{Binding BuildingsList}" AutoGenerateColumns="false">
+                            <DataGrid Name="BuildingsList" ItemsSource="{Binding BuildingsList, IsAsync=True}" AutoGenerateColumns="false" SelectedItem="{Binding SelectedBuilding}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding BuildingID}"/>
                                     <DataGridTextColumn Header="Miejscowość" Width="Auto" Binding="{Binding City}"/>

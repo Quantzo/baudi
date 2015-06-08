@@ -14,7 +14,7 @@ namespace Baudi.DAL
             //Database.SetInitializer<BaudiDbContext>(new DropCreateDatabaseAlways<BaudiDbContext>());
             //Database.SetInitializer<BaudiDbContext>(new DropCreateDatabaseIfModelChanges<BaudiDbContext>());
 
-            Database.SetInitializer(new BaudiDbInitializer());
+           // Database.SetInitializer(new BaudiDbInitializer());
             Database.Initialize(true);
         }
 
