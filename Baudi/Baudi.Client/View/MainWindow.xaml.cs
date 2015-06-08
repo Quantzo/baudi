@@ -39,8 +39,8 @@ namespace WpfApplication1
 
         private void Button_Click_Firma(object sender, RoutedEventArgs e)
         {
-            CompanyEditWindow OF = new CompanyEditWindow();
-            OF.Show();
+            //CompanyEditWindow OF = new CompanyEditWindow();
+            //OF.Show();
         }
 
         private void Button_Click_Pracownik(object sender, RoutedEventArgs e)

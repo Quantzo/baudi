@@ -53,6 +53,7 @@ namespace Baudi.Client.ViewModels
         public List<Company> CompaniesList
         {
             get { return _CompaniesList; }
+            set { _CompaniesList = value; OnPropertyChanged("BuildingsList"); }
         }
 
         public int SelectedTabIndex
@@ -62,6 +63,12 @@ namespace Baudi.Client.ViewModels
         }
 
         public Building SelectedBuilding
+        {
+            get;
+            set;
+        }
+
+        public Company SelectedCompany
         {
             get;
             set;
@@ -87,9 +94,15 @@ namespace Baudi.Client.ViewModels
         {
             if (SelectedTabIndex == (int)SelectedTabItem.Buildings)
             {
-                Building b = null;
-                BuildingEditWindow bew = new BuildingEditWindow(b, this);
+                Building c = null;
+                BuildingEditWindow bew = new BuildingEditWindow(c, this);
                 bew.Show();
+            }
+            if(SelectedTabIndex == (int)SelectedTabItem.Companies)
+            {
+                Company c = null;
+                CompanyEditWindow cew = new CompanyEditWindow(c, this);
+                cew.Show();
             }
         }
 
@@ -103,6 +116,12 @@ namespace Baudi.Client.ViewModels
                     BuildingEditWindow bew = new BuildingEditWindow(b, this);
                     bew.Show();
                 }
+                if (SelectedTabIndex == (int)SelectedTabItem.Companies)
+                {
+                    Company b = con.Companies.Find(SelectedCompany.CompanyID);
+                    CompanyEditWindow cew = new CompanyEditWindow(b, this);
+                    cew.Show();
+                }
             }
         }
         
@@ -115,6 +134,11 @@ namespace Baudi.Client.ViewModels
                     Building b = con.Buildings.Find(SelectedBuilding.BuildingID);
                     con.Buildings.Remove(b);
                 }
+                if(SelectedTabIndex == (int)SelectedTabItem.Companies)
+                {
+                    Company c = con.Companies.Find(SelectedCompany.CompanyID);
+                    con.Companies.Remove(c);
+                }
             }
         }
 
@@ -125,6 +149,10 @@ namespace Baudi.Client.ViewModels
                 if (SelectedTabIndex == (int)SelectedTabItem.Buildings)
                 {
                     BuildingsList = con.Buildings.ToList();
+                }
+                if (SelectedTabIndex == (int)SelectedTabItem.Companies)
+                {
+                    CompaniesList = con.Companies.ToList();
                 }
             }
         }

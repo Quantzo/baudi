@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Baudi.Client.ViewModels;
+using Baudi.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,10 @@ namespace WpfApplication1
     /// </summary>
     public partial class CompanyEditWindow : Window
     {
-        public CompanyEditWindow()
+        public CompanyEditWindow(Company selectedCompany, MainWindowCode owner)
         {
             InitializeComponent();
+            this.DataContext = new CompanyEditWindowCode(selectedCompany, this, owner);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
