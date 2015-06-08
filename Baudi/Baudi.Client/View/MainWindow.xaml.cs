@@ -1,4 +1,5 @@
-﻿using GUIBD;
+﻿using Baudi.Client.ViewModels;
+using GUIBD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowCode();
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
