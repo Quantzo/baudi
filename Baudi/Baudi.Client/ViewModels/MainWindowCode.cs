@@ -15,7 +15,8 @@ namespace Baudi.Client.ViewModels
 
         public MainWindowCode()
         {
-            Load();            
+            Load();
+            Button_Click_Add = new RelayCommand(pars => Add());
         }
         public event PropertyChangedEventHandler PropertyChanged = null;
         private List<Building> _BuildingsList;
@@ -36,6 +37,17 @@ namespace Baudi.Client.ViewModels
             get { return _EmployeesList; }
         }
 
+        private List<Notification> _NotificationsList;
+        public List<Notification> NotificationsList
+        {
+            get { return _NotificationsList; }
+        }
+        private List<Company> _CompaniesList;
+        public List<Company> CompaniesList
+        {
+            get { return _CompaniesList; }
+        }
+
         void Load()
         {
             using(var con = Connection.Con)
@@ -43,9 +55,15 @@ namespace Baudi.Client.ViewModels
                 _BuildingsList = con.Buildings.ToList();
                 _OwnersList = con.Peoples.ToList();
                 _EmployeesList = con.Employees.ToList();
+                _NotificationsList = con.Notifications.ToList();
+                _CompaniesList = con.Companies.ToList();
             }
         }
 
+        void Add()
+        {
+            int i = 0;
+        }
 
         public ICommand Button_Click_Add { get; set; }
 

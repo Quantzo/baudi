@@ -79,7 +79,7 @@ namespace WpfApplication1
             PaymentEditWindow OP = new PaymentEditWindow();
             OP.Show();
         }
-
+            
         public void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
