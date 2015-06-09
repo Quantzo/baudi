@@ -211,7 +211,7 @@
                             <RowDefinition Height="22*" />
                         </Grid.RowDefinitions>
                         <Grid>
-                            <DataGrid Name="EmployeesList" ScrollViewer.CanContentScroll="True" AutoGenerateColumns="false" ItemsSource="{Binding EmployeesList}">
+                            <DataGrid Name="EmployeesList" ScrollViewer.CanContentScroll="True" AutoGenerateColumns="false" ItemsSource="{Binding EmployeesList}" SelectedItem="{Binding SelectedEmployee}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding PersonID}"/>
                                     <DataGridTextColumn Header="Imię" Width="Auto" Binding="{Binding Name}"/>
@@ -228,9 +228,9 @@
                             </DataGrid>
                         </Grid>
                         <Grid/>
-                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Click="Button_Click_Pracownik" Margin="0,5,157,15" >Dodaj</Button>
-                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Click="Button_Click_Pracownik" Margin="0,5,7,15" >Edytuj</Button>
-                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,82,15" >Usuń</Button>
+                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding Button_Click_Add}" Margin="0,5,157,15" >Dodaj</Button>
+                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding Button_Click_Edit}" Margin="0,5,7,15" >Edytuj</Button>
+                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,82,15" Command="{Binding Button_Click_Delete}">Usuń</Button>
                         <TextBox Grid.Row="1" Margin="0,5,232,15" Text="Wyszukaj" GotFocus="TextBox_GotFocus"></TextBox>
                     </Grid>
                 </TabItem.Content>

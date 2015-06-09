@@ -45,8 +45,8 @@ namespace WpfApplication1
 
         private void Button_Click_Pracownik(object sender, RoutedEventArgs e)
         {
-            EmployeeEditWindow OP = new EmployeeEditWindow();
-            OP.Show();
+            //EmployeeEditWindow OP = new EmployeeEditWindow();
+            //OP.Show();
         }
 
         private void Button_Click_Zlecenia(object sender, RoutedEventArgs e)

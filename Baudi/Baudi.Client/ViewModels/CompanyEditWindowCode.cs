@@ -27,7 +27,7 @@ namespace Baudi.Client.ViewModels
             Button_Click_Save = new RelayCommand(pars => Save());
             if (selectedCompany != null)
             {
-                _City = selectedCompany.LocalNumber;
+                _City = selectedCompany.City;
                 _NIP = selectedCompany.NIP;
                 _Owner = selectedCompany.Owner;
                 _Street = selectedCompany.Street;
@@ -116,12 +116,11 @@ namespace Baudi.Client.ViewModels
                         orginal.Owner = Owner;
                         orginal.City = City;
                         orginal.HouseNumber = HouseNumber;
-                        orginal.LocalNumber = City;
+                        orginal.LocalNumber = LocalNumber;
                         orginal.NIP = NIP;
                         orginal.Street = Street;
                         orginal.TelephoneNumber = Telephone;
-                        orginal.Specializations = Specialization;
-                        thisWindowOwner.Update();
+                        //orginal.Specializations = Specialization;
                     }
                 }
                 else
@@ -130,17 +129,18 @@ namespace Baudi.Client.ViewModels
                     b.Owner = Owner;
                     b.City = City;
                     b.HouseNumber = HouseNumber;
-                    b.LocalNumber = City;
+                    b.LocalNumber = LocalNumber;
                     b.NIP = NIP;
                     b.Street = Street;
                     b.TelephoneNumber = Telephone;
-                    b.Specializations = Specialization;
+                    //b.Specializations = Specialization;
                     con.Companies.Add(b);
-                    thisWindowOwner.Update();
                 }
                 con.SaveChanges();
-            }            
+            }
+            thisWindowOwner.Update();
             thisWindow.Close();
+            
         }
 
         virtual public void OnPropertyChanged(string propName)

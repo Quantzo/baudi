@@ -63,6 +63,7 @@
     <Compile Include="ViewModels\BuildingEditWindowCode.cs" />
     <Compile Include="ViewModels\CompanyEditWindowCode.cs" />
     <Compile Include="ViewModels\Connection.cs" />
+    <Compile Include="ViewModels\EmployeeEditWindowCode.cs" />
     <Compile Include="ViewModels\LocalEditWindowCode.cs" />
     <Compile Include="ViewModels\MainWindowCode.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
