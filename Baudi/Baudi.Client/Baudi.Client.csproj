@@ -61,11 +61,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\BuildingEditWindowCode.cs" />
+    <Compile Include="ViewModels\BuildingSelectorCode.cs" />
     <Compile Include="ViewModels\CompanyEditWindowCode.cs" />
     <Compile Include="ViewModels\Connection.cs" />
     <Compile Include="ViewModels\EmployeeEditWindowCode.cs" />
     <Compile Include="ViewModels\LocalEditWindowCode.cs" />
+    <Compile Include="ViewModels\LocalSelectorCode.cs" />
     <Compile Include="ViewModels\MainWindowCode.cs" />
+    <Compile Include="ViewModels\OwnershipEditWindowCode.cs" />
+    <Compile Include="ViewModels\OwnerEditWindowCode.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataFieldsValidator.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataTypeValidator.cs" />
@@ -108,6 +112,12 @@
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectorWindow\BuildingSelector.xaml.cs">
+      <DependentUpon>BuildingSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectorWindow\LocalSelector.xaml.cs">
+      <DependentUpon>LocalSelector.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindowOld.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +182,14 @@
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SelectorWindow\BuildingSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectorWindow\LocalSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

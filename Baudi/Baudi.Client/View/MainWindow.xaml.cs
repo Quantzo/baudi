@@ -69,8 +69,8 @@ namespace WpfApplication1
 
         private void Button_Click_Mieszkancy(object sender, RoutedEventArgs e)
         {
-            OwnerEditWindow OP = new OwnerEditWindow();
-            OP.Show();
+            //OwnerEditWindow OP = new OwnerEditWindow();
+            //OP.Show();
         }
 
         private void Button_Click_Platnosci(object sender, RoutedEventArgs e)

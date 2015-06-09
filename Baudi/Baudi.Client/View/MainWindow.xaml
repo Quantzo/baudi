@@ -178,14 +178,14 @@
                             <RowDefinition Height="22*" />
                         </Grid.RowDefinitions>
                         <Grid>
-                            <DataGrid Name="OwnersList" ItemsSource="{Binding OwnersList}" AutoGenerateColumns="false">
+                            <DataGrid Name="OwnersList" ItemsSource="{Binding OwnersList}" AutoGenerateColumns="false" SelectedItem="{Binding SelectedOwner}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding PersonID}"/>
                                     <DataGridTextColumn Header="Imię" Width="Auto" Binding="{Binding Name}"/>
                                     <DataGridTextColumn Header="Nazwisko" Width="Auto" Binding="{Binding Surname}"/>
                                     <DataGridTextColumn Header="PESEL" Width="Auto" Binding="{Binding PESEL}"/>
                                     <DataGridTextColumn Header="Miejscowość" Width="Auto" Binding="{Binding City}"/>
-                                    <DataGridTextColumn Header="Street" Width="Auto" Binding="{Binding Street}"/>
+                                    <DataGridTextColumn Header="Ulica" Width="Auto" Binding="{Binding Street}"/>
                                     <DataGridTextColumn Header="Numer domu" Width="Auto" Binding="{Binding HouseNumber}"/>
                                     <DataGridTextColumn Header="Numer Mieszkania" Width="Auto" Binding="{Binding LocalNumber}"/>
                                     <DataGridTextColumn Header="Nr telefonu" Width="Auto" Binding="{Binding Telephone}"/>
@@ -193,9 +193,9 @@
                             </DataGrid>
                         </Grid>
                         <Grid/>
-                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Click="Button_Click_Mieszkancy" Margin="0,5,157,15" >Dodaj</Button>
-                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Click="Button_Click_Mieszkancy" Margin="0,5,7,15" >Edytuj</Button>
-                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,82,15" >Usuń</Button>
+                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding Button_Click_Add}" Margin="0,5,157,15" >Dodaj</Button>
+                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding Button_Click_Edit}" Margin="0,5,7,15" >Edytuj</Button>
+                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,82,15" Command="{Binding Button_Click_Delete}" >Usuń</Button>
                         <TextBox Grid.Row="1" Margin="0,5,232,15" Text="Wyszukaj" GotFocus="TextBox_GotFocus"></TextBox>
                     </Grid>
                 </TabItem.Content>

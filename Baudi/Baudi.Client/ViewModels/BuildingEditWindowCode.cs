@@ -20,6 +20,7 @@ namespace Baudi.Client.ViewModels
         MainWindowCode thisWindowOwner;
         List<Local> addedLocal;
         List<Local> updatedLocal;
+        bool update;
         public BuildingEditWindowCode(Building selectedBuilding, BuildingEditWindow thisWindow, MainWindowCode thisWindowOwner)
         {
             this.selectedBuilding = selectedBuilding;
@@ -163,6 +164,7 @@ namespace Baudi.Client.ViewModels
         
         void Add()
         {
+            update = false;
             Local b = null;
             LocalEditWindow bew = new LocalEditWindow(b, this);
             bew.Show();
@@ -170,6 +172,7 @@ namespace Baudi.Client.ViewModels
 
         void Edit()
         {
+            update = true;
             Local b = LocalsList.Find(x => x.LocalID.Equals(SelectedLocal.LocalID));
             LocalEditWindow bew = new LocalEditWindow(b, this);
             bew.Show();
@@ -183,7 +186,7 @@ namespace Baudi.Client.ViewModels
 
         public void Update(Local b)
         {
-            if (SelectedLocal == null)
+            if (update == false)
             {
                 List<Local> actualList = new List<Local>();
                 addedLocal.Add(b);
@@ -194,11 +197,13 @@ namespace Baudi.Client.ViewModels
                     LocalsList = actualList;
                 }
                 else
+                {
+                    LocalsList = null;
                     LocalsList = addedLocal;
+                }
             }
             else
             {
-
                 List<Local> actualList = new List<Local>();
                 updatedLocal.Add(b);
                 actualList.AddRange(LocalsList);

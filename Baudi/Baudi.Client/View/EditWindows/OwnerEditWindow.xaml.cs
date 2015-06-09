@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Baudi.Client.ViewModels;
+using Baudi.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,26 +21,27 @@ namespace GUIBD
     /// </summary>
     public partial class OwnerEditWindow : Window
     {
-        public OwnerEditWindow()
+        public OwnerEditWindow(Person selectedOwner, MainWindowCode owner)
         {
             InitializeComponent();
+            this.DataContext = new OwnerEditWindowCode(selectedOwner, this, owner);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            OwnershipEditWindow OEW = new OwnershipEditWindow();
-            OEW.Show();
+            //OwnershipEditWindow OEW = new OwnershipEditWindow();
+            //OEW.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Selector Wnd = new Selector();
-            Wnd.Show(); 
+            //Selector Wnd = new Selector();
+            //Wnd.Show(); 
         }
     }
 }

@@ -36,6 +36,7 @@ namespace Baudi.Client.ViewModels
         public List<Person> OwnersList
         {
             get { return _OwnersList; }
+            set { _OwnersList = value; OnPropertyChanged("OwnersList"); }
         }
 
         private List<Employee> _EmployeesList;
@@ -81,6 +82,12 @@ namespace Baudi.Client.ViewModels
             set;
         }
 
+        public Person SelectedOwner
+        {
+            get;
+            set;
+        }
+
         public ICommand Button_Click_Add { get; set; }
         public ICommand Button_Click_Edit { get; set; }
         public ICommand Button_Click_Delete { get; set; }
@@ -117,6 +124,12 @@ namespace Baudi.Client.ViewModels
                 EmployeeEditWindow eew = new EmployeeEditWindow(e, this);
                 eew.Show();
             }
+            if(SelectedTabIndex == (int)SelectedTabItem.Owners)
+            {
+                Person o = null;
+                OwnerEditWindow oew = new OwnerEditWindow(o, this);
+                oew.Show();
+            }
         }
 
         void Edit()
@@ -141,6 +154,12 @@ namespace Baudi.Client.ViewModels
                     EmployeeEditWindow eew = new EmployeeEditWindow(e, this);
                     eew.Show();
                 }
+                if(SelectedTabIndex == (int)SelectedTabItem.Owners)
+                {
+                    Person p = con.Peoples.Find(SelectedOwner.PersonID);
+                    OwnerEditWindow oew = new OwnerEditWindow(p, this);
+                    oew.Show();
+                }
             }
         }
         
@@ -163,6 +182,11 @@ namespace Baudi.Client.ViewModels
                     Employee e = con.Employees.Find(SelectedEmployee.PersonID);
                     con.Employees.Remove(e);
                 }
+                if(SelectedTabIndex == (int)SelectedTabItem.Owners)
+                {
+                    Person p = con.Employees.Find(SelectedOwner.PersonID);
+                    con.Peoples.Remove(p);
+                }
                 con.SaveChanges();
                 Update();
             }
@@ -183,6 +207,10 @@ namespace Baudi.Client.ViewModels
                 if(SelectedTabIndex == (int)SelectedTabItem.Employees)
                 {
                     EmployeesList = con.Employees.ToList();
+                }
+                if(SelectedTabIndex == (int)SelectedTabItem.Owners)
+                {
+                    OwnersList = con.Peoples.ToList();
                 }
             }
         }
