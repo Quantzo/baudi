@@ -97,7 +97,7 @@ namespace Baudi.Client.ViewModels
             using (var con = Connection.Con)
             {
                  _BuildingsList = con.Buildings.ToList();
-                 _OwnersList = con.Peoples.ToList();
+                 _OwnersList = con.Peoples.Where(x => x.Ownerships.Count != 0).ToList();
                  _EmployeesList = con.Employees.ToList();
                  _NotificationsList = con.Notifications.ToList();
                  _CompaniesList = con.Companies.ToList();
@@ -138,27 +138,47 @@ namespace Baudi.Client.ViewModels
             {
                 if (SelectedTabIndex == (int)SelectedTabItem.Buildings)
                 {
-                    Building b = con.Buildings.Find(SelectedBuilding.BuildingID);
-                    BuildingEditWindow bew = new BuildingEditWindow(b, this);
-                    bew.Show();
+                    if (SelectedBuilding != null)
+                    {
+                        Building b = con.Buildings.Find(SelectedBuilding.BuildingID);
+                        BuildingEditWindow bew = new BuildingEditWindow(b, this);
+                        bew.Show();
+                    }
+                    else
+                        MessageBox.Show("Musisz wybrać budynek żeby edytować", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 if (SelectedTabIndex == (int)SelectedTabItem.Companies)
                 {
-                    Company b = con.Companies.Find(SelectedCompany.CompanyID);
-                    CompanyEditWindow cew = new CompanyEditWindow(b, this);
-                    cew.Show();
+                    if (SelectedCompany != null)
+                    {
+                        Company b = con.Companies.Find(SelectedCompany.CompanyID);
+                        CompanyEditWindow cew = new CompanyEditWindow(b, this);
+                        cew.Show();
+                    }
+                    else MessageBox.Show("Musisz wybrać firmę żeby edytować", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
+
                 }
                 if (SelectedTabIndex == (int)SelectedTabItem.Employees)
                 {
-                    Employee e = con.Employees.Find(SelectedEmployee.PersonID);
-                    EmployeeEditWindow eew = new EmployeeEditWindow(e, this);
-                    eew.Show();
+                    if (SelectedEmployee != null)
+                    {
+                        Employee e = con.Employees.Find(SelectedEmployee.PersonID);
+                        EmployeeEditWindow eew = new EmployeeEditWindow(e, this);
+                        eew.Show();
+                    }
+                    else
+                        MessageBox.Show("Musisz wybrać pracownika żeby edytować", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 if(SelectedTabIndex == (int)SelectedTabItem.Owners)
                 {
-                    Person p = con.Peoples.Find(SelectedOwner.PersonID);
-                    OwnerEditWindow oew = new OwnerEditWindow(p, this);
-                    oew.Show();
+                    if (SelectedOwner != null)
+                    {
+                        Person p = con.Peoples.Find(SelectedOwner.PersonID);
+                        OwnerEditWindow oew = new OwnerEditWindow(p, this);
+                        oew.Show();
+                    }
+                    else
+                        MessageBox.Show("Musisz wybrać owłaściciela żeby edytować", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
         }

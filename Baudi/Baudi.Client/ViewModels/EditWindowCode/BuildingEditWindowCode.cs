@@ -15,19 +15,30 @@ namespace Baudi.Client.ViewModels
 {
     public class BuildingEditWindowCode : INotifyPropertyChanged
     {
-        Building selectedBuilding;
-        BuildingEditWindow thisWindow;
-        MainWindowCode thisWindowOwner;
-        List<Local> addedLocal;
-        List<Local> updatedLocal;
+        Building selectedBuilding; ///Selected Building in MainWindow.
+        BuildingEditWindow thisWindow; ///Handler for window combined with this code.
+        MainWindowCode thisWindowOwner; ///Handler for MainWindow code.
+        List<Local> addedLocal; // list with added Local
+        List<Local> updatedLocal; //list with updated Local
+        List<Local> deletedLocal; //list with deleted Local
         bool update;
+
+        /// <summary>
+        /// Constructor - initialize handler, button, and form.
+        /// </summary>
+        /// <param name="selectedBuilding"></param>
+        /// <param name="thisWindow"></param>
+        /// <param name="thisWindowOwner"></param>
         public BuildingEditWindowCode(Building selectedBuilding, BuildingEditWindow thisWindow, MainWindowCode thisWindowOwner)
         {
             this.selectedBuilding = selectedBuilding;
             this.thisWindow = thisWindow;
             this.thisWindowOwner = thisWindowOwner;
+
             addedLocal = new List<Local>();
             updatedLocal = new List<Local>();
+            deletedLocal = new List<Local>();
+
             Button_Click_Cancel = new RelayCommand(pars => Cancel());
             Button_Click_Save = new RelayCommand(pars => Save());
             Button_Click_Add = new RelayCommand(pars => Add());
@@ -85,16 +96,22 @@ namespace Baudi.Client.ViewModels
         public ICommand Button_Click_Edit { get; set; }
         public ICommand Button_Click_Delete { get; set; }
 
-
+        /// <summary>
+        /// Methode for Cancel button.
+        /// </summary>
         void Cancel()
         {
             thisWindow.Close();
         }
 
+        /// <summary>
+        /// Methode for Save button.
+        /// </summary>
         void Save()
         {
             using (var con = new BaudiDbContext())
             {
+                //if building was selecteted
                 if (selectedBuilding != null)
                 {
                     var orginal = con.Buildings.Find(selectedBuilding.BuildingID);
@@ -104,16 +121,7 @@ namespace Baudi.Client.ViewModels
                         orginal.City = _City;
                         orginal.HouseNumber = _HouseNumber;
                         orginal.Street = _Street;
-                        //add new locals
-                        if (addedLocal.Count != 0)
-                        {
-                            foreach (Local l in addedLocal)
-                            {
-                                l.Building = orginal;
-                            }
-                            con.Locals.AddRange(addedLocal);
-                        }
-                        //updatelocals
+                        orginal.Locals.AddRange(addedLocal);
                         if (updatedLocal.Count != 0)
                         {
                             foreach(Local l in updatedLocal)
@@ -127,6 +135,7 @@ namespace Baudi.Client.ViewModels
                         }
                     }
                 }
+                //if building was not select
                 else
                 {
                     Building b = new Building();
@@ -135,14 +144,6 @@ namespace Baudi.Client.ViewModels
                     b.Street = _Street;
                     b.Locals = _LocalsList;
                     con.Buildings.Add(b);
-                    if (addedLocal.Count != 0)
-                    {
-                        foreach (Local l in addedLocal)
-                        {
-                            l.Building = b;
-                        }
-                        con.Locals.AddRange(addedLocal);
-                    }
                     if (updatedLocal.Count != 0)
                     {
                         foreach (Local l in updatedLocal)
@@ -157,11 +158,13 @@ namespace Baudi.Client.ViewModels
                 }
                 con.SaveChanges();
             }
-
             thisWindowOwner.Update();
             thisWindow.Close();
         }
-        
+
+        /// <summary>
+        /// Methode for Add button.
+        /// </summary>
         void Add()
         {
             update = false;
@@ -170,22 +173,39 @@ namespace Baudi.Client.ViewModels
             bew.Show();
         }
 
+        /// <summary>
+        /// Methode for Edit button.
+        /// </summary>
         void Edit()
         {
             update = true;
-            Local b = LocalsList.Find(x => x.LocalID.Equals(SelectedLocal.LocalID));
-            LocalEditWindow bew = new LocalEditWindow(b, this);
-            bew.Show();
+            if (SelectedLocal == null)
+            {
+                Local b = LocalsList.Find(x => x.LocalID.Equals(SelectedLocal.LocalID));
+                LocalEditWindow bew = new LocalEditWindow(SelectedLocal, this);
+                bew.Show();
+            }
+            else
+            {
+                MessageBox.Show("Musisz wybrać lokal żeby edytować", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
+        /// <summary>
+        /// Methode for Delete button.
+        /// </summary>
         void Delete()
         {
             Local b = LocalsList.Find(x => x.LocalID.Equals(SelectedLocal.LocalID));
             LocalsList.Remove(b);
         }
 
+        /// <summary>
+        /// Methode for update LocalsList
+        /// </summary>
         public void Update(Local b)
         {
+            //if local is update
             if (update == false)
             {
                 List<Local> actualList = new List<Local>();
@@ -198,10 +218,10 @@ namespace Baudi.Client.ViewModels
                 }
                 else
                 {
-                    LocalsList = null;
                     LocalsList = addedLocal;
                 }
             }
+            //if local is add
             else
             {
                 List<Local> actualList = new List<Local>();
@@ -216,7 +236,9 @@ namespace Baudi.Client.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Methode implementation from INotifyPropertyChanged
+        /// </summary>
         virtual public void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)

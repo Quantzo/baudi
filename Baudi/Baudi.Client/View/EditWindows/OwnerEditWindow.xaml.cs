@@ -27,21 +27,6 @@ namespace GUIBD
             this.DataContext = new OwnerEditWindowCode(selectedOwner, this, owner);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //this.Close();
-        }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            //OwnershipEditWindow OEW = new OwnershipEditWindow();
-            //OEW.Show();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //Selector Wnd = new Selector();
-            //Wnd.Show(); 
-        }
     }
 }

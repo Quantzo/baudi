@@ -115,6 +115,9 @@ namespace Baudi.Client.ViewModels
             set { _Salary = value; OnPropertyChanged("City"); }
         }
 
+       
+
+
         void Cancel()
         {
             thisWindow.Close();

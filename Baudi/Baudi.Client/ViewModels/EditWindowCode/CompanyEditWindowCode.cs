@@ -11,13 +11,15 @@ using WpfApplication1;
 
 namespace Baudi.Client.ViewModels
 {
-    public class CompanyEditWindowCode
+    public class CompanyEditWindowCode : INotifyPropertyChanged
     {
+        Company selectedCompany; ///Selected company in MainWindow.
+        CompanyEditWindow thisWindow; ///Handler for window combined with this code.
+        MainWindowCode thisWindowOwner; ///Handler for MainWindow code.
 
-        Company selectedCompany;
-        CompanyEditWindow thisWindow;
-        MainWindowCode thisWindowOwner;
 
+
+        ///Constructor - initialize handler, button, and form.
         public CompanyEditWindowCode(Company selectedCompany, CompanyEditWindow thisWindow, MainWindowCode thisWindowOwner)
         {
             this.selectedCompany = selectedCompany;
@@ -99,15 +101,22 @@ namespace Baudi.Client.ViewModels
             set { _Specialization = value; OnPropertyChanged("Area"); }
         }
 
+        /// <summary>
+        /// Methode for Cancel button.
+        /// </summary>
         void Cancel()
         {
             thisWindow.Close();
         }
 
+        /// <summary>
+        /// Methode for Save button.
+        /// </summary>
         void Save()
         {
             using (var con = new BaudiDbContext())
             {
+                //if company was select then update company
                 if (selectedCompany != null)
                 {
                     var orginal = con.Companies.Find(selectedCompany.CompanyID);
@@ -120,9 +129,9 @@ namespace Baudi.Client.ViewModels
                         orginal.NIP = NIP;
                         orginal.Street = Street;
                         orginal.TelephoneNumber = Telephone;
-                        //orginal.Specializations = Specialization;
                     }
                 }
+                //if company was not select then add company
                 else
                 {
                     var b = new Company();
@@ -133,7 +142,6 @@ namespace Baudi.Client.ViewModels
                     b.NIP = NIP;
                     b.Street = Street;
                     b.TelephoneNumber = Telephone;
-                    //b.Specializations = Specialization;
                     con.Companies.Add(b);
                 }
                 con.SaveChanges();
@@ -143,6 +151,9 @@ namespace Baudi.Client.ViewModels
             
         }
 
+        /// <summary>
+        /// Methode implementation from INotifyPropertyChanged
+        /// </summary>
         virtual public void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)

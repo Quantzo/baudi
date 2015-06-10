@@ -26,16 +26,5 @@ namespace GUIBD
             InitializeComponent();
             this.DataContext = new BuildingEditWindowCode(selectedBuilding, this, owner);
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //this.Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //LocalEditWindow Wnd = new LocalEditWindow();
-            //Wnd.Show();
-        }
     }
 }

@@ -60,16 +60,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\BuildingEditWindowCode.cs" />
-    <Compile Include="ViewModels\BuildingSelectorCode.cs" />
-    <Compile Include="ViewModels\CompanyEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowCode\BuildingEditWindowCode.cs" />
+    <Compile Include="ViewModels\SelectorWindowCode\BuildingSelectorCode.cs" />
+    <Compile Include="ViewModels\EditWindowCode\CompanyEditWindowCode.cs" />
     <Compile Include="ViewModels\Connection.cs" />
-    <Compile Include="ViewModels\EmployeeEditWindowCode.cs" />
-    <Compile Include="ViewModels\LocalEditWindowCode.cs" />
-    <Compile Include="ViewModels\LocalSelectorCode.cs" />
-    <Compile Include="ViewModels\MainWindowCode.cs" />
-    <Compile Include="ViewModels\OwnershipEditWindowCode.cs" />
-    <Compile Include="ViewModels\OwnerEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowCode\EmployeeEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowCode\LocalEditWindowCode.cs" />
+    <Compile Include="ViewModels\SelectorWindowCode\LocalSelectorCode.cs" />
+    <Compile Include="ViewModels\EditWindowCode\MainWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowCode\OwnershipEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowCode\OwnerEditWindowCode.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataFieldsValidator.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataTypeValidator.cs" />

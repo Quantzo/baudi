@@ -7,14 +7,19 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Baudi.Client.ViewModels
 {
-    class BuildingSelectorCode
+    class BuildingSelectorCode : INotifyPropertyChanged
     {
-        BuildingSelector thisWindow;
-        OwnershipEditWindowCode thisWindowOwner;
+        BuildingSelector thisWindow; /// Handler for window combined with this code.
+        OwnershipEditWindowCode thisWindowOwner; /// Handler for MainWindow code.
+
+        /// <summary>
+        /// Constructor - initialize handler, button, and form.
+        /// </summary>           
         public BuildingSelectorCode( BuildingSelector thisWindow, OwnershipEditWindowCode ownerWindow)
         {
             this.thisWindow = thisWindow;
@@ -50,12 +55,23 @@ namespace Baudi.Client.ViewModels
             thisWindow.Close();
         }
 
+        /// <summary>
+        /// Methode for Select button.
+        /// </summary>
         void Select()
         {
-            thisWindowOwner.Update(null, SelectedBuilding);
-            thisWindow.Close();
+            if (SelectedBuilding != null)
+            {
+                thisWindowOwner.Update(null, SelectedBuilding);
+                thisWindow.Close();
+            }
+            else
+                MessageBox.Show("Musisz wybrać budynek.", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
-        
+
+        /// <summary>
+        /// Methode implementation from INotifyPropertyChanged
+        /// </summary>
         virtual public void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)

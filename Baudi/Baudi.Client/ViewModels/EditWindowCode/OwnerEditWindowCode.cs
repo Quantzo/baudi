@@ -7,19 +7,29 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Baudi.Client.ViewModels
 {
-    public class OwnerEditWindowCode
+    public class OwnerEditWindowCode : INotifyPropertyChanged
     {
 
-        Person selectedOwner;
-        OwnerEditWindow thisWindow;
-        MainWindowCode thisWindowOwner;
-        List<Ownership> addedOwnership;
-        List<Ownership> updatedOwnership;
+        Person selectedOwner; ///Selected Building in MainWindow.
+        OwnerEditWindow thisWindow; ///Handler for window combined with this code.
+        MainWindowCode thisWindowOwner; ///Handler for MainWindow code.
+
+        List<Ownership> addedOwnership; ///List with added Ownership.
+        List<Ownership> updatedOwnership; ///List with updated Ownership.
+        List<Ownership> deleteOwnership; ///List with deletedOwnership.
         bool update = false;
+
+        /// <summary>
+        /// Constructor - initialize handler, button, and form.
+        /// </summary>
+        /// <param name="selectedOwner"></param>
+        /// <param name="thisWindow"></param>
+        /// <param name="thisWindowOwner"></param>
         public OwnerEditWindowCode(Person selectedOwner, OwnerEditWindow thisWindow, MainWindowCode thisWindowOwner)
         {
             this.selectedOwner = selectedOwner;
@@ -27,6 +37,7 @@ namespace Baudi.Client.ViewModels
             this.thisWindowOwner = thisWindowOwner;
             addedOwnership = new List<Ownership>();
             updatedOwnership = new List<Ownership>();
+            deleteOwnership = new List<Ownership>();
             Button_Click_Cancel = new RelayCommand(pars => Cancel());
             Button_Click_Save = new RelayCommand(pars => Save());
             Button_Click_Add = new RelayCommand(pars => Add());
@@ -117,42 +128,65 @@ namespace Baudi.Client.ViewModels
             set { _OwnershipsList = value; OnPropertyChanged("OwnershipsList"); }
         }
 
+
         public Ownership SelectedOwnership
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Methode for Add button.
+        /// </summary>
         void Add()
         {
-            Ownership b = null;
-            OwnershipEditWindow bew = new OwnershipEditWindow(b, this);
-            bew.Show();
-        }
-
-        void Edit()
-        {
-            using (var con = new BaudiDbContext())
-            {
-                Ownership b = con.Ownerships.Find(SelectedOwnership.OwnershipID);
+                update = false;
+                Ownership b = null;
                 OwnershipEditWindow bew = new OwnershipEditWindow(b, this);
                 bew.Show();
-            }
         }
 
+        /// <summary>
+        /// Methode for Edit button.
+        /// </summary>
+        void Edit()
+        {
+            if (SelectedOwnership != null)
+            {
+                update = true;
+                OwnershipEditWindow bew = new OwnershipEditWindow(SelectedOwnership, this);
+                bew.Show();
+            }
+            else
+                MessageBox.Show("Musisz wybrać posiadanie żeby edytować", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        /// <summary>
+        /// Methode for Delete button.
+        /// </summary>
         void Delete()
         {
             Ownership b = OwnershipsList.Find(x => x.OwnershipID.Equals(SelectedOwnership.OwnershipID));
-            OwnershipsList.Remove(b);
+            deleteOwnership.Add(b);
+            Update(null);
         }
 
+        /// <summary>
+        /// Methode for Cancel button.
+        /// </summary>
         void Cancel()
         {
             thisWindow.Close();
         }
 
+        /// <summary>
+        /// Methode for Save button.
+        /// </summary>
         void Save()
         {
+            
+            deleteOwnership.ForEach(a => addedOwnership.Remove(a));
+            deleteOwnership.ForEach(a => addedOwnership.Remove(a));
             using (var con = new BaudiDbContext())
             {
                 if (selectedOwner != null)
@@ -172,21 +206,22 @@ namespace Baudi.Client.ViewModels
                         {
                             foreach (Ownership l in addedOwnership)
                             {
-                                l.Owner = orginal;
+                                l.Local = con.Locals.Find(l.Local.LocalID);
                             }
-                            con.Ownerships.AddRange(addedOwnership);
                         }
-                        //updatelocals
-                        if (addedOwnership.Count != 0)
+                        deleteOwnership.ForEach(a => addedOwnership.Remove(a));
+                        orginal.Ownerships.AddRange(addedOwnership);
+                        if (updatedOwnership.Count != 0)
                         {
                             foreach (Ownership l in updatedOwnership)
                             {
                                 Ownership temp = con.Ownerships.Find(l.OwnershipID);
-                                temp.Local = l.Local;
+                                temp.Local = con.Locals.Find(l.Local.LocalID);
                                 temp.PurchaseDate = l.PurchaseDate;
                                 temp.SaleDate = l.SaleDate;
                             }
-                        }
+                        }  
+                      
                     }
                 }
                 else
@@ -200,22 +235,14 @@ namespace Baudi.Client.ViewModels
                     e.LocalNumber = LocalNumber;
                     e.Telephone = Telephone;
                     e.City = City;
+                    e.Ownerships = addedOwnership;
                     con.Peoples.Add(e);
-
-                    if (addedOwnership.Count != 0)
-                    {
-                        foreach (Ownership l in addedOwnership)
-                        {
-                            l.Owner = e;
-                        }
-                        con.Ownerships.AddRange(addedOwnership);
-                    }
                     if (updatedOwnership.Count != 0)
                     {
                         foreach (Ownership l in updatedOwnership)
                         {
                             Ownership temp = con.Ownerships.Find(l.OwnershipID);
-                            temp.Local = l.Local;
+                            temp.Local = con.Locals.Find(l.Local.LocalID);
                             temp.PurchaseDate = l.PurchaseDate;
                             temp.SaleDate = l.SaleDate;
                         }
@@ -228,34 +255,66 @@ namespace Baudi.Client.ViewModels
             
         }
 
+        /// <summary>
+        ///  Update from OwnershipEditWindow.
+        /// </summary>
         public void Update(Ownership b)
         {
-            if (update == false)
+            if (b == null)
             {
                 List<Ownership> actualList = new List<Ownership>();
-                addedOwnership.Add(b);
-                actualList.Add(b);
-                if (OwnershipsList != null)
-                {
-                    actualList.AddRange(OwnershipsList);
-                    OwnershipsList = actualList;
-                }
-                else
-                    OwnershipsList = addedOwnership;
+                actualList = OwnershipsList;
+                deleteOwnership.ForEach(a => actualList.Remove(a));
+                OwnershipsList = actualList;
             }
             else
             {
-                List<Ownership> actualList = new List<Ownership>();
-                updatedOwnership.Add(b);
-                actualList.AddRange(OwnershipsList);
-                Ownership orginal = actualList.Find(x => x.OwnershipID == b.OwnershipID);
-                orginal.Local = b.Local;
-                orginal.PurchaseDate = b.PurchaseDate;
-                orginal.SaleDate = b.SaleDate;
-                OwnershipsList = actualList;
+                if (update == false)
+                {
+
+                    List<Ownership> actualList = new List<Ownership>();
+                    addedOwnership.Add(b);
+                    actualList.Add(b);
+                    if (OwnershipsList != null)
+                    {
+                        actualList.AddRange(OwnershipsList);
+                        OwnershipsList = actualList;
+                    }
+                    else
+                        OwnershipsList = addedOwnership;
+                }
+                else
+                {
+                    List<Ownership> actualList = new List<Ownership>();
+                    Ownership orginal;
+                    if ((orginal = updatedOwnership.Find(x => x.OwnershipID == b.OwnershipID)) != null)
+                    {
+                        orginal.Local = b.Local;
+                        orginal.PurchaseDate = b.PurchaseDate;
+                        orginal.SaleDate = b.SaleDate;
+                        orginal = actualList.Find(x => x.OwnershipID == b.OwnershipID);
+                        orginal.Local = b.Local;
+                        orginal.PurchaseDate = b.PurchaseDate;
+                        orginal.SaleDate = b.SaleDate;
+                        OwnershipsList = actualList;
+                    }
+                    else
+                    {
+                        orginal = OwnershipsList.Find(x => x.OwnershipID == b.OwnershipID);
+                        updatedOwnership.Add(b);
+                        actualList.AddRange(OwnershipsList);
+                        orginal.Local = b.Local;
+                        orginal.PurchaseDate = b.PurchaseDate;
+                        orginal.SaleDate = b.SaleDate;
+                        OwnershipsList = actualList;
+                    }
+                }
             }
         }
 
+        /// <summary>
+        /// Methode implementation from INotifyPropertyChanged
+        /// </summary>
         virtual public void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)

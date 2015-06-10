@@ -14,10 +14,13 @@ namespace Baudi.Client.ViewModels
     public class LocalEditWindowCode
     {
 
-        Local selectedLocal;
-        LocalEditWindow thisWindow;
-        BuildingEditWindowCode thisWindowOwner;
+        Local selectedLocal; ///selected Local in MainWindow
+        LocalEditWindow thisWindow; ///Handler for window combined with this code.
+        BuildingEditWindowCode thisWindowOwner; ///Handler for MainWindow code.
 
+        /// <summary>
+        /// Constructor - initialize handler, button, and form.
+        /// </summary>
         public LocalEditWindowCode(Local selectedLocal, LocalEditWindow thisWindow, BuildingEditWindowCode thisWindowOwner)
         {
             this.selectedLocal = selectedLocal;
@@ -67,42 +70,31 @@ namespace Baudi.Client.ViewModels
             set { _Area = value; OnPropertyChanged("Area");}
         }
 
+        /// <summary>
+        /// Methode for Cancel button.
+        /// </summary>
         void Cancel()
         {
             thisWindow.Close();
         }
 
+        /// <summary>
+        /// Methode for Save button.
+        /// </summary>
         void Save()
         {
-            using (var con = new BaudiDbContext())
-            {
-                if (selectedLocal != null)
-                {
-                    var orginal = con.Locals.Find(selectedLocal.LocalID);
-                    if (orginal != null)
-                    {
-                        orginal.LocalID = selectedLocal.LocalID;
-                        orginal.LocalNumber = LocalNumber;
-                        orginal.NumberOfRooms = NumberOfRooms;
-                        orginal.Area = Area;
-                        orginal.RentValue = RentValue;
-                        thisWindowOwner.Update(orginal);
-                    }
-                }
-                else
-                {
                     var b = new Local();
                     b.LocalNumber = LocalNumber;
                     b.RentValue = RentValue;
                     b.NumberOfRooms = NumberOfRooms;
                     b.Area = Area;
                     thisWindowOwner.Update(b);
-                }
-                con.SaveChanges();
-            }            
-            thisWindow.Close();
+                    thisWindow.Close();
         }
 
+        /// <summary>
+        /// Methode implementation from INotifyPropertyChanged
+        /// </summary>
         virtual public void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)

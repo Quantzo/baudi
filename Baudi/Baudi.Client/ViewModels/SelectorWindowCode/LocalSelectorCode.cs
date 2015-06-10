@@ -7,14 +7,19 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Baudi.Client.ViewModels
 {
-    class LocalSelectorCode
+    class LocalSelectorCode : INotifyPropertyChanged
     {
-        LocalSelector thisWindow;
-        OwnershipEditWindowCode thisWindowOwner;
+        LocalSelector thisWindow; /// Handler for window combined with this code.
+        OwnershipEditWindowCode thisWindowOwner; /// Handler for MainWindow code.
+                                                 /// 
+        /// <summary>
+        /// Constructor - initialize handler, button, and form.
+        /// </summary>      
         public LocalSelectorCode( LocalSelector thisWindow, OwnershipEditWindowCode ownerWindow, Building selectedBuilding)
         {
             this.thisWindow = thisWindow;
@@ -45,17 +50,31 @@ namespace Baudi.Client.ViewModels
         public ICommand Button_Click_Cancel { get; set; }
         public ICommand Button_Click_Select { get; set; }
 
+        /// <summary>
+        /// Methode for Cancel button.
+        /// </summary>
         void Cancel()
         {
             thisWindow.Close();
         }
 
+        /// <summary>
+        /// Methode for Select button.
+        /// </summary>
         void Select()
         {
-            thisWindowOwner.Update(SelectedLocal, null);
-            thisWindow.Close();
+            if (SelectedLocal != null)
+            {
+                thisWindowOwner.Update(SelectedLocal, null);
+                thisWindow.Close();
+            }
+            else
+                MessageBox.Show("Musisz wybrać lokal.", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
-        
+
+        /// <summary>
+        /// Methode implementation from INotifyPropertyChanged
+        /// </summary>
         virtual public void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
