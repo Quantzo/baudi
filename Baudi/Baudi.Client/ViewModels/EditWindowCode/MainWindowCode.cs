@@ -9,6 +9,7 @@ using Baudi.DAL.Models;
 using System.Windows.Input;
 using GUIBD;
 using System.Data;
+using System.Data.Entity;
 using WpfApplication1;
 using System.Windows;
 
@@ -50,6 +51,7 @@ namespace Baudi.Client.ViewModels
         public List<Notification> NotificationsList
         {
             get { return _NotificationsList; }
+            set { _NotificationsList = value; OnPropertyChanged("NotificationsList"); }
         }
         private List<Company> _CompaniesList;
         public List<Company> CompaniesList
@@ -94,7 +96,7 @@ namespace Baudi.Client.ViewModels
 
         void Load()
         {
-            using (var con = Connection.Con)
+            using (var con = new BaudiDbContext())
             {
                  _BuildingsList = con.Buildings.ToList();
                  _OwnersList = con.Peoples.Where(x => x.Ownerships.Count != 0).ToList();
@@ -190,22 +192,75 @@ namespace Baudi.Client.ViewModels
                 if (SelectedTabIndex == (int)SelectedTabItem.Buildings)
                 {
                     Building b = con.Buildings.Find(SelectedBuilding.BuildingID);
+                    b.CyclicOrders.ForEach(co => con.Expenses.RemoveRange(co.Expenses));
+                    b.Locals.ForEach(l => con.Notifications.RemoveRange(l.Notifactions));
+                    con.CyclicOrders.RemoveRange(b.CyclicOrders);
+                    
+                    b.CyclicOrders.Clear();
                     con.Buildings.Remove(b);
                 }
                 if(SelectedTabIndex == (int)SelectedTabItem.Companies)
                 {
                     Company c = con.Companies.Find(SelectedCompany.CompanyID);
-                    con.Companies.Remove(c);
+                    c.CyclicOrders.Clear();
+                    c.Orders.Clear();
+                   con.Companies.Remove(c);
                 }
                 if(SelectedTabIndex == (int)SelectedTabItem.Employees)
                 {
                     Employee e = con.Employees.Find(SelectedEmployee.PersonID);
-                    con.Employees.Remove(e);
+                    con.Expenses.RemoveRange(e.Expenses);
+
+                    Dispatcher d = e as Dispatcher;
+                    Menager m = e as Menager;
+                    if (d != null)
+                    {
+                        d.DispatcherNotifications.Clear();
+                        con.Employees.Remove(d);
+                    }
+                    else if (m != null)
+                    {
+                        m.MenagerExpenses.Clear();
+                        m.CyclicOrders.Clear();
+                        m.Orders.Clear();
+                        con.Employees.Remove(m);
+                    }
+                    else
+                    {
+                        con.Employees.Remove(e);
+                    }
                 }
                 if(SelectedTabIndex == (int)SelectedTabItem.Owners)
                 {
                     Person p = con.Employees.Find(SelectedOwner.PersonID);
-                    con.Peoples.Remove(p);
+                    Employee e = (Employee) p;
+                    if (e != null)
+                    {
+                        con.Expenses.RemoveRange(e.Expenses);
+                        Dispatcher d = e as Dispatcher;
+                        Menager m = e as Menager;
+                        if (d != null)
+                        {
+                            d.DispatcherNotifications.Clear();
+                            con.Employees.Remove(d);
+                        }
+                        else if (m != null)
+                        {
+                            m.MenagerExpenses.Clear();
+                            m.CyclicOrders.Clear();
+                            m.Orders.Clear();
+                            con.Employees.Remove(m);
+                        }
+                        else
+                        {
+                            con.Employees.Remove(e);
+                        }
+                    }
+                    else
+                    {
+                        con.Peoples.Remove(p);
+                    }
+                    
                 }
                 con.SaveChanges();
                 Update();
@@ -216,22 +271,16 @@ namespace Baudi.Client.ViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                if (SelectedTabIndex == (int)SelectedTabItem.Buildings)
-                {
+
                     BuildingsList = con.Buildings.ToList();
-                }
-                if (SelectedTabIndex == (int)SelectedTabItem.Companies)
-                {
+
+                NotificationsList = con.Notifications.ToList();
                     CompaniesList = con.Companies.ToList();
-                }
-                if(SelectedTabIndex == (int)SelectedTabItem.Employees)
-                {
+
                     EmployeesList = con.Employees.ToList();
-                }
-                if(SelectedTabIndex == (int)SelectedTabItem.Owners)
-                {
-                    OwnersList = con.Peoples.ToList();
-                }
+
+                    OwnersList = con.Peoples.Where(x => x.Ownerships.Count != 0).ToList();
+
             }
         }
 

@@ -63,7 +63,6 @@
     <Compile Include="ViewModels\EditWindowCode\BuildingEditWindowCode.cs" />
     <Compile Include="ViewModels\SelectorWindowCode\BuildingSelectorCode.cs" />
     <Compile Include="ViewModels\EditWindowCode\CompanyEditWindowCode.cs" />
-    <Compile Include="ViewModels\Connection.cs" />
     <Compile Include="ViewModels\EditWindowCode\EmployeeEditWindowCode.cs" />
     <Compile Include="ViewModels\EditWindowCode\LocalEditWindowCode.cs" />
     <Compile Include="ViewModels\SelectorWindowCode\LocalSelectorCode.cs" />
