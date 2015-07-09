@@ -60,6 +60,49 @@ namespace Baudi.Client.ViewModels
             set { _CompaniesList = value; OnPropertyChanged("CompaniesList"); }
         }
 
+
+        private List<Order> _OrdersList;
+        public List<Order> OrdersList
+        {
+            get { return _OrdersList; }
+            set { _OrdersList = value; OnPropertyChanged("OrdersList"); }
+        }
+
+
+
+        private List<OrderType> _OrderTypesList;
+        public List<OrderType> OrderTypesList
+        {
+            get { return _OrderTypesList; }
+            set { _OrderTypesList = value; OnPropertyChanged("OrdersTypesList"); }
+        }
+
+        private List<CyclicOrder> _CyclicOrdersList;
+        public List<CyclicOrder> CyclicOrdersList
+        {
+            get { return _CyclicOrdersList; }
+            set { _CyclicOrdersList = value; OnPropertyChanged("CyclicOrdersList"); }
+        }
+
+
+
+        private List<Expense> _ExpensesList;
+        public List<Expense> ExpensesList
+        {
+            get { return _ExpensesList; }
+            set { _ExpensesList = value; OnPropertyChanged("ExpensesList"); }
+        }
+
+
+
+        private List<Expense> _ExpensesOrderList;
+        public List<Expense> ExpensesOrderList
+        {
+            get { return _ExpensesOrderList; }
+            set { _ExpensesOrderList = value; OnPropertyChanged("ExpensesOrderList"); }
+        }
+
+
         public int SelectedTabIndex
         {
             get;
@@ -90,6 +133,18 @@ namespace Baudi.Client.ViewModels
             set;
         }
 
+        public Order SelectedOrder
+        {
+            get;
+            set;
+        }
+
+        public CyclicOrder SelectedCyclicOrder
+        {
+            get;
+            set;
+        }
+
         public ICommand Button_Click_Add { get; set; }
         public ICommand Button_Click_Edit { get; set; }
         public ICommand Button_Click_Delete { get; set; }
@@ -103,6 +158,12 @@ namespace Baudi.Client.ViewModels
                  _EmployeesList = con.Employees.ToList();
                  _NotificationsList = con.Notifications.ToList();
                  _CompaniesList = con.Companies.ToList();
+                 _OrdersList = con.Orders.ToList();
+                 _OrderTypesList = con.OrderTypes.ToList();
+                 _CyclicOrdersList = con.CyclicOrders.ToList();
+
+
+
             }
         }
 
@@ -273,13 +334,12 @@ namespace Baudi.Client.ViewModels
             {
 
                     BuildingsList = con.Buildings.ToList();
-
-                NotificationsList = con.Notifications.ToList();
+                    NotificationsList = con.Notifications.ToList();
                     CompaniesList = con.Companies.ToList();
-
                     EmployeesList = con.Employees.ToList();
-
                     OwnersList = con.Peoples.Where(x => x.Ownerships.Count != 0).ToList();
+                    OrdersList = con.Orders.ToList();
+                    
 
             }
         }

@@ -23,7 +23,15 @@
                                     <DataGridTextColumn Header="Ostatnia zmiana" Width="Auto" Binding="{Binding LastChanged}"/>
                                     <DataGridTextColumn Header="Opis" Width="Auto" Binding="{Binding Description}"/>
                                     <DataGridTextColumn Header="Status" Width="Auto" Binding="{Binding Status}"/>
-                                    <DataGridTextColumn Header="Przyjmujący" Width="Auto" Binding="{Binding Dispatcher.Name}"/>
+                                    <DataGridTextColumn Header="Przyjmujący" Width="Auto">
+                                        <DataGridTextColumn.Binding>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding Path="Dispatcher.Name"/>
+                                                <Binding Path="Dispatcher.Surname"/>
+                                            </MultiBinding>
+                                        </DataGridTextColumn.Binding>
+                                    </DataGridTextColumn>
+
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
@@ -50,6 +58,7 @@
                             <DataGrid Name="CompaniesList" AutoGenerateColumns="false" ItemsSource="{Binding CompaniesList}" SelectedItem="{Binding SelectedCompany}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding CompanyID}"/>
+                                    <DataGridTextColumn Header="Nazwa" Width="Auto" Binding="{Binding Name}"/>
                                     <DataGridTextColumn Header="Miejscowość" Width="Auto" Binding="{Binding City}"/>
                                     <DataGridTextColumn Header="Ulica" Width="Auto" Binding="{Binding Street}"/>
                                     <DataGridTextColumn Header="Numer domu" Width="Auto" Binding="{Binding HouseNumber}" />
@@ -79,19 +88,16 @@
                             <RowDefinition Height="22*" />
                         </Grid.RowDefinitions>
                         <Grid>
-                            <ListView Name="OrdersList">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Status" Width="Auto"/>
-                                        <GridViewColumn Header="Zmieniono" Width="Auto"/>
-                                        <GridViewColumn Header="Dodano" Width="Auto"/>
-                                        <GridViewColumn Header="Przyjęto" Width="Auto"/>
-                                        <GridViewColumn Header="Cena" Width="Auto"/>
-                                        <GridViewColumn Header="Typ zlecenia" Width="Auto"/>
-                                        <GridViewColumn Header="Firma" Width="Auto"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                            <DataGrid Name="OrdersList" AutoGenerateColumns="false" ItemsSource="{Binding OrdersList}" SelectedItem="{Binding SelectedOrder}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Status" Width="Auto" Binding="{Binding Status}"/>
+                                    <DataGridTextColumn Header="Zmieniono" Width="Auto" Binding="{Binding LastChanged}"/>
+                                    <DataGridTextColumn Header="Przyjęto" Width="Auto" Binding="{Binding FilingDate}"/>
+                                    <DataGridTextColumn Header="Cena" Width="Auto" Binding="{Binding Cost}"/>
+                                    <DataGridTextColumn Header="Typ zlecenia" Width="Auto" Binding="{Binding OrderType.Name}"/>
+                                    <DataGridTextColumn Header="Firma" Width="Auto" Binding="{Binding Company.Name}"/>                                   
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                         <Grid/>
                         <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Click="Button_Click_Zlecenia" Margin="0,5,157,15" >Dodaj</Button>
@@ -112,18 +118,15 @@
                             <RowDefinition Height="22*" />
                         </Grid.RowDefinitions>
                         <Grid>
-                            <ListView Name="CyclicOrdersList">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Budynek" Width="Auto"/>
-                                        <GridViewColumn Header="Cena" Width="Auto"/>
-                                        <GridViewColumn Header="Częstotliwość opłat" Width="Auto"/>
-                                        <GridViewColumn Header="Częstotliwość prac" Width="Auto"/>
-                                        <GridViewColumn Header="Ostatnia realizacja" Width="Auto"/>
-                                        <GridViewColumn Header="Firma" Width="Auto"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                            <DataGrid Name="CyclicOrdersList" AutoGenerateColumns="false" ItemsSource="{Binding CyclicOrdersList}" SelectedItem="{Binding SelectedCyclicOrder}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Budynek" Width="Auto" Binding="{Binding Building.BuildingID}"/>
+                                    <DataGridTextColumn Header="Cena" Width="Auto" Binding="{Binding Cost}"/>
+                                    <DataGridTextColumn Header="Częstotliwość opłat i opłat" Width="Auto" Binding="{Binding Frequency}"/>
+                                    <DataGridTextColumn Header="Ostatnia realizacja" Width="Auto" Binding="{Binding LastRealizationDate}"/>
+                                    <DataGridTextColumn Header="Firma" Width="Auto" Binding="{Binding Company.Name}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                         <Grid/>
                         <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Click="Button_Click_Zlecenia_Stale" Margin="0,5,157,15" >Dodaj</Button>
@@ -223,7 +226,7 @@
                                     <DataGridTextColumn Header="Numer Mieszkania" Width="Auto" Binding="{Binding LocalNumber}"/>
                                     <DataGridTextColumn Header="Nr telefonu" Width="Auto" Binding="{Binding Telephone}"/>
                                     <DataGridTextColumn Header="Nr konta" Width="Auto" Binding="{Binding BankAccountNumber}"/>
-                                    <DataGridTextColumn Header="Salary" Width="Auto" Binding="{Binding Salary}"/>
+                                    <DataGridTextColumn Header="Pensja" Width="Auto" Binding="{Binding Salary}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
@@ -242,7 +245,43 @@
                 </TabItem.Header>
             </TabItem>
 
-            <TabItem Name="PaymentsTab" Header="Płatności">
+            <TabItem Name="ExpensesOrderTab" Header="Wydatki: Zlecenia">
+                <TabItem.Content>
+                    <Grid Margin="10, 10, 10, 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="137*" />
+                            <RowDefinition Height="22*" />
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <DataGrid Name="ExpensesOrderList" ScrollViewer.CanContentScroll="True" AutoGenerateColumns="false" ItemsSource="{Binding EmployeesList}" SelectedItem="{Binding SelectedEmployee}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding PersonID}"/>
+                                    <DataGridTextColumn Header="Imię" Width="Auto" Binding="{Binding Name}"/>
+                                    <DataGridTextColumn Header="Nazwisko" Width="Auto" Binding="{Binding Surname}"/>
+                                    <DataGridTextColumn Header="PESEL" Width="Auto" Binding="{Binding PESEL}"/>
+                                    <DataGridTextColumn Header="Miejscowość" Width="Auto" Binding="{Binding City}"/>
+                                    <DataGridTextColumn Header="Street" Width="Auto" Binding="{Binding Street}"/>
+                                    <DataGridTextColumn Header="Numer domu" Width="Auto" Binding="{Binding HouseNumber}"/>
+                                    <DataGridTextColumn Header="Numer Mieszkania" Width="Auto" Binding="{Binding LocalNumber}"/>
+                                    <DataGridTextColumn Header="Nr telefonu" Width="Auto" Binding="{Binding Telephone}"/>
+                                    <DataGridTextColumn Header="Nr konta" Width="Auto" Binding="{Binding BankAccountNumber}"/>
+                                    <DataGridTextColumn Header="Salary" Width="Auto" Binding="{Binding Salary}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                        <Grid/>
+                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Click="Button_Click_Platnosci" Margin="0,5,157,15" >Dodaj</Button>
+                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Click="Button_Click_Platnosci" Margin="0,5,7,15" >Edytuj</Button>
+                        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,82,15" >Usuń</Button>
+                        <TextBox Grid.Row="1" Margin="0,5,232,15" Text="Wyszukaj" GotFocus="TextBox_GotFocus"></TextBox>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Name="RentsTab" Header="Czynsz">
                 <TabItem.Content>
                     <Grid Margin="10, 10, 10, 10">
                         <Grid.ColumnDefinitions>
@@ -272,6 +311,7 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
+
             <TabItem Name="ReportsTab" Header="Raporty">
                 <Grid Margin="10, 10, 10, 10">
                     <Grid.ColumnDefinitions>

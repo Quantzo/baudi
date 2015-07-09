@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Baudi.DAL.Models.Administrator" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Administrator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Building" Collapsed="true">
+    <Position X="17.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAEBAAAAAAAKAAAAAAAA=</HashCode>
+      <FileName>Models\Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Company" Collapsed="true">
+    <Position X="23" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAACAAAIAAAAoAAAAAAQIAEAAAAAAAAKAAAAAAEI=</HashCode>
+      <FileName>Models\Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.CyclicOrder" Collapsed="true">
+    <Position X="15" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAABAAAIAAAABAAAAABAAAgAA=</HashCode>
+      <FileName>Models\CyclicOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Dispatcher" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\Dispatcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Employee">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <InheritanceLine Type="Baudi.DAL.Models.Person" FixedToPoint="true">
+      <Path>
+        <Point X="10" Y="1.191" />
+        <Point X="10" Y="1.566" />
+        <Point X="11.125" Y="1.566" />
+        <Point X="11.125" Y="3.617" />
+        <Point X="10.75" Y="3.617" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AABAACAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Expense">
+    <Position X="7.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Expense.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.IExpenseTarget">
+    <Position X="16.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\IExpenseTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.INotificationTarget">
+    <Position X="16" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\INotificationTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.IOwner" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAgCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IOwner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Local" Collapsed="true">
+    <Position X="15" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgFAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAQAAAAA=</HashCode>
+      <FileName>Models\Local.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Menager">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAABAAECAAAAAAAA=</HashCode>
+      <FileName>Models\Menager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Notification" Collapsed="true">
+    <Position X="20.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAEAgACEAAAgAAAAAAAABAAAAACAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Notifaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Order" Collapsed="true">
+    <Position X="17.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAgAABBAAAAAAQABEAAAABAAAAAA=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.OrderType" Collapsed="true">
+    <Position X="20.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\OrderType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Ownership" Collapsed="true">
+    <Position X="22.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAEAAAAAIAAAAAAAgBAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Ownership.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.OwningCompany" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAQIAEAAAAAAAIIAAAAAAAI=</HashCode>
+      <FileName>Models\OwningCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Payment">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAABAAAAAAABABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Person" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAQIBEAAEAAAAIIAAAAAAAA=</HashCode>
+      <FileName>Models\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Rent">
+    <Position X="9.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Models\Rent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Salary">
+    <Position X="11.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Salary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baudi.DAL.Models.Specialization" Collapsed="true">
+    <Position X="20.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAQAAAAgQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Specialization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Baudi.DAL.Models.NotificationStatus">
+    <Position X="19.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAACAAQAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Notifaction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Baudi.DAL.Models.OrderStatus">
+    <Position X="21.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

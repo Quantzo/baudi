@@ -23,6 +23,7 @@ namespace WpfApplication1
     {
         public MainWindow()
         {
+            
             InitializeComponent();
             this.DataContext = new MainWindowCode();
         }
@@ -85,5 +86,9 @@ namespace WpfApplication1
             tb.Text = string.Empty;
             tb.GotFocus -= TextBox_GotFocus;
         }
+
+
+        
     }
+
 }

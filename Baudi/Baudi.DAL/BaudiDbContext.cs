@@ -21,15 +21,13 @@ namespace Baudi.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             #region Table names
+            modelBuilder.Entity<Notification>().ToTable("Notifications");
+            modelBuilder.Entity<Ownership>().ToTable("Ownerships");
+            modelBuilder.Entity<OrderType>().ToTable("OrderTypes");
+            modelBuilder.Entity<Company>().ToTable("Companies");
+            modelBuilder.Entity<Specialization>().ToTable("Specializations");
 
-            modelBuilder.Entity<OwningCompany>().ToTable("OwningCompanies");
-            modelBuilder.Entity<Person>().ToTable("Peoples");
-            modelBuilder.Entity<Building>().ToTable("Buildings");
-            modelBuilder.Entity<Local>().ToTable("Locals");
-            modelBuilder.Entity<Expense>().ToTable("Expenses");
-            modelBuilder.Entity<Rent>().ToTable("Rents");
-            modelBuilder.Entity<CyclicOrder>().ToTable("CyclicOrders");
-            modelBuilder.Entity<Order>().ToTable("Orders");
+           
 
             #region Employee entity maping 
 
@@ -41,13 +39,58 @@ namespace Baudi.DAL
 
             #endregion
 
+            #region Payment entity mapping
+
+            modelBuilder.Entity<Payment>()
+                .ToTable("Payments")
+                .Map<Salary>(m => m.Requires("Type").HasValue("Salary"))
+                .Map<Expense>(m => m.Requires("Type").HasValue("Expense"))
+                .Map<Rent>(m => m.Requires("Type").HasValue("Rent"))
+
+            #endregion
+
+            #region ExpenseTarget entity maping
+
+                modelBuilder.Entity<IExpenseTarget>()
+                    .ToTable("ExpenseTargets")
+                    .Map<CyclicOrder>(m => m.Requires("Type").HasValue("CyclicOrder"))
+                    .Map<Order>(m => m.Requires("Type").HasValue("Order"));
+
+            #endregion
+
+            #region NotificationTarget entity maping
+
+                modelBuilder.Entity<INotificationTarget>()
+                    .ToTable("NotificationTargets")
+                    .Map<Building>(m => m.Requires("Type").HasValue("Building"))
+                    .Map<Local>(m => m.Requires("Type").HasValue("Local"));
+
+            #endregion
+
+            #region Owner entity maping
+
+                modelBuilder.Entity<IOwner>()
+                    .ToTable("Owners")
+                    .Map<OwningCompany>(m => m.Requires("Type").HasValue("Company"))
+                    .Map<Person>(m => m.Requires("Type").HasValue("Person"));
+
+            #endregion
+            
+
             #endregion
 
             #region Mappings
 
+            #region NotficationTargets
+
+            modelBuilder.Entity<INotificationTarget>()
+                .HasMany(nt => nt.Notifactions)
+                .WithRequired(n => n.NotificationTarget)
+                .WillCascadeOnDelete(true);
+
             #region Buildings
 
-         
+
 
             modelBuilder.Entity<Building>()
                 .HasMany(b => b.Locals)
@@ -57,12 +100,46 @@ namespace Baudi.DAL
                 .HasMany(b => b.CyclicOrders)
                 .WithRequired(c => c.Building)
                 .WillCascadeOnDelete(true);
-            modelBuilder.Entity<Building>()
-                .HasMany(b => b.Notifactions)
-                .WithOptional(n => (Building) n.NotificationTarget)
-                .WillCascadeOnDelete(true); 
+
 
             #endregion
+
+            #region Locals
+
+            modelBuilder.Entity<Local>()
+                .HasMany(l => l.Ownerships)
+                .WithRequired(o => o.Local)
+                .WillCascadeOnDelete(true);             
+
+                
+
+            #endregion
+
+            #endregion
+
+            
+            #region Owners
+
+            modelBuilder.Entity<IOwner>()
+                .HasMany(o => o.Ownerships)
+                .WithRequired( ow => ow.Owner)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<IOwner>()
+                .HasMany(o => o.Notifications)
+                .WithRequired( n => n.Owner)
+                .WillCascadeOnDelete(true);
+
+            #endregion
+
+#region ExpenseTargets
+
+                        modelBuilder.Entity<IExpenseTarget>()
+                .HasMany(e => e.Expenses)
+                .WithRequired(et => et.ExpenseTarget)
+                .WillCascadeOnDelete(true);
+
+#endregion
 
             #region Notifications
 
@@ -73,61 +150,20 @@ namespace Baudi.DAL
 
             #endregion
 
-            #region Locals
 
-            modelBuilder.Entity<Local>()
-                .HasMany(l => l.Ownerships)
-                .WithRequired(o => o.Local)
-                .WillCascadeOnDelete(true);
-
-
-            modelBuilder.Entity<Local>()
-                .HasMany(l => l.Notifactions)
-                .WithOptional(n => (Local) n.NotificationTarget);
-                
-
-                
-
-            #endregion
 
             #region Ownership
 
             modelBuilder.Entity<Ownership>()
                 .HasMany(ow => ow.Rents)
-                .WithOptional(r => r.Ownership)
+                .WithRequired(r => r.Ownership)
                 .WillCascadeOnDelete(true);
 
             #endregion
 
-            #region Owners
 
-            #region Peoples
 
-            modelBuilder.Entity<Person>()
-                .HasMany(o => o.Ownerships)
-                .WithOptional(o => (Person) o.Owner)
-                                .WillCascadeOnDelete(true);
-            modelBuilder.Entity<Person>()
-                .HasMany(o => o.Notifications)
-                .WithOptional(n => (Person) n.Owner)
-                                .WillCascadeOnDelete(true);
 
-            #endregion
-
-            #region Owning Companies
-
-            modelBuilder.Entity<OwningCompany>()
-                .HasMany(o => o.Ownerships)
-                .WithOptional(o => (OwningCompany) o.Owner)
-                .WillCascadeOnDelete(true);
-            modelBuilder.Entity<OwningCompany>()
-                .HasMany(o => o.Notifications)
-                .WithOptional(n => (OwningCompany) n.Owner)
-                .WillCascadeOnDelete(true);
-
-            #endregion
-
-            #endregion
 
             #region Employees
 
@@ -135,8 +171,8 @@ namespace Baudi.DAL
 
             modelBuilder.Entity<Dispatcher>()
                 .HasMany(d => d.Notifications)
-                .WithOptional(n => n.Dispatcher)
-                .WillCascadeOnDelete(false);
+                .WithOptional(n => n.Dispatcher);
+               
 
             #endregion
 
@@ -154,12 +190,19 @@ namespace Baudi.DAL
                 .HasMany(m => m.MenagerExpenses)
                 .WithOptional(e => e.Menager)
                 .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Menager>()
+                .HasMany(m => m.MenagerSalaries)
+                .WithOptional(s => s.Menager)
+                .WillCascadeOnDelete(false);
 
             #endregion
 
+
             modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Expenses)
-                .WithOptional(et => (Employee) et.ExpenseTarget).WillCascadeOnDelete(true);
+                .HasMany(e => e.Salaries)
+                .WithRequired(s => s.Employee)
+                .WillCascadeOnDelete(true);
+
 
 
             #endregion
@@ -207,24 +250,7 @@ namespace Baudi.DAL
 
             #endregion
 
-            #region Orders
 
-            modelBuilder.Entity<Order>()
-                .HasMany(e => e.Expenses)
-                .WithOptional(et => (Order)et.ExpenseTarget)
-                .WillCascadeOnDelete(true);
-                
-
-            #endregion
-
-            #region Cyclic Orders
-
-            modelBuilder.Entity<CyclicOrder>()
-                .HasMany(c => c.Expenses)
-                .WithOptional(e => (CyclicOrder) e.ExpenseTarget);
-
-
-            #endregion
 
             #endregion
         }
@@ -232,7 +258,7 @@ namespace Baudi.DAL
         #region DbSets
 
         #region Notification Targets
-
+        public DbSet<INotificationTarget> NotificationTargets { get; set; }
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Local> Locals { get; set; }
 
@@ -243,6 +269,7 @@ namespace Baudi.DAL
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<Rent> Rents { get; set; }
+        public DbSet<Salary> Salaries { get; set; }
 
         #endregion
 

@@ -2,8 +2,9 @@
 
 namespace Baudi.DAL.Models
 {
-    public interface IExpenseTarget
+    public class IExpenseTarget
     {
-        List<Expense> Expenses { get; set; } 
+        public int ExpenseTargetID { get; set; }
+        public virtual List<Expense> Expenses { get; set; } 
     }
 }

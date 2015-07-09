@@ -2,10 +2,10 @@
 
 namespace Baudi.DAL.Models
 {
-    public class Employee : Person, IExpenseTarget
+    public class Employee : Person
     {
         public string BankAccountNumber { get; set; }
         public double Salary { get; set; }
-        public virtual List<Expense> Expenses { get; set; }
+        public virtual List<Salary> Salaries { get; set; }
     }
 }

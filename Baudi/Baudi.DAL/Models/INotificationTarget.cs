@@ -2,8 +2,9 @@
 
 namespace Baudi.DAL.Models
 {
-    public interface INotificationTarget
-    {      
-        List<Notification> Notifactions { get; set; }
+    public class INotificationTarget
+    {
+        public int NotificationTargetID { get; set; }
+        public virtual List<Notification> Notifactions { get; set; }
     }
 }

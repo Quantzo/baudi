@@ -522,7 +522,8 @@ namespace Baudi.DAL
                     PaymentID = 1,
                     Cost = 55.4,
                     Date = "11-22-3312",
-                    Paid = true
+                    Paid = true,
+
                 },
                 new Expense
                 {

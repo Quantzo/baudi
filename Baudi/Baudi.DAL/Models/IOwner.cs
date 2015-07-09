@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Baudi.DAL.Models
 {
-    public interface IOwner
+    public class IOwner
     {
-        List<Notification> Notifications { get; set; }
-        List<Ownership> Ownerships { get; set; }
+        public int OwnerID { get; set; }
+        public virtual List<Notification> Notifications { get; set; }
+        public virtual List<Ownership> Ownerships { get; set; }
     }
 }
