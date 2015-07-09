@@ -14,14 +14,14 @@ namespace Baudi.DAL
             {
                 new Building
                 {
-                    
+                    NotificationTargetID = 1,
                     City = "Gliwice",
                     HouseNumber = "8",
                     Street = "Jana Pawla II"
                 },
                 new Building
                 {
-                    
+                    NotificationTargetID = 2,
                     City = "Gliwice",
                     HouseNumber = "16",
                     Street = "Zwirka i Muchomorka"
@@ -36,7 +36,7 @@ namespace Baudi.DAL
             {
                 new Local
                 {
-                    
+                    NotificationTargetID = 3,
                     Area = 60,
                     LocalNumber = "1",
                     RentValue = 300,
@@ -45,7 +45,7 @@ namespace Baudi.DAL
                 },
                 new Local
                 {
-                    
+                    NotificationTargetID = 4,
                     Area = 60,
                     LocalNumber = "2",
                     RentValue = 300,
@@ -57,7 +57,7 @@ namespace Baudi.DAL
             {
                 new Local
                 {
-                    
+                    NotificationTargetID = 5,
                     Area = 80,
                     LocalNumber = "1",
                     RentValue = 400,
@@ -66,7 +66,7 @@ namespace Baudi.DAL
                 },
                 new Local
                 {
-                    
+                    NotificationTargetID = 6,
                     Area = 80,
                     LocalNumber = "2",
                     RentValue = 400,
@@ -175,7 +175,7 @@ namespace Baudi.DAL
             {
                 new CyclicOrder
                 {
-                    
+                    ExpenseTargetID = 1,
                     Cost = 400,
                     Frequency = "tydzien",
                     LastRealizationDate = "19.04.2015",
@@ -183,7 +183,7 @@ namespace Baudi.DAL
                 },
                 new CyclicOrder
                 {
-                    
+                    ExpenseTargetID = 2,
                     Cost = 200,
                     Frequency = "tydzien",
                     LastRealizationDate = "19.04.2015",
@@ -191,7 +191,7 @@ namespace Baudi.DAL
                 },
                 new CyclicOrder
                 {
-                    
+                    ExpenseTargetID = 3,
                     Cost = 400,
                     Frequency = "tydzien",
                     LastRealizationDate = "20.04.2015",
@@ -301,7 +301,7 @@ namespace Baudi.DAL
             {
                 new Order
                 {
-                    
+                    ExpenseTargetID = 4,
                     Cost = 20,
                     LastChanged = "13.03.2014",
                     FilingDate = "13.03.2014",
@@ -311,7 +311,7 @@ namespace Baudi.DAL
                 },
                 new Order
                 {
-                    
+                    ExpenseTargetID = 5,
                     Cost = 500,
                     LastChanged = "15.03.2014",
                     FilingDate = "13.03.2014",
@@ -325,7 +325,7 @@ namespace Baudi.DAL
             {
                 new Order
                 {
-                    
+                    ExpenseTargetID = 6,
                     Cost = 20,
                     LastChanged = "13.03.2014",
                     FilingDate = "13.03.2014",
@@ -335,7 +335,7 @@ namespace Baudi.DAL
                 },
                 new Order
                 {
-                    
+                    ExpenseTargetID = 7,
                     Cost = 500,
                     LastChanged = "15.03.2014",
                     FilingDate = "13.03.2014",
@@ -356,7 +356,7 @@ namespace Baudi.DAL
             {
                 new Order
                 {
-                    
+                    ExpenseTargetID = 8,
                     Cost = 20,
                     LastChanged = "13.03.2014",
                     FilingDate = "13.03.2014",
@@ -366,7 +366,7 @@ namespace Baudi.DAL
                 },
                 new Order
                 {
-                    
+                    ExpenseTargetID = 9,
                     Cost = 500,
                     LastChanged = "15.03.2014",
                     FilingDate = "13.03.2014",
@@ -387,7 +387,7 @@ namespace Baudi.DAL
             {
                 new Rent
                 {
-                    PaymentID = 7,
+                    PaymentID = 1,
                     Cost = 22,
                     Date = "12-11-1111",
                     Paid = true,
@@ -395,7 +395,7 @@ namespace Baudi.DAL
                 },
                 new Rent
                 {
-                    PaymentID = 8,
+                    PaymentID = 2,
                     Cost = 22,
                     Date = "12-11-1111",
                     Paid = true,
@@ -403,7 +403,7 @@ namespace Baudi.DAL
                 },
                 new Rent
                 {
-                    PaymentID = 9,
+                    PaymentID = 3,
                     Cost = 22,
                     Date = "12-11-1111",
                     Paid = false,
@@ -415,7 +415,7 @@ namespace Baudi.DAL
             {
                 new Rent
                 {
-                    PaymentID = 10,
+                    PaymentID = 4,
                     Cost = 22,
                     Date = "12-11-1111",
                     Paid = true,
@@ -423,7 +423,7 @@ namespace Baudi.DAL
                 },
                 new Rent
                 {
-                    PaymentID = 11,
+                    PaymentID = 5,
                     Cost = 22,
                     Date = "12-11-1111",
                     Paid = true,
@@ -431,7 +431,7 @@ namespace Baudi.DAL
                 },
                 new Rent
                 {
-                    PaymentID = 12,
+                    PaymentID = 6,
                     Cost = 22,
                     Date = "12-11-1111",
                     Paid = false,
@@ -444,7 +444,7 @@ namespace Baudi.DAL
             {
                 new Rent
                 {
-                    PaymentID = 13,
+                    PaymentID = 7,
                     Cost = 22,
                     Date = "12-11-1111",
                     Paid = true,
@@ -465,7 +465,7 @@ namespace Baudi.DAL
             {
                 new Expense
                 {
-                    PaymentID = 7,
+                    PaymentID = 8,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true,
@@ -473,7 +473,7 @@ namespace Baudi.DAL
                 },
                 new Expense
                 {
-                    PaymentID = 8,
+                    PaymentID = 9,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true,
@@ -491,7 +491,7 @@ namespace Baudi.DAL
             {
                 new Expense
                 {
-                    PaymentID = 9,
+                    PaymentID = 10,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true,
@@ -499,7 +499,7 @@ namespace Baudi.DAL
                 },
                 new Expense
                 {
-                    PaymentID = 10,
+                    PaymentID = 11,
                     Cost = 554.4,
                     Date = "11-22-3312",
                     Paid = false,
@@ -519,7 +519,7 @@ namespace Baudi.DAL
             {
                 new Salary
                 {
-                    PaymentID = 1,
+                    PaymentID = 12,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true,
@@ -527,7 +527,7 @@ namespace Baudi.DAL
                 },
                 new Salary
                 {
-                    PaymentID = 2,
+                    PaymentID = 13,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true
@@ -542,14 +542,14 @@ namespace Baudi.DAL
             {
                 new Salary
                 {
-                    PaymentID = 3,
+                    PaymentID = 14,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true
                 },
                 new Salary
                 {
-                    PaymentID = 4,
+                    PaymentID = 15,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true
@@ -564,14 +564,14 @@ namespace Baudi.DAL
             {
                 new Salary
                 {
-                    PaymentID = 5,
+                    PaymentID = 16,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true
                 },
                 new Salary
                 {
-                    PaymentID = 6,
+                    PaymentID = 17,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true
@@ -602,7 +602,7 @@ namespace Baudi.DAL
 
             var menager = new Menager
             {
-                
+                OwnerID = 1,
                 BankAccountNumber = "212",
                 Salary = 44,
                 City = "MenagerCity",
@@ -638,6 +638,7 @@ namespace Baudi.DAL
 
             var dispatcher = new Dispatcher
             {
+                OwnerID = 2,
                 BankAccountNumber = "212",
                 Salary = 44,
                 City = "DispatcherCity",
@@ -649,7 +650,7 @@ namespace Baudi.DAL
                 PESEL = "1111",
                 Telephone = "12344",
                 Salaries = salary2,
-                Notifications = allNotifications
+                DispatcherNotifications = allNotifications
             };
             buildings[0].Notifactions.ForEach(n => n.Dispatcher = dispatcher);
             buildings[1].Notifactions.ForEach(n => n.Dispatcher = dispatcher);
@@ -661,6 +662,7 @@ namespace Baudi.DAL
 
             var admin = new Administrator
             {
+                OwnerID = 3,
                 BankAccountNumber = "212",
                 Salary = 44,
                 City = "AdminCity",
@@ -745,6 +747,7 @@ namespace Baudi.DAL
 
             var person = new Person
             {
+                OwnerID = 4,
                 Name = "Jacek",
                 Surname = "Poniedzialek",
                 PESEL = "84928475839",
@@ -762,7 +765,7 @@ namespace Baudi.DAL
             notificationsForOwniningCompany.AddRange(buildings[1].Notifactions);
             var owningCompany = new OwningCompany
             {
-
+                OwnerID = 5,
                 Name = "Lunar LC",
                 NIP = "85938573948",
                 City = "Gliwice",
@@ -792,12 +795,14 @@ namespace Baudi.DAL
 
             #endregion
 
-            context.Employees.Add(admin);
-            context.OwningCompanies.Add(owningCompany);
+
+            
             foreach (var b in buildings)
             {
                 context.Buildings.Add(b);
             }
+            context.Employees.Add(admin);
+            context.OwningCompanies.Add(owningCompany);
 
 
             base.Seed(context);

@@ -83,19 +83,22 @@ namespace Baudi.DAL
 
             modelBuilder.Entity<NotificationTarget>()
                 .HasMany(nt => nt.Notifactions)
-                .WithRequired(n => n.NotificationTarget)
-                .WillCascadeOnDelete(true);
+                .WithOptional(n => n.NotificationTarget);
+
+
 
             #region Buildings
 
             modelBuilder.Entity<Building>()
                 .HasMany(b => b.Locals)
-                .WithRequired(l => l.Building)
-                .WillCascadeOnDelete(true);
+                .WithRequired(l => l.Building);
+
+
             modelBuilder.Entity<Building>()
                 .HasMany(b => b.CyclicOrders)
                 .WithRequired(c => c.Building)
                 .WillCascadeOnDelete(true);
+
 
             #endregion
 
@@ -103,8 +106,9 @@ namespace Baudi.DAL
 
             modelBuilder.Entity<Local>()
                 .HasMany(l => l.Ownerships)
-                .WithRequired(o => o.Local)
-                .WillCascadeOnDelete(true);
+                .WithOptional(o => o.Local);
+
+
 
             #endregion
 
@@ -114,8 +118,8 @@ namespace Baudi.DAL
 
             modelBuilder.Entity<Owner>()
                 .HasMany(o => o.Ownerships)
-                .WithRequired(ow => ow.Owner)
-                .WillCascadeOnDelete(true);
+                .WithOptional(ow => ow.Owner);
+
 
             modelBuilder.Entity<Owner>()
                 .HasMany(o => o.Notifications)
