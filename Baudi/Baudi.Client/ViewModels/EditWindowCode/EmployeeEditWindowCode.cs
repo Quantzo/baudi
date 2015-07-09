@@ -129,7 +129,7 @@ namespace Baudi.Client.ViewModels
             {
                 if (selectedEmployee != null)
                 {
-                    var orginal = con.Employees.Find(selectedEmployee.PersonID);
+                    var orginal = con.Employees.Find(selectedEmployee.OwnerID);
                     if (orginal != null)
                     {
                         orginal.Name = Name;

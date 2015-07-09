@@ -7,7 +7,7 @@ namespace Baudi.DAL.Models
         public int OwnershipID { get; set; }
         public string PurchaseDate { get; set; }
         public string SaleDate { get; set; }
-        public virtual IOwner Owner { get; set; }
+        public virtual Owner Owner { get; set; }
         public virtual Local Local { get; set; }
         public virtual List<Rent> Rents { get; set; } 
     }

@@ -114,10 +114,10 @@ namespace Baudi.Client.ViewModels
                 //if building was selecteted
                 if (selectedBuilding != null)
                 {
-                    var orginal = con.Buildings.Find(selectedBuilding.BuildingID);
+                    var orginal = con.Buildings.Find(selectedBuilding.NotificationTargetID);
                     if (orginal != null)
                     {
-                        orginal.BuildingID = selectedBuilding.BuildingID;
+                        orginal.NotificationTargetID = selectedBuilding.NotificationTargetID;
                         orginal.City = _City;
                         orginal.HouseNumber = _HouseNumber;
                         orginal.Street = _Street;
@@ -126,7 +126,7 @@ namespace Baudi.Client.ViewModels
                         {
                             foreach(Local l in updatedLocal)
                             {
-                                Local temp = con.Locals.Find(l.LocalID);
+                                Local temp = con.Locals.Find(l.NotificationTargetID);
                                 temp.LocalNumber = l.LocalNumber;
                                 temp.NumberOfRooms = l.NumberOfRooms;
                                 temp.RentValue = l.RentValue;
@@ -148,7 +148,7 @@ namespace Baudi.Client.ViewModels
                     {
                         foreach (Local l in updatedLocal)
                         {
-                            Local temp = con.Locals.Find(l.LocalID);
+                            Local temp = con.Locals.Find(l.NotificationTargetID);
                             temp.LocalNumber = l.LocalNumber;
                             temp.NumberOfRooms = l.NumberOfRooms;
                             temp.RentValue = l.RentValue;
@@ -181,7 +181,7 @@ namespace Baudi.Client.ViewModels
             update = true;
             if (SelectedLocal == null)
             {
-                Local b = LocalsList.Find(x => x.LocalID.Equals(SelectedLocal.LocalID));
+                Local b = LocalsList.Find(x => x.NotificationTargetID.Equals(SelectedLocal.NotificationTargetID));
                 LocalEditWindow bew = new LocalEditWindow(SelectedLocal, this);
                 bew.Show();
             }
@@ -196,7 +196,7 @@ namespace Baudi.Client.ViewModels
         /// </summary>
         void Delete()
         {
-            Local b = LocalsList.Find(x => x.LocalID.Equals(SelectedLocal.LocalID));
+            Local b = LocalsList.Find(x => x.NotificationTargetID.Equals(SelectedLocal.NotificationTargetID));
             LocalsList.Remove(b);
         }
 
@@ -227,7 +227,7 @@ namespace Baudi.Client.ViewModels
                 List<Local> actualList = new List<Local>();
                 updatedLocal.Add(b);
                 actualList.AddRange(LocalsList);
-                Local orginal = actualList.Find(x => x.LocalID == b.LocalID);
+                Local orginal = actualList.Find(x => x.NotificationTargetID == b.NotificationTargetID);
                 orginal.LocalNumber = b.LocalNumber;
                 orginal.Area = b.Area;
                 orginal.NumberOfRooms = b.NumberOfRooms;

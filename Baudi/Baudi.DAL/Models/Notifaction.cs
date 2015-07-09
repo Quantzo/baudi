@@ -9,8 +9,8 @@ namespace Baudi.DAL.Models
         public string FilingDate { get; set; }
         public string Description { get; set; }
         public NotificationStatus Status { get; set; }
-        public virtual INotificationTarget NotificationTarget { get; set; }
-        public virtual IOwner Owner { get; set; }
+        public virtual NotificationTarget NotificationTarget { get; set; }
+        public virtual Owner Owner { get; set; }
         public virtual Dispatcher Dispatcher { get; set; }
         public virtual List<Order> Orders { get; set; }
 

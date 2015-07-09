@@ -28,7 +28,7 @@ namespace Baudi.Client.ViewModels
             Button_Click_Select = new RelayCommand(pars => Select());
             using (var con = new BaudiDbContext())
             {
-                _LocalsList = con.Locals.Where(x => x.Building.BuildingID == selectedBuilding.BuildingID).ToList();
+                _LocalsList = con.Locals.Where(x => x.Building.NotificationTargetID == selectedBuilding.NotificationTargetID).ToList();
             }
         }
 

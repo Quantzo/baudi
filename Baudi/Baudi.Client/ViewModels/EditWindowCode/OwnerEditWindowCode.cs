@@ -191,7 +191,7 @@ namespace Baudi.Client.ViewModels
             {
                 if (selectedOwner != null)
                 {
-                    var orginal = con.Peoples.Find(selectedOwner.PersonID);
+                    var orginal = con.Peoples.Find(selectedOwner.OwnerID);
                     if (orginal != null)
                     {
                         orginal.Name = Name;
@@ -206,7 +206,7 @@ namespace Baudi.Client.ViewModels
                         {
                             foreach (Ownership l in addedOwnership)
                             {
-                                l.Local = con.Locals.Find(l.Local.LocalID);
+                                l.Local = con.Locals.Find(l.Local.NotificationTargetID);
                             }
                         }
                         deleteOwnership.ForEach(a => addedOwnership.Remove(a));
@@ -216,7 +216,7 @@ namespace Baudi.Client.ViewModels
                             foreach (Ownership l in updatedOwnership)
                             {
                                 Ownership temp = con.Ownerships.Find(l.OwnershipID);
-                                temp.Local = con.Locals.Find(l.Local.LocalID);
+                                temp.Local = con.Locals.Find(l.Local.NotificationTargetID);
                                 temp.PurchaseDate = l.PurchaseDate;
                                 temp.SaleDate = l.SaleDate;
                             }
@@ -242,7 +242,7 @@ namespace Baudi.Client.ViewModels
                         foreach (Ownership l in updatedOwnership)
                         {
                             Ownership temp = con.Ownerships.Find(l.OwnershipID);
-                            temp.Local = con.Locals.Find(l.Local.LocalID);
+                            temp.Local = con.Locals.Find(l.Local.NotificationTargetID);
                             temp.PurchaseDate = l.PurchaseDate;
                             temp.SaleDate = l.SaleDate;
                         }

@@ -2,7 +2,7 @@
 
 namespace Baudi.DAL.Models
 {
-    public class CyclicOrder : IExpenseTarget
+    public class CyclicOrder : ExpenseTarget
     {
         public double Cost { get; set; }
         public string Frequency { get; set; }

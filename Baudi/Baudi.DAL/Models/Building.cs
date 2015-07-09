@@ -2,7 +2,7 @@
 
 namespace Baudi.DAL.Models
 {
-    public class Building : INotificationTarget
+    public class Building : NotificationTarget
     {
         public string City { get; set; }
         public string HouseNumber { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Baudi.DAL.Models
 {
-    public class Local : INotificationTarget
+    public class Local : NotificationTarget
     {
 
         public string LocalNumber { get; set; }

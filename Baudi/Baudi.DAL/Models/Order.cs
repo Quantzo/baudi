@@ -2,7 +2,7 @@
 
 namespace Baudi.DAL.Models
 {
-    public class Order : IExpenseTarget
+    public class Order : ExpenseTarget
     {
         public double Cost { get; set; }
         public string LastChanged { get; set; }

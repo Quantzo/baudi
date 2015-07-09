@@ -14,14 +14,14 @@ namespace Baudi.DAL
             {
                 new Building
                 {
-                    BuildingID = 1,
+                    
                     City = "Gliwice",
                     HouseNumber = "8",
                     Street = "Jana Pawla II"
                 },
                 new Building
                 {
-                    BuildingID = 2,
+                    
                     City = "Gliwice",
                     HouseNumber = "16",
                     Street = "Zwirka i Muchomorka"
@@ -36,7 +36,7 @@ namespace Baudi.DAL
             {
                 new Local
                 {
-                    LocalID = 1,
+                    
                     Area = 60,
                     LocalNumber = "1",
                     RentValue = 300,
@@ -45,7 +45,7 @@ namespace Baudi.DAL
                 },
                 new Local
                 {
-                    LocalID = 2,
+                    
                     Area = 60,
                     LocalNumber = "2",
                     RentValue = 300,
@@ -57,7 +57,7 @@ namespace Baudi.DAL
             {
                 new Local
                 {
-                    LocalID = 3,
+                    
                     Area = 80,
                     LocalNumber = "1",
                     RentValue = 400,
@@ -66,7 +66,7 @@ namespace Baudi.DAL
                 },
                 new Local
                 {
-                    LocalID = 4,
+                    
                     Area = 80,
                     LocalNumber = "2",
                     RentValue = 400,
@@ -175,7 +175,7 @@ namespace Baudi.DAL
             {
                 new CyclicOrder
                 {
-                    CyclicOrderID = 1,
+                    
                     Cost = 400,
                     Frequency = "tydzien",
                     LastRealizationDate = "19.04.2015",
@@ -183,7 +183,7 @@ namespace Baudi.DAL
                 },
                 new CyclicOrder
                 {
-                    CyclicOrderID = 2,
+                    
                     Cost = 200,
                     Frequency = "tydzien",
                     LastRealizationDate = "19.04.2015",
@@ -191,7 +191,7 @@ namespace Baudi.DAL
                 },
                 new CyclicOrder
                 {
-                    CyclicOrderID = 3,
+                    
                     Cost = 400,
                     Frequency = "tydzien",
                     LastRealizationDate = "20.04.2015",
@@ -301,7 +301,7 @@ namespace Baudi.DAL
             {
                 new Order
                 {
-                    OrderID = 1,
+                    
                     Cost = 20,
                     LastChanged = "13.03.2014",
                     FilingDate = "13.03.2014",
@@ -311,7 +311,7 @@ namespace Baudi.DAL
                 },
                 new Order
                 {
-                    OrderID = 2,
+                    
                     Cost = 500,
                     LastChanged = "15.03.2014",
                     FilingDate = "13.03.2014",
@@ -325,7 +325,7 @@ namespace Baudi.DAL
             {
                 new Order
                 {
-                    OrderID = 3,
+                    
                     Cost = 20,
                     LastChanged = "13.03.2014",
                     FilingDate = "13.03.2014",
@@ -335,7 +335,7 @@ namespace Baudi.DAL
                 },
                 new Order
                 {
-                    OrderID = 4,
+                    
                     Cost = 500,
                     LastChanged = "15.03.2014",
                     FilingDate = "13.03.2014",
@@ -356,7 +356,7 @@ namespace Baudi.DAL
             {
                 new Order
                 {
-                    OrderID = 5,
+                    
                     Cost = 20,
                     LastChanged = "13.03.2014",
                     FilingDate = "13.03.2014",
@@ -366,7 +366,7 @@ namespace Baudi.DAL
                 },
                 new Order
                 {
-                    OrderID = 6,
+                    
                     Cost = 500,
                     LastChanged = "15.03.2014",
                     FilingDate = "13.03.2014",
@@ -515,9 +515,9 @@ namespace Baudi.DAL
 
             #region Menager salary
 
-            var salary1 = new List<Expense>
+            var salary1 = new List<Salary>
             {
-                new Expense
+                new Salary
                 {
                     PaymentID = 1,
                     Cost = 55.4,
@@ -525,7 +525,7 @@ namespace Baudi.DAL
                     Paid = true,
 
                 },
-                new Expense
+                new Salary
                 {
                     PaymentID = 2,
                     Cost = 55.4,
@@ -538,16 +538,16 @@ namespace Baudi.DAL
 
             #region Dispatcher salary
 
-            var salary2 = new List<Expense>
+            var salary2 = new List<Salary>
             {
-                new Expense
+                new Salary
                 {
                     PaymentID = 3,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true
                 },
-                new Expense
+                new Salary
                 {
                     PaymentID = 4,
                     Cost = 55.4,
@@ -560,16 +560,16 @@ namespace Baudi.DAL
 
             #region Admin salary
 
-            var salary3 = new List<Expense>
+            var salary3 = new List<Salary>
             {
-                new Expense
+                new Salary
                 {
                     PaymentID = 5,
                     Cost = 55.4,
                     Date = "11-22-3312",
                     Paid = true
                 },
-                new Expense
+                new Salary
                 {
                     PaymentID = 6,
                     Cost = 55.4,
@@ -587,9 +587,10 @@ namespace Baudi.DAL
             var allExpenses = new List<Expense>();
             allExpenses.AddRange(expenseCyclic);
             allExpenses.AddRange(expenseOrder);
-            allExpenses.AddRange(salary1);
-            allExpenses.AddRange(salary2);
-            allExpenses.AddRange(salary3);
+            var allSalaries = new List<Salary>();
+            allSalaries.AddRange(salary1);
+            allSalaries.AddRange(salary2);
+            allSalaries.AddRange(salary3);
 
             #endregion
 
@@ -601,7 +602,7 @@ namespace Baudi.DAL
 
             var menager = new Menager
             {
-                PersonID = 1,
+                
                 BankAccountNumber = "212",
                 Salary = 44,
                 City = "MenagerCity",
@@ -612,8 +613,9 @@ namespace Baudi.DAL
                 Surname = "Menager",
                 PESEL = "1111",
                 Telephone = "12344",
-                Expenses = salary1,
-                MenagerExpenses = allExpenses
+                Salaries = salary1,
+                MenagerExpenses = allExpenses,
+                MenagerSalaries = allSalaries
             };
 
             #region Binding for Cyclic orders
@@ -636,7 +638,6 @@ namespace Baudi.DAL
 
             var dispatcher = new Dispatcher
             {
-                PersonID = 2,
                 BankAccountNumber = "212",
                 Salary = 44,
                 City = "DispatcherCity",
@@ -647,7 +648,7 @@ namespace Baudi.DAL
                 Surname = "Dispatcher",
                 PESEL = "1111",
                 Telephone = "12344",
-                Expenses = salary2,
+                Salaries = salary2,
                 Notifications = allNotifications
             };
             buildings[0].Notifactions.ForEach(n => n.Dispatcher = dispatcher);
@@ -660,7 +661,6 @@ namespace Baudi.DAL
 
             var admin = new Administrator
             {
-                PersonID = 3,
                 BankAccountNumber = "212",
                 Salary = 44,
                 City = "AdminCity",
@@ -671,7 +671,7 @@ namespace Baudi.DAL
                 Surname = "Admin",
                 PESEL = "1111",
                 Telephone = "12344",
-                Expenses = salary3,
+                Salaries = salary3,
                 Ownerships = new List<Ownership> { buildings[1].Locals[0].Ownerships[0] }
             };
 
@@ -745,7 +745,6 @@ namespace Baudi.DAL
 
             var person = new Person
             {
-                PersonID = 4,
                 Name = "Jacek",
                 Surname = "Poniedzialek",
                 PESEL = "84928475839",
@@ -763,7 +762,7 @@ namespace Baudi.DAL
             notificationsForOwniningCompany.AddRange(buildings[1].Notifactions);
             var owningCompany = new OwningCompany
             {
-                OwningCompanyID = 1,
+
                 Name = "Lunar LC",
                 NIP = "85938573948",
                 City = "Gliwice",

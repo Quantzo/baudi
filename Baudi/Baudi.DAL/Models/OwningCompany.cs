@@ -2,7 +2,7 @@
 
 namespace Baudi.DAL.Models
 {
-    public class OwningCompany : IOwner
+    public class OwningCompany : Owner
     {
 
         public string City { get; set; }

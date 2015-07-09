@@ -56,9 +56,9 @@
     <Compile Include="Models\Dispatcher.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Expense.cs" />
-    <Compile Include="Models\IExpenseTarget.cs" />
-    <Compile Include="Models\INotificationTarget.cs" />
-    <Compile Include="Models\IOwner.cs" />
+    <Compile Include="Models\ExpenseTarget.cs" />
+    <Compile Include="Models\NotificationTarget.cs" />
+    <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\Local.cs" />
     <Compile Include="Models\Menager.cs" />
     <Compile Include="Models\Notifaction.cs" />

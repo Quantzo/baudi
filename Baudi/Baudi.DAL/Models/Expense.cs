@@ -3,6 +3,6 @@
     public class Expense : Payment
     {
         public virtual Menager Menager {get; set; }
-        public IExpenseTarget ExpenseTarget { get; set; }
+        public ExpenseTarget ExpenseTarget { get; set; }
     }
 }

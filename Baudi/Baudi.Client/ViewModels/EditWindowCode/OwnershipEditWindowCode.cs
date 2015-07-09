@@ -106,7 +106,7 @@ namespace Baudi.Client.ViewModels
                     var orginal = con.Ownerships.Find(selectedOwnership.OwnershipID);
                     if (orginal != null)
                     {
-                        orginal.Local = con.Locals.Find(selectedOwnership.Local.LocalID);
+                        orginal.Local = con.Locals.Find(selectedOwnership.Local.NotificationTargetID);
                         orginal.PurchaseDate = PurchaseDate.ToString();
                         orginal.SaleDate = SaleDate.ToString();
                         thisWindowOwner.Update(orginal);
@@ -115,7 +115,7 @@ namespace Baudi.Client.ViewModels
                 else
                 {
                     var b = new Ownership();
-                    b.Local = con.Locals.Find(LocalsList.First().LocalID);
+                    b.Local = con.Locals.Find(LocalsList.First().NotificationTargetID);
                     b.PurchaseDate = PurchaseDate.ToString();
                     b.SaleDate = SaleDate.ToString();
                     thisWindowOwner.Update(b);

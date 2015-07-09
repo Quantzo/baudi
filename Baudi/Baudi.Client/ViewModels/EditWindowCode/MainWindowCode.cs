@@ -203,7 +203,7 @@ namespace Baudi.Client.ViewModels
                 {
                     if (SelectedBuilding != null)
                     {
-                        Building b = con.Buildings.Find(SelectedBuilding.BuildingID);
+                        Building b = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
                         BuildingEditWindow bew = new BuildingEditWindow(b, this);
                         bew.Show();
                     }
@@ -225,7 +225,7 @@ namespace Baudi.Client.ViewModels
                 {
                     if (SelectedEmployee != null)
                     {
-                        Employee e = con.Employees.Find(SelectedEmployee.PersonID);
+                        Employee e = con.Employees.Find(SelectedEmployee.OwnerID);
                         EmployeeEditWindow eew = new EmployeeEditWindow(e, this);
                         eew.Show();
                     }
@@ -236,7 +236,7 @@ namespace Baudi.Client.ViewModels
                 {
                     if (SelectedOwner != null)
                     {
-                        Person p = con.Peoples.Find(SelectedOwner.PersonID);
+                        Person p = con.Peoples.Find(SelectedOwner.OwnerID);
                         OwnerEditWindow oew = new OwnerEditWindow(p, this);
                         oew.Show();
                     }
@@ -252,7 +252,7 @@ namespace Baudi.Client.ViewModels
             {
                 if (SelectedTabIndex == (int)SelectedTabItem.Buildings)
                 {
-                    Building b = con.Buildings.Find(SelectedBuilding.BuildingID);
+                    Building b = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
                     b.CyclicOrders.ForEach(co => con.Expenses.RemoveRange(co.Expenses));
                     b.Locals.ForEach(l => con.Notifications.RemoveRange(l.Notifactions));
                     con.CyclicOrders.RemoveRange(b.CyclicOrders);
@@ -269,8 +269,8 @@ namespace Baudi.Client.ViewModels
                 }
                 if(SelectedTabIndex == (int)SelectedTabItem.Employees)
                 {
-                    Employee e = con.Employees.Find(SelectedEmployee.PersonID);
-                    con.Expenses.RemoveRange(e.Expenses);
+                    Employee e = con.Employees.Find(SelectedEmployee.OwnerID);
+                    con.Salaries.RemoveRange(e.Salaries);
 
                     Dispatcher d = e as Dispatcher;
                     Menager m = e as Menager;
@@ -293,11 +293,11 @@ namespace Baudi.Client.ViewModels
                 }
                 if(SelectedTabIndex == (int)SelectedTabItem.Owners)
                 {
-                    Person p = con.Employees.Find(SelectedOwner.PersonID);
+                    Person p = con.Employees.Find(SelectedOwner.OwnerID);
                     Employee e = (Employee) p;
                     if (e != null)
                     {
-                        con.Expenses.RemoveRange(e.Expenses);
+                        con.Salaries.RemoveRange(e.Salaries);
                         Dispatcher d = e as Dispatcher;
                         Menager m = e as Menager;
                         if (d != null)

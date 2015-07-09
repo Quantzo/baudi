@@ -2,7 +2,7 @@
 
 namespace Baudi.DAL.Models
 {
-    public class Person : IOwner
+    public class Person : Owner
     {
         public string Name { get; set; }
         public string Surname { get; set; }
