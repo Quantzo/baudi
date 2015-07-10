@@ -36,14 +36,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Baudi.DAL.Models.Employee">
-    <Position X="9.25" Y="2" Width="1.5" />
+    <Position X="9.25" Y="2" Width="1.75" />
     <InheritanceLine Type="Baudi.DAL.Models.Person" FixedToPoint="true">
       <Path>
         <Point X="10" Y="1.191" />
         <Point X="10" Y="1.566" />
-        <Point X="11.125" Y="1.566" />
-        <Point X="11.125" Y="3.617" />
-        <Point X="10.75" Y="3.617" />
+        <Point X="11.375" Y="1.566" />
+        <Point X="11.375" Y="3.617" />
+        <Point X="11" Y="3.617" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -58,25 +58,25 @@
       <FileName>Models\Expense.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Baudi.DAL.Models.IExpenseTarget">
+  <Class Name="Baudi.DAL.Models.ExpenseTarget">
     <Position X="16.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Models\IExpenseTarget.cs</FileName>
+      <FileName>Models\ExpenseTarget.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Baudi.DAL.Models.INotificationTarget">
-    <Position X="16" Y="2.5" Width="1.5" />
+  <Class Name="Baudi.DAL.Models.NotificationTarget">
+    <Position X="16" Y="2.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\INotificationTarget.cs</FileName>
+      <FileName>Models\NotificationTarget.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Baudi.DAL.Models.IOwner" Collapsed="true">
+  <Class Name="Baudi.DAL.Models.Owner" Collapsed="true">
     <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAgCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\IOwner.cs</FileName>
+      <FileName>Models\Owner.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Baudi.DAL.Models.Local" Collapsed="true">
@@ -87,7 +87,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Baudi.DAL.Models.Menager">
-    <Position X="6.5" Y="2" Width="1.5" />
+    <Position X="6.5" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAABAAECAAAAAAAA=</HashCode>
       <FileName>Models\Menager.cs</FileName>

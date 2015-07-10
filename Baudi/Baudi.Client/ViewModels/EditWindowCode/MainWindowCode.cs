@@ -93,15 +93,34 @@ namespace Baudi.Client.ViewModels
             set { _ExpensesList = value; OnPropertyChanged("ExpensesList"); }
         }
 
-
-
-        private List<Expense> _ExpensesOrderList;
-        public List<Expense> ExpensesOrderList
+        private List<Salary> _SalariesList;
+        public List<Salary> SalariesList
         {
-            get { return _ExpensesOrderList; }
-            set { _ExpensesOrderList = value; OnPropertyChanged("ExpensesOrderList"); }
+            get { return _SalariesList; }
+            set { _SalariesList = value; OnPropertyChanged("SalariesList"); }
         }
 
+        private List<Rent> _RentsList;
+        public List<Rent> RentsList
+        {
+            get { return _RentsList; }
+            set { _RentsList = value; OnPropertyChanged("RentsList"); }
+        }
+
+
+        private List<OwningCompany> _OwningCompaniesList;
+        public List<OwningCompany> OwningCompaniesList
+        {
+            get { return _OwningCompaniesList; }
+            set { _OwningCompaniesList = value; OnPropertyChanged("OwningCompaniesList"); }
+        }
+
+        private List<Ownership> _OwnershipsList;
+        public List<Ownership> OwnershipsList
+        {
+            get { return _OwnershipsList; }
+            set { _OwnershipsList = value; OnPropertyChanged("OwnershipsList"); }
+        }
 
         public int SelectedTabIndex
         {
@@ -145,6 +164,30 @@ namespace Baudi.Client.ViewModels
             set;
         }
 
+        public Expense SelectedExpense
+        {
+            get;
+            set;
+        }
+
+        public Salary SelectedSalary
+        {
+            get;
+            set;
+        }
+
+        public Rent SelectedRent
+        {
+            get;
+            set;
+        }
+
+        public OwningCompany Selected
+        {
+            get;
+            set;
+        }
+
         public ICommand Button_Click_Add { get; set; }
         public ICommand Button_Click_Edit { get; set; }
         public ICommand Button_Click_Delete { get; set; }
@@ -153,6 +196,7 @@ namespace Baudi.Client.ViewModels
         {
             using (var con = new BaudiDbContext())
             {
+                
                  _BuildingsList = con.Buildings.ToList();
                  _OwnersList = con.Peoples.Where(x => x.Ownerships.Count != 0).ToList();
                  _EmployeesList = con.Employees.ToList();
@@ -161,6 +205,11 @@ namespace Baudi.Client.ViewModels
                  _OrdersList = con.Orders.ToList();
                  _OrderTypesList = con.OrderTypes.ToList();
                  _CyclicOrdersList = con.CyclicOrders.ToList();
+                 _ExpensesList = con.Expenses.ToList();
+                 _SalariesList = con.Salaries.ToList();
+                 _RentsList = con.Rents.ToList();
+                 _OwningCompaniesList = con.OwningCompanies.ToList();
+                 _OwnershipsList = con.Ownerships.ToList();
 
 
 
