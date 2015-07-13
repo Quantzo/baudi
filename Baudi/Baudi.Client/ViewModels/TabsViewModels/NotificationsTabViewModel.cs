@@ -24,7 +24,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                _notificationsList = con.Notifications.Include(n => n.Dispatcher).ToList();
+                NotificationsList = con.Notifications.Include(n => n.Dispatcher).ToList();
 
             }
         }
@@ -36,17 +36,38 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Update()
         {
-            throw new NotImplementedException();
+            Load();
         }
 
         public override void Delete()
         {
-            throw new NotImplementedException();
+            using (var con = new BaudiDbContext())
+            {
+                var notification = con.Notifications.Find(SelectedNotification.NotificationID);
+                con.Orders.RemoveRange(notification.Orders);
+                con.Notifications.Remove(notification);
+                con.SaveChanges();
+            }            
+            Update();
         }
 
         public override void Edit()
         {
             throw new NotImplementedException();
+        }
+
+
+
+        public override bool IsSomethingSelected()
+        {
+            if(SelectedNotification != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                _employeesList = con.Employees.ToList();
+                EmployeesList = con.Employees.ToList();
 
             }
         }
@@ -50,6 +50,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         }
 
         public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsSomethingSelected()
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Baudi.Client.ViewModels.TabsViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Baudi.Client.View.Tabs
         public NotificationsTab()
         {
             InitializeComponent();
+            this.DataContext = new NotificationsTabViewModel();
         }
     }
 }

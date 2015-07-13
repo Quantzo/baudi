@@ -27,7 +27,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                _ownersList = con.Peoples.Where(p => p.Ownerships.Count != 0).ToList();
+                OwnersList = con.Peoples.Where(p => p.Ownerships.Count != 0).ToList();
 
             }
         }
@@ -47,6 +47,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         }
 
         public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsSomethingSelected()
         {
             throw new NotImplementedException();
         }

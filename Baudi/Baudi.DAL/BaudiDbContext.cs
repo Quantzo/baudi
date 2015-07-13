@@ -271,6 +271,7 @@ namespace Baudi.DAL
 
         #region Owners
 
+        public DbSet<Owner> Owners { get; set; }
         public DbSet<OwningCompany> OwningCompanies { get; set; }
         public DbSet<Person> Peoples { get; set; }
         public DbSet<Ownership> Ownerships { get; set; }

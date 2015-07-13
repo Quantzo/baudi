@@ -12,11 +12,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
     public class OwningCompaniesTabViewModel :TabViewModel
     {
 
-        private List<OwningCompany> _OwningCompaniesList;
+        private List<OwningCompany> _owningCompaniesList;
         public List<OwningCompany> OwningCompaniesList
         {
-            get { return _OwningCompaniesList; }
-            set { _OwningCompaniesList = value; OnPropertyChanged("OwningCompaniesList"); }
+            get { return _owningCompaniesList; }
+            set { _owningCompaniesList = value; OnPropertyChanged("OwningCompaniesList"); }
         }
 
         public OwningCompany SelectedOwningCompany
@@ -29,7 +29,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                _OwningCompaniesList = con.OwningCompanies.Where(oc => oc.Ownerships.Count != 0).ToList();
+                OwningCompaniesList = con.OwningCompanies.Where(oc => oc.Ownerships.Count != 0).ToList();
 
             }
         }
@@ -49,6 +49,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         }
 
         public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsSomethingSelected()
         {
             throw new NotImplementedException();
         }

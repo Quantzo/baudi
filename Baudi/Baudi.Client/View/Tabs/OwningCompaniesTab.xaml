@@ -14,7 +14,7 @@
             <RowDefinition Height="22*" />
         </Grid.RowDefinitions>
         <Grid>
-            <DataGrid Name="OwningCompaniesList" ItemsSource="{Binding OwningCompaniesList}" AutoGenerateColumns="false" SelectedItem="{Binding SelectedOwningCompany}"  IsReadOnly="True" SelectionMode="Single">
+            <DataGrid Name="OwningCompaniesList" ItemsSource="{Binding OwningCompaniesList}" AutoGenerateColumns="false" SelectedItem="{Binding SelectedOwningCompany}"  IsReadOnly="True" SelectionMode="Single" IsSynchronizedWithCurrentItem="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding OwnerID}"/>
                     <DataGridTextColumn Header="Nazwa" Width="Auto" Binding="{Binding Name}"/>

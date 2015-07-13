@@ -22,7 +22,7 @@ namespace Baudi.Client.View.Tabs
     {
         public BuildingsTab()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
     }
 }

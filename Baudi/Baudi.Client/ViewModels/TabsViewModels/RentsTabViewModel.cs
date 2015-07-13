@@ -28,7 +28,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                _rentsList = con.Rents
+                RentsList = con.Rents
                     .Include(r => r.Ownership)
                     .ToList();
 
@@ -50,6 +50,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         }
 
         public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsSomethingSelected()
         {
             throw new NotImplementedException();
         }

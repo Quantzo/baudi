@@ -13,11 +13,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
     public class ExpensesTabViewModel :TabViewModel
     {
 
-        private List<Expense> _ExpensesList;
+        private List<Expense> _expensesList;
         public List<Expense> ExpensesList
         {
-            get { return _ExpensesList; }
-            set { _ExpensesList = value; OnPropertyChanged("ExpensesList"); }
+            get { return _expensesList; }
+            set { _expensesList = value; OnPropertyChanged("ExpensesList"); }
         }
 
         public Expense SelectedExpense
@@ -30,7 +30,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                _ExpensesList = con.Expenses
+                ExpensesList = con.Expenses
                     .Include(e => e.ExpenseTarget)
                     .Include(e => e.Menager)
                     .ToList();
@@ -55,6 +55,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         }
 
         public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsSomethingSelected()
         {
             throw new NotImplementedException();
         }

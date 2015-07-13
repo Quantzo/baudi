@@ -14,7 +14,7 @@
             <RowDefinition Height="22*" />
         </Grid.RowDefinitions>
         <Grid>
-            <DataGrid Name="CyclicOrdersList" AutoGenerateColumns="false" ItemsSource="{Binding CyclicOrdersList}" SelectedItem="{Binding SelectedCyclicOrder}"  IsReadOnly="True" SelectionMode="Single">
+            <DataGrid Name="CyclicOrdersList" AutoGenerateColumns="false" ItemsSource="{Binding CyclicOrdersList}" SelectedItem="{Binding SelectedCyclicOrder}"  IsReadOnly="True" SelectionMode="Single" IsSynchronizedWithCurrentItem="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding ExpenseTargetID}"/>
                     <DataGridTextColumn Header="Budynek" Width="Auto" Binding="{Binding Building.NotificationTargetID}"/>

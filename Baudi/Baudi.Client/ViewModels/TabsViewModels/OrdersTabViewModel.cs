@@ -29,7 +29,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                _ordersList = con.Orders
+                OrdersList = con.Orders
                     .Include(o => o.Company)
                     .Include(o => o.OrderType)
                     .ToList();
@@ -53,6 +53,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         }
 
         public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsSomethingSelected()
         {
             throw new NotImplementedException();
         }

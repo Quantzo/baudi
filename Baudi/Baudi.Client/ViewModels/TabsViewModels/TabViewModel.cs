@@ -22,6 +22,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         public abstract void Delete();
         public abstract void Edit();
         public abstract void Load();
+        public abstract bool IsSomethingSelected();
 
         public void OnPropertyChanged(string property)
         {
@@ -32,8 +33,8 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         public TabViewModel()
         {
             ButtonAdd = new RelayCommand(pars => Add());
-            ButtonRemove = new RelayCommand(pars => Delete());
-            ButtonEdit = new RelayCommand(pars => Edit());
+            ButtonRemove = new RelayCommand(pars => Delete(), pars => IsSomethingSelected());
+            ButtonEdit = new RelayCommand(pars => Edit(), pars => IsSomethingSelected());
             Load();
         }
 

@@ -18,7 +18,7 @@ namespace Baudi.Client.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        public BuildingsTabViewModel BuildingsTabViewModel {get; set;}
+        public BuildingsTabViewModel BuildingsTabViewModel { get; set;}
         public CompaniesTabViewModel CompaniesTabViewModel { get; set; }
         public CyclicOrdersTabViewModel CyclicOrdersTabViewModel { get; set; }
         public DictionariesTabViewModel DictionariesTabViewModel { get; set; }
