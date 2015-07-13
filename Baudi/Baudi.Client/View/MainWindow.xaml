@@ -5,7 +5,7 @@
         Title="Aplikacja" Height="393.175" Width="632">
 
     <Grid>
-        <TabControl TabStripPlacement="Left" Margin="0, 0, 0, 0" SelectedIndex="{Binding SelectedTabIndex}">
+        <TabControl TabStripPlacement="Left" Margin="0, 0, 0, 0">
             <TabItem Name="NotificationsTab" Header="Zgłoszenia">
                 <TabItem.Content>
                     <tabs:NotificationsTab DataContext="{Binding NotificationsTabViewModel}"/>

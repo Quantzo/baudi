@@ -9,13 +9,9 @@ using System.Threading.Tasks;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
-    public class OwningCompaniesTabViewModel : INotifyPropertyChanged
+    public class OwningCompaniesTabViewModel :TabViewModel
     {
-        public OwningCompaniesTabViewModel()
-        {
-            Load();
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
+
         private List<OwningCompany> _OwningCompaniesList;
         public List<OwningCompany> OwningCompaniesList
         {
@@ -29,7 +25,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             set;
         }
 
-        public void Load()
+        public override void Load()
         {
             using (var con = new BaudiDbContext())
             {
@@ -37,10 +33,24 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
             }
         }
-        private void OnPropertyChanged(string property)
+        public override void Add()
         {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(property));
-        } 
+            throw new NotImplementedException();
+        }
+
+        public override void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

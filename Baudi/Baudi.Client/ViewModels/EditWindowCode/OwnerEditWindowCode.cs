@@ -17,7 +17,7 @@ namespace Baudi.Client.ViewModels
 
         Person selectedOwner; ///Selected Building in MainWindow.
         OwnerEditWindow thisWindow; ///Handler for window combined with this code.
-        MainWindowCode thisWindowOwner; ///Handler for MainWindow code.
+        MainWindowViewModel thisWindowOwner; ///Handler for MainWindow code.
 
         List<Ownership> addedOwnership; ///List with added Ownership.
         List<Ownership> updatedOwnership; ///List with updated Ownership.
@@ -30,7 +30,7 @@ namespace Baudi.Client.ViewModels
         /// <param name="selectedOwner"></param>
         /// <param name="thisWindow"></param>
         /// <param name="thisWindowOwner"></param>
-        public OwnerEditWindowCode(Person selectedOwner, OwnerEditWindow thisWindow, MainWindowCode thisWindowOwner)
+        public OwnerEditWindowCode(Person selectedOwner, OwnerEditWindow thisWindow, MainWindowViewModel thisWindowOwner)
         {
             this.selectedOwner = selectedOwner;
             this.thisWindow = thisWindow;

@@ -15,12 +15,12 @@ namespace Baudi.Client.ViewModels
     {
         Company selectedCompany; ///Selected company in MainWindow.
         CompanyEditWindow thisWindow; ///Handler for window combined with this code.
-        MainWindowCode thisWindowOwner; ///Handler for MainWindow code.
+        MainWindowViewModel thisWindowOwner; ///Handler for MainWindow code.
 
 
 
         ///Constructor - initialize handler, button, and form.
-        public CompanyEditWindowCode(Company selectedCompany, CompanyEditWindow thisWindow, MainWindowCode thisWindowOwner)
+        public CompanyEditWindowCode(Company selectedCompany, CompanyEditWindow thisWindow, MainWindowViewModel thisWindowOwner)
         {
             this.selectedCompany = selectedCompany;
             this.thisWindow = thisWindow;

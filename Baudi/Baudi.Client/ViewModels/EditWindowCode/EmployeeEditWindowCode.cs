@@ -16,9 +16,9 @@ namespace Baudi.Client.ViewModels
 
         Employee selectedEmployee;
         EmployeeEditWindow thisWindow;
-        MainWindowCode thisWindowOwner;
+        MainWindowViewModel thisWindowOwner;
 
-        public EmployeeEditWindowCode(Employee selectedEmployee, EmployeeEditWindow thisWindow, MainWindowCode thisWindowOwner)
+        public EmployeeEditWindowCode(Employee selectedEmployee, EmployeeEditWindow thisWindow, MainWindowViewModel thisWindowOwner)
         {
             this.selectedEmployee = selectedEmployee;
             this.thisWindow = thisWindow;

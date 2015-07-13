@@ -14,7 +14,7 @@
             <RowDefinition Height="22*" />
         </Grid.RowDefinitions>
         <Grid>
-            <DataGrid Name="NotificationsList" AutoGenerateColumns="false" ItemsSource="{Binding NotificationsList}" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid Name="NotificationsList" AutoGenerateColumns="false" ItemsSource="{Binding NotificationsList}" SelectedItem="{Binding SelectedNotification}" IsReadOnly="True" SelectionMode="Single">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding NotificationID}"/>
                     <DataGridTextColumn Header="Data przyjecia" Width="Auto" Binding="{Binding FilingDate}"/>
@@ -34,8 +34,8 @@
             </DataGrid>
         </Grid>
         <Grid/>
-        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,157,15" >Dodaj</Button>
-        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,7,15" >Edytuj</Button>
-        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,82,15" >Usuń</Button>
+        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,157,15" Command="{Binding ButtonAdd}" >Dodaj</Button>
+        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,7,15" Command="{Binding ButtonEdit}">Edytuj</Button>
+        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Margin="0,5,82,15" Command="{Binding ButtonRemove}">Usuń</Button>
     </Grid>
 </UserControl>

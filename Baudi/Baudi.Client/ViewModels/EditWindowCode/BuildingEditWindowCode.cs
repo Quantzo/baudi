@@ -17,7 +17,7 @@ namespace Baudi.Client.ViewModels
     {
         Building selectedBuilding; ///Selected Building in MainWindow.
         BuildingEditWindow thisWindow; ///Handler for window combined with this code.
-        MainWindowCode thisWindowOwner; ///Handler for MainWindow code.
+        MainWindowViewModel thisWindowOwner; ///Handler for MainWindow code.
         List<Local> addedLocal; // list with added Local
         List<Local> updatedLocal; //list with updated Local
         List<Local> deletedLocal; //list with deleted Local
@@ -29,7 +29,7 @@ namespace Baudi.Client.ViewModels
         /// <param name="selectedBuilding"></param>
         /// <param name="thisWindow"></param>
         /// <param name="thisWindowOwner"></param>
-        public BuildingEditWindowCode(Building selectedBuilding, BuildingEditWindow thisWindow, MainWindowCode thisWindowOwner)
+        public BuildingEditWindowCode(Building selectedBuilding, BuildingEditWindow thisWindow, MainWindowViewModel thisWindowOwner)
         {
             this.selectedBuilding = selectedBuilding;
             this.thisWindow = thisWindow;

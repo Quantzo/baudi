@@ -24,9 +24,9 @@
             </DataGrid>
         </Grid>
         <Grid/>
-        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding Button_Click_Add}" Margin="0,5,157,15" >Dodaj</Button>
-        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding Button_Click_Edit}" Margin="0,5,7,15" >Edytuj</Button>
-        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding Button_Click_Delete}" Margin="0,5,82,15" >Usuń</Button>
+        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding ButtonAdd}" Margin="0,5,157,15" >Dodaj</Button>
+        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding ButtonEdit}" Margin="0,5,7,15" >Edytuj</Button>
+        <Button Grid.Row="1" Width="70" Height="25" HorizontalAlignment="Right" Command="{Binding ButtonRemove}" Margin="0,5,82,15" >Usuń</Button>
 
     </Grid>
 </UserControl>

@@ -21,7 +21,7 @@ namespace GUIBD
     /// </summary>
     public partial class OwnerEditWindow : Window
     {
-        public OwnerEditWindow(Person selectedOwner, MainWindowCode owner)
+        public OwnerEditWindow(Person selectedOwner, MainWindowViewModel owner)
         {
             InitializeComponent();
             this.DataContext = new OwnerEditWindowCode(selectedOwner, this, owner);

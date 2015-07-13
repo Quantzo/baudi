@@ -10,12 +10,8 @@ using System.Data.Entity;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
-    public class CyclicOrdersTabViewModel : INotifyPropertyChanged
+    public class CyclicOrdersTabViewModel :TabViewModel
     {
-        public CyclicOrdersTabViewModel()
-        {
-            Load();
-        }
         private List<CyclicOrder> _cyclicOrdersList;
         public List<CyclicOrder> CyclicOrdersList
         {
@@ -28,7 +24,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             get;
             set;
         }
-        public void Load()
+        public override void Load()
         {
             using (var con = new BaudiDbContext())
             {
@@ -39,12 +35,25 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string property)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(property));
-        } 
 
+        public override void Add()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

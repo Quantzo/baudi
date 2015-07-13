@@ -21,7 +21,7 @@ namespace WpfApplication1
     /// </summary>
     public partial class EmployeeEditWindow : Window
     {
-        public EmployeeEditWindow(Employee selectedCompany, MainWindowCode owner)
+        public EmployeeEditWindow(Employee selectedCompany, MainWindowViewModel owner)
         {
             InitializeComponent();
             this.DataContext = new EmployeeEditWindowCode(selectedCompany, this, owner);

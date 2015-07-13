@@ -10,13 +10,9 @@ using System.Data.Entity;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
-    public class NotificationsTabViewModel : INotifyPropertyChanged
+    public class NotificationsTabViewModel :TabViewModel
     {
-        public NotificationsTabViewModel()
-        {
-            Load();
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
+
         private List<Notification> _notificationsList;
         public List<Notification> NotificationsList
         {
@@ -24,7 +20,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             set { _notificationsList = value; OnPropertyChanged("NotificationsList"); }
         }
         public Notification SelectedNotification { get; set; }
-        public void Load()
+        public override void Load()
         {
             using (var con = new BaudiDbContext())
             {
@@ -32,12 +28,25 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
             }
         }
-        private void OnPropertyChanged(string property)
+
+        public override void Add()
         {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(property));
-        } 
+            throw new NotImplementedException();
+        }
 
+        public override void Update()
+        {
+            throw new NotImplementedException();
+        }
 
+        public override void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

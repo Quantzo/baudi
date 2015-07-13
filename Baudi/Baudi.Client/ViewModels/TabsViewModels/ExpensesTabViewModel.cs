@@ -10,13 +10,9 @@ using System.Data.Entity;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
-    public class ExpensesTabViewModel : INotifyPropertyChanged
+    public class ExpensesTabViewModel :TabViewModel
     {
-        public ExpensesTabViewModel()
-        {
-            Load();
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
+
         private List<Expense> _ExpensesList;
         public List<Expense> ExpensesList
         {
@@ -30,7 +26,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             set;
         }
 
-        public void Load()
+        public override void Load()
         {
             using (var con = new BaudiDbContext())
             {
@@ -42,11 +38,25 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             }
         }
 
-        private void OnPropertyChanged(string property)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(property));
-        } 
 
+        public override void Add()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

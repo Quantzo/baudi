@@ -21,7 +21,7 @@ namespace GUIBD
     /// </summary>
     public partial class BuildingEditWindow : Window
     {
-        public BuildingEditWindow(Building selectedBuilding, MainWindowCode owner)
+        public BuildingEditWindow(Building selectedBuilding, MainWindowViewModel owner)
         {
             InitializeComponent();
             this.DataContext = new BuildingEditWindowCode(selectedBuilding, this, owner);

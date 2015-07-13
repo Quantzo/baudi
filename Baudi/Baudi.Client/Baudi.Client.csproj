@@ -71,7 +71,7 @@
     <Compile Include="ViewModels\EditWindowCode\EmployeeEditWindowCode.cs" />
     <Compile Include="ViewModels\EditWindowCode\LocalEditWindowCode.cs" />
     <Compile Include="ViewModels\SelectorWindowCode\LocalSelectorCode.cs" />
-    <Compile Include="ViewModels\EditWindowCode\MainWindowCode.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowCode\OwnershipEditWindowCode.cs" />
     <Compile Include="ViewModels\EditWindowCode\OwnerEditWindowCode.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
@@ -88,6 +88,7 @@
     <Compile Include="ViewModels\TabsViewModels\RentsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\ReportsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\SalariesTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\TabViewModel.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataFieldsValidator.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataTypeValidator.cs" />
     <Compile Include="ViewModels\Validation\Exceptions\WrongDataException.cs" />
