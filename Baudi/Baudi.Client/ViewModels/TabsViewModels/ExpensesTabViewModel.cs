@@ -1,30 +1,27 @@
-﻿using Baudi.DAL;
-using Baudi.DAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq;
+using Baudi.DAL;
+using Baudi.DAL.Models;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
-    public class ExpensesTabViewModel :TabViewModel
+    public class ExpensesTabViewModel : TabViewModel
     {
-
         private List<Expense> _expensesList;
+
         public List<Expense> ExpensesList
         {
             get { return _expensesList; }
-            set { _expensesList = value; OnPropertyChanged("ExpensesList"); }
+            set
+            {
+                _expensesList = value;
+                OnPropertyChanged("ExpensesList");
+            }
         }
 
-        public Expense SelectedExpense
-        {
-            get;
-            set;
-        }
+        public Expense SelectedExpense { get; set; }
 
         public override void Load()
         {
@@ -34,10 +31,8 @@ namespace Baudi.Client.ViewModels.TabsViewModels
                     .Include(e => e.ExpenseTarget)
                     .Include(e => e.Menager)
                     .ToList();
-
             }
         }
-
 
         public override void Add()
         {

@@ -1,26 +1,30 @@
-﻿using Baudi.Client.View.SelectorWindow;
-using Baudi.DAL;
-using Baudi.DAL.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Baudi.Client.View.SelectorWindow;
+using Baudi.Client.ViewModels.EditWindowCode;
+using Baudi.DAL;
+using Baudi.DAL.Models;
 
-namespace Baudi.Client.ViewModels
+namespace Baudi.Client.ViewModels.SelectorWindowCode
 {
-    class LocalSelectorCode : INotifyPropertyChanged
+    internal class LocalSelectorCode : INotifyPropertyChanged
     {
-        LocalSelector thisWindow; /// Handler for window combined with this code.
-        OwnershipEditWindowCode thisWindowOwner; /// Handler for MainWindow code.
-                                                 /// 
+        private readonly LocalSelector thisWindow;
+
+        /// Handler for window combined with this code.
+        private readonly OwnershipEditWindowCode thisWindowOwner;
+
+        private List<Local> _LocalsList;
+
+        /// Handler for MainWindow code.
         /// <summary>
-        /// Constructor - initialize handler, button, and form.
-        /// </summary>      
-        public LocalSelectorCode( LocalSelector thisWindow, OwnershipEditWindowCode ownerWindow, Building selectedBuilding)
+        ///     Constructor - initialize handler, button, and form.
+        /// </summary>
+        public LocalSelectorCode(LocalSelector thisWindow, OwnershipEditWindowCode ownerWindow,
+            Building selectedBuilding)
         {
             this.thisWindow = thisWindow;
             thisWindowOwner = ownerWindow;
@@ -28,40 +32,40 @@ namespace Baudi.Client.ViewModels
             Button_Click_Select = new RelayCommand(pars => Select());
             using (var con = new BaudiDbContext())
             {
-                _LocalsList = con.Locals.Where(x => x.Building.NotificationTargetID == selectedBuilding.NotificationTargetID).ToList();
+                _LocalsList =
+                    con.Locals.Where(x => x.Building.NotificationTargetID == selectedBuilding.NotificationTargetID)
+                        .ToList();
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged = null;
-
-        private List<Local> _LocalsList;
         public List<Local> LocalsList
         {
             get { return _LocalsList; }
-            set { _LocalsList = value; OnPropertyChanged("LocalsList"); }
+            set
+            {
+                _LocalsList = value;
+                OnPropertyChanged("LocalsList");
+            }
         }
 
-        public Local SelectedLocal
-        {
-            get;
-            set;
-        }
+        public Local SelectedLocal { get; set; }
 
         public ICommand Button_Click_Cancel { get; set; }
         public ICommand Button_Click_Select { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// Methode for Cancel button.
+        ///     Methode for Cancel button.
         /// </summary>
-        void Cancel()
+        private void Cancel()
         {
             thisWindow.Close();
         }
 
         /// <summary>
-        /// Methode for Select button.
+        ///     Methode for Select button.
         /// </summary>
-        void Select()
+        private void Select()
         {
             if (SelectedLocal != null)
             {
@@ -73,12 +77,12 @@ namespace Baudi.Client.ViewModels
         }
 
         /// <summary>
-        /// Methode implementation from INotifyPropertyChanged
+        ///     Methode implementation from INotifyPropertyChanged
         /// </summary>
-        virtual public void OnPropertyChanged(string propName)
+        public virtual void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }	
+        }
     }
 }

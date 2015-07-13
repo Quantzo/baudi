@@ -1,35 +1,42 @@
-﻿using Baudi.DAL;
-using Baudi.DAL.Models;
-using GUIBD;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using WpfApplication1;
+using Baudi.Client.View.EditWindows;
+using Baudi.DAL;
+using Baudi.DAL.Models;
 
-namespace Baudi.Client.ViewModels
+namespace Baudi.Client.ViewModels.EditWindowCode
 {
     public class BuildingEditWindowCode : INotifyPropertyChanged
     {
-        Building selectedBuilding; ///Selected Building in MainWindow.
-        BuildingEditWindow thisWindow; ///Handler for window combined with this code.
-        MainWindowViewModel thisWindowOwner; ///Handler for MainWindow code.
-        List<Local> addedLocal; // list with added Local
-        List<Local> updatedLocal; //list with updated Local
-        List<Local> deletedLocal; //list with deleted Local
-        bool update;
+        /// Handler for MainWindow code.
+        private readonly List<Local> addedLocal; // list with added Local
+
+        private readonly Building selectedBuilding;
+
+        /// Selected Building in MainWindow.
+        private readonly BuildingEditWindow thisWindow;
+
+        /// Handler for window combined with this code.
+        private readonly MainWindowViewModel thisWindowOwner;
+
+        private readonly List<Local> updatedLocal; //list with updated Local
+        private string _City;
+        private string _HouseNumber;
+        private List<Local> _LocalsList;
+        private string _Street;
+        private List<Local> deletedLocal; //list with deleted Local
+        private bool update;
 
         /// <summary>
-        /// Constructor - initialize handler, button, and form.
+        ///     Constructor - initialize handler, button, and form.
         /// </summary>
         /// <param name="selectedBuilding"></param>
         /// <param name="thisWindow"></param>
         /// <param name="thisWindowOwner"></param>
-        public BuildingEditWindowCode(Building selectedBuilding, BuildingEditWindow thisWindow, MainWindowViewModel thisWindowOwner)
+        public BuildingEditWindowCode(Building selectedBuilding, BuildingEditWindow thisWindow,
+            MainWindowViewModel thisWindowOwner)
         {
             this.selectedBuilding = selectedBuilding;
             this.thisWindow = thisWindow;
@@ -54,60 +61,67 @@ namespace Baudi.Client.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged = null;
-
-        private String _City;
-        public String City
+        public string City
         {
             get { return _City; }
-            set { _City = value; OnPropertyChanged("City"); }
+            set
+            {
+                _City = value;
+                OnPropertyChanged("City");
+            }
         }
 
-        private String _HouseNumber;
-        public String HouseNumber
+        public string HouseNumber
         {
             get { return _HouseNumber; }
-            set { _HouseNumber = value; OnPropertyChanged("HouseNumber"); }
+            set
+            {
+                _HouseNumber = value;
+                OnPropertyChanged("HouseNumber");
+            }
         }
 
-        private String _Street;
-        public String Street
+        public string Street
         {
             get { return _Street; }
-            set { _Street = value; OnPropertyChanged("Street"); }
+            set
+            {
+                _Street = value;
+                OnPropertyChanged("Street");
+            }
         }
 
-        private List<Local> _LocalsList;
         public List<Local> LocalsList
         {
             get { return _LocalsList; }
-            set { _LocalsList = value; OnPropertyChanged("LocalsList"); }
+            set
+            {
+                _LocalsList = value;
+                OnPropertyChanged("LocalsList");
+            }
         }
 
-        public Local SelectedLocal
-        {
-            get;
-            set;
-        }
+        public Local SelectedLocal { get; set; }
 
         public ICommand Button_Click_Cancel { get; set; }
         public ICommand Button_Click_Save { get; set; }
         public ICommand Button_Click_Add { get; set; }
         public ICommand Button_Click_Edit { get; set; }
         public ICommand Button_Click_Delete { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// Methode for Cancel button.
+        ///     Methode for Cancel button.
         /// </summary>
-        void Cancel()
+        private void Cancel()
         {
             thisWindow.Close();
         }
 
         /// <summary>
-        /// Methode for Save button.
+        ///     Methode for Save button.
         /// </summary>
-        void Save()
+        private void Save()
         {
             using (var con = new BaudiDbContext())
             {
@@ -124,9 +138,9 @@ namespace Baudi.Client.ViewModels
                         orginal.Locals.AddRange(addedLocal);
                         if (updatedLocal.Count != 0)
                         {
-                            foreach(Local l in updatedLocal)
+                            foreach (var l in updatedLocal)
                             {
-                                Local temp = con.Locals.Find(l.NotificationTargetID);
+                                var temp = con.Locals.Find(l.NotificationTargetID);
                                 temp.LocalNumber = l.LocalNumber;
                                 temp.NumberOfRooms = l.NumberOfRooms;
                                 temp.RentValue = l.RentValue;
@@ -138,7 +152,7 @@ namespace Baudi.Client.ViewModels
                 //if building was not select
                 else
                 {
-                    Building b = new Building();
+                    var b = new Building();
                     b.City = _City;
                     b.HouseNumber = _HouseNumber;
                     b.Street = _Street;
@@ -146,9 +160,9 @@ namespace Baudi.Client.ViewModels
                     con.Buildings.Add(b);
                     if (updatedLocal.Count != 0)
                     {
-                        foreach (Local l in updatedLocal)
+                        foreach (var l in updatedLocal)
                         {
-                            Local temp = con.Locals.Find(l.NotificationTargetID);
+                            var temp = con.Locals.Find(l.NotificationTargetID);
                             temp.LocalNumber = l.LocalNumber;
                             temp.NumberOfRooms = l.NumberOfRooms;
                             temp.RentValue = l.RentValue;
@@ -163,52 +177,53 @@ namespace Baudi.Client.ViewModels
         }
 
         /// <summary>
-        /// Methode for Add button.
+        ///     Methode for Add button.
         /// </summary>
-        void Add()
+        private void Add()
         {
             update = false;
             Local b = null;
-            LocalEditWindow bew = new LocalEditWindow(b, this);
+            var bew = new LocalEditWindow(b, this);
             bew.Show();
         }
 
         /// <summary>
-        /// Methode for Edit button.
+        ///     Methode for Edit button.
         /// </summary>
-        void Edit()
+        private void Edit()
         {
             update = true;
             if (SelectedLocal == null)
             {
-                Local b = LocalsList.Find(x => x.NotificationTargetID.Equals(SelectedLocal.NotificationTargetID));
-                LocalEditWindow bew = new LocalEditWindow(SelectedLocal, this);
+                var b = LocalsList.Find(x => x.NotificationTargetID.Equals(SelectedLocal.NotificationTargetID));
+                var bew = new LocalEditWindow(SelectedLocal, this);
                 bew.Show();
             }
             else
             {
-                MessageBox.Show("Musisz wybrać lokal żeby edytować", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Musisz wybrać lokal żeby edytować", "Ostrzeżenie", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
             }
         }
 
         /// <summary>
-        /// Methode for Delete button.
+        ///     Methode for Delete button.
         /// </summary>
-        void Delete()
+        private void Delete()
         {
-            Local b = LocalsList.Find(x => x.NotificationTargetID.Equals(SelectedLocal.NotificationTargetID));
+            var b = LocalsList.Find(x => x.NotificationTargetID.Equals(SelectedLocal.NotificationTargetID));
             LocalsList.Remove(b);
         }
 
         /// <summary>
-        /// Methode for update LocalsList
+        ///     Methode for update LocalsList
         /// </summary>
         public void Update(Local b)
         {
             //if local is update
             if (update == false)
             {
-                List<Local> actualList = new List<Local>();
+                var actualList = new List<Local>();
                 addedLocal.Add(b);
                 actualList.Add(b);
                 if (LocalsList != null)
@@ -224,10 +239,10 @@ namespace Baudi.Client.ViewModels
             //if local is add
             else
             {
-                List<Local> actualList = new List<Local>();
+                var actualList = new List<Local>();
                 updatedLocal.Add(b);
                 actualList.AddRange(LocalsList);
-                Local orginal = actualList.Find(x => x.NotificationTargetID == b.NotificationTargetID);
+                var orginal = actualList.Find(x => x.NotificationTargetID == b.NotificationTargetID);
                 orginal.LocalNumber = b.LocalNumber;
                 orginal.Area = b.Area;
                 orginal.NumberOfRooms = b.NumberOfRooms;
@@ -237,12 +252,12 @@ namespace Baudi.Client.ViewModels
         }
 
         /// <summary>
-        /// Methode implementation from INotifyPropertyChanged
+        ///     Methode implementation from INotifyPropertyChanged
         /// </summary>
-        virtual public void OnPropertyChanged(string propName)
+        public virtual void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }	
+        }
     }
 }

@@ -1,24 +1,29 @@
-﻿using Baudi.DAL;
-using Baudi.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Input;
-using WpfApplication1;
+using Baudi.Client.View.EditWindows;
+using Baudi.DAL;
+using Baudi.DAL.Models;
 
-namespace Baudi.Client.ViewModels
+namespace Baudi.Client.ViewModels.EditWindowCode
 {
-    class EmployeeEditWindowCode
+    internal class EmployeeEditWindowCode
     {
+        private readonly Employee selectedEmployee;
+        private readonly EmployeeEditWindow thisWindow;
+        private readonly MainWindowViewModel thisWindowOwner;
+        private string _BankAccountNumber;
+        private string _City;
+        private string _HouseNumber;
+        private string _LocalNumber;
+        private string _Name;
+        private string _PESEL;
+        private double _Salary;
+        private string _Street;
+        private string _Surname;
+        private string _Telephone;
 
-        Employee selectedEmployee;
-        EmployeeEditWindow thisWindow;
-        MainWindowViewModel thisWindowOwner;
-
-        public EmployeeEditWindowCode(Employee selectedEmployee, EmployeeEditWindow thisWindow, MainWindowViewModel thisWindowOwner)
+        public EmployeeEditWindowCode(Employee selectedEmployee, EmployeeEditWindow thisWindow,
+            MainWindowViewModel thisWindowOwner)
         {
             this.selectedEmployee = selectedEmployee;
             this.thisWindow = thisWindow;
@@ -43,87 +48,114 @@ namespace Baudi.Client.ViewModels
         public ICommand Button_Click_Cancel { get; set; }
         public ICommand Button_Click_Save { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged = null;
-
-        private string _Name;
         public string Name
         {
             get { return _Name; }
-            set { _Name = value; OnPropertyChanged("LocalNumber"); }
+            set
+            {
+                _Name = value;
+                OnPropertyChanged("LocalNumber");
+            }
         }
-        
-        private string _Surname;
+
         public string Surname
         {
             get { return _Surname; }
-            set { _Surname = value; OnPropertyChanged("NumberOfRooms"); }
+            set
+            {
+                _Surname = value;
+                OnPropertyChanged("NumberOfRooms");
+            }
         }
 
-        private string _PESEL;
         public string PESEL
         {
             get { return _PESEL; }
-            set { _PESEL = value; OnPropertyChanged("PESEL");}
+            set
+            {
+                _PESEL = value;
+                OnPropertyChanged("PESEL");
+            }
         }
 
-        private string _Street;
         public string Street
         {
             get { return _Street; }
-            set { _Street = value; OnPropertyChanged("Street"); }
+            set
+            {
+                _Street = value;
+                OnPropertyChanged("Street");
+            }
         }
 
-        private string _HouseNumber;
         public string HouseNumber
         {
             get { return _HouseNumber; }
-            set { _HouseNumber = value; OnPropertyChanged("HouseNumber"); }
+            set
+            {
+                _HouseNumber = value;
+                OnPropertyChanged("HouseNumber");
+            }
         }
 
-        private string _LocalNumber;
         public string LocalNumber
         {
             get { return _LocalNumber; }
-            set { _LocalNumber = value; OnPropertyChanged("LocalNumber"); }
+            set
+            {
+                _LocalNumber = value;
+                OnPropertyChanged("LocalNumber");
+            }
         }
 
-        private string _Telephone;
         public string Telephone
         {
             get { return _Telephone; }
-            set { _Telephone = value; OnPropertyChanged("Telephone"); }
+            set
+            {
+                _Telephone = value;
+                OnPropertyChanged("Telephone");
+            }
         }
 
-        private string _City;
         public string City
         {
             get { return _City; }
-            set { _City = value; OnPropertyChanged("City"); }
+            set
+            {
+                _City = value;
+                OnPropertyChanged("City");
+            }
         }
 
-        private string _BankAccountNumber;
         public string BankAccountNumber
         {
             get { return _BankAccountNumber; }
-            set { _BankAccountNumber = value; OnPropertyChanged("City"); }
+            set
+            {
+                _BankAccountNumber = value;
+                OnPropertyChanged("City");
+            }
         }
 
-        private double _Salary;
         public double Salary
         {
             get { return _Salary; }
-            set { _Salary = value; OnPropertyChanged("City"); }
+            set
+            {
+                _Salary = value;
+                OnPropertyChanged("City");
+            }
         }
 
-       
+        public event PropertyChangedEventHandler PropertyChanged;
 
-
-        void Cancel()
+        private void Cancel()
         {
             thisWindow.Close();
         }
 
-        void Save()
+        private void Save()
         {
             using (var con = new BaudiDbContext())
             {
@@ -163,15 +195,12 @@ namespace Baudi.Client.ViewModels
             }
             thisWindowOwner.Update();
             thisWindow.Close();
-            
         }
 
-        virtual public void OnPropertyChanged(string propName)
+        public virtual void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }	
-
-
+        }
     }
 }

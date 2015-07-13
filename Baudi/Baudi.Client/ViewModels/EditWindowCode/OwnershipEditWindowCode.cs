@@ -1,28 +1,35 @@
-﻿using Baudi.Client.View.SelectorWindow;
-using Baudi.DAL;
-using Baudi.DAL.Models;
-using GUIBD;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
+using Baudi.Client.View.EditWindows;
+using Baudi.Client.View.SelectorWindow;
+using Baudi.DAL;
+using Baudi.DAL.Models;
 
-namespace Baudi.Client.ViewModels
+namespace Baudi.Client.ViewModels.EditWindowCode
 {
     public class OwnershipEditWindowCode : INotifyPropertyChanged
     {
-        Ownership selectedOwnership; ///Selected Building in MainWindow.
-        OwnershipEditWindow thisWindow; ///Handler for window combined with this code.
-        OwnerEditWindowCode thisWindowOwner; ///Handler for MainWindow code.
+        private readonly Ownership selectedOwnership;
 
+        /// Selected Building in MainWindow.
+        private readonly OwnershipEditWindow thisWindow;
+
+        /// Handler for window combined with this code.
+        private readonly OwnerEditWindowCode thisWindowOwner;
+
+        private List<Building> _BuildingsList;
+        private List<Local> _LocalsList;
+        private string _PurchaseDate;
+        private string _SaleDate;
+
+        /// Handler for MainWindow code.
         /// <summary>
-        /// Constructor - initialize handler, button, and form.
-        /// </summary>                            
-        public OwnershipEditWindowCode(Ownership selectedOwnership, OwnershipEditWindow thisWindow, OwnerEditWindowCode thisWindowOwner)
+        ///     Constructor - initialize handler, button, and form.
+        /// </summary>
+        public OwnershipEditWindowCode(Ownership selectedOwnership, OwnershipEditWindow thisWindow,
+            OwnerEditWindowCode thisWindowOwner)
         {
             this.selectedOwnership = selectedOwnership;
             this.thisWindow = thisWindow;
@@ -34,7 +41,7 @@ namespace Baudi.Client.ViewModels
 
             if (selectedOwnership != null)
             {
-                List<Local> ltemp = new List<Local>();
+                var ltemp = new List<Local>();
                 if (selectedOwnership.Local == null)
                 {
                     using (var con = new BaudiDbContext())
@@ -51,53 +58,65 @@ namespace Baudi.Client.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged = null;
-
         public ICommand Button_Click_Cancel { get; set; }
         public ICommand Button_Click_Save { get; set; }
         public ICommand Button_Click_SelectLocal { get; set; }
         public ICommand Button_Click_SelectBuilding { get; set; }
 
-        private List<Local> _LocalsList;
         public List<Local> LocalsList
         {
             get { return _LocalsList; }
-            set { _LocalsList = value; OnPropertyChanged("LocalsList"); }
+            set
+            {
+                _LocalsList = value;
+                OnPropertyChanged("LocalsList");
+            }
         }
 
-        private List<Building> _BuildingsList;
         public List<Building> BuildingsList
         {
             get { return _BuildingsList; }
-            set { _BuildingsList = value; OnPropertyChanged("BuildingsList"); }
+            set
+            {
+                _BuildingsList = value;
+                OnPropertyChanged("BuildingsList");
+            }
         }
 
-        private string _PurchaseDate;
         public string PurchaseDate
         {
             get { return _PurchaseDate; }
-            set { _PurchaseDate = value; OnPropertyChanged("PurchaseDate"); }
+            set
+            {
+                _PurchaseDate = value;
+                OnPropertyChanged("PurchaseDate");
+            }
         }
 
-        private string _SaleDate;
         public string SaleDate
         {
             get { return _SaleDate; }
-            set { _SaleDate = value; OnPropertyChanged("SaleDate"); }
+            set
+            {
+                _SaleDate = value;
+                OnPropertyChanged("SaleDate");
+            }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
-        /// Methode for Cancel button.
+        ///     Methode for Cancel button.
         /// </summary>
-        void Cancel()
+        private void Cancel()
         {
             thisWindow.Close();
         }
 
         /// <summary>
-        /// Methode for Save button.
+        ///     Methode for Save button.
         /// </summary>
-        void Save()
+        private void Save()
         {
             using (var con = new BaudiDbContext())
             {
@@ -107,8 +126,8 @@ namespace Baudi.Client.ViewModels
                     if (orginal != null)
                     {
                         orginal.Local = con.Locals.Find(selectedOwnership.Local.NotificationTargetID);
-                        orginal.PurchaseDate = PurchaseDate.ToString();
-                        orginal.SaleDate = SaleDate.ToString();
+                        orginal.PurchaseDate = PurchaseDate;
+                        orginal.SaleDate = SaleDate;
                         thisWindowOwner.Update(orginal);
                     }
                 }
@@ -116,8 +135,8 @@ namespace Baudi.Client.ViewModels
                 {
                     var b = new Ownership();
                     b.Local = con.Locals.Find(LocalsList.First().NotificationTargetID);
-                    b.PurchaseDate = PurchaseDate.ToString();
-                    b.SaleDate = SaleDate.ToString();
+                    b.PurchaseDate = PurchaseDate;
+                    b.SaleDate = SaleDate;
                     thisWindowOwner.Update(b);
                 }
                 con.SaveChanges();
@@ -126,32 +145,32 @@ namespace Baudi.Client.ViewModels
         }
 
         /// <summary>
-        /// Methode for SelectLocal button.
+        ///     Methode for SelectLocal button.
         /// </summary>
-        void SelectLocal()
+        private void SelectLocal()
         {
-            LocalSelector ls = new LocalSelector(this, BuildingsList.First());
+            var ls = new LocalSelector(this, BuildingsList.First());
             ls.Show();
         }
 
         /// <summary>
-        /// Methode for SelectBuilding button.
+        ///     Methode for SelectBuilding button.
         /// </summary>
-        void SelectBuilding()
+        private void SelectBuilding()
         {
-            BuildingSelector bs = new BuildingSelector(this);
+            var bs = new BuildingSelector(this);
             bs.Show();
         }
 
         /// <summary>
-        /// Update from Selector.
+        ///     Update from Selector.
         /// </summary>
         public void Update(Local l, Building b)
         {
             using (var con = new BaudiDbContext())
             {
-                List<Local> newList = new List<Local>();
-                List<Building> newList1 = new List<Building>();
+                var newList = new List<Local>();
+                var newList1 = new List<Building>();
                 newList.Add(l);
                 newList1.Add(b);
                 if (l != null)
@@ -165,14 +184,12 @@ namespace Baudi.Client.ViewModels
         }
 
         /// <summary>
-        /// Methode implementation from INotifyPropertyChanged
+        ///     Methode implementation from INotifyPropertyChanged
         /// </summary>
-        virtual public void OnPropertyChanged(string propName)
+        public virtual void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }	
-
-
+        }
     }
 }

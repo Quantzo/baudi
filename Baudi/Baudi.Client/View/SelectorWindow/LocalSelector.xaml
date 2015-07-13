@@ -10,17 +10,21 @@
             <RowDefinition Height="251*" />
             <RowDefinition Height="25*" />
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="false" ItemsSource="{Binding LocalsList, IsAsync=True}" SelectedItem="{Binding SelectedLocal}">
+        <DataGrid AutoGenerateColumns="false" ItemsSource="{Binding LocalsList, IsAsync=True}"
+                  SelectedItem="{Binding SelectedLocal}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding LocalID}"/>
-                <DataGridTextColumn Header="Numer Mieszkania" Width="Auto" Binding="{Binding LocalNumber}"/>
-                <DataGridTextColumn Header="Liczba pokoi" Width="Auto" Binding="{Binding NumberOfRooms}"/>
-                <DataGridTextColumn Header="Powierzchnia" Width="Auto" Binding="{Binding Area}"/>
-                <DataGridTextColumn Header="Czynsz" Width="Auto" Binding="{Binding RentValue}"/>
+                <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding LocalID}" />
+                <DataGridTextColumn Header="Numer Mieszkania" Width="Auto" Binding="{Binding LocalNumber}" />
+                <DataGridTextColumn Header="Liczba pokoi" Width="Auto" Binding="{Binding NumberOfRooms}" />
+                <DataGridTextColumn Header="Powierzchnia" Width="Auto" Binding="{Binding Area}" />
+                <DataGridTextColumn Header="Czynsz" Width="Auto" Binding="{Binding RentValue}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Wybierz" HorizontalAlignment="Left" Margin="358,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="21" Command="{Binding Button_Click_Select}"/>
-        <Button Content="Anuluj" HorizontalAlignment="Left" Margin="278,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="21" Command="{Binding Button_Click_Cancel}"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Grid.Row="1" TextWrapping="Wrap" Text="Wyszukaj" VerticalAlignment="Top" Width="249"/>
+        <Button Content="Wybierz" HorizontalAlignment="Left" Margin="358,2,0,0" Grid.Row="1" VerticalAlignment="Top"
+                Width="75" Height="21" Command="{Binding Button_Click_Select}" />
+        <Button Content="Anuluj" HorizontalAlignment="Left" Margin="278,2,0,0" Grid.Row="1" VerticalAlignment="Top"
+                Width="75" Height="21" Command="{Binding Button_Click_Cancel}" />
+        <TextBox HorizontalAlignment="Left" Height="23" Grid.Row="1" TextWrapping="Wrap" Text="Wyszukaj"
+                 VerticalAlignment="Top" Width="249" />
     </Grid>
 </Window>

@@ -1,26 +1,35 @@
-﻿using Baudi.DAL;
-using Baudi.DAL.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using WpfApplication1;
+using Baudi.Client.View.EditWindows;
+using Baudi.DAL;
+using Baudi.DAL.Models;
 
-namespace Baudi.Client.ViewModels
+namespace Baudi.Client.ViewModels.EditWindowCode
 {
     public class CompanyEditWindowCode : INotifyPropertyChanged
     {
-        Company selectedCompany; ///Selected company in MainWindow.
-        CompanyEditWindow thisWindow; ///Handler for window combined with this code.
-        MainWindowViewModel thisWindowOwner; ///Handler for MainWindow code.
+        private readonly Company selectedCompany;
 
+        /// Selected company in MainWindow.
+        private readonly CompanyEditWindow thisWindow;
 
+        /// Handler for window combined with this code.
+        private readonly MainWindowViewModel thisWindowOwner;
 
-        ///Constructor - initialize handler, button, and form.
-        public CompanyEditWindowCode(Company selectedCompany, CompanyEditWindow thisWindow, MainWindowViewModel thisWindowOwner)
+        private string _City;
+        private string _HouseNumber;
+        private string _LocalNumber;
+        private string _NIP;
+        private string _Owner;
+        private List<Specialization> _Specialization;
+        private string _Street;
+        private string _Telephone;
+
+        /// Handler for MainWindow code.
+        /// Constructor - initialize handler, button, and form.
+        public CompanyEditWindowCode(Company selectedCompany, CompanyEditWindow thisWindow,
+            MainWindowViewModel thisWindowOwner)
         {
             this.selectedCompany = selectedCompany;
             this.thisWindow = thisWindow;
@@ -43,76 +52,100 @@ namespace Baudi.Client.ViewModels
         public ICommand Button_Click_Cancel { get; set; }
         public ICommand Button_Click_Save { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged = null;
-
-        private string _City;
         public string City
         {
             get { return _City; }
-            set { _City = value; OnPropertyChanged("LocalNumber"); }
+            set
+            {
+                _City = value;
+                OnPropertyChanged("LocalNumber");
+            }
         }
-        
-        private string _Owner;
+
         public string Owner
         {
             get { return _Owner; }
-            set { _Owner = value; OnPropertyChanged("NumberOfRooms"); }
+            set
+            {
+                _Owner = value;
+                OnPropertyChanged("NumberOfRooms");
+            }
         }
 
-        private string _NIP;
         public string NIP
         {
             get { return _NIP; }
-            set { _NIP = value; OnPropertyChanged("Area");}
+            set
+            {
+                _NIP = value;
+                OnPropertyChanged("Area");
+            }
         }
 
-        private string _Street;
         public string Street
         {
             get { return _Street; }
-            set { _Street = value; OnPropertyChanged("Area"); }
+            set
+            {
+                _Street = value;
+                OnPropertyChanged("Area");
+            }
         }
 
-        private string _HouseNumber;
         public string HouseNumber
         {
             get { return _HouseNumber; }
-            set { _HouseNumber = value; OnPropertyChanged("Area"); }
+            set
+            {
+                _HouseNumber = value;
+                OnPropertyChanged("Area");
+            }
         }
 
-        private string _LocalNumber;
         public string LocalNumber
         {
             get { return _LocalNumber; }
-            set { _LocalNumber = value; OnPropertyChanged("Area"); }
+            set
+            {
+                _LocalNumber = value;
+                OnPropertyChanged("Area");
+            }
         }
 
-        private string _Telephone;
         public string Telephone
         {
             get { return _Telephone; }
-            set { _Telephone = value; OnPropertyChanged("Area"); }
+            set
+            {
+                _Telephone = value;
+                OnPropertyChanged("Area");
+            }
         }
 
-        private List<Specialization> _Specialization;
         public List<Specialization> Specialization
         {
             get { return _Specialization; }
-            set { _Specialization = value; OnPropertyChanged("Area"); }
+            set
+            {
+                _Specialization = value;
+                OnPropertyChanged("Area");
+            }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
-        /// Methode for Cancel button.
+        ///     Methode for Cancel button.
         /// </summary>
-        void Cancel()
+        private void Cancel()
         {
             thisWindow.Close();
         }
 
         /// <summary>
-        /// Methode for Save button.
+        ///     Methode for Save button.
         /// </summary>
-        void Save()
+        private void Save()
         {
             using (var con = new BaudiDbContext())
             {
@@ -148,16 +181,15 @@ namespace Baudi.Client.ViewModels
             }
             thisWindowOwner.Update();
             thisWindow.Close();
-            
         }
 
         /// <summary>
-        /// Methode implementation from INotifyPropertyChanged
+        ///     Methode implementation from INotifyPropertyChanged
         /// </summary>
-        virtual public void OnPropertyChanged(string propName)
+        public virtual void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }	
+        }
     }
 }

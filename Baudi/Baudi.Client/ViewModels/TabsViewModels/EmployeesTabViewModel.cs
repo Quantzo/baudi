@@ -1,36 +1,32 @@
-﻿using Baudi.DAL;
-using Baudi.DAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Baudi.DAL;
+using Baudi.DAL.Models;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
-    public class EmployeesTabViewModel :TabViewModel
+    public class EmployeesTabViewModel : TabViewModel
     {
- 
         private List<Employee> _employeesList;
+
         public List<Employee> EmployeesList
         {
             get { return _employeesList; }
-            set { _employeesList = value; OnPropertyChanged("EmployeesList"); }
+            set
+            {
+                _employeesList = value;
+                OnPropertyChanged("EmployeesList");
+            }
         }
 
-        public Employee SelectedEmployee
-        {
-            get;
-            set;
-        }
+        public Employee SelectedEmployee { get; set; }
 
         public override void Load()
         {
             using (var con = new BaudiDbContext())
             {
                 EmployeesList = con.Employees.ToList();
-
             }
         }
 

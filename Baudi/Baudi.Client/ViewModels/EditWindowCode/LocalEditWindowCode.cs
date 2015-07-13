@@ -1,27 +1,30 @@
-﻿using Baudi.DAL;
-using Baudi.DAL.Models;
-using GUIBD;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Input;
+using Baudi.Client.View.EditWindows;
+using Baudi.DAL.Models;
 
-namespace Baudi.Client.ViewModels
+namespace Baudi.Client.ViewModels.EditWindowCode
 {
     public class LocalEditWindowCode
     {
+        /// selected Local in MainWindow
+        private readonly LocalEditWindow thisWindow;
 
-        Local selectedLocal; ///selected Local in MainWindow
-        LocalEditWindow thisWindow; ///Handler for window combined with this code.
-        BuildingEditWindowCode thisWindowOwner; ///Handler for MainWindow code.
+        /// Handler for window combined with this code.
+        private readonly BuildingEditWindowCode thisWindowOwner;
 
+        private double _Area;
+        private string _LocalNumber;
+        private int _NumberOfRooms;
+        private double _RentValue;
+        private Local selectedLocal;
+
+        /// Handler for MainWindow code.
         /// <summary>
-        /// Constructor - initialize handler, button, and form.
+        ///     Constructor - initialize handler, button, and form.
         /// </summary>
-        public LocalEditWindowCode(Local selectedLocal, LocalEditWindow thisWindow, BuildingEditWindowCode thisWindowOwner)
+        public LocalEditWindowCode(Local selectedLocal, LocalEditWindow thisWindow,
+            BuildingEditWindowCode thisWindowOwner)
         {
             this.selectedLocal = selectedLocal;
             this.thisWindow = thisWindow;
@@ -40,65 +43,77 @@ namespace Baudi.Client.ViewModels
         public ICommand Button_Click_Cancel { get; set; }
         public ICommand Button_Click_Save { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged = null;
-
-        private string _LocalNumber;
         public string LocalNumber
         {
             get { return _LocalNumber; }
-            set { _LocalNumber = value; OnPropertyChanged("LocalNumber"); }
+            set
+            {
+                _LocalNumber = value;
+                OnPropertyChanged("LocalNumber");
+            }
         }
 
-        private double _RentValue;
         public double RentValue
         {
             get { return _RentValue; }
-            set { _RentValue = value; OnPropertyChanged("RentValue"); }
+            set
+            {
+                _RentValue = value;
+                OnPropertyChanged("RentValue");
+            }
         }
 
-        private int _NumberOfRooms;
         public int NumberOfRooms
         {
             get { return _NumberOfRooms; }
-            set { _NumberOfRooms = value; OnPropertyChanged("NumberOfRooms"); }
+            set
+            {
+                _NumberOfRooms = value;
+                OnPropertyChanged("NumberOfRooms");
+            }
         }
 
-        private double _Area;
         public double Area
         {
             get { return _Area; }
-            set { _Area = value; OnPropertyChanged("Area");}
+            set
+            {
+                _Area = value;
+                OnPropertyChanged("Area");
+            }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
-        /// Methode for Cancel button.
+        ///     Methode for Cancel button.
         /// </summary>
-        void Cancel()
+        private void Cancel()
         {
             thisWindow.Close();
         }
 
         /// <summary>
-        /// Methode for Save button.
+        ///     Methode for Save button.
         /// </summary>
-        void Save()
+        private void Save()
         {
-                    var b = new Local();
-                    b.LocalNumber = LocalNumber;
-                    b.RentValue = RentValue;
-                    b.NumberOfRooms = NumberOfRooms;
-                    b.Area = Area;
-                    thisWindowOwner.Update(b);
-                    thisWindow.Close();
+            var b = new Local();
+            b.LocalNumber = LocalNumber;
+            b.RentValue = RentValue;
+            b.NumberOfRooms = NumberOfRooms;
+            b.Area = Area;
+            thisWindowOwner.Update(b);
+            thisWindow.Close();
         }
 
         /// <summary>
-        /// Methode implementation from INotifyPropertyChanged
+        ///     Methode implementation from INotifyPropertyChanged
         /// </summary>
-        virtual public void OnPropertyChanged(string propName)
+        public virtual void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }	
+        }
     }
 }

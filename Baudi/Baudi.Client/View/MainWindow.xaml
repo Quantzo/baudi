@@ -1,92 +1,94 @@
-﻿<Window x:Class="WpfApplication1.MainWindow"
+﻿<Window x:Class="Baudi.Client.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:tabs ="clr-namespace:Baudi.Client.View.Tabs"
+        xmlns:tabs="clr-namespace:Baudi.Client.View.Tabs"
         Title="Aplikacja" Height="393.175" Width="632">
 
     <Grid>
         <TabControl TabStripPlacement="Left" Margin="0, 0, 0, 0">
             <TabItem Name="NotificationsTab" Header="Zgłoszenia">
                 <TabItem.Content>
-                    <tabs:NotificationsTab DataContext="{Binding NotificationsTabViewModel}"/>
+                    <tabs:NotificationsTab DataContext="{Binding NotificationsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="CompaniesTab" Header="Firmy">
                 <TabItem.Content>
-                    <tabs:CompaniesTab DataContext="{Binding CompaniesTabViewModel}"/>
+                    <tabs:CompaniesTab DataContext="{Binding CompaniesTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="OrdersTab" Header="Zlecenia">
                 <TabItem.Content>
-                    <tabs:OrdersTab DataContext="{Binding OrdersTabViewModel}"/>
+                    <tabs:OrdersTab DataContext="{Binding OrdersTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="CyclicOrdersTab" Header="Zlecenia Stałe">
                 <TabItem.Content>
-                    <tabs:CyclicOrdersTab DataContext="{Binding CyclicOrdersTabViewModel}"/>
+                    <tabs:CyclicOrdersTab DataContext="{Binding CyclicOrdersTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" IsHitTestVisible="False">
                 <TabItem.Header>
-                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="2" Background="Black" />
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="2"
+                               Background="Black" />
                 </TabItem.Header>
             </TabItem>
             <TabItem Name="BuildingsTab" Header="Budynki/Lokale">
                 <TabItem.Content>
-                    <tabs:BuildingsTab DataContext="{Binding BuildingsTabViewModel}"/>
+                    <tabs:BuildingsTab DataContext="{Binding BuildingsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="OwnersTab" Header="Właściciele">
                 <TabItem.Content>
-                    <tabs:OwnersTab DataContext="{Binding OwnersTabViewModel}"/>
+                    <tabs:OwnersTab DataContext="{Binding OwnersTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="OwniningCompaniesTab" Header="Firmy-Właściciele">
                 <TabItem.Content>
-                    <tabs:OwningCompaniesTab DataContext="{Binding OwningCompaniesTabViewModel}"/>
+                    <tabs:OwningCompaniesTab DataContext="{Binding OwningCompaniesTabViewModel}" />
                 </TabItem.Content>
-            </TabItem>            
+            </TabItem>
             <TabItem Name="EmployeesTab" Header="Pracownicy">
                 <TabItem.Content>
-                    <tabs:EmployeesTab DataContext="{Binding EmployeesTabViewModel}"/>
+                    <tabs:EmployeesTab DataContext="{Binding EmployeesTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" IsHitTestVisible="False">
                 <TabItem.Header>
-                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="2" Background="Black" />
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="2"
+                               Background="Black" />
                 </TabItem.Header>
             </TabItem>
             <TabItem Name="ExpensesTab" Header="Wydatki: Zlecenia">
                 <TabItem.Content>
-                    <tabs:ExpensesTab DataContext="{Binding ExpensesTabViewModel}"/>
+                    <tabs:ExpensesTab DataContext="{Binding ExpensesTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="SalariesTab" Header="Pensje">
                 <TabItem.Content>
-                    <tabs:SalariesTab DataContext="{Binding SalariesTabViewModel}"/>
+                    <tabs:SalariesTab DataContext="{Binding SalariesTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="RentsTab" Header="Czynsz">
                 <TabItem.Content>
-                    <tabs:RentsTab DataContext="{Binding RentsTabViewModel}"/>
+                    <tabs:RentsTab DataContext="{Binding RentsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" IsHitTestVisible="False">
                 <TabItem.Header>
-                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="2" Background="Black" />
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="2"
+                               Background="Black" />
                 </TabItem.Header>
             </TabItem>
             <TabItem Name="ReportsTab" Header="Raporty">
                 <TabItem.Content>
-                    <tabs:ReportsTab DataContext="{Binding ReportsTabViewModel}"/>
+                    <tabs:ReportsTab DataContext="{Binding ReportsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="DictionariesTab" Header="Słowniki">
                 <TabItem.Content>
-                    <tabs:DictionariesTab DataContext="{Binding DictionariesTabViewModel}"/>
+                    <tabs:DictionariesTab DataContext="{Binding DictionariesTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
         </TabControl>
     </Grid>
 </Window>
- 

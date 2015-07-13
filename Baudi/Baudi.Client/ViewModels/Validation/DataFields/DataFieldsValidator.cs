@@ -1,11 +1,13 @@
-﻿namespace Baudi.Client.ViewModels.Validation.DataFields
+﻿using System;
+
+namespace Baudi.Client.ViewModels.Validation.DataFields
 {
     public class DataFieldsValidator : DataTypeValidator
     {
         /// <summary>
         ///     Exception message's new line seperator - chanege if needed
         /// </summary>
-        private readonly string _lineSeperator = System.Environment.NewLine;
+        private readonly string _lineSeperator = Environment.NewLine;
 
         public bool IsSalaryCorrect(string salary, ref string exceptionMessage)
         {

@@ -1,31 +1,47 @@
-﻿using Baudi.DAL;
-using Baudi.DAL.Models;
-using GUIBD;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Baudi.Client.View.EditWindows;
+using Baudi.DAL;
+using Baudi.DAL.Models;
 
-namespace Baudi.Client.ViewModels
+namespace Baudi.Client.ViewModels.EditWindowCode
 {
     public class OwnerEditWindowCode : INotifyPropertyChanged
     {
+        /// Handler for MainWindow code.
+        private readonly List<Ownership> addedOwnership;
 
-        Person selectedOwner; ///Selected Building in MainWindow.
-        OwnerEditWindow thisWindow; ///Handler for window combined with this code.
-        MainWindowViewModel thisWindowOwner; ///Handler for MainWindow code.
+        /// List with updated Ownership.
+        private readonly List<Ownership> deleteOwnership;
 
-        List<Ownership> addedOwnership; ///List with added Ownership.
-        List<Ownership> updatedOwnership; ///List with updated Ownership.
-        List<Ownership> deleteOwnership; ///List with deletedOwnership.
-        bool update = false;
+        private readonly Person selectedOwner;
+
+        /// Selected Building in MainWindow.
+        private readonly OwnerEditWindow thisWindow;
+
+        /// Handler for window combined with this code.
+        private readonly MainWindowViewModel thisWindowOwner;
+
+        /// List with added Ownership.
+        private readonly List<Ownership> updatedOwnership;
+
+        private string _City;
+        private string _HouseNumber;
+        private string _LocalNumber;
+        private string _Name;
+        private List<Ownership> _OwnershipsList;
+        private string _PESEL;
+        private string _Street;
+        private string _Surname;
+        private string _Telephone;
+
+        /// List with deletedOwnership.
+        private bool update;
 
         /// <summary>
-        /// Constructor - initialize handler, button, and form.
+        ///     Constructor - initialize handler, button, and form.
         /// </summary>
         /// <param name="selectedOwner"></param>
         /// <param name="thisWindow"></param>
@@ -63,128 +79,150 @@ namespace Baudi.Client.ViewModels
         public ICommand Button_Click_Edit { get; set; }
         public ICommand Button_Click_Delete { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged = null;
-
-        private string _Name;
         public string Name
         {
             get { return _Name; }
-            set { _Name = value; OnPropertyChanged("LocalNumber"); }
+            set
+            {
+                _Name = value;
+                OnPropertyChanged("LocalNumber");
+            }
         }
-        
-        private string _Surname;
+
         public string Surname
         {
             get { return _Surname; }
-            set { _Surname = value; OnPropertyChanged("NumberOfRooms"); }
+            set
+            {
+                _Surname = value;
+                OnPropertyChanged("NumberOfRooms");
+            }
         }
 
-        private string _PESEL;
         public string PESEL
         {
             get { return _PESEL; }
-            set { _PESEL = value; OnPropertyChanged("PESEL");}
+            set
+            {
+                _PESEL = value;
+                OnPropertyChanged("PESEL");
+            }
         }
 
-        private string _Street;
         public string Street
         {
             get { return _Street; }
-            set { _Street = value; OnPropertyChanged("Street"); }
+            set
+            {
+                _Street = value;
+                OnPropertyChanged("Street");
+            }
         }
 
-        private string _HouseNumber;
         public string HouseNumber
         {
             get { return _HouseNumber; }
-            set { _HouseNumber = value; OnPropertyChanged("HouseNumber"); }
+            set
+            {
+                _HouseNumber = value;
+                OnPropertyChanged("HouseNumber");
+            }
         }
 
-        private string _LocalNumber;
         public string LocalNumber
         {
             get { return _LocalNumber; }
-            set { _LocalNumber = value; OnPropertyChanged("LocalNumber"); }
+            set
+            {
+                _LocalNumber = value;
+                OnPropertyChanged("LocalNumber");
+            }
         }
 
-        private string _Telephone;
         public string Telephone
         {
             get { return _Telephone; }
-            set { _Telephone = value; OnPropertyChanged("Telephone"); }
+            set
+            {
+                _Telephone = value;
+                OnPropertyChanged("Telephone");
+            }
         }
 
-        private string _City;
         public string City
         {
             get { return _City; }
-            set { _City = value; OnPropertyChanged("City"); }
+            set
+            {
+                _City = value;
+                OnPropertyChanged("City");
+            }
         }
 
-        private List<Ownership> _OwnershipsList;
         public List<Ownership> OwnershipsList
         {
             get { return _OwnershipsList; }
-            set { _OwnershipsList = value; OnPropertyChanged("OwnershipsList"); }
+            set
+            {
+                _OwnershipsList = value;
+                OnPropertyChanged("OwnershipsList");
+            }
         }
 
+        public Ownership SelectedOwnership { get; set; }
 
-        public Ownership SelectedOwnership
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        ///     Methode for Add button.
+        /// </summary>
+        private void Add()
         {
-            get;
-            set;
+            update = false;
+            Ownership b = null;
+            var bew = new OwnershipEditWindow(b, this);
+            bew.Show();
         }
 
         /// <summary>
-        /// Methode for Add button.
+        ///     Methode for Edit button.
         /// </summary>
-        void Add()
-        {
-                update = false;
-                Ownership b = null;
-                OwnershipEditWindow bew = new OwnershipEditWindow(b, this);
-                bew.Show();
-        }
-
-        /// <summary>
-        /// Methode for Edit button.
-        /// </summary>
-        void Edit()
+        private void Edit()
         {
             if (SelectedOwnership != null)
             {
                 update = true;
-                OwnershipEditWindow bew = new OwnershipEditWindow(SelectedOwnership, this);
+                var bew = new OwnershipEditWindow(SelectedOwnership, this);
                 bew.Show();
             }
             else
-                MessageBox.Show("Musisz wybrać posiadanie żeby edytować", "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Musisz wybrać posiadanie żeby edytować", "Ostrzeżenie", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
         }
 
         /// <summary>
-        /// Methode for Delete button.
+        ///     Methode for Delete button.
         /// </summary>
-        void Delete()
+        private void Delete()
         {
-            Ownership b = OwnershipsList.Find(x => x.OwnershipID.Equals(SelectedOwnership.OwnershipID));
+            var b = OwnershipsList.Find(x => x.OwnershipID.Equals(SelectedOwnership.OwnershipID));
             deleteOwnership.Add(b);
             Update(null);
         }
 
         /// <summary>
-        /// Methode for Cancel button.
+        ///     Methode for Cancel button.
         /// </summary>
-        void Cancel()
+        private void Cancel()
         {
             thisWindow.Close();
         }
 
         /// <summary>
-        /// Methode for Save button.
+        ///     Methode for Save button.
         /// </summary>
-        void Save()
+        private void Save()
         {
-            
             deleteOwnership.ForEach(a => addedOwnership.Remove(a));
             deleteOwnership.ForEach(a => addedOwnership.Remove(a));
             using (var con = new BaudiDbContext())
@@ -204,7 +242,7 @@ namespace Baudi.Client.ViewModels
                         orginal.City = City;
                         if (addedOwnership.Count != 0)
                         {
-                            foreach (Ownership l in addedOwnership)
+                            foreach (var l in addedOwnership)
                             {
                                 l.Local = con.Locals.Find(l.Local.NotificationTargetID);
                             }
@@ -213,15 +251,14 @@ namespace Baudi.Client.ViewModels
                         orginal.Ownerships.AddRange(addedOwnership);
                         if (updatedOwnership.Count != 0)
                         {
-                            foreach (Ownership l in updatedOwnership)
+                            foreach (var l in updatedOwnership)
                             {
-                                Ownership temp = con.Ownerships.Find(l.OwnershipID);
+                                var temp = con.Ownerships.Find(l.OwnershipID);
                                 temp.Local = con.Locals.Find(l.Local.NotificationTargetID);
                                 temp.PurchaseDate = l.PurchaseDate;
                                 temp.SaleDate = l.SaleDate;
                             }
-                        }  
-                      
+                        }
                     }
                 }
                 else
@@ -239,9 +276,9 @@ namespace Baudi.Client.ViewModels
                     con.Peoples.Add(e);
                     if (updatedOwnership.Count != 0)
                     {
-                        foreach (Ownership l in updatedOwnership)
+                        foreach (var l in updatedOwnership)
                         {
-                            Ownership temp = con.Ownerships.Find(l.OwnershipID);
+                            var temp = con.Ownerships.Find(l.OwnershipID);
                             temp.Local = con.Locals.Find(l.Local.NotificationTargetID);
                             temp.PurchaseDate = l.PurchaseDate;
                             temp.SaleDate = l.SaleDate;
@@ -252,17 +289,16 @@ namespace Baudi.Client.ViewModels
             }
             thisWindowOwner.Update();
             thisWindow.Close();
-            
         }
 
         /// <summary>
-        ///  Update from OwnershipEditWindow.
+        ///     Update from OwnershipEditWindow.
         /// </summary>
         public void Update(Ownership b)
         {
             if (b == null)
             {
-                List<Ownership> actualList = new List<Ownership>();
+                var actualList = new List<Ownership>();
                 actualList = OwnershipsList;
                 deleteOwnership.ForEach(a => actualList.Remove(a));
                 OwnershipsList = actualList;
@@ -271,8 +307,7 @@ namespace Baudi.Client.ViewModels
             {
                 if (update == false)
                 {
-
-                    List<Ownership> actualList = new List<Ownership>();
+                    var actualList = new List<Ownership>();
                     addedOwnership.Add(b);
                     actualList.Add(b);
                     if (OwnershipsList != null)
@@ -285,7 +320,7 @@ namespace Baudi.Client.ViewModels
                 }
                 else
                 {
-                    List<Ownership> actualList = new List<Ownership>();
+                    var actualList = new List<Ownership>();
                     Ownership orginal;
                     if ((orginal = updatedOwnership.Find(x => x.OwnershipID == b.OwnershipID)) != null)
                     {
@@ -313,12 +348,12 @@ namespace Baudi.Client.ViewModels
         }
 
         /// <summary>
-        /// Methode implementation from INotifyPropertyChanged
+        ///     Methode implementation from INotifyPropertyChanged
         /// </summary>
-        virtual public void OnPropertyChanged(string propName)
+        public virtual void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }	
+        }
     }
 }

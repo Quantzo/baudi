@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Baudi.Client.ViewModels
@@ -11,8 +7,10 @@ namespace Baudi.Client.ViewModels
     public class RelayCommand : ICommand
     {
         #region Fields
-        readonly Action<object> _execute;
-        readonly Predicate<object> _canExecute;
+
+        private readonly Action<object> _execute;
+        private readonly Predicate<object> _canExecute;
+
         #endregion // Fields
 
         #region Constructors
@@ -30,6 +28,7 @@ namespace Baudi.Client.ViewModels
             _execute = execute;
             _canExecute = canExecute;
         }
+
         #endregion // Constructors
 
         #region ICommand Members

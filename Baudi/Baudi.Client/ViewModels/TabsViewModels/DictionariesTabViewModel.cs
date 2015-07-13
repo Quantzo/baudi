@@ -1,11 +1,4 @@
-﻿using Baudi.DAL;
-using Baudi.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
@@ -15,9 +8,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             Load();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public void Load()
         {
         }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

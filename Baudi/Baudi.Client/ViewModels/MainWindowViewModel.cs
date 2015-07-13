@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baudi.DAL;
-using Baudi.DAL.Models;
-using System.Windows.Input;
-using GUIBD;
-using System.Data;
-using System.Data.Entity;
-using WpfApplication1;
-using System.Windows;
+﻿using System.ComponentModel;
 using Baudi.Client.ViewModels.TabsViewModels;
 
 namespace Baudi.Client.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        public BuildingsTabViewModel BuildingsTabViewModel { get; set;}
+        public MainWindowViewModel()
+        {
+            Load();
+        }
+
+        public BuildingsTabViewModel BuildingsTabViewModel { get; set; }
         public CompaniesTabViewModel CompaniesTabViewModel { get; set; }
         public CyclicOrdersTabViewModel CyclicOrdersTabViewModel { get; set; }
         public DictionariesTabViewModel DictionariesTabViewModel { get; set; }
@@ -31,18 +23,9 @@ namespace Baudi.Client.ViewModels
         public RentsTabViewModel RentsTabViewModel { get; set; }
         public ReportsTabViewModel ReportsTabViewModel { get; set; }
         public SalariesTabViewModel SalariesTabViewModel { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-
-
-
-        public MainWindowViewModel()
-        {
-            Load();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;       
-
-        void Load()
+        private void Load()
         {
             BuildingsTabViewModel = new BuildingsTabViewModel();
             CompaniesTabViewModel = new CompaniesTabViewModel();
@@ -54,22 +37,19 @@ namespace Baudi.Client.ViewModels
             OrdersTabViewModel = new OrdersTabViewModel();
             OwnersTabViewModel = new OwnersTabViewModel();
             OwningCompaniesTabViewModel = new OwningCompaniesTabViewModel();
-            RentsTabViewModel =  new RentsTabViewModel();
+            RentsTabViewModel = new RentsTabViewModel();
             ReportsTabViewModel = new ReportsTabViewModel();
             SalariesTabViewModel = new SalariesTabViewModel();
-
         }
 
         public void Update()
         {
-
         }
 
         private void OnPropertyChanged(string property)
         {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(property));
-        } 
-
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+        }
     }
 }
