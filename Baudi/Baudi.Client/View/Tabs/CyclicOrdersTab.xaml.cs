@@ -1,6 +1,4 @@
-﻿using Baudi.Client.ViewModels;
-using GUIBD;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApplication1
+namespace Baudi.Client.View.Tabs
 {
     /// <summary>
-    /// Interaction logic for ReallyMainWindow.xaml
+    /// Interaction logic for CyclicOrdersTab.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CyclicOrdersTab : UserControl
     {
-        public MainWindow()
+        public CyclicOrdersTab()
         {
-            
             InitializeComponent();
-            this.DataContext = new MainWindowCode();
-        }        
+        }
     }
-
 }

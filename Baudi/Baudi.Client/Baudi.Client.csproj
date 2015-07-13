@@ -43,8 +43,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -73,6 +75,19 @@
     <Compile Include="ViewModels\EditWindowCode\OwnershipEditWindowCode.cs" />
     <Compile Include="ViewModels\EditWindowCode\OwnerEditWindowCode.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\TabsViewModels\BuildingsTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\CompaniesTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\CyclicOrdersTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\DictionariesTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\EmployeesTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\ExpensesTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\NotificationsTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\OrdersTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\OwnersTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\OwningCompaniesTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\RentsTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\ReportsTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\SalariesTabViewModel.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataFieldsValidator.cs" />
     <Compile Include="ViewModels\Validation\DataFields\DataTypeValidator.cs" />
     <Compile Include="ViewModels\Validation\Exceptions\WrongDataException.cs" />
@@ -120,6 +135,45 @@
     </Compile>
     <Compile Include="View\SelectorWindow\LocalSelector.xaml.cs">
       <DependentUpon>LocalSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\BuildingsTab.xaml.cs">
+      <DependentUpon>BuildingsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\CompaniesTab.xaml.cs">
+      <DependentUpon>CompaniesTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\CyclicOrdersTab.xaml.cs">
+      <DependentUpon>CyclicOrdersTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\DictionariesTab.xaml.cs">
+      <DependentUpon>DictionariesTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\EmployeesTab.xaml.cs">
+      <DependentUpon>EmployeesTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\ExpensesTab.xaml.cs">
+      <DependentUpon>ExpensesTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\NotificationsTab.xaml.cs">
+      <DependentUpon>NotificationsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\OrdersTab.xaml.cs">
+      <DependentUpon>OrdersTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\OwnersTab.xaml.cs">
+      <DependentUpon>OwnersTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\OwningCompaniesTab.xaml.cs">
+      <DependentUpon>OwningCompaniesTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\RentsTab.xaml.cs">
+      <DependentUpon>RentsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\ReportsTab.xaml.cs">
+      <DependentUpon>ReportsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\SalariesTab.xaml.cs">
+      <DependentUpon>SalariesTab.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindowOld.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -190,6 +244,58 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SelectorWindow\LocalSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\BuildingsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\CompaniesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\CyclicOrdersTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\DictionariesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\EmployeesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\ExpensesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\NotificationsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\OrdersTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\OwnersTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\OwningCompaniesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\RentsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\ReportsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\SalariesTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
