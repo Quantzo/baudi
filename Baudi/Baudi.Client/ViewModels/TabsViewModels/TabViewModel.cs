@@ -18,11 +18,17 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         public ICommand ButtonEdit { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         public abstract void Add();
-        public abstract void Update();
         public abstract void Delete();
         public abstract void Edit();
         public abstract void Load();
         public abstract bool IsSomethingSelected();
+
+
+        public void Update()
+        {
+            OnPropertyChanged("Update");
+        }
+
 
         public void OnPropertyChanged(string property)
         {

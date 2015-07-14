@@ -1,5 +1,8 @@
 ﻿using System.ComponentModel;
 using Baudi.Client.ViewModels.TabsViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Baudi.Client.ViewModels
 {
@@ -9,7 +12,7 @@ namespace Baudi.Client.ViewModels
         {
             Load();
         }
-
+        public List<TabViewModel> TabsViewModels { get; set; }
         public BuildingsTabViewModel BuildingsTabViewModel { get; set; }
         public CompaniesTabViewModel CompaniesTabViewModel { get; set; }
         public CyclicOrdersTabViewModel CyclicOrdersTabViewModel { get; set; }
@@ -27,6 +30,7 @@ namespace Baudi.Client.ViewModels
 
         private void Load()
         {
+            TabsViewModels = new List<TabViewModel>();
             BuildingsTabViewModel = new BuildingsTabViewModel();
             CompaniesTabViewModel = new CompaniesTabViewModel();
             CyclicOrdersTabViewModel = new CyclicOrdersTabViewModel();
@@ -40,10 +44,34 @@ namespace Baudi.Client.ViewModels
             RentsTabViewModel = new RentsTabViewModel();
             ReportsTabViewModel = new ReportsTabViewModel();
             SalariesTabViewModel = new SalariesTabViewModel();
+
+
+            TabsViewModels.Add(BuildingsTabViewModel);
+            TabsViewModels.Add(CompaniesTabViewModel);
+            TabsViewModels.Add(CyclicOrdersTabViewModel);
+            //TabsViewModels.Add(DictionariesTabViewModel);
+            TabsViewModels.Add(EmployeesTabViewModel);
+            TabsViewModels.Add(ExpensesTabViewModel);
+            TabsViewModels.Add(NotificationsTabViewModel);
+            TabsViewModels.Add(OrdersTabViewModel);
+            TabsViewModels.Add(OwnersTabViewModel);
+            TabsViewModels.Add(OwningCompaniesTabViewModel);
+            TabsViewModels.Add(RentsTabViewModel);
+            //TabsViewModels.Add(ReportsTabViewModel);
+            TabsViewModels.Add(SalariesTabViewModel);
+
+            TabsViewModels.ForEach(vm => vm.PropertyChanged += OnMemberViewModelPropertyChanged);
+
+
+            
         }
 
-        public void Update()
+        private void OnMemberViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            if(e.PropertyName == "Update")
+            {
+                TabsViewModels.ForEach(vm => vm.Load());
+            }
         }
 
         private void OnPropertyChanged(string property)

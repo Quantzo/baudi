@@ -36,10 +36,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             throw new NotImplementedException();
         }
 
-        public override void Update()
-        {
-            Load();
-        }
+
 
         public override void Delete()
         {
@@ -49,7 +46,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
                 con.Orders.RemoveRange(notification.Orders);
                 con.Notifications.Remove(notification);
                 con.SaveChanges();
-            }
+            }            
             Update();
         }
 
@@ -66,5 +63,6 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             }
             return false;
         }
+
     }
 }

@@ -34,12 +34,6 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             throw new NotImplementedException();
         }
-
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Delete()
         {
             throw new NotImplementedException();
@@ -52,7 +46,11 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override bool IsSomethingSelected()
         {
-            throw new NotImplementedException();
+            if (SelectedCompany != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
