@@ -37,7 +37,29 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Delete()
         {
-            throw new NotImplementedException();
+            using( var con = new BaudiDbContext())
+            {
+                var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
+
+                
+
+                building.Locals.ForEach(l => l.Notifactions.ForEach(n => con.Orders.RemoveRange(n.Orders)));
+                building.Locals.ForEach(l => con.Notifications.RemoveRange(l.Notifactions));
+                building.Locals.ForEach(l => con.Ownerships.RemoveRange(l.Ownerships));
+                con.Locals.RemoveRange(building.Locals);
+                
+                
+
+                con.Notifications.RemoveRange(building.Notifactions);
+                building.Notifactions.ForEach(n => con.Orders.RemoveRange(n.Orders));
+
+                con.CyclicOrders.RemoveRange(building.CyclicOrders);
+
+
+                con.Buildings.Remove(building);
+                con.SaveChanges();
+            }
+            Update();
         }
 
         public override void Edit()

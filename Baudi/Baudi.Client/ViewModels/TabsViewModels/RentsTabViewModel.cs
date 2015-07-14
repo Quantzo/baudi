@@ -40,7 +40,14 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Delete()
         {
-            throw new NotImplementedException();
+            using (var con = new BaudiDbContext())
+            {
+                var rent = con.Rents.Find(SelectedRent.PaymentID);
+                rent.Ownership = null;
+                con.Rents.Remove(rent);
+                con.SaveChanges();
+            }
+            Update();
         }
 
         public override void Edit()

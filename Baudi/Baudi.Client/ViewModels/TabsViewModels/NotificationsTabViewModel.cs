@@ -35,16 +35,14 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             throw new NotImplementedException();
         }
-
-
-
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
             {
                 var notification = con.Notifications.Find(SelectedNotification.NotificationID);
-                con.Orders.RemoveRange(notification.Orders);
+                con.Orders.RemoveRange(notification.Orders); 
                 con.Notifications.Remove(notification);
+                               
                 con.SaveChanges();
             }            
             Update();

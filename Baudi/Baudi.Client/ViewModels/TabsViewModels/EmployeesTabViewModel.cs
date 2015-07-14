@@ -36,7 +36,37 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         }
         public override void Delete()
         {
-            throw new NotImplementedException();
+            using (var con = new BaudiDbContext())
+            {
+                var employee = con.Employees.Find(SelectedEmployee.OwnerID);
+                con.Salaries.RemoveRange(employee.Salaries);
+
+                var dispatcher = employee as Dispatcher;
+                var menager = employee as Menager;
+
+                employee.Notifications.Clear();
+                con.Ownerships.RemoveRange(employee.Ownerships);                
+
+                if (dispatcher != null)
+                {
+                    dispatcher.DispatcherNotifications.Clear();
+                    con.Employees.Remove(dispatcher);
+                }
+                else if (menager != null)
+                {
+                    menager.MenagerSalaries.Clear();
+                    menager.MenagerExpenses.Clear();
+                    menager.CyclicOrders.Clear();
+                    menager.Orders.Clear();
+                    con.Employees.Remove(menager);
+                }
+                else
+                {
+                    con.Employees.Remove(employee);
+                }
+                con.SaveChanges();
+            }
+            Update();
         }
 
         public override void Edit()

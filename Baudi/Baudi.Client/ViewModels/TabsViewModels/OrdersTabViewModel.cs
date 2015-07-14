@@ -41,7 +41,18 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Delete()
         {
-            throw new NotImplementedException();
+            using (var con = new BaudiDbContext())
+            {
+                var order = con.Orders.Find(SelectedOrder.ExpenseTargetID);
+                order.Company = null;
+                con.Expenses.RemoveRange(order.Expenses);
+                order.Menager = null;
+                order.Notification = null;
+                order.OrderType = null;
+                con.Orders.Remove(order);
+                con.SaveChanges();
+            }
+            Update();
         }
 
         public override void Edit()

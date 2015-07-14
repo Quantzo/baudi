@@ -66,6 +66,11 @@ namespace Baudi.Client.ViewModels
             
         }
 
+        public void Update()
+        {
+
+        }
+
         private void OnMemberViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName == "Update")

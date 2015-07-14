@@ -123,7 +123,7 @@ namespace Baudi.DAL
 
             modelBuilder.Entity<Owner>()
                 .HasMany(o => o.Notifications)
-                .WithRequired(n => n.Owner)
+                .WithOptional(n => n.Owner)
                 .WillCascadeOnDelete(true);
 
             #endregion

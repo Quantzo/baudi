@@ -36,7 +36,15 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         }
         public override void Delete()
         {
-            throw new NotImplementedException();
+            using (var con = new BaudiDbContext())
+            {
+                var owningCompany = con.OwningCompanies.Find(SelectedOwningCompany.OwnerID);
+                owningCompany.Notifications.Clear();
+                con.Ownerships.RemoveRange(owningCompany.Ownerships);
+                con.OwningCompanies.Remove(owningCompany);
+                con.SaveChanges();
+            }
+            Update();
         }
 
         public override void Edit()

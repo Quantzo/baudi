@@ -41,7 +41,15 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Delete()
         {
-            throw new NotImplementedException();
+            using (var con = new BaudiDbContext())
+            {
+                var salary = con.Salaries.Find(SelectedSalary.PaymentID);
+                salary.Menager = null;
+                salary.Employee = null;
+                con.Salaries.Remove(salary);
+                con.SaveChanges();
+            }
+            Update();
         }
 
         public override void Edit()
