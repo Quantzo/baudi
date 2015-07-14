@@ -65,15 +65,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToTextConverter.cs" />
-    <Compile Include="ViewModels\EditWindowCode\BuildingEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\BuildingEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\EditWindowViewModel.cs" />
     <Compile Include="ViewModels\SelectorWindowCode\BuildingSelectorCode.cs" />
-    <Compile Include="ViewModels\EditWindowCode\CompanyEditWindowCode.cs" />
-    <Compile Include="ViewModels\EditWindowCode\EmployeeEditWindowCode.cs" />
-    <Compile Include="ViewModels\EditWindowCode\LocalEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\CompanyEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\EmployeeEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\LocalEditWindowCode.cs" />
     <Compile Include="ViewModels\SelectorWindowCode\LocalSelectorCode.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\EditWindowCode\OwnershipEditWindowCode.cs" />
-    <Compile Include="ViewModels\EditWindowCode\OwnerEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\OwnershipEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\OwnerEditWindowCode.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\TabsViewModels\BuildingsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\CompaniesTabViewModel.cs" />
@@ -89,9 +90,9 @@
     <Compile Include="ViewModels\TabsViewModels\ReportsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\SalariesTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\TabViewModel.cs" />
-    <Compile Include="ViewModels\Validation\DataFields\DataFieldsValidator.cs" />
-    <Compile Include="ViewModels\Validation\DataFields\DataTypeValidator.cs" />
-    <Compile Include="ViewModels\Validation\Exceptions\WrongDataException.cs" />
+    <Compile Include="Validation\DataFields\DataFieldsValidator.cs" />
+    <Compile Include="Validation\DataFields\DataTypeValidator.cs" />
+    <Compile Include="Validation\Exceptions\WrongDataException.cs" />
     <Compile Include="View\EditWindows\BuildingEditWindow.xaml.cs">
       <DependentUpon>BuildingEditWindow.xaml</DependentUpon>
     </Compile>
@@ -176,16 +177,8 @@
     <Compile Include="View\Tabs\SalariesTab.xaml.cs">
       <DependentUpon>SalariesTab.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindowOld.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindowOld.xaml.cs">
-      <DependentUpon>MainWindowOld.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\EditWindows\BuildingEditWindow.xaml">

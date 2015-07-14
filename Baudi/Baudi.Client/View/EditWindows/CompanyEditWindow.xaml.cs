@@ -2,6 +2,7 @@
 using Baudi.Client.ViewModels;
 using Baudi.Client.ViewModels.EditWindowCode;
 using Baudi.DAL.Models;
+using Baudi.Client.ViewModels.TabsViewModels;
 
 namespace Baudi.Client.View.EditWindows
 {
@@ -10,20 +11,10 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class CompanyEditWindow : Window
     {
-        public CompanyEditWindow(Company selectedCompany, MainWindowViewModel owner)
+        public CompanyEditWindow(CompaniesTabViewModel companiesTabViewModel, Company company)
         {
             InitializeComponent();
-            DataContext = new CompanyEditWindowCode(selectedCompany, this, owner);
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+            DataContext = new CompanyEditWindowViewModel(companiesTabViewModel, this, company);
         }
     }
 }
