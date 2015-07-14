@@ -19,6 +19,7 @@ namespace Baudi.Client.ViewModels
         public DictionariesTabViewModel DictionariesTabViewModel { get; set; }
         public EmployeesTabViewModel EmployeesTabViewModel { get; set; }
         public ExpensesTabViewModel ExpensesTabViewModel { get; set; }
+        public LocalsTabViewModel LocalsTabViewModel { get; set; }
         public NotificationsTabViewModel NotificationsTabViewModel { get; set; }
         public OrdersTabViewModel OrdersTabViewModel { get; set; }
         public OwnersTabViewModel OwnersTabViewModel { get; set; }
@@ -37,6 +38,7 @@ namespace Baudi.Client.ViewModels
             DictionariesTabViewModel = new DictionariesTabViewModel();
             EmployeesTabViewModel = new EmployeesTabViewModel();
             ExpensesTabViewModel = new ExpensesTabViewModel();
+            LocalsTabViewModel = new LocalsTabViewModel();
             NotificationsTabViewModel = new NotificationsTabViewModel();
             OrdersTabViewModel = new OrdersTabViewModel();
             OwnersTabViewModel = new OwnersTabViewModel();
@@ -53,6 +55,7 @@ namespace Baudi.Client.ViewModels
             TabsViewModels.Add(EmployeesTabViewModel);
             TabsViewModels.Add(ExpensesTabViewModel);
             TabsViewModels.Add(NotificationsTabViewModel);
+            TabsViewModels.Add(LocalsTabViewModel);
             TabsViewModels.Add(OrdersTabViewModel);
             TabsViewModels.Add(OwnersTabViewModel);
             TabsViewModels.Add(OwningCompaniesTabViewModel);

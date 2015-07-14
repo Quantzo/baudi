@@ -82,6 +82,7 @@
     <Compile Include="ViewModels\TabsViewModels\DictionariesTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\EmployeesTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\ExpensesTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\LocalsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\NotificationsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\OrdersTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\OwnersTabViewModel.cs" />
@@ -155,6 +156,9 @@
     </Compile>
     <Compile Include="View\Tabs\ExpensesTab.xaml.cs">
       <DependentUpon>ExpensesTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\LocalsTab.xaml.cs">
+      <DependentUpon>LocalsTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Tabs\NotificationsTab.xaml.cs">
       <DependentUpon>NotificationsTab.xaml</DependentUpon>
@@ -262,6 +266,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Tabs\ExpensesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\LocalsTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

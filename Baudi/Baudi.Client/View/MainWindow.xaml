@@ -32,9 +32,14 @@
                                Background="Black" />
                 </TabItem.Header>
             </TabItem>
-            <TabItem Name="BuildingsTab" Header="Budynki/Lokale">
+            <TabItem Name="BuildingsTab" Header="Budynki">
                 <TabItem.Content>
                     <tabs:BuildingsTab DataContext="{Binding BuildingsTabViewModel}" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Name="LocalsTab" Header="Lokale">
+                <TabItem.Content>
+                    <tabs:LocalsTab DataContext="{Binding LocalsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="OwnersTab" Header="Właściciele">
