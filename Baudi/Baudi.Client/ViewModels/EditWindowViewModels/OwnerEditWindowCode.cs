@@ -6,7 +6,7 @@ using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 
-namespace Baudi.Client.ViewModels.EditWindowCode
+namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class OwnerEditWindowCode : INotifyPropertyChanged
     {

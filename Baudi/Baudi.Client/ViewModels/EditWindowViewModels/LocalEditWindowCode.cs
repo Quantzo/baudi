@@ -1,9 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows.Input;
-using Baudi.Client.View.EditWindows;
-using Baudi.DAL.Models;
-
-namespace Baudi.Client.ViewModels.EditWindowCode
+﻿namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class LocalEditWindowCode
     {

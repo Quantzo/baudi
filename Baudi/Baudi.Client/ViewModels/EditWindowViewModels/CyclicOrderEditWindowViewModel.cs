@@ -28,7 +28,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
 
         public CyclicOrderEditWindowViewModel(CyclicOrdersTabViewModel cyclicOrderTabViewModel, CyclicOrderEditWindow cyclicOrderEditWindow, CyclicOrder cyclicOrder)
-            : base(cyclicOrderTabViewModel, cyclicOrderEditWindow)
+            : base(cyclicOrderTabViewModel, cyclicOrderEditWindow, cyclicOrder)
         {
 
         }

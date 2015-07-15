@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using Baudi.Client.ViewModels.EditWindowCode;
+using Baudi.Client.ViewModels.EditWindowViewModels;
 using Baudi.Client.ViewModels.SelectorWindowCode;
 using Baudi.DAL.Models;
 

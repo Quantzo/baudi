@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Windows;
 using System.Windows.Input;
 using Baudi.Client.View.EditWindows;
@@ -26,28 +27,27 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         }
 
         public BuildingEditWindowViewModel(BuildingsTabViewModel buildingsTabViewModel, BuildingEditWindow buildingEditWindow,Building building)
-            :base(buildingsTabViewModel, buildingEditWindow)
+            :base(buildingsTabViewModel, buildingEditWindow, building)
         {
-            Building = new Building
+            if (Update)
             {
-                NotificationTargetID = building.NotificationTargetID,
-                City = building.City,
-                HouseNumber = building.HouseNumber,
-                Street = building.Street
-            };        
+                Building = new Building
+                {
+                    NotificationTargetID = building.NotificationTargetID,
+                    City = building.City,
+                    HouseNumber = building.HouseNumber,
+                    Street = building.Street
+                };
+            }
+            else
+            {
+                Building = new Building();
+            }
         }
 
         public override void Save()
         {
-            if (Building.NotificationTargetID == 0)
-            {
-                using (var con = new BaudiDbContext())
-                {
-                    con.Buildings.Add(Building);
-                    con.SaveChanges();
-                }
-            }
-            else
+            if (Update)
             {
                 using (var con = new BaudiDbContext())
                 {
@@ -55,6 +55,16 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                     building.City = Building.City;
                     building.HouseNumber = Building.HouseNumber;
                     building.Street = Building.Street;
+
+                    con.Entry(building).State = EntityState.Modified;
+                    con.SaveChanges();
+                }
+            }
+            else
+            {
+                using (var con = new BaudiDbContext())
+                {
+                    con.Buildings.Add(Building);
                     con.SaveChanges();
                 }
             }

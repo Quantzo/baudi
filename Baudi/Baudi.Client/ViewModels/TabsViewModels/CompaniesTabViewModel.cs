@@ -33,8 +33,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Add()
         {
-            var company = new Company();
-            var companyEditWindow = new CompanyEditWindow(this, company);
+            var companyEditWindow = new CompanyEditWindow(this, null);
             companyEditWindow.Show();
         }
         public override void Delete()

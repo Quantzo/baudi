@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Baudi.Client.ViewModels.EditWindowCode;
 using Baudi.DAL.Models;
 
 namespace Baudi.Client.View.EditWindows

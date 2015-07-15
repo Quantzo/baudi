@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Baudi.Client.View.SelectorWindow;
-using Baudi.Client.ViewModels.EditWindowCode;
+using Baudi.Client.ViewModels.EditWindowViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 

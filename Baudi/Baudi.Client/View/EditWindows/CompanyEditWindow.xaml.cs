@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using Baudi.Client.ViewModels;
-using Baudi.Client.ViewModels.EditWindowCode;
+using Baudi.Client.ViewModels.EditWindowViewModels;
 using Baudi.DAL.Models;
 using Baudi.Client.ViewModels.TabsViewModels;
 

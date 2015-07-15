@@ -33,8 +33,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Add()
         {
-            var building = new Building();
-            var buildingEditWindow = new BuildingEditWindow(this, building);
+            var buildingEditWindow = new BuildingEditWindow(this, null);
             buildingEditWindow.Show();
         }
 

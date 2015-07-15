@@ -18,7 +18,7 @@
         <Label VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,2" Width="37">Cena</Label>
         <TextBox Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" Margin="5,0,0,0" Text="{Binding CyclicOrder.Cost}" />
 
-        <Label VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Height="26" Margin="0,2" Width="108">Częstotliwość prac i opłat</Label>
+        <Label VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Height="26" Margin="0,2" Width="83">Częstotliwość</Label>
         <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" Margin="5,0,0,0" Text="{Binding CyclicOrder.Frequency}" />
         
         <Label VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Height="26" Margin="0,2" Width="39">Firma</Label>

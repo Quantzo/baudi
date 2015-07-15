@@ -1,20 +1,16 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows.Input;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
+using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.ViewModels.TabsViewModels;
-using Baudi.Client.ViewModels.EditWindowViewModels;
-using System.Collections.ObjectModel;
 
-namespace Baudi.Client.ViewModels.EditWindowCode
+namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class CompanyEditWindowViewModel : EditWindowViewModel
     {
-        private bool _update;
+        
         private Company _company;
         public Company Company
         {
@@ -46,22 +42,20 @@ namespace Baudi.Client.ViewModels.EditWindowCode
 
 
         public CompanyEditWindowViewModel(CompaniesTabViewModel companiesTabViewModel, CompanyEditWindow companyEditWindow, Company company)
-            : base(companiesTabViewModel, companyEditWindow)
+            : base(companiesTabViewModel, companyEditWindow, company)
         {
 
                 using (var con = new BaudiDbContext())
                 {
                     SpecializationList = con.Specializations.ToList();
-                    if (company != null)
+                    if (Update)
                     {
                         Company = con.Companies.Find(company.CompanyID);                        
                         Company.Specializations.ForEach(s => s.IsSelected = true);
-                        _update = true;
                     }
                     else
                     {
                         Company = new Company();
-                        _update = false;
                     }
                 }
             
@@ -72,10 +66,13 @@ namespace Baudi.Client.ViewModels.EditWindowCode
 
         public override void Save()
         {
-         if(_update)
+         if(Update)
          {
              using (var con = new BaudiDbContext())
              {
+                 var specializations = SpecializationList.Where(s => s.IsSelected).ToList();
+                 specializations.ForEach(s => con.Specializations.Attach(s));
+
                  var company = con.Companies.Find(Company.CompanyID);
                  company.City = Company.City;
                  company.HouseNumber = Company.HouseNumber;
@@ -84,9 +81,20 @@ namespace Baudi.Client.ViewModels.EditWindowCode
                  company.NIP = Company.NIP;
                  company.Owner = Company.Owner;
 
-                 company.Specializations = 
+
+                 if (specializations.Count == 0)
+                 {
+                     company.Specializations.Clear();
+                 }
+                 else
+                 {
+                     company.Specializations = specializations;
+                 }
                  company.Street = Company.Street;
                  company.TelephoneNumber = Company.TelephoneNumber;
+
+                 con.Entry(company).State = EntityState.Modified;
+
                  con.SaveChanges();
              }
 
@@ -95,7 +103,10 @@ namespace Baudi.Client.ViewModels.EditWindowCode
          {
              using (var con = new BaudiDbContext())
              {
-                 Company.Specializations = SpecializationList.Where(s => s.IsSelected).ToList();
+                 var specializations = SpecializationList.Where(s => s.IsSelected).ToList();
+                 specializations.ForEach(s => con.Specializations.Attach(s));
+
+                 Company.Specializations = specializations;
                  con.Companies.Add(Company);
                  con.SaveChanges();
              }
