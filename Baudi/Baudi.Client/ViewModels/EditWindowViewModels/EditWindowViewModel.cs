@@ -19,22 +19,22 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         public ICommand ButtonSave { get; set; }
 
         public abstract void Save();
-        //public abstract bool IsValid();
+        public abstract bool IsValid();
 
         public EditWindowViewModel(TabViewModel parentViewModel, Window editWindow)
         {
             ParentViewModel = parentViewModel;
             _editWindow = editWindow;
             ButtonCancel = new RelayCommand(pars => CloseWindow());
-            ButtonSave = new RelayCommand(pars => Save()/*, pars => IsValid()*/);
+            ButtonSave = new RelayCommand(pars => Save(), pars => IsValid());
         }
 
         protected void CloseWindow()
         {
+            ParentViewModel.Update();
             _editWindow.Close();
         }
-
-    
+   
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string property)
         {

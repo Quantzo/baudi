@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
+using System.Data.Entity;
 using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
@@ -24,11 +25,23 @@ namespace Baudi.Client.ViewModels.EditWindowCode
                 OnPropertyChanged("Comapny");
             }
                
-        }
+        }        
         public CompanyEditWindowViewModel(CompaniesTabViewModel companiesTabViewModel, CompanyEditWindow companyEditWindow, Company company)
             : base(companiesTabViewModel, companyEditWindow)
         {
-            Company = company;
+            if (Company.CompanyID == 0)
+            {
+                using (var con = new BaudiDbContext())
+                {
+                    Company = con.Companies
+                        .Include(c => c.Specializations)
+                        .Find(company.CompanyID);
+                }
+            }
+            else
+            {
+                Company = Company;
+            }
         }
 
 
@@ -62,6 +75,11 @@ namespace Baudi.Client.ViewModels.EditWindowCode
 
             ParentViewModel.Update();
             CloseWindow();
+        }
+
+        public override bool IsValid()
+        {
+            return true;
         }
     }
 }

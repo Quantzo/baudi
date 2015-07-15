@@ -28,7 +28,13 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         public BuildingEditWindowViewModel(BuildingsTabViewModel buildingsTabViewModel, BuildingEditWindow buildingEditWindow,Building building)
             :base(buildingsTabViewModel, buildingEditWindow)
         {
-            Building = building;
+            Building = new Building
+            {
+                NotificationTargetID = building.NotificationTargetID,
+                City = building.City,
+                HouseNumber = building.HouseNumber,
+                Street = building.Street
+            }        
         }
 
         public override void Save()
@@ -55,6 +61,11 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
             ParentViewModel.Update();
             CloseWindow();
+        }
+
+        public override bool IsValid()
+        {
+            return true;
         }
     }
 

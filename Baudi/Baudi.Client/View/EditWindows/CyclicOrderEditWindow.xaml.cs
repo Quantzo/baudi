@@ -1,26 +1,17 @@
 ﻿using System.Windows;
+using Baudi.Client.ViewModels;
+using Baudi.DAL.Models;
+using Baudi.Client.ViewModels.TabsViewModels;
+using Baudi.Client.ViewModels.EditWindowViewModels;
 
 namespace Baudi.Client.View.EditWindows
 {
-    /// <summary>
-    ///     Interaction logic for OknoEdycjiZleceniaStale.xaml
-    /// </summary>
-    public partial class OknoEdycjiZleceniaStale : Window
+    public partial class CyclicOrderEditWindow : Window
     {
-        public OknoEdycjiZleceniaStale()
+        public CyclicOrderEditWindow(CyclicOrdersTabViewModel cyclicOrderTabViewModel, CyclicOrder cyclicOrder)
         {
             InitializeComponent();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var Wnd = new Selector();
-            Wnd.Show();
+            DataContext = new CyclicOrderEditWindowViewModel(cyclicOrderTabViewModel, this, cyclicOrder);
         }
     }
 }
