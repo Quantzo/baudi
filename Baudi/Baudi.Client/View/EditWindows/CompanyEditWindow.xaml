@@ -44,8 +44,14 @@
         <TextBox Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Company.TelephoneNumber}" Margin="10,0,0,0" />
         
         <Label VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="7" Height="26" Margin="0,9,10,6" Width="75">Specjalności</Label>
-        <ComboBox Grid.Column="1" Margin="10,9,10,0" Grid.Row="7" VerticalAlignment="Top" Height="25" ItemsSource="{Binding Specialization}" />
-        
+        <DataGrid Grid.Column="1" Margin="3,3,3,3" Grid.Row="7" ItemsSource="{Binding SpecializationList}" IsReadOnly="False" SelectionMode="Extended" AutoGenerateColumns="False" CanUserAddRows="False">            
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Posiadana" Binding="{Binding IsSelected}" IsReadOnly="False"/>
+                <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding SpecializationID}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Nazwa" Width="Auto" Binding="{Binding Name}" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
         <Button Grid.Column="1" Grid.Row="8" Margin="0,0,110,10" Height="23" HorizontalAlignment="Right" Width="80" VerticalAlignment="Bottom" Command="{Binding ButtonSave}">Zapisz</Button>
         <Button Grid.Column="1" Grid.Row="8" Margin="0,0,10,10" Width="80" Height="23" HorizontalAlignment="Right" VerticalAlignment="Bottom" Command="{Binding ButtonCancel}">Anuluj</Button>
         

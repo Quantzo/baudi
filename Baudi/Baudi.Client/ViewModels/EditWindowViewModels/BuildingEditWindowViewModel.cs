@@ -34,7 +34,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 City = building.City,
                 HouseNumber = building.HouseNumber,
                 Street = building.Street
-            }        
+            };        
         }
 
         public override void Save()

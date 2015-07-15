@@ -236,6 +236,11 @@ namespace Baudi.DAL
 
             #endregion
 
+            #region Specialization
+            modelBuilder.Entity<Specialization>()
+                .Ignore(s => s.IsSelected);
+            #endregion
+
             #endregion
         }
 
