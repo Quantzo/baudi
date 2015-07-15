@@ -1,19 +1,17 @@
 ﻿using System.Windows;
 using Baudi.Client.ViewModels;
-using Baudi.Client.ViewModels.EditWindowCode;
 using Baudi.DAL.Models;
+using Baudi.Client.ViewModels.TabsViewModels;
+using Baudi.Client.ViewModels.EditWindowViewModels;
 
 namespace Baudi.Client.View.EditWindows
 {
-    /// <summary>
-    ///     Interaction logic for OknoEdycjiBudynku.xaml
-    /// </summary>
     public partial class BuildingEditWindow : Window
     {
-        public BuildingEditWindow(Building selectedBuilding, MainWindowViewModel owner)
+        public BuildingEditWindow(BuildingsTabViewModel buildingsTabViewModel, Building building)
         {
             InitializeComponent();
-            DataContext = new BuildingEditWindowCode(selectedBuilding, this, owner);
+            DataContext = new BuildingEditWindowViewModel(buildingsTabViewModel, this, building);
         }
     }
 }

@@ -9,15 +9,9 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class LocalEditWindow : Window
     {
-        public LocalEditWindow(Local selectedLocal, BuildingEditWindowCode owner)
+        public LocalEditWindow(Local selectedLocal)
         {
-            InitializeComponent();
-            DataContext = new LocalEditWindowCode(selectedLocal, this, owner);
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Close();
+            InitializeComponent();            
         }
     }
 }

@@ -6,9 +6,6 @@ using Baudi.Client.ViewModels.TabsViewModels;
 
 namespace Baudi.Client.View.EditWindows
 {
-    /// <summary>
-    ///     Interaction logic for OknoEdycjiFirmy.xaml
-    /// </summary>
     public partial class CompanyEditWindow : Window
     {
         public CompanyEditWindow(CompaniesTabViewModel companiesTabViewModel, Company company)

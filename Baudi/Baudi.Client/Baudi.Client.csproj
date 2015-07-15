@@ -65,7 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToTextConverter.cs" />
-    <Compile Include="ViewModels\EditWindowViewModels\BuildingEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\BuildingEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\EditWindowViewModel.cs" />
     <Compile Include="ViewModels\SelectorWindowCode\BuildingSelectorCode.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\CompanyEditWindowViewModel.cs" />

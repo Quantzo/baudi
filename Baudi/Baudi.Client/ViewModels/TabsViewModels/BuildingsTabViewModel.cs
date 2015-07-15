@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Baudi.DAL;
 using Baudi.DAL.Models;
+using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
@@ -32,7 +33,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Add()
         {
-            throw new NotImplementedException();
+            var building = new Building();
+            var buildingEditWindow = new BuildingEditWindow(this, building);
+            buildingEditWindow.Show();
         }
 
         public override void Delete()
@@ -64,7 +67,8 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Edit()
         {
-            throw new NotImplementedException();
+            var buildingEditWindow = new BuildingEditWindow(this, SelectedBuilding);
+            buildingEditWindow.Show();
         }
 
         public override bool IsSomethingSelected()
