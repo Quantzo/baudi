@@ -154,56 +154,13 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                     {
                         var orginalEmployee = con.Employees.Find(Employee.OwnerID);
 
-                        if (OrginalRole == EmployeeRole.Administrator)
-                        {                            
-                        }
-                        else if (OrginalRole == EmployeeRole.Menager)
-                        {
-                            (orginalEmployee as Menager).CyclicOrders.Clear();
-                            (orginalEmployee as Menager).MenagerExpenses.Clear();
-                            (orginalEmployee as Menager).MenagerSalaries.Clear();
-                            (orginalEmployee as Menager).Orders.Clear();
-                        }
-                        else if (OrginalRole == EmployeeRole.Dispatcher)
-                        {
-                            (orginalEmployee as Dispatcher).DispatcherNotifications.Clear();
-                        }
-                        else
-                        {                            
-                        }
+                        prepareToChangeEmployeeRole(orginalEmployee);
 
 
 
-                        Employee employee;
+                        Employee employee = EmployeeFactory();
 
-                        if (EmployeeRole == EmployeeRole.Administrator)
-                        {
-                            employee = new Administrator();
-                        }
-                        else if (EmployeeRole == EmployeeRole.Menager)
-                        {
-                            employee = new Menager();
-                        }
-                        else if (EmployeeRole == EmployeeRole.Dispatcher)
-                        {
-                            employee = new Dispatcher();
-                        }
-                        else
-                        {
-                            employee = new Employee();
-                        }
-
-
-                        employee.Name = Employee.Name;
-                        employee.Surname = Employee.Surname;
-                        employee.PESEL = Employee.PESEL;
-                        employee.Telephone = Employee.Telephone;
-                        employee.City = Employee.City;
-                        employee.Street = Employee.Street;
-                        employee.HouseNumber = Employee.HouseNumber;
-                        employee.LocalNumber = Employee.LocalNumber;
-                        employee.BankAccountNumber = Employee.BankAccountNumber;
-                        employee.Salary = Employee.Salary;
+                        copyEmployeeState(employee);
 
 
                         employee.Notifications = orginalEmployee.Notifications;
@@ -212,7 +169,6 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                         orginalEmployee.Ownerships = null;
                         employee.Salaries = orginalEmployee.Salaries;
                         orginalEmployee.Ownerships = null;
-
 
                         
                         con.Employees.Remove(orginalEmployee);
@@ -229,23 +185,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                     using (var con = new BaudiDbContext())
                     {
                        
-                        var employee = con.Employees.Find(Employee.OwnerID);                    
-                        
-
-                        employee.Name = Employee.Name;
-                        employee.Surname= Employee.Surname;
-                        employee.PESEL = Employee.PESEL;
-                        employee.Telephone = Employee.Telephone;
-                        employee.City = Employee.City;
-                        employee.Street = Employee.Street;
-                        employee.HouseNumber = Employee.HouseNumber;
-                        employee.LocalNumber = Employee.LocalNumber;
-                        employee.BankAccountNumber = Employee.BankAccountNumber;
-                        employee.Salary = Employee.Salary;
-
-
+                        var employee = con.Employees.Find(Employee.OwnerID);
+                        copyEmployeeState(employee);
                         con.Entry(employee).State = EntityState.Modified;
-
                         con.SaveChanges();
                     }
                 }
@@ -257,37 +199,8 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             {
                 using (var con = new BaudiDbContext())
                 {
-                    Employee employee; 
-
-                    if(EmployeeRole == EmployeeRole.Administrator)
-                    {
-                        employee = new Administrator();
-                    }
-                    else if (EmployeeRole == EmployeeRole.Menager)
-                    {
-                        employee = new Menager();
-                    }
-                    else if (EmployeeRole == EmployeeRole.Dispatcher)
-                    {
-                        employee = new Dispatcher();
-                    }
-                    else
-                    {
-                        employee = new Employee();
-                    }
-
-                    employee.Name = Employee.Name;
-                    employee.Surname = Employee.Surname;
-                    employee.PESEL = Employee.PESEL;
-                    employee.Telephone = Employee.Telephone;
-                    employee.City = Employee.City;
-                    employee.Street = Employee.Street;
-                    employee.HouseNumber = Employee.HouseNumber;
-                    employee.LocalNumber = Employee.LocalNumber;
-                    employee.BankAccountNumber = Employee.BankAccountNumber;
-                    employee.Salary = Employee.Salary;
-
-
+                    Employee employee = EmployeeFactory();
+                    copyEmployeeState(employee);
                     con.Employees.Add(employee);
                     con.SaveChanges();
                 }
@@ -297,10 +210,70 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             CloseWindow();
         }
 
+        private void prepareToChangeEmployeeRole(DAL.Models.Employee orginalEmployee)
+        {
+            if (OrginalRole == EmployeeRole.Administrator)
+            {
+            }
+            else if (OrginalRole == EmployeeRole.Menager)
+            {
+                (orginalEmployee as Menager).CyclicOrders.Clear();
+                (orginalEmployee as Menager).MenagerExpenses.Clear();
+                (orginalEmployee as Menager).MenagerSalaries.Clear();
+                (orginalEmployee as Menager).Orders.Clear();
+            }
+            else if (OrginalRole == EmployeeRole.Dispatcher)
+            {
+                (orginalEmployee as Dispatcher).DispatcherNotifications.Clear();
+            }
+            else
+            {
+            }
+        }
+
+        private void copyEmployeeState(Employee employee)
+        {
+            employee.Name = Employee.Name;
+            employee.Surname = Employee.Surname;
+            employee.PESEL = Employee.PESEL;
+            employee.Telephone = Employee.Telephone;
+            employee.City = Employee.City;
+            employee.Street = Employee.Street;
+            employee.HouseNumber = Employee.HouseNumber;
+            employee.LocalNumber = Employee.LocalNumber;
+            employee.BankAccountNumber = Employee.BankAccountNumber;
+            employee.Salary = Employee.Salary;
+        }
+
+        private DAL.Models.Employee EmployeeFactory()
+        {
+            Employee employee;
+
+            if (EmployeeRole == EmployeeRole.Administrator)
+            {
+                employee = new Administrator();
+            }
+            else if (EmployeeRole == EmployeeRole.Menager)
+            {
+                employee = new Menager();
+            }
+            else if (EmployeeRole == EmployeeRole.Dispatcher)
+            {
+                employee = new Dispatcher();
+            }
+            else
+            {
+                employee = new Employee();
+            }
+            return employee;
+        }
+
         public override bool IsValid()
         {
             return true;
         }
+
+
     }
 
     public enum EmployeeRole
