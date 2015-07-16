@@ -2,30 +2,17 @@
 using Baudi.Client.ViewModels;
 using Baudi.Client.ViewModels.EditWindowViewModels;
 using Baudi.DAL.Models;
+using Baudi.Client.ViewModels.TabsViewModels;
 
 namespace Baudi.Client.View.EditWindows
 {
-    /// <summary>
-    ///     Interaction logic for OknoEdycjiPracownika.xaml
-    /// </summary>
     public partial class EmployeeEditWindow : Window
     {
-        public EmployeeEditWindow(Employee selectedCompany, MainWindowViewModel owner)
+        public EmployeeEditWindow(EmployeesTabViewModel employeesTabViewModel, Employee employee)
         {
             InitializeComponent();
-            DataContext = new EmployeeEditWindowCode(selectedCompany, this, owner);
+            DataContext = new EmployeeEditWindowViewModel(employeesTabViewModel, this, employee);
         }
 
-        private void CheckBoxChanged(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-        }
     }
 }

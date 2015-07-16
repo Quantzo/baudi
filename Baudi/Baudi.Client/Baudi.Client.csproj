@@ -70,7 +70,7 @@
     <Compile Include="ViewModels\EditWindowViewModels\EditWindowViewModel.cs" />
     <Compile Include="ViewModels\SelectorWindowCode\BuildingSelectorCode.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\CompanyEditWindowViewModel.cs" />
-    <Compile Include="ViewModels\EditWindowViewModels\EmployeeEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\EmployeeEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\LocalEditWindowCode.cs" />
     <Compile Include="ViewModels\SelectorWindowCode\LocalSelectorCode.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
