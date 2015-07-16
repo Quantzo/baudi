@@ -5,15 +5,11 @@ using Baudi.DAL.Models;
 
 namespace Baudi.Client.View.EditWindows
 {
-    /// <summary>
-    ///     Interaction logic for OwnerEditWindow.xaml
-    /// </summary>
     public partial class OwnerEditWindow : Window
     {
-        public OwnerEditWindow(Person selectedOwner, MainWindowViewModel owner)
+        public OwnerEditWindow()
         {
             InitializeComponent();
-            DataContext = new OwnerEditWindowCode(selectedOwner, this, owner);
         }
     }
 }

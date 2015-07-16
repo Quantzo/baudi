@@ -74,7 +74,7 @@
             </Grid.ColumnDefinitions>
 
             <Button Margin="5" Command="{Binding ButtonSave}" Content="Zapisz" />
-            <Button Grid.Column="1" Margin="5" Command="{Binding Button_Click_Cancel}" Content="Anuluj"/>
+            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj"/>
 
         </Grid>
         

@@ -9,10 +9,10 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class OwnershipEditWindow : Window
     {
-        public OwnershipEditWindow(Ownership selectedOwnership, OwnerEditWindowCode owner)
+        public OwnershipEditWindow()
         {
             InitializeComponent();
-            DataContext = new OwnershipEditWindowCode(selectedOwnership, this, owner);
+
         }
     }
 }

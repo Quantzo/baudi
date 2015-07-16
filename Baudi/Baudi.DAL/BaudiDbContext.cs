@@ -263,12 +263,20 @@ namespace Baudi.DAL
 
         #endregion
 
+        #region Employees
+
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Menager> Menagers { get; set; }
+        public DbSet<Dispatcher> Dispatchers { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
+
+        #endregion
+
         #region Expenses Target
 
         public DbSet<CyclicOrder> CyclicOrders { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderType> OrderTypes { get; set; }
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<OrderType> OrderTypes { get; set; }        
         public DbSet<Specialization> Specializations { get; set; }
         public DbSet<Notification> Notifications { get; set; }
 

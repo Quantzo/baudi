@@ -83,6 +83,34 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 OnPropertyChanged("CompaniesList");
             }
         }
+
+
+        private List<Menager> _menagersList;
+        public List<Menager> MenagersList
+        {
+            get
+            {
+                return _menagersList;
+            }
+            set
+            {
+                _menagersList = value;
+                OnPropertyChanged("MenagersList");
+            }
+        }
+        private Menager _selectedMenager;
+        public Menager SelectedMenager
+        {
+            get
+            {
+                return _selectedMenager;
+            }
+            set
+            {
+                _selectedMenager = value;
+                OnPropertyChanged("SelectedMenager");
+            }
+        }
         #endregion
 
         public CyclicOrderEditWindowViewModel(CyclicOrdersTabViewModel cyclicOrderTabViewModel, CyclicOrderEditWindow cyclicOrderEditWindow, CyclicOrder cyclicOrder)
@@ -92,11 +120,13 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             {
                 BuildingsList = con.Buildings.ToList();
                 CompaniesList = con.Companies.ToList();
+                MenagersList = con.Menagers.ToList();
                 if (Update)
                 {
                     CyclicOrder = con.CyclicOrders.Find(cyclicOrder.ExpenseTargetID);
                     SelectedBuilding = CyclicOrder.Building;
                     SelectedCompany = CyclicOrder.Company;
+                    SelectedMenager = CyclicOrder.Menager;
                 }
                 else
                 {
@@ -113,6 +143,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 {
                     var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
                     var company = con.Companies.Find(SelectedCompany.CompanyID);
+                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
                     
 
                     var cyclicOrder = con.CyclicOrders.Find(CyclicOrder.ExpenseTargetID);
@@ -120,6 +151,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                     cyclicOrder.Company = company;
                     cyclicOrder.Cost = CyclicOrder.Cost;
                     cyclicOrder.Frequency = CyclicOrder.Frequency;
+                    cyclicOrder.Menager = menager;
 
 
                     con.Entry(cyclicOrder).State = EntityState.Modified;
@@ -134,9 +166,11 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 {
                     var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
                     var company = con.Companies.Find(SelectedCompany.CompanyID);
+                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
 
                     CyclicOrder.Building = building;
                     CyclicOrder.Company = company;
+                    CyclicOrder.Menager = menager;
 
                     con.CyclicOrders.Add(CyclicOrder);
                     con.SaveChanges();
