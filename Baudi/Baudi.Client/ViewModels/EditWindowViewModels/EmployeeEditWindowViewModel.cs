@@ -159,13 +159,14 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                         }
                         else if (OrginalRole == EmployeeRole.Menager)
                         {
-                            (orginalEmployee as Menager).CyclicOrders = null;
-                            (orginalEmployee as Menager).MenagerExpenses = null;
-                            (orginalEmployee as Menager).MenagerSalaries = null;
+                            (orginalEmployee as Menager).CyclicOrders.Clear();
+                            (orginalEmployee as Menager).MenagerExpenses.Clear();
+                            (orginalEmployee as Menager).MenagerSalaries.Clear();
+                            (orginalEmployee as Menager).Orders.Clear();
                         }
                         else if (OrginalRole == EmployeeRole.Dispatcher)
                         {
-                            (orginalEmployee as Dispatcher).DispatcherNotifications = null;
+                            (orginalEmployee as Dispatcher).DispatcherNotifications.Clear();
                         }
                         else
                         {                            
@@ -310,7 +311,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         Dispatcher,
         [Description("Menager")]
         Menager,
-        [Description("")]
+        [Description("Inny")]
         Other
     }
 

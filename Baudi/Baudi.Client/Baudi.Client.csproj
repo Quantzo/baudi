@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToTextConverter.cs" />
+    <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\BuildingEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\CyclicOrderEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\EditWindowViewModel.cs" />
