@@ -1,73 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
 using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using System.ComponentModel;
-using System;
 
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class EmployeeEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties
-
-        protected readonly EmployeeRole OrginalRole;
-
-        private EmployeeRole _employeeRole;
-        public EmployeeRole EmployeeRole
-        {
-            get
-            {
-                return _employeeRole;
-            }
-            set
-            {
-                _employeeRole = value;
-                OnPropertyChanged("EmployeeRole");
-            }
-        }
-
-        public IEnumerable<EmployeeRole> EmployeeRoleValues
-        {
-            get
-            {
-                return Enum.GetValues(typeof(EmployeeRole))
-                    .Cast<EmployeeRole>();
-            }
-        }
-
-
-
-        private Employee _employee;
-        public Employee Employee
-        {
-            get
-            {
-                return _employee;
-            }
-            set
-            {
-                _employee = value;
-                OnPropertyChanged("Employee");
-            }
-        }
-        #endregion
-
-        public EmployeeEditWindowViewModel(EmployeesTabViewModel employeesTabViewModel, EmployeeEditWindow employeeEditWindow, Employee employee)
+        public EmployeeEditWindowViewModel(EmployeesTabViewModel employeesTabViewModel,
+            EmployeeEditWindow employeeEditWindow, Employee employee)
             : base(employeesTabViewModel, employeeEditWindow, employee)
         {
             if (Update)
             {
-                if(employee as Administrator != null)
+                if (employee is Administrator)
                 {
                     Employee = new Administrator
                     {
                         OwnerID = employee.OwnerID,
                         Name = employee.Name,
-                        Surname= employee.Surname,
+                        Surname = employee.Surname,
                         PESEL = employee.PESEL,
                         Telephone = employee.Telephone,
                         City = employee.City,
@@ -80,13 +37,13 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                     EmployeeRole = EmployeeRole.Administrator;
                     OrginalRole = EmployeeRole.Administrator;
                 }
-                else if (employee as Menager != null)
+                else if (employee is Menager)
                 {
                     Employee = new Menager
                     {
                         OwnerID = employee.OwnerID,
                         Name = employee.Name,
-                        Surname= employee.Surname,
+                        Surname = employee.Surname,
                         PESEL = employee.PESEL,
                         Telephone = employee.Telephone,
                         City = employee.City,
@@ -99,13 +56,13 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                     EmployeeRole = EmployeeRole.Menager;
                     OrginalRole = EmployeeRole.Menager;
                 }
-                else if (employee as Dispatcher != null)
+                else if (employee is Dispatcher)
                 {
                     Employee = new Dispatcher
                     {
                         OwnerID = employee.OwnerID,
                         Name = employee.Name,
-                        Surname= employee.Surname,
+                        Surname = employee.Surname,
                         PESEL = employee.PESEL,
                         Telephone = employee.Telephone,
                         City = employee.City,
@@ -148,19 +105,18 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         {
             if (Update)
             {
-                if(OrginalRole != EmployeeRole)
+                if (OrginalRole != EmployeeRole)
                 {
                     using (var con = new BaudiDbContext())
                     {
                         var orginalEmployee = con.Employees.Find(Employee.OwnerID);
 
-                        prepareToChangeEmployeeRole(orginalEmployee);
+                        PrepareToChangeEmployeeRole(orginalEmployee);
 
 
+                        var employee = EmployeeFactory();
 
-                        Employee employee = EmployeeFactory();
-
-                        copyEmployeeState(employee);
+                        CopyEmployeeState(employee);
 
 
                         employee.Notifications = orginalEmployee.Notifications;
@@ -170,37 +126,31 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                         employee.Salaries = orginalEmployee.Salaries;
                         orginalEmployee.Ownerships = null;
 
-                        
+
                         con.Employees.Remove(orginalEmployee);
                         con.Entry(orginalEmployee).State = EntityState.Deleted;
 
                         con.Employees.Add(employee);
                         con.SaveChanges();
-
                     }
-
                 }
                 else
                 {
                     using (var con = new BaudiDbContext())
                     {
-                       
                         var employee = con.Employees.Find(Employee.OwnerID);
-                        copyEmployeeState(employee);
+                        CopyEmployeeState(employee);
                         con.Entry(employee).State = EntityState.Modified;
                         con.SaveChanges();
                     }
                 }
-
-
-
             }
             else
             {
                 using (var con = new BaudiDbContext())
                 {
-                    Employee employee = EmployeeFactory();
-                    copyEmployeeState(employee);
+                    var employee = EmployeeFactory();
+                    CopyEmployeeState(employee);
                     con.Employees.Add(employee);
                     con.SaveChanges();
                 }
@@ -210,7 +160,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             CloseWindow();
         }
 
-        private void prepareToChangeEmployeeRole(DAL.Models.Employee orginalEmployee)
+        private void PrepareToChangeEmployeeRole(Employee orginalEmployee)
         {
             if (OrginalRole == EmployeeRole.Administrator)
             {
@@ -226,12 +176,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             {
                 (orginalEmployee as Dispatcher).DispatcherNotifications.Clear();
             }
-            else
-            {
-            }
         }
 
-        private void copyEmployeeState(Employee employee)
+        private void CopyEmployeeState(Employee employee)
         {
             employee.Name = Employee.Name;
             employee.Surname = Employee.Surname;
@@ -245,7 +192,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             employee.Salary = Employee.Salary;
         }
 
-        private DAL.Models.Employee EmployeeFactory()
+        private Employee EmployeeFactory()
         {
             Employee employee;
 
@@ -273,19 +220,53 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return true;
         }
 
+        #region Properties
 
+        protected readonly EmployeeRole OrginalRole;
+
+        private EmployeeRole _employeeRole;
+
+        public EmployeeRole EmployeeRole
+        {
+            get { return _employeeRole; }
+            set
+            {
+                _employeeRole = value;
+                OnPropertyChanged("EmployeeRole");
+            }
+        }
+
+        public IEnumerable<EmployeeRole> EmployeeRoleValues
+        {
+            get
+            {
+                return Enum.GetValues(typeof (EmployeeRole))
+                    .Cast<EmployeeRole>();
+            }
+        }
+
+
+        private Employee _employee;
+
+        public Employee Employee
+        {
+            get { return _employee; }
+            set
+            {
+                _employee = value;
+                OnPropertyChanged("Employee");
+            }
+        }
+
+        #endregion
     }
 
     public enum EmployeeRole
     {
-        [Description("Administrator")]
-        Administrator,
-        [Description("Dispatcher")]
-        Dispatcher,
-        [Description("Menager")]
-        Menager,
-        [Description("Inny")]
-        Other
+        [Description("Administrator")] Administrator,
+        [Description("Dispatcher")] Dispatcher,
+        [Description("Menager")] Menager,
+        [Description("Inny")] Other
     }
 
     public static class ReflectionHelpers
@@ -293,7 +274,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         public static string GetCustomDescription(object objEnum)
         {
             var fi = objEnum.GetType().GetField(objEnum.ToString());
-            var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            var attributes = (DescriptionAttribute[]) fi.GetCustomAttributes(typeof (DescriptionAttribute), false);
             return (attributes.Length > 0) ? attributes[0].Description : objEnum.ToString();
         }
 
