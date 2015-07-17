@@ -71,7 +71,7 @@
     <Compile Include="ViewModels\EditWindowViewModels\EditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\CompanyEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\EmployeeEditWindowViewModel.cs" />
-    <Compile Include="ViewModels\EditWindowViewModels\LocalEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\LocalEditWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\OwnershipEditWindowCode.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\OwnerEditWindowCode.cs" />

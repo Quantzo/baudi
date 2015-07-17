@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
@@ -37,7 +38,8 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Add()
         {
-            throw new NotImplementedException();
+            var localEditWindow = new LocalEditWindow(this, null);
+            localEditWindow.Show();
         }
 
         public override void Delete()
@@ -56,7 +58,8 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Edit()
         {
-            throw new NotImplementedException();
+            var localEditWindow = new LocalEditWindow(this, SelectedLocal);
+            localEditWindow.Show();
         }
 
         public override bool IsSomethingSelected()
