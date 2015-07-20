@@ -106,6 +106,9 @@
     <Compile Include="View\EditWindows\EmployeeEditWindow.xaml.cs">
       <DependentUpon>EmployeeEditWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditWindows\ExpenseEditWindow.xaml.cs">
+      <DependentUpon>ExpenseEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditWindows\LocalEditWindow.xaml.cs">
       <DependentUpon>LocalEditWindow.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,10 @@
     <Page Include="View\EditWindows\EmployeeEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\ExpenseEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditWindows\LocalEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
