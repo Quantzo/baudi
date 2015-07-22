@@ -124,6 +124,9 @@
     <Compile Include="View\EditWindows\OwnershipEditWindow.xaml.cs">
       <DependentUpon>OwnershipEditWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditWindows\OwningCompanyEditWindow.xaml.cs">
+      <DependentUpon>OwningCompanyEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditWindows\PaymentsEditWindow.xaml.cs">
       <DependentUpon>PaymentsEditWindow.xaml</DependentUpon>
     </Compile>
@@ -218,6 +221,10 @@
     <Page Include="View\EditWindows\OwnershipEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\OwningCompanyEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditWindows\PaymentsEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
