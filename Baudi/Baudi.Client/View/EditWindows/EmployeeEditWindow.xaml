@@ -66,7 +66,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Grid Grid.Row="9" Grid.Column="4" Margin="5">
+        <Grid Grid.Row="9" Grid.Column="3" Margin="5">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

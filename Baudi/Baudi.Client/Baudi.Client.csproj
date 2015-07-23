@@ -106,6 +106,9 @@
     <Compile Include="View\EditWindows\EmployeeEditWindow.xaml.cs">
       <DependentUpon>EmployeeEditWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditWindows\ExpenseEditWindow.xaml.cs">
+      <DependentUpon>ExpenseEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditWindows\LocalEditWindow.xaml.cs">
       <DependentUpon>LocalEditWindow.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,9 @@
     </Compile>
     <Compile Include="View\EditWindows\OwnershipEditWindow.xaml.cs">
       <DependentUpon>OwnershipEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\OwningCompanyEditWindow.xaml.cs">
+      <DependentUpon>OwningCompanyEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EditWindows\PaymentsEditWindow.xaml.cs">
       <DependentUpon>PaymentsEditWindow.xaml</DependentUpon>
@@ -192,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\EditWindows\ExpenseEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EditWindows\LocalEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -211,6 +221,10 @@
     <Page Include="View\EditWindows\OwnershipEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\OwningCompanyEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditWindows\PaymentsEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
