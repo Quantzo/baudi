@@ -11,6 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows;
+using Baudi.Client.ViewModels;
+using Baudi.DAL.Models;
+using Baudi.Client.ViewModels.TabsViewModels;
+using Baudi.Client.ViewModels.EditWindowViewModels;
 
 namespace Baudi.Client.View.EditWindows
 {
@@ -19,9 +24,10 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class SalaryEditWindow : Window
     {
-        public SalaryEditWindow()
+        public SalaryEditWindow(SalariesTabViewModel salariesTabViewModel, Salary salary)
         {
             InitializeComponent();
+            DataContext = new SalaryEditWindowViewModel(salariesTabViewModel, this, salary);
         }
     }
 }

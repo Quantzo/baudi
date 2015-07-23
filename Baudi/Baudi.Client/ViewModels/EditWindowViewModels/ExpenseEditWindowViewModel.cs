@@ -5,7 +5,7 @@ using Baudi.Client.View.EditWindows;
 using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using System;
+
 
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {

@@ -73,9 +73,14 @@
     <Compile Include="ViewModels\EditWindowViewModels\EmployeeEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\ExpenseEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\LocalEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\NotificationEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\OrderEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\OwningCompanyEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\RentEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\SalaryEditWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\EditWindowViewModels\OwnershipEditWindowCode.cs" />
-    <Compile Include="ViewModels\EditWindowViewModels\OwnerEditWindowCode.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\OwnershipEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\OwnerEditWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\TabsViewModels\BuildingsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\CompaniesTabViewModel.cs" />

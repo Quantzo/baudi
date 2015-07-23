@@ -6,6 +6,7 @@ using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 
+
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class LocalEditWindowViewModel : EditWindowViewModel

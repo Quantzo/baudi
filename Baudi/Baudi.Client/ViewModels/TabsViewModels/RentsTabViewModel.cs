@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using Baudi.DAL;
 using Baudi.DAL.Models;
+using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
@@ -35,7 +36,8 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Add()
         {
-            throw new NotImplementedException();
+            var rentEditWindow = new RentEditWindow(this, null);
+            rentEditWindow.Show();
         }
 
         public override void Delete()
@@ -52,7 +54,8 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Edit()
         {
-            throw new NotImplementedException();
+            var rentEditWindow = new RentEditWindow(this, SelectedRent);
+            rentEditWindow.Show();
         }
 
         public override bool IsSomethingSelected()
