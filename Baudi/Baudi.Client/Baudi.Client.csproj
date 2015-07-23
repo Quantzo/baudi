@@ -71,6 +71,7 @@
     <Compile Include="ViewModels\EditWindowViewModels\EditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\CompanyEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\EmployeeEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\ExpenseEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\LocalEditWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\OwnershipEditWindowCode.cs" />
@@ -121,14 +122,14 @@
     <Compile Include="View\EditWindows\OwnerEditWindow.xaml.cs">
       <DependentUpon>OwnerEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditWindows\OwnershipEditWindow.xaml.cs">
-      <DependentUpon>OwnershipEditWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\EditWindows\OwningCompanyEditWindow.xaml.cs">
       <DependentUpon>OwningCompanyEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditWindows\PaymentsEditWindow.xaml.cs">
-      <DependentUpon>PaymentsEditWindow.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\RentEditWindow.xaml.cs">
+      <DependentUpon>RentEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\SalaryEditWindow.xaml.cs">
+      <DependentUpon>SalaryEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -218,17 +219,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\EditWindows\OwnershipEditWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\EditWindows\OwningCompanyEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditWindows\PaymentsEditWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="View\EditWindows\RentEditWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditWindows\SalaryEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

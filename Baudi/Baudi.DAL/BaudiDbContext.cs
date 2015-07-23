@@ -274,6 +274,7 @@ namespace Baudi.DAL
 
         #region Expenses Target
 
+        public DbSet<ExpenseTarget> ExpenseTargets { get; set; }
         public DbSet<CyclicOrder> CyclicOrders { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderType> OrderTypes { get; set; }        
