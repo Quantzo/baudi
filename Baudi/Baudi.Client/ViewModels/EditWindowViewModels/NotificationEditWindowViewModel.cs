@@ -144,7 +144,24 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         public NotificationEditWindowViewModel(NotificationsTabViewModel notificationTabViewModel, NotificationEditWindow notificationEditWindow, Notification notification)
             : base(notificationTabViewModel, notificationEditWindow, notification)
         {
-
+            using (var con = new BaudiDbContext())
+            {
+                NotificationTargetsList = con.NotificationTargets.ToList();
+                OwnersList = con.Owners.ToList();
+                DispatchersList = con.Dispatchers.ToList();
+                if(Update)
+                {
+                    Notification = con.Notifications.Find(notification.NotificationID);
+                    SelectedNotificationStatus = Notification.Status;
+                    SelectedNotificationTarget = Notification.NotificationTarget;
+                    SelectedOwner = Notification.Owner;
+                    SelectedDispatcher = Notification.Dispatcher;
+                }
+                else
+                {
+                    Notification = new Notification();
+                }
+            }
         }
 
 
@@ -157,7 +174,53 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         public override void Save()
         {
-            throw new NotImplementedException();
+            if (Update)
+            {
+                using (var con = new BaudiDbContext())
+                {
+
+                    SelectedDispatcher = Notification.Dispatcher;
+
+                    var notificationTarget = con.NotificationTargets.Find(SelectedNotificationTarget.NotificationTargetID);
+                    var owner = con.Owners.Find(SelectedOwner.OwnerID);
+                    var dispatcher = con.Dispatchers.Find(SelectedDispatcher.OwnerID);
+
+
+                    var notification = con.Notifications.Find(Notification.NotificationID);
+                    notification.Description = Notification.Description;
+                    notification.Dispatcher = dispatcher;
+                    notification.FilingDate = Notification.FilingDate;
+                    notification.LastChanged = Notification.LastChanged;
+                    notification.NotificationTarget = notificationTarget;
+                    notification.Owner = owner;
+                    notification.Status = SelectedNotificationStatus;
+                 
+
+                    con.Entry(notification).State = EntityState.Modified;
+
+                    con.SaveChanges();
+                }
+
+            }
+            else
+            {
+                using (var con = new BaudiDbContext())
+                {
+                    var notificationTarget = con.NotificationTargets.Find(SelectedNotificationTarget.NotificationTargetID);
+                    var owner = con.Owners.Find(SelectedOwner.OwnerID);
+                    var dispatcher = con.Dispatchers.Find(SelectedDispatcher.OwnerID);
+
+                    Notification.NotificationTarget = notificationTarget;
+                    Notification.Owner = owner;
+                    Notification.Dispatcher = dispatcher;
+
+                    con.Notifications.Add(Notification);
+                    con.SaveChanges();
+                }
+            }
+
+            ParentViewModel.Update();
+            CloseWindow();
         }
     }
 }
