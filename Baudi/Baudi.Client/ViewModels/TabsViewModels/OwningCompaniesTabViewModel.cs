@@ -27,7 +27,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                OwningCompaniesList = con.OwningCompanies.Where(oc => oc.Ownerships.Count != 0).ToList();
+                OwningCompaniesList = con.OwningCompanies.ToList();
             }
         }
 
