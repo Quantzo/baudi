@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Baudi.Client.View.Tabs.OwnersTab"
+﻿<UserControl x:Class="Baudi.Client.View.Tabs.PeopleTab"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -14,19 +14,12 @@
             <RowDefinition Height="22*" />
         </Grid.RowDefinitions>
         <Grid>
-            <DataGrid Name="OwnersList" ItemsSource="{Binding OwnersList}" AutoGenerateColumns="false"
+            <DataGrid Name="OwnersList" ItemsSource="{Binding PeopleList}" AutoGenerateColumns="false"
                       SelectedItem="{Binding SelectedOwner}" IsReadOnly="True" SelectionMode="Single"
                       IsSynchronizedWithCurrentItem="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding OwnerID}" />
-                    <DataGridTextColumn Header="Nazwa" Width="Auto">
-                        <DataGridTextColumn.Binding>
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="Name" />
-                                <Binding Path="Surname" />
-                            </MultiBinding>
-                        </DataGridTextColumn.Binding>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Imię" Width="Auto" Binding="{Binding Name}" />
                     <DataGridTextColumn Header="Nazwisko" Width="Auto" Binding="{Binding Surname}" />
                     <DataGridTextColumn Header="PESEL" Width="Auto" Binding="{Binding PESEL}" />
                     <DataGridTextColumn Header="Miejscowość" Width="Auto" Binding="{Binding City}" />

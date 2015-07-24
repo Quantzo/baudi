@@ -44,7 +44,7 @@
             </TabItem>
             <TabItem Name="OwnersTab" Header="Właściciele">
                 <TabItem.Content>
-                    <tabs:OwnersTab DataContext="{Binding OwnersTabViewModel}" />
+                    <tabs:PeopleTab DataContext="{Binding PeopleTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="OwniningCompaniesTab" Header="Firmy-Właściciele">

@@ -6,12 +6,12 @@ using Baudi.Client.ViewModels.EditWindowViewModels;
 
 namespace Baudi.Client.View.EditWindows
 {
-    public partial class OwnerEditWindow : Window
+    public partial class PersonEditWindow : Window
     {
-        public OwnerEditWindow(OwnersTabViewModel ownersTabViewModel, Owner owner)
+        public PersonEditWindow(PeopleTabViewModel ownersTabViewModel, Person person)
         {
             InitializeComponent();
-            DataContext = new OwnerEditWindowViewModel(ownersTabViewModel, this, owner);
+            DataContext = new PersonEditWindowViewModel(ownersTabViewModel, this, person);
         }
     }
 }

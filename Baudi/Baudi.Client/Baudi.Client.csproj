@@ -80,7 +80,7 @@
     <Compile Include="ViewModels\EditWindowViewModels\SalaryEditWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\OwnershipEditWindowViewModel.cs" />
-    <Compile Include="ViewModels\EditWindowViewModels\OwnerEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\PersonEditWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\TabsViewModels\BuildingsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\CompaniesTabViewModel.cs" />
@@ -91,7 +91,7 @@
     <Compile Include="ViewModels\TabsViewModels\LocalsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\NotificationsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\OrdersTabViewModel.cs" />
-    <Compile Include="ViewModels\TabsViewModels\OwnersTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\PeopleTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\OwningCompaniesTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\RentsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\ReportsTabViewModel.cs" />
@@ -124,8 +124,8 @@
     <Compile Include="View\EditWindows\OrderEditWindow.xaml.cs">
       <DependentUpon>OrderEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditWindows\OwnerEditWindow.xaml.cs">
-      <DependentUpon>OwnerEditWindow.xaml</DependentUpon>
+    <Compile Include="View\EditWindows\PersonEditWindow.xaml.cs">
+      <DependentUpon>PersonEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EditWindows\OwningCompanyEditWindow.xaml.cs">
       <DependentUpon>OwningCompanyEditWindow.xaml</DependentUpon>
@@ -169,8 +169,8 @@
     <Compile Include="View\Tabs\OrdersTab.xaml.cs">
       <DependentUpon>OrdersTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Tabs\OwnersTab.xaml.cs">
-      <DependentUpon>OwnersTab.xaml</DependentUpon>
+    <Compile Include="View\Tabs\PeopleTab.xaml.cs">
+      <DependentUpon>PeopleTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Tabs\OwningCompaniesTab.xaml.cs">
       <DependentUpon>OwningCompaniesTab.xaml</DependentUpon>
@@ -220,7 +220,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\EditWindows\OwnerEditWindow.xaml">
+    <Page Include="View\EditWindows\PersonEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -280,7 +280,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Tabs\OwnersTab.xaml">
+    <Page Include="View\Tabs\PeopleTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

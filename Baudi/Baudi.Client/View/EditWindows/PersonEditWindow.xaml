@@ -1,7 +1,7 @@
-﻿<Window x:Class="Baudi.Client.View.EditWindows.OwnerEditWindow"
+﻿<Window x:Class="Baudi.Client.View.EditWindows.PersonEditWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="OwnerEditWindow" Height="410" Width="619" MinHeight="440" MinWidth="500">
+        Title="PersonEditWindow" Height="410" Width="619" MinHeight="440" MinWidth="500">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" MinWidth="120"/>

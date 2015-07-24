@@ -7,17 +7,17 @@ using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
-    public class OwnersTabViewModel : TabViewModel
+    public class PeopleTabViewModel : TabViewModel
     {
-        private List<Person> _ownersList;
+        private List<Person> _peopleList;
 
-        public List<Person> OwnersList
+        public List<Person> PeopleList
         {
-            get { return _ownersList; }
+            get { return _peopleList; }
             set
             {
-                _ownersList = value;
-                OnPropertyChanged("OwnersList");
+                _peopleList = value;
+                OnPropertyChanged("PeopleList");
             }
         }
 
@@ -27,14 +27,14 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             using (var con = new BaudiDbContext())
             {
-                OwnersList = con.Peoples.ToList();
+                PeopleList = con.Peoples.ToList();
             }
         }
 
         public override void Add()
         {
-            var ownerEditWindow = new OwnerEditWindow(this, null);
-            ownerEditWindow.Show();
+            var PersonEditWindow = new PersonEditWindow(this, null);
+            PersonEditWindow.Show();
         }
 
         public override void Delete()
@@ -80,8 +80,8 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Edit()
         {
-            var ownerEditWindow = new OwnerEditWindow(this, SelectedOwner);
-            ownerEditWindow.Show();
+            var PersonEditWindow = new PersonEditWindow(this, SelectedOwner);
+            PersonEditWindow.Show();
         }
 
         public override bool IsSomethingSelected()

@@ -22,7 +22,7 @@ namespace Baudi.Client.ViewModels
         public LocalsTabViewModel LocalsTabViewModel { get; set; }
         public NotificationsTabViewModel NotificationsTabViewModel { get; set; }
         public OrdersTabViewModel OrdersTabViewModel { get; set; }
-        public OwnersTabViewModel OwnersTabViewModel { get; set; }
+        public PeopleTabViewModel PeopleTabViewModel { get; set; }
         public OwningCompaniesTabViewModel OwningCompaniesTabViewModel { get; set; }
         public RentsTabViewModel RentsTabViewModel { get; set; }
         public ReportsTabViewModel ReportsTabViewModel { get; set; }
@@ -41,7 +41,7 @@ namespace Baudi.Client.ViewModels
             LocalsTabViewModel = new LocalsTabViewModel();
             NotificationsTabViewModel = new NotificationsTabViewModel();
             OrdersTabViewModel = new OrdersTabViewModel();
-            OwnersTabViewModel = new OwnersTabViewModel();
+            PeopleTabViewModel = new PeopleTabViewModel();
             OwningCompaniesTabViewModel = new OwningCompaniesTabViewModel();
             RentsTabViewModel = new RentsTabViewModel();
             ReportsTabViewModel = new ReportsTabViewModel();
@@ -57,7 +57,7 @@ namespace Baudi.Client.ViewModels
             TabsViewModels.Add(NotificationsTabViewModel);
             TabsViewModels.Add(LocalsTabViewModel);
             TabsViewModels.Add(OrdersTabViewModel);
-            TabsViewModels.Add(OwnersTabViewModel);
+            TabsViewModels.Add(PeopleTabViewModel);
             TabsViewModels.Add(OwningCompaniesTabViewModel);
             TabsViewModels.Add(RentsTabViewModel);
             //TabsViewModels.Add(ReportsTabViewModel);

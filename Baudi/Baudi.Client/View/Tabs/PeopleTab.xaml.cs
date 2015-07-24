@@ -5,9 +5,9 @@ namespace Baudi.Client.View.Tabs
     /// <summary>
     ///     Interaction logic for OwnersTab.xaml
     /// </summary>
-    public partial class OwnersTab : UserControl
+    public partial class PeopleTab : UserControl
     {
-        public OwnersTab()
+        public PeopleTab()
         {
             InitializeComponent();
         }
