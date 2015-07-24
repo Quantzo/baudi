@@ -42,7 +42,7 @@
                     <tabs:LocalsTab DataContext="{Binding LocalsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
-            <TabItem Name="OwnersTab" Header="Właściciele">
+            <TabItem Name="PeopleTab" Header="Ludzie">
                 <TabItem.Content>
                     <tabs:PeopleTab DataContext="{Binding PeopleTabViewModel}" />
                 </TabItem.Content>
