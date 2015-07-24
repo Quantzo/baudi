@@ -170,17 +170,88 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         public OrderEditWindowViewModel(OrdersTabViewModel orderTabViewModel, OrderEditWindow orderEditWindow, Order order)
             : base(orderTabViewModel, orderEditWindow, order)
         {
+            using (var con = new BaudiDbContext())
+            {
+                OrderTypesList = con.OrderTypes.ToList();
+                CompaniesList = con.Companies.ToList();
+                MenagersList = con.Menagers.ToList();
+                NotificationsList = con.Notifications.ToList();
+                if (Update)
+                {
+                    Order = con.Orders.Find(order.ExpenseTargetID);
+                    SelectedOrderType = Order.OrderType;
+                    SelectedCompany = Order.Company;
+                    SelectedMenager = Order.Menager;
+                    SelectedNotification = Order.Notification;
 
+                }
+                else
+                {
+                    Order = new Order();
+                }
+            }
         }
 
         public override bool IsValid()
         {
-            throw new NotImplementedException();
+            if (SelectedOrderType != null && SelectedCompany != null && SelectedMenager != null && SelectedNotification != null)
+            {
+                return true;
+            }
+            return false;
+
         }
 
         public override void Save()
         {
-            throw new NotImplementedException();
+            if (Update)
+            {
+                using (var con = new BaudiDbContext())
+                {
+                    var orderType = con.OrderTypes.Find(SelectedOrderType.OrderTypeID);
+                    var company = con.Companies.Find(SelectedCompany.CompanyID);
+                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
+                    var notification = con.Notifications.Find(SelectedNotification.NotificationID);
+
+
+                    var order = con.Orders.Find(Order.ExpenseTargetID);
+                    order.OrderType = orderType;
+                    order.Company = company;
+                    order.Menager = menager;
+                    order.Notification = notification;
+
+                    order.Status = SelectedOrderStatus;
+                    order.Cost = Order.Cost;
+                    order.LastChanged = Order.LastChanged;
+                    order.FilingDate = order.FilingDate;
+
+                    con.Entry(order).State = EntityState.Modified;
+
+                    con.SaveChanges();
+                }
+
+            }
+            else
+            {
+                using (var con = new BaudiDbContext())
+                {
+                    var orderType = con.OrderTypes.Find(SelectedOrderType.OrderTypeID);
+                    var company = con.Companies.Find(SelectedCompany.CompanyID);
+                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
+                    var notification = con.Notifications.Find(SelectedNotification.NotificationID);
+
+                    Order.OrderType = orderType;
+                    Order.Company = company;
+                    Order.Menager = menager;
+                    Order.Notification = notification;
+
+                    con.Orders.Add(Order);
+                    con.SaveChanges();
+                }
+            }
+
+            ParentViewModel.Update();
+            CloseWindow();
         }
     }
 }
