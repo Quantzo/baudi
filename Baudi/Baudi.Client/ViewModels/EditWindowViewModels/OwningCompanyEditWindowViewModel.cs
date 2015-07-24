@@ -12,7 +12,21 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class OwningCompanyEditWindowViewModel : EditWindowViewModel
     {
+
         #region Properties
+        private OwningCompany _owningCompany;
+        public OwningCompany OwningCompany
+        {
+            get
+            {
+                return _owningCompany;
+            }
+            set
+            {
+                _owningCompany = value;
+                OnPropertyChanged("OwningCompany");
+            }
+        }
         #endregion
 
         public OwningCompanyEditWindowViewModel(OwningCompaniesTabViewModel owningCompaniesTabViewModel, OwningCompanyEditWindow owningCompanyEditWindow, OwningCompany owningCompany)

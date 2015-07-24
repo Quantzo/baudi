@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Baudi.DAL.Models
 {
@@ -17,9 +18,13 @@ namespace Baudi.DAL.Models
     }
     public enum OrderStatus
     {
+        [Description("Przyjęte")]
         Accepted,
+        [Description("W trakcie realizacji")]
         InProgress,
+        [Description("Odbiór")]
         Validation,
+        [Description("Ukończone")]
         Completed
     }
 }

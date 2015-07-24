@@ -13,6 +13,49 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
     public class RentEditWindowViewModel : EditWindowViewModel
     {
         #region Properties
+        private Rent _rent;
+        public Rent Rent
+        {
+            get
+            {
+                return _rent;
+            }
+            set
+            {
+                _rent = value;
+                OnPropertyChanged("Rent");
+            }
+
+        }
+
+        private List<Ownership> _ownershipsList;
+        public List<Ownership> OwnershipsList
+        {
+            get
+            {
+                return _ownershipsList;
+            }
+
+            set
+            {
+                _ownershipsList = value;
+                OnPropertyChanged("OwnershipsList");
+            }
+        }
+        private Ownership _selectedOwnership;
+        public Ownership SelectedOwnership
+        {
+            get
+            {
+                return _selectedOwnership;
+            }
+            set
+            {
+                _selectedOwnership = value;
+                OnPropertyChanged("SelectedOwnership");
+            }
+        }
+
         #endregion
 
         public RentEditWindowViewModel(RentsTabViewModel rentsTabViewModel, RentEditWindow rentEditWindow, Rent rent)

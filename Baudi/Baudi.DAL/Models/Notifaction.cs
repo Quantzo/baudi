@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Baudi.DAL.Models
 {
@@ -18,10 +19,15 @@ namespace Baudi.DAL.Models
     }
     public enum NotificationStatus
     {
+        [Description("Przyjęte")]
         Accepted,
+        [Description("Odrzucone")]
         Rejected,
+        [Description("Do realizacji")]
         Approved,
+        [Description("W trakcie realizacji")]
         InProgress,
+        [Description("Ukończone")]
         Completed
     }
 }

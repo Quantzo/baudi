@@ -13,6 +13,48 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
     public class SalaryEditWindowViewModel : EditWindowViewModel
     {
         #region Properties
+        private Salary _salary;
+        public Salary Salary
+        {
+            get
+            {
+                return _salary;
+            }
+            set
+            {
+                _salary = value;
+                OnPropertyChanged("Salary");
+            }
+
+        }
+
+        private List<Ownership> _menagersList;
+        public List<Ownership> MenagersList
+        {
+            get
+            {
+                return _menagersList;
+            }
+
+            set
+            {
+                _menagersList = value;
+                OnPropertyChanged("MenagersList");
+            }
+        }
+        private Menager _selectedMenager;
+        public Menager SelectedMenager
+        {
+            get
+            {
+                return _selectedMenager;
+            }
+            set
+            {
+                _selectedMenager = value;
+                OnPropertyChanged("SelectedMenager");
+            }
+        }
         #endregion
 
         public SalaryEditWindowViewModel(SalariesTabViewModel salaryTabViewModel, SalaryEditWindow salaryEditWindow, Salary salary)
