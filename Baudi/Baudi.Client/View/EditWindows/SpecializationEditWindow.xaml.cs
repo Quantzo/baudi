@@ -15,7 +15,7 @@ namespace Baudi.Client.View.EditWindows
         public SpecializationEditWindow(SpecializationsTabViewModel specializationsTabViewModel, Specialization specialization)
         {
             InitializeComponent();
-            //DataContext = new SpecializationEditWindowViewModel(specializationsTabViewModel, this, specialization);
+            DataContext = new SpecializationEditWindowViewModel(specializationsTabViewModel, this, specialization);
         }
     }
 }

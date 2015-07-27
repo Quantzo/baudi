@@ -14,7 +14,7 @@ namespace Baudi.Client.View.EditWindows
         public OrderTypeEditWindow(OrderTypesTabViewModel orderTypesTabViewModel, OrderType orderType)
         {
             InitializeComponent();
-            //DataContext = new OrderTypeEditWindowViewModel(orderTypesTabViewModel, this, orderType);
+            DataContext = new OrderTypeEditWindowViewModel(orderTypesTabViewModel, this, orderType);
         }
     }
 }

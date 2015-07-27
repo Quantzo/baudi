@@ -75,9 +75,11 @@
     <Compile Include="ViewModels\EditWindowViewModels\LocalEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\NotificationEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\OrderEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\OrderTypeEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\OwningCompanyEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\RentEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\SalaryEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\EditWindowViewModels\SpecializationEditWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\OwnershipEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\PersonEditWindowViewModel.cs" />
