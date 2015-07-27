@@ -4,59 +4,75 @@
         xmlns:converters="clr-namespace:Baudi.Client.Converters"
         Title="OknoEdycjiZlecenia" MinHeight="300" MinWidth="500">
     <Window.Resources>
-        <converters:EnumDescriptionConverter x:Key="EnumConventer"/>
+        <converters:EnumDescriptionConverter x:Key="EnumConventer" />
     </Window.Resources>
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="120"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto" MinWidth="120" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Koszt"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Order.Cost}"/>
+        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Koszt" />
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Order.Cost}" />
 
-        <Label Grid.Row="1" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Ostatnia zmiana"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Order.LastChanged}"/>
+        <Label Grid.Row="1" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Ostatnia zmiana" />
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Order.LastChanged}" />
 
-        <Label Grid.Row="2" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Data zgłoszenia"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Order.FilingDate}"/>
+        <Label Grid.Row="2" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Data zgłoszenia" />
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Order.FilingDate}" />
 
-        <Label Grid.Row="3" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Status"/>
-        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding SelectedOrderStatus}" ItemsSource="{Binding OrderStatus}" >
+        <Label Grid.Row="3" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Status" />
+        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+                  SelectedItem="{Binding SelectedOrderStatus}" ItemsSource="{Binding OrderStatus}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}"/>
+                    <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Grid.Row="4" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Typ zlecenia"/>
-        <ComboBox Grid.Row="4"  Grid.Column="1"  Margin="5" IsSynchronizedWithCurrentItem="True" SelectedValue="{Binding SelectedOrderType}" ItemsSource="{Binding OrderTypesList}" DisplayMemberPath="Name"/>
+        <Label Grid.Row="4" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Typ zlecenia" />
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+                  SelectedValue="{Binding SelectedOrderType}" ItemsSource="{Binding OrderTypesList}"
+                  DisplayMemberPath="Name" />
 
-        <Label Grid.Row="5" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Wykonawca"/>
-        <ComboBox Grid.Row="5"  Grid.Column="1"  Margin="5" IsSynchronizedWithCurrentItem="True" SelectedValue="{Binding SelectedCompany}" ItemsSource="{Binding CompaniesList}" DisplayMemberPath="Name"/>
+        <Label Grid.Row="5" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Wykonawca" />
+        <ComboBox Grid.Row="5" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+                  SelectedValue="{Binding SelectedCompany}" ItemsSource="{Binding CompaniesList}"
+                  DisplayMemberPath="Name" />
 
-        <Label Grid.Row="6" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Odpowiedzialny"/>
-        <ComboBox Grid.Row="6" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True" SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}">
+        <Label Grid.Row="6" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Odpowiedzialny" />
+        <ComboBox Grid.Row="6" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+                  SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="Name"/>
-                                <Binding Path="Surname"/>
+                                <Binding Path="Name" />
+                                <Binding Path="Surname" />
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
@@ -64,17 +80,20 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Grid.Row="7" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Zgłoszenie"/>
-        <ComboBox Grid.Row="7"  Grid.Column="1"  Margin="5" IsSynchronizedWithCurrentItem="True" SelectedValue="{Binding SelectedNotification}" ItemsSource="{Binding NotificationsList}" DisplayMemberPath="NotificationID"/>
+        <Label Grid.Row="7" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Zgłoszenie" />
+        <ComboBox Grid.Row="7" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+                  SelectedValue="{Binding SelectedNotification}" ItemsSource="{Binding NotificationsList}"
+                  DisplayMemberPath="NotificationID" />
 
         <Grid Grid.Row="8" Grid.Column="1" Margin="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Margin="5" Command="{Binding ButtonSave}" Content="Zapisz"/>
-            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj"/>
+            <Button Grid.Column="0" Margin="5" Command="{Binding ButtonSave}" Content="Zapisz" />
+            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
 
         </Grid>
 

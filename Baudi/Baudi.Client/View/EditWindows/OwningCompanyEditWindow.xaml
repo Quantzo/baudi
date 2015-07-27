@@ -8,49 +8,63 @@
         Title="OwningCompanyEditWindow" Height="500" Width="500">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="120"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto" MinWidth="120" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Nazwa"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.Name}"/>
+        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Nazwa" />
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.Name}" />
 
-        <Label Grid.Row="1" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="NIP"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.NIP}"/>
+        <Label Grid.Row="1" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="NIP" />
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.NIP}" />
 
-        <Label Grid.Row="2" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Miejscowość"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.City}"/>
+        <Label Grid.Row="2" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Miejscowość" />
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.City}" />
 
-        <Label Grid.Row="3" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Ulica"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.Street}"/>
+        <Label Grid.Row="3" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Ulica" />
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.Street}" />
 
-        <Label Grid.Row="4" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Numer domu"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.HouseNumber}"/>
+        <Label Grid.Row="4" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Numer domu" />
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.HouseNumber}" />
 
-        <Label Grid.Row="5" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Numer mieszkania"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.LocalNumber}"/>
+        <Label Grid.Row="5" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Numer mieszkania" />
+        <TextBox Grid.Row="5" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.LocalNumber}" />
 
-        <Label Grid.Row="6" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Numer telefonu"/>
-        <TextBox Grid.Row="6" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.Telephone}"/>
+        <Label Grid.Row="6" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Numer telefonu" />
+        <TextBox Grid.Row="6" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OwningCompany.Telephone}" />
 
         <Grid Grid.Row="7" Grid.Column="1" Margin="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Margin="5" Command="{Binding ButtonSave}" Content="Zapisz"/>
-            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj"/>
+            <Button Grid.Column="0" Margin="5" Command="{Binding ButtonSave}" Content="Zapisz" />
+            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
 
         </Grid>
 

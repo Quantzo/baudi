@@ -1,34 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using Baudi.Client.View.EditWindows;
 using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 
-
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class PersonEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties
-        private Person _person;
-        public Person Person
-        {
-            get
-            {
-                return _person;
-            }
-            set
-            {
-                _person = value;
-                OnPropertyChanged("Person");
-            }
-        }
-        #endregion
-
-        public PersonEditWindowViewModel(PeopleTabViewModel ownerTabViewModel, PersonEditWindow ownerEditWindow, Person person)
+        public PersonEditWindowViewModel(PeopleTabViewModel ownerTabViewModel, PersonEditWindow ownerEditWindow,
+            Person person)
             : base(ownerTabViewModel, ownerEditWindow, person)
         {
             if (Update)
@@ -57,7 +38,6 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return true;
         }
 
-
         public override void Add()
         {
             using (var con = new BaudiDbContext())
@@ -85,5 +65,21 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 con.SaveChanges();
             }
         }
+
+        #region Properties
+
+        private Person _person;
+
+        public Person Person
+        {
+            get { return _person; }
+            set
+            {
+                _person = value;
+                OnPropertyChanged("Person");
+            }
+        }
+
+        #endregion
     }
 }

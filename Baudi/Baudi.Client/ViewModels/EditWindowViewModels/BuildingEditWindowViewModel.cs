@@ -1,36 +1,16 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.Entity;
-using System.Windows;
-using System.Windows.Input;
+﻿using System.Data.Entity;
 using Baudi.Client.View.EditWindows;
+using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.ViewModels.TabsViewModels;
-using System;
 
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class BuildingEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties
-        private Building _building;
-        public Building Building
-        {
-            get
-            {
-                return _building;
-            }
-            set
-            {
-                _building = value;
-                OnPropertyChanged("Building");
-            }
-        }
-        #endregion
-
-        public BuildingEditWindowViewModel(BuildingsTabViewModel buildingsTabViewModel, BuildingEditWindow buildingEditWindow,Building building)
-            :base(buildingsTabViewModel, buildingEditWindow, building)
+        public BuildingEditWindowViewModel(BuildingsTabViewModel buildingsTabViewModel,
+            BuildingEditWindow buildingEditWindow, Building building)
+            : base(buildingsTabViewModel, buildingEditWindow, building)
         {
             if (Update)
             {
@@ -75,6 +55,21 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 con.SaveChanges();
             }
         }
-    }
 
+        #region Properties
+
+        private Building _building;
+
+        public Building Building
+        {
+            get { return _building; }
+            set
+            {
+                _building = value;
+                OnPropertyChanged("Building");
+            }
+        }
+
+        #endregion
+    }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -11,39 +10,8 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class OrderTypeEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties
-        private OrderType _orderType;
-        public OrderType OrderType
-        {
-            get
-            {
-                return _orderType;
-            }
-            set
-            {
-                _orderType = value;
-                OnPropertyChanged("OrderType");
-            }
-        }
-
-        private List<Specialization> _specializationList;
-        public List<Specialization> SpecializationList
-        {
-            get
-            {
-                return _specializationList;
-            }
-            set
-            {
-                _specializationList = value;
-                OnPropertyChanged("SpecializationList");
-            }
-        }
-
-
-        #endregion
-
-        public OrderTypeEditWindowViewModel(OrderTypesTabViewModel orderTypeTabViewModel, OrderTypeEditWindow orderTypeEditWindow, OrderType orderType)
+        public OrderTypeEditWindowViewModel(OrderTypesTabViewModel orderTypeTabViewModel,
+            OrderTypeEditWindow orderTypeEditWindow, OrderType orderType)
             : base(orderTypeTabViewModel, orderTypeEditWindow, orderType)
         {
             using (var con = new BaudiDbContext())
@@ -53,7 +21,6 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 {
                     OrderType = con.OrderTypes.Find(orderType.OrderTypeID);
                     OrderType.Specializations.ForEach(s => s.IsSelected = true);
-
                 }
                 else
                 {
@@ -104,6 +71,33 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         {
             return true;
         }
-        
+
+        #region Properties
+
+        private OrderType _orderType;
+
+        public OrderType OrderType
+        {
+            get { return _orderType; }
+            set
+            {
+                _orderType = value;
+                OnPropertyChanged("OrderType");
+            }
+        }
+
+        private List<Specialization> _specializationList;
+
+        public List<Specialization> SpecializationList
+        {
+            get { return _specializationList; }
+            set
+            {
+                _specializationList = value;
+                OnPropertyChanged("SpecializationList");
+            }
+        }
+
+        #endregion
     }
 }

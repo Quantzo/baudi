@@ -7,168 +7,12 @@ using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 
-
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class OrderEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties
-
-        private Order _order;
-        public Order Order
-        {
-            get
-            {
-                return _order;
-            }
-            set
-            {
-                _order = value;
-                OnPropertyChanged("Order");
-            }
-
-        }
-
-        public IEnumerable<OrderStatus> OrderStatus
-        {
-            get
-            {
-                return Enum.GetValues(typeof(OrderStatus))
-                    .Cast<OrderStatus>();
-            }
-        }
-
-        private OrderStatus _selectedOrderStatus;
-        public OrderStatus SelectedOrderStatus
-        {
-            get
-            {
-                return _selectedOrderStatus;
-            }
-            set
-            {
-                _selectedOrderStatus = value;
-                OnPropertyChanged("SelectedOrderStatusStatus");
-            }
-
-        }
-
-        private List<OrderType> _orderTypesList;
-        public List<OrderType> OrderTypesList
-        {
-            get
-            {
-                return _orderTypesList;
-            }
-
-            set
-            {
-                _orderTypesList = value;
-                OnPropertyChanged("OrderTypesList");
-            }
-        }
-        private OrderType _selectedOrderType;
-        public OrderType SelectedOrderType
-        {
-            get
-            {
-                return _selectedOrderType;
-            }
-            set
-            {
-                _selectedOrderType = value;
-                OnPropertyChanged("SelectedOrderType");
-                provideCompaniesWithCorrectSpecialization();
-            }
-        }
-
-        private List<Company> _companiesList;
-        public List<Company> CompaniesList
-        {
-            get
-            {
-                return _companiesList;
-            }
-
-            set
-            {
-                _companiesList = value;
-                OnPropertyChanged("CompaniesList");
-            }
-        }
-        private Company _selectedCompany;
-        public Company SelectedCompany
-        {
-            get
-            {
-                return _selectedCompany;
-            }
-            set
-            {
-                _selectedCompany = value;
-                OnPropertyChanged("SelectedCompany");
-            }
-        }
-
-
-        private List<Menager> _menagersList;
-        public List<Menager> MenagersList
-        {
-            get
-            {
-                return _menagersList;
-            }
-
-            set
-            {
-                _menagersList = value;
-                OnPropertyChanged("MenagersList");
-            }
-        }
-        private Menager _selectedMenager;
-        public Menager SelectedMenager
-        {
-            get
-            {
-                return _selectedMenager;
-            }
-            set
-            {
-                _selectedMenager = value;
-                OnPropertyChanged("SelectedMenager");
-            }
-        }
-
-        private List<Notification> _notificationsList;
-        public List<Notification> NotificationsList
-        {
-            get
-            {
-                return _notificationsList;
-            }
-
-            set
-            {
-                _notificationsList = value;
-                OnPropertyChanged("NotificationsList");
-            }
-        }
-        private Notification _selectedNotification;
-        public Notification SelectedNotification
-        {
-            get
-            {
-                return _selectedNotification;
-            }
-            set
-            {
-                _selectedNotification = value;
-                OnPropertyChanged("SelectedNotification");
-            }
-        }
-        #endregion
-
-        public OrderEditWindowViewModel(OrdersTabViewModel orderTabViewModel, OrderEditWindow orderEditWindow, Order order)
+        public OrderEditWindowViewModel(OrdersTabViewModel orderTabViewModel, OrderEditWindow orderEditWindow,
+            Order order)
             : base(orderTabViewModel, orderEditWindow, order)
         {
             CompaniesList = new List<Company>();
@@ -184,8 +28,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                     SelectedCompany = Order.Company;
                     SelectedMenager = Order.Menager;
                     SelectedNotification = Order.Notification;
-                    provideCompaniesWithCorrectSpecialization();
-
+                    ProvideCompaniesWithCorrectSpecialization();
                 }
                 else
                 {
@@ -194,26 +37,26 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
-        public void provideCompaniesWithCorrectSpecialization()
+        public void ProvideCompaniesWithCorrectSpecialization()
         {
-            CompaniesList.Clear();
             using (var con = new BaudiDbContext())
             {
+                var companies = new List<Company>();
                 var orderType = con.OrderTypes.Find(SelectedOrderType.OrderTypeID);
-                orderType.Specializations.ForEach(s => CompaniesList.AddRange(s.Companies));
+                orderType.Specializations.ForEach(s => companies.AddRange(s.Companies));
+                CompaniesList = companies;
             }
         }
 
         public override bool IsValid()
         {
-            if (SelectedOrderType != null && SelectedCompany != null && SelectedMenager != null && SelectedNotification != null)
+            if (SelectedOrderType != null && SelectedCompany != null && SelectedMenager != null &&
+                SelectedNotification != null)
             {
                 return true;
             }
             return false;
-
         }
-
 
         public override void Add()
         {
@@ -260,5 +103,144 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 con.SaveChanges();
             }
         }
+
+        #region Properties
+
+        private Order _order;
+
+        public Order Order
+        {
+            get { return _order; }
+            set
+            {
+                _order = value;
+                OnPropertyChanged("Order");
+            }
+        }
+
+        public IEnumerable<OrderStatus> OrderStatus
+        {
+            get
+            {
+                return Enum.GetValues(typeof (OrderStatus))
+                    .Cast<OrderStatus>();
+            }
+        }
+
+        private OrderStatus _selectedOrderStatus;
+
+        public OrderStatus SelectedOrderStatus
+        {
+            get { return _selectedOrderStatus; }
+            set
+            {
+                _selectedOrderStatus = value;
+                OnPropertyChanged("SelectedOrderStatusStatus");
+            }
+        }
+
+        private List<OrderType> _orderTypesList;
+
+        public List<OrderType> OrderTypesList
+        {
+            get { return _orderTypesList; }
+
+            set
+            {
+                _orderTypesList = value;
+                OnPropertyChanged("OrderTypesList");
+            }
+        }
+
+        private OrderType _selectedOrderType;
+
+        public OrderType SelectedOrderType
+        {
+            get { return _selectedOrderType; }
+            set
+            {
+                _selectedOrderType = value;
+                OnPropertyChanged("SelectedOrderType");
+                ProvideCompaniesWithCorrectSpecialization();
+            }
+        }
+
+        private List<Company> _companiesList;
+
+        public List<Company> CompaniesList
+        {
+            get { return _companiesList; }
+
+            set
+            {
+                _companiesList = value;
+                OnPropertyChanged("CompaniesList");
+            }
+        }
+
+        private Company _selectedCompany;
+
+        public Company SelectedCompany
+        {
+            get { return _selectedCompany; }
+            set
+            {
+                _selectedCompany = value;
+                OnPropertyChanged("SelectedCompany");
+            }
+        }
+
+
+        private List<Menager> _menagersList;
+
+        public List<Menager> MenagersList
+        {
+            get { return _menagersList; }
+
+            set
+            {
+                _menagersList = value;
+                OnPropertyChanged("MenagersList");
+            }
+        }
+
+        private Menager _selectedMenager;
+
+        public Menager SelectedMenager
+        {
+            get { return _selectedMenager; }
+            set
+            {
+                _selectedMenager = value;
+                OnPropertyChanged("SelectedMenager");
+            }
+        }
+
+        private List<Notification> _notificationsList;
+
+        public List<Notification> NotificationsList
+        {
+            get { return _notificationsList; }
+
+            set
+            {
+                _notificationsList = value;
+                OnPropertyChanged("NotificationsList");
+            }
+        }
+
+        private Notification _selectedNotification;
+
+        public Notification SelectedNotification
+        {
+            get { return _selectedNotification; }
+            set
+            {
+                _selectedNotification = value;
+                OnPropertyChanged("SelectedNotification");
+            }
+        }
+
+        #endregion
     }
 }

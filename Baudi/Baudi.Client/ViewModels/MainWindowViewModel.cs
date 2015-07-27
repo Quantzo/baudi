@@ -1,8 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Baudi.Client.ViewModels.TabsViewModels;
-using System.Collections.Generic;
-using System.Linq;
-using System;
 
 namespace Baudi.Client.ViewModels
 {
@@ -12,6 +10,7 @@ namespace Baudi.Client.ViewModels
         {
             Load();
         }
+
         public List<TabViewModel> TabsViewModels { get; set; }
         public BuildingsTabViewModel BuildingsTabViewModel { get; set; }
         public CompaniesTabViewModel CompaniesTabViewModel { get; set; }
@@ -68,14 +67,11 @@ namespace Baudi.Client.ViewModels
             TabsViewModels.Add(SpecializationsTabViewModel);
 
             TabsViewModels.ForEach(vm => vm.PropertyChanged += OnMemberViewModelPropertyChanged);
-
-
-            
         }
 
         private void OnMemberViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "Update")
+            if (e.PropertyName == "Update")
             {
                 TabsViewModels.ForEach(vm => vm.Load());
             }

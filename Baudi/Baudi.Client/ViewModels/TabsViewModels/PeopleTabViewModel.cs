@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
@@ -46,7 +45,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
                 con.Ownerships.RemoveRange(owner.Ownerships);
 
                 var employee = owner as Employee;
-                if(employee != null)
+                if (employee != null)
                 {
                     con.Salaries.RemoveRange(employee.Salaries);
                     var dispatcher = employee as Dispatcher;
@@ -73,7 +72,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
                 {
                     con.Owners.Remove(owner);
                 }
-                con.SaveChanges();                
+                con.SaveChanges();
             }
             Update();
         }

@@ -1,13 +1,12 @@
 ﻿using System.Windows;
-using Baudi.Client.ViewModels;
-using Baudi.DAL.Models;
-using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.Client.ViewModels.EditWindowViewModels;
+using Baudi.Client.ViewModels.TabsViewModels;
+using Baudi.DAL.Models;
 
 namespace Baudi.Client.View.EditWindows
 {
     /// <summary>
-    /// Interaction logic for OrderTypeEditWindow.xaml
+    ///     Interaction logic for OrderTypeEditWindow.xaml
     /// </summary>
     public partial class OrderTypeEditWindow : Window
     {

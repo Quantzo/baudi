@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -7,90 +6,12 @@ using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 
-
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class OwnershipEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties
-        private Ownership _ownership;
-        public Ownership Ownership
-        {
-            get
-            {
-                return _ownership;
-            }
-            set
-            {
-                _ownership = value;
-                OnPropertyChanged("Ownership");
-            }
-
-        }
-
-        private List<Owner> _ownersList;
-        public List<Owner> OwnersList
-        {
-            get
-            {
-                return _ownersList;
-            }
-            set
-            {
-                _ownersList = value;
-                OnPropertyChanged("OwnersList");
-            }
-
-        }
-        private Owner _selectedOwner;
-        public Owner SelectedOwner
-        {
-            get
-            {
-                return _selectedOwner;
-            }
-            set
-            {
-                _selectedOwner = value;
-                OnPropertyChanged("SelectedOwner");
-            }
-
-        }
-
-        private List<Local> _localsList;
-        public List<Local> LocalsList
-        {
-            get
-            {
-                return _localsList;
-            }
-            set
-            {
-
-                _localsList = value;
-                OnPropertyChanged("LocalsList");
-            }
-        }
-
-        private Local _selectedLocal;
-        public Local SelectedLocal
-        {
-            get
-            {
-                return _selectedLocal;
-            }
-            set
-            {
-                _selectedLocal = value;
-                OnPropertyChanged("SelectedLocal");
-            }
-
-        }
-
-
-        #endregion
-
-        public OwnershipEditWindowViewModel(OwnershipsTabViewModel ownershipTabViewModel, OwnershipEditWindow ownershipEditWindow, Ownership ownership)
+        public OwnershipEditWindowViewModel(OwnershipsTabViewModel ownershipTabViewModel,
+            OwnershipEditWindow ownershipEditWindow, Ownership ownership)
             : base(ownershipTabViewModel, ownershipEditWindow, ownership)
         {
             using (var con = new BaudiDbContext())
@@ -150,5 +71,69 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 return true;
             return false;
         }
+
+        #region Properties
+
+        private Ownership _ownership;
+
+        public Ownership Ownership
+        {
+            get { return _ownership; }
+            set
+            {
+                _ownership = value;
+                OnPropertyChanged("Ownership");
+            }
+        }
+
+        private List<Owner> _ownersList;
+
+        public List<Owner> OwnersList
+        {
+            get { return _ownersList; }
+            set
+            {
+                _ownersList = value;
+                OnPropertyChanged("OwnersList");
+            }
+        }
+
+        private Owner _selectedOwner;
+
+        public Owner SelectedOwner
+        {
+            get { return _selectedOwner; }
+            set
+            {
+                _selectedOwner = value;
+                OnPropertyChanged("SelectedOwner");
+            }
+        }
+
+        private List<Local> _localsList;
+
+        public List<Local> LocalsList
+        {
+            get { return _localsList; }
+            set
+            {
+                _localsList = value;
+                OnPropertyChanged("LocalsList");
+            }
+        }
+
+        private Local _selectedLocal;
+
+        public Local SelectedLocal
+        {
+            get { return _selectedLocal; }
+            set
+            {
+                _selectedLocal = value;
+                OnPropertyChanged("SelectedLocal");
+            }
+        }
+
+        #endregion
     }
 }

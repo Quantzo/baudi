@@ -23,12 +23,10 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         public abstract void Load();
         public abstract bool IsSomethingSelected();
 
-
         public void Update()
         {
             OnPropertyChanged("Update");
         }
-
 
         public void OnPropertyChanged(string property)
         {

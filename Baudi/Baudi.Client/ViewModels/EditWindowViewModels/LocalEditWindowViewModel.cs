@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -7,60 +6,18 @@ using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 
-
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class LocalEditWindowViewModel : EditWindowViewModel
     {
-#region properties
-        private List<Building> _buildingsList;
-        public List<Building> BuildingsList
-        {
-            get
-            {
-                return _buildingsList;
-            }
-            set
-            {
-                _buildingsList = value;
-                OnPropertyChanged("BuildingsList");
-            }
-        }
-        private Building _selectedBuilding;
-        public Building SelectedBuilding
-        {
-            get
-            {
-                return _selectedBuilding;
-            }
-            set
-            {
-                _selectedBuilding = value;
-                OnPropertyChanged("SelectedBuilding");
-            }
-        }
-        private Local _local;
-        public Local Local
-    {
-            get
-        {
-            return _local;
-        }
-            set
-        {
-            _local = value;
-            OnPropertyChanged("Local");
-        }
-    }
-#endregion
-
-        public LocalEditWindowViewModel(LocalsTabViewModel localTabViewModel, LocalEditWindow localEditWindow, Local local)
+        public LocalEditWindowViewModel(LocalsTabViewModel localTabViewModel, LocalEditWindow localEditWindow,
+            Local local)
             : base(localTabViewModel, localEditWindow, local)
         {
             using (var con = new BaudiDbContext())
             {
                 BuildingsList = con.Buildings.ToList();
-                if(Update)
+                if (Update)
                 {
                     Local = con.Locals.Find(local.NotificationTargetID);
                     SelectedBuilding = Local.Building;
@@ -72,15 +29,13 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
-
         public override bool IsValid()
         {
-            if(SelectedBuilding != null)
+            if (SelectedBuilding != null)
             {
                 return true;
             }
             return false;
-            
         }
 
         public override void Add()
@@ -118,5 +73,45 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 con.SaveChanges();
             }
         }
+
+        #region properties
+
+        private List<Building> _buildingsList;
+
+        public List<Building> BuildingsList
+        {
+            get { return _buildingsList; }
+            set
+            {
+                _buildingsList = value;
+                OnPropertyChanged("BuildingsList");
+            }
+        }
+
+        private Building _selectedBuilding;
+
+        public Building SelectedBuilding
+        {
+            get { return _selectedBuilding; }
+            set
+            {
+                _selectedBuilding = value;
+                OnPropertyChanged("SelectedBuilding");
+            }
+        }
+
+        private Local _local;
+
+        public Local Local
+        {
+            get { return _local; }
+            set
+            {
+                _local = value;
+                OnPropertyChanged("Local");
+            }
+        }
+
+        #endregion
     }
 }

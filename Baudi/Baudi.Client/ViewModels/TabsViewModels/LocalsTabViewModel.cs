@@ -1,12 +1,9 @@
-﻿using Baudi.DAL;
-using Baudi.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Threading.Tasks;
+using System.Linq;
 using Baudi.Client.View.EditWindows;
+using Baudi.DAL;
+using Baudi.DAL.Models;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {

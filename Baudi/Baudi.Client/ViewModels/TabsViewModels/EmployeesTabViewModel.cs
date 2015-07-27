@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
@@ -36,6 +35,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             var employeeEditWindow = new EmployeeEditWindow(this, null);
             employeeEditWindow.Show();
         }
+
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
@@ -47,7 +47,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
                 var menager = employee as Menager;
 
                 employee.Notifications.Clear();
-                con.Ownerships.RemoveRange(employee.Ownerships);                
+                con.Ownerships.RemoveRange(employee.Ownerships);
 
                 if (dispatcher != null)
                 {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -7,84 +6,12 @@ using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 
-
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class ExpenseEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties
-        private Expense _expense;
-        public Expense Expense
-        {
-            get
-            {
-                return _expense;
-            }
-            set
-            {
-                _expense = value;
-                OnPropertyChanged("Expense");
-            }
-        }
-
-        private List<Menager> _menagersList;
-        public List<Menager> MenagersList
-        {
-            get
-            {
-                return _menagersList;
-            }
-            set
-            {
-                _menagersList = value;
-                OnPropertyChanged("MenagersList");
-            }
-        }
-
-        private Menager _selectedMenager;
-        public Menager SelectedMenager
-        {
-            get
-            {
-                return _selectedMenager;
-            }
-            set
-            {
-                _selectedMenager = value;
-                OnPropertyChanged("SelectedMenager");
-            }
-        }
-
-        private List<ExpenseTarget> _expensesTargetsList;
-        public List<ExpenseTarget> ExpenseTargetsList
-        {
-            get
-            {
-                return _expensesTargetsList;
-            }
-            set
-            {
-                _expensesTargetsList = value;
-                OnPropertyChanged("ExpenseTargetsList");
-            }
-        }
-
-        private ExpenseTarget _selectedExpenseTarget;
-        public ExpenseTarget SelectedExpenseTarget
-        {
-            get
-            {
-                return _selectedExpenseTarget;
-            }
-            set
-            {
-                _selectedExpenseTarget = value;
-                OnPropertyChanged("SelectedExpenseTarget");
-            }
-        }
-        #endregion
-
-        public ExpenseEditWindowViewModel(ExpensesTabViewModel expensesTabViewModel, ExpenseEditWindow expenseEditWindow, Expense expense)
+        public ExpenseEditWindowViewModel(ExpensesTabViewModel expensesTabViewModel, ExpenseEditWindow expenseEditWindow,
+            Expense expense)
             : base(expensesTabViewModel, expenseEditWindow, expense)
         {
             using (var con = new BaudiDbContext())
@@ -149,5 +76,69 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 con.SaveChanges();
             }
         }
+
+        #region Properties
+
+        private Expense _expense;
+
+        public Expense Expense
+        {
+            get { return _expense; }
+            set
+            {
+                _expense = value;
+                OnPropertyChanged("Expense");
+            }
+        }
+
+        private List<Menager> _menagersList;
+
+        public List<Menager> MenagersList
+        {
+            get { return _menagersList; }
+            set
+            {
+                _menagersList = value;
+                OnPropertyChanged("MenagersList");
+            }
+        }
+
+        private Menager _selectedMenager;
+
+        public Menager SelectedMenager
+        {
+            get { return _selectedMenager; }
+            set
+            {
+                _selectedMenager = value;
+                OnPropertyChanged("SelectedMenager");
+            }
+        }
+
+        private List<ExpenseTarget> _expensesTargetsList;
+
+        public List<ExpenseTarget> ExpenseTargetsList
+        {
+            get { return _expensesTargetsList; }
+            set
+            {
+                _expensesTargetsList = value;
+                OnPropertyChanged("ExpenseTargetsList");
+            }
+        }
+
+        private ExpenseTarget _selectedExpenseTarget;
+
+        public ExpenseTarget SelectedExpenseTarget
+        {
+            get { return _selectedExpenseTarget; }
+            set
+            {
+                _selectedExpenseTarget = value;
+                OnPropertyChanged("SelectedExpenseTarget");
+            }
+        }
+
+        #endregion
     }
 }

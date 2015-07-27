@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
@@ -39,18 +38,16 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override void Delete()
         {
-            using( var con = new BaudiDbContext())
+            using (var con = new BaudiDbContext())
             {
                 var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
 
-                
 
                 building.Locals.ForEach(l => l.Notifactions.ForEach(n => con.Orders.RemoveRange(n.Orders)));
                 building.Locals.ForEach(l => con.Notifications.RemoveRange(l.Notifactions));
                 building.Locals.ForEach(l => con.Ownerships.RemoveRange(l.Ownerships));
                 con.Locals.RemoveRange(building.Locals);
-                
-                
+
 
                 con.Notifications.RemoveRange(building.Notifactions);
                 building.Notifactions.ForEach(n => con.Orders.RemoveRange(n.Orders));

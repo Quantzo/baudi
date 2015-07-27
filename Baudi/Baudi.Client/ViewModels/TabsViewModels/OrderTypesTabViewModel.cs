@@ -1,34 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
-
     public class OrderTypesTabViewModel : TabViewModel
     {
-        #region Properties
-        private List<OrderType> _orderTypesList;
-        public List<OrderType> OrderTypesList
-        {
-            get
-            {
-                return _orderTypesList;
-            }
-            set
-            {
-                _orderTypesList = value;
-                OnPropertyChanged("OrderTypesList");
-            }
-
-        }
-
-        public OrderType SelectedOrderType { get; set; }
-        #endregion
         public override void Add()
         {
             var orderTypeEditWindow = new OrderTypeEditWindow(this, null);
@@ -69,5 +48,23 @@ namespace Baudi.Client.ViewModels.TabsViewModels
                     .ToList();
             }
         }
+
+        #region Properties
+
+        private List<OrderType> _orderTypesList;
+
+        public List<OrderType> OrderTypesList
+        {
+            get { return _orderTypesList; }
+            set
+            {
+                _orderTypesList = value;
+                OnPropertyChanged("OrderTypesList");
+            }
+        }
+
+        public OrderType SelectedOrderType { get; set; }
+
+        #endregion
     }
 }

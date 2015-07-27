@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
@@ -37,16 +36,17 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             var notificationEditWindow = new NotificationEditWindow(this, null);
             notificationEditWindow.Show();
         }
+
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
             {
                 var notification = con.Notifications.Find(SelectedNotification.NotificationID);
-                con.Orders.RemoveRange(notification.Orders); 
+                con.Orders.RemoveRange(notification.Orders);
                 con.Notifications.Remove(notification);
-                               
+
                 con.SaveChanges();
-            }            
+            }
             Update();
         }
 
@@ -64,6 +64,5 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             }
             return false;
         }
-
     }
 }

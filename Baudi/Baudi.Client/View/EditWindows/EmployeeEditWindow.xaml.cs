@@ -1,8 +1,7 @@
 ﻿using System.Windows;
-using Baudi.Client.ViewModels;
 using Baudi.Client.ViewModels.EditWindowViewModels;
-using Baudi.DAL.Models;
 using Baudi.Client.ViewModels.TabsViewModels;
+using Baudi.DAL.Models;
 
 namespace Baudi.Client.View.EditWindows
 {
@@ -13,6 +12,5 @@ namespace Baudi.Client.View.EditWindows
             InitializeComponent();
             DataContext = new EmployeeEditWindowViewModel(employeesTabViewModel, this, employee);
         }
-
     }
 }

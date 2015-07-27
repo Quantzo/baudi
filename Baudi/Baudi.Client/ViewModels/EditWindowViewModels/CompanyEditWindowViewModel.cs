@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -11,59 +10,24 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class CompanyEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties     
-        private Company _company;
-        public Company Company
-        {
-            get
-            {
-                return _company;
-            }
-            set
-            {
-                _company = value;
-                OnPropertyChanged("Comapny");
-            }
-               
-        }
-        
-        private List<Specialization> _specializationList;
-        public List<Specialization> SpecializationList
-        {
-            get 
-            {
-                return _specializationList;
-            }
-            set
-            {
-                _specializationList = value;
-                OnPropertyChanged("SpecializationList");
-            }
-        }
-        #endregion
-
-
-        public CompanyEditWindowViewModel(CompaniesTabViewModel companiesTabViewModel, CompanyEditWindow companyEditWindow, Company company)
+        public CompanyEditWindowViewModel(CompaniesTabViewModel companiesTabViewModel,
+            CompanyEditWindow companyEditWindow, Company company)
             : base(companiesTabViewModel, companyEditWindow, company)
         {
-
-                using (var con = new BaudiDbContext())
+            using (var con = new BaudiDbContext())
+            {
+                SpecializationList = con.Specializations.ToList();
+                if (Update)
                 {
-                    SpecializationList = con.Specializations.ToList();
-                    if (Update)
-                    {
-                        Company = con.Companies.Find(company.CompanyID);                        
-                        Company.Specializations.ForEach(s => s.IsSelected = true);
-                    }
-                    else
-                    {
-                        Company = new Company();
-                    }
+                    Company = con.Companies.Find(company.CompanyID);
+                    Company.Specializations.ForEach(s => s.IsSelected = true);
                 }
-            
-
+                else
+                {
+                    Company = new Company();
+                }
+            }
         }
-
 
         public override bool IsValid()
         {
@@ -115,5 +79,33 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 con.SaveChanges();
             }
         }
+
+        #region Properties     
+
+        private Company _company;
+
+        public Company Company
+        {
+            get { return _company; }
+            set
+            {
+                _company = value;
+                OnPropertyChanged("Comapny");
+            }
+        }
+
+        private List<Specialization> _specializationList;
+
+        public List<Specialization> SpecializationList
+        {
+            get { return _specializationList; }
+            set
+            {
+                _specializationList = value;
+                OnPropertyChanged("SpecializationList");
+            }
+        }
+
+        #endregion
     }
 }

@@ -8,22 +8,26 @@
         Title="OrderTypeEditWindow" Height="300" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="120"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto" MinWidth="120" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Nazwa"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OrderType.Name}"/>
+        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Nazwa" />
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OrderType.Name}" />
 
-        <Label Grid.Row="1" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Specjalności"/>
-        <DataGrid Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding SpecializationList}" IsReadOnly="False" SelectionMode="Extended" AutoGenerateColumns="False" CanUserAddRows="False">
+        <Label Grid.Row="1" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Specjalności" />
+        <DataGrid Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding SpecializationList}" IsReadOnly="False"
+                  SelectionMode="Extended" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Powiązana" Binding="{Binding IsSelected}" IsReadOnly="False"/>
+                <DataGridCheckBoxColumn Header="Powiązana" Binding="{Binding IsSelected}" IsReadOnly="False" />
                 <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding SpecializationID}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Nazwa" Width="Auto" Binding="{Binding Name}" IsReadOnly="True" />
             </DataGrid.Columns>
@@ -31,12 +35,12 @@
 
         <Grid Grid.Row="2" Grid.Column="1" Margin="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Margin="5" Command="{Binding ButtonSave}" Content="Zapisz"/>
-            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj"/>
+            <Button Grid.Column="0" Margin="5" Command="{Binding ButtonSave}" Content="Zapisz" />
+            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
 
         </Grid>
 

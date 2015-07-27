@@ -1,24 +1,28 @@
-﻿using Baudi.Client.ViewModels.TabsViewModels;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using Baudi.Client.ViewModels.TabsViewModels;
 
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
-    public abstract class EditWindowViewModel: INotifyPropertyChanged
+    public abstract class EditWindowViewModel : INotifyPropertyChanged
     {
-
-        protected TabViewModel ParentViewModel { get; set; }
         protected readonly bool Update;
-        protected Window EditWindow { get; set; }
+
+        public EditWindowViewModel(TabViewModel parentViewModel, Window editWindow, object itemToEdit)
+        {
+            ParentViewModel = parentViewModel;
+            EditWindow = editWindow;
+            ButtonCancel = new RelayCommand(pars => CloseWindow());
+            ButtonSave = new RelayCommand(pars => Save(), pars => IsValid());
+            Update = itemToEdit != null;
+        }
+
+        private TabViewModel ParentViewModel { get; set; }
+        private Window EditWindow { get; set; }
         public ICommand ButtonCancel { get; set; }
         public ICommand ButtonSave { get; set; }
-
+        public event PropertyChangedEventHandler PropertyChanged;
         public abstract void Add();
         public abstract void Edit();
 
@@ -33,28 +37,16 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 Add();
             }
             CloseWindow();
-
         }
-        
+
         public abstract bool IsValid();
 
-        public EditWindowViewModel(TabViewModel parentViewModel, Window editWindow, object itemToEdit)
-        {
-            ParentViewModel = parentViewModel;
-            EditWindow = editWindow;
-            ButtonCancel = new RelayCommand(pars => CloseWindow());
-            ButtonSave = new RelayCommand(pars => Save(), pars => IsValid());
-            Update = itemToEdit != null;
-        }
-
-
-        protected void CloseWindow()
+        private void CloseWindow()
         {
             ParentViewModel.Update();
             EditWindow.Close();
         }
-   
-        public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged(string property)
         {
             if (PropertyChanged != null)

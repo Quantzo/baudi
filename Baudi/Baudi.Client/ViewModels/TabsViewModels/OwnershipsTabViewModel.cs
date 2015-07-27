@@ -1,36 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
     public class OwnershipsTabViewModel : TabViewModel
     {
-        #region Properties
-        private List<Ownership> _ownershipsList;
-        public List<Ownership> OwnershipsList
-        {
-            get
-            {
-                return _ownershipsList;
-            }
-            set
-            {
-                _ownershipsList = value;
-                OnPropertyChanged("OwnershipsList");
-            }
-
-        }
-
-        public Ownership SelectedOwnership { get; set;}
-
-
-        #endregion
-
         public override void Add()
         {
             var ownershipEditWindow = new OwnershipEditWindow(this, null);
@@ -75,5 +53,23 @@ namespace Baudi.Client.ViewModels.TabsViewModels
                     .ToList();
             }
         }
+
+        #region Properties
+
+        private List<Ownership> _ownershipsList;
+
+        public List<Ownership> OwnershipsList
+        {
+            get { return _ownershipsList; }
+            set
+            {
+                _ownershipsList = value;
+                OnPropertyChanged("OwnershipsList");
+            }
+        }
+
+        public Ownership SelectedOwnership { get; set; }
+
+        #endregion
     }
 }

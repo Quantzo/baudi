@@ -1,42 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using Baudi.Client.View.EditWindows;
 using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 
-
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class SpecializationEditWindowViewModel : EditWindowViewModel
     {
-
-        #region Properties
-        private Specialization _specialization;
-        public Specialization Specialization
-        {
-            get
-            {
-                return _specialization;
-            }
-            set
-            {
-                _specialization = value;
-                OnPropertyChanged("Specialization");
-            }
-        }
-        #endregion
-        public SpecializationEditWindowViewModel(SpecializationsTabViewModel specializationsTabViewModel, SpecializationEditWindow specializationEditWindow, Specialization specialization)
-            :base(specializationsTabViewModel, specializationEditWindow, specialization)
+        public SpecializationEditWindowViewModel(SpecializationsTabViewModel specializationsTabViewModel,
+            SpecializationEditWindow specializationEditWindow, Specialization specialization)
+            : base(specializationsTabViewModel, specializationEditWindow, specialization)
         {
             if (Update)
             {
                 Specialization = new Specialization
                 {
                     SpecializationID = specialization.SpecializationID,
-                    Name = specialization.Name,
+                    Name = specialization.Name
                 };
             }
             else
@@ -64,12 +45,27 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 con.Entry(specialization).State = EntityState.Modified;
                 con.SaveChanges();
             }
-
         }
 
         public override bool IsValid()
         {
             return true;
         }
+
+        #region Properties
+
+        private Specialization _specialization;
+
+        public Specialization Specialization
+        {
+            get { return _specialization; }
+            set
+            {
+                _specialization = value;
+                OnPropertyChanged("Specialization");
+            }
+        }
+
+        #endregion
     }
 }

@@ -1,33 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
     public class SpecializationsTabViewModel : TabViewModel
     {
-        #region Properties
-        private List<Specialization> _specializationsList;
-        public List<Specialization> SpecializationsList
-        {
-            get
-            {
-                return _specializationsList;
-            }
-            set
-            {
-                _specializationsList = value;
-                OnPropertyChanged("SpecializationsList");
-            }
-
-        }
-
-        public Specialization SelectedSpecialization { get; set; }
-        #endregion
         public override void Add()
         {
             var specializationEditWindow = new SpecializationEditWindow(this, null);
@@ -55,9 +35,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public override bool IsSomethingSelected()
         {
-            if(SelectedSpecialization != null)
+            if (SelectedSpecialization != null)
                 return true;
-            return false;            
+            return false;
         }
 
         public override void Load()
@@ -68,5 +48,23 @@ namespace Baudi.Client.ViewModels.TabsViewModels
                     .ToList();
             }
         }
+
+        #region Properties
+
+        private List<Specialization> _specializationsList;
+
+        public List<Specialization> SpecializationsList
+        {
+            get { return _specializationsList; }
+            set
+            {
+                _specializationsList = value;
+                OnPropertyChanged("SpecializationsList");
+            }
+        }
+
+        public Specialization SelectedSpecialization { get; set; }
+
+        #endregion
     }
 }

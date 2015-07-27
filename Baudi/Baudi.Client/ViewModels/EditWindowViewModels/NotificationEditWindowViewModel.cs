@@ -11,137 +11,8 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class NotificationEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties
-        private Notification _notification;
-        public Notification Notification
-        {
-            get
-            {
-                return _notification;
-            }
-            set
-            {
-                _notification = value;
-                OnPropertyChanged("Notification");
-            }
-        }
-
-
-        public IEnumerable<NotificationStatus> NotificationStatus
-        {
-            get
-            {
-                return Enum.GetValues(typeof(NotificationStatus))
-                    .Cast<NotificationStatus>();
-            }
-        }
-
-        private NotificationStatus _selectedNotificationStatus;
-        public NotificationStatus SelectedNotificationStatus
-        {
-            get
-            {
-                return _selectedNotificationStatus;
-            }
-            set
-            {
-                _selectedNotificationStatus = value;
-                OnPropertyChanged("SelectedNotificationStatus");
-            }
-
-        }
-
-        private List<NotificationTarget> _notificationTargetsList;
-        public List<NotificationTarget> NotificationTargetsList
-        {
-            get
-            {
-                return _notificationTargetsList;
-            }
-            set
-            {
-
-                _notificationTargetsList = value;
-                OnPropertyChanged("NotificationTargetsList");
-            }
-        }
-
-        private NotificationTarget _selectedNotificationTarget;
-        public  NotificationTarget SelectedNotificationTarget
-        {
-            get
-            {
-                return _selectedNotificationTarget;
-            }
-            set
-            {
-                _selectedNotificationTarget = value;
-                OnPropertyChanged("SelectedNotificationTarget");
-            }
-
-        }
-
-        private List<Owner> _ownersList;
-        public List<Owner> OwnersList
-        {
-            get
-            {
-                return _ownersList;
-            }
-            set
-            {
-
-                _ownersList = value;
-                OnPropertyChanged("OwnersList");
-            }
-        }
-        private Owner _selectedOwner;
-        public Owner SelectedOwner
-        {
-            get
-            {
-                return _selectedOwner;
-            }
-            set
-            {
-                _selectedOwner = value;
-                OnPropertyChanged("SelectedOwner");
-            }
-
-        }
-
-        private List<Dispatcher> _dispatchersList;
-        public List<Dispatcher> DispatchersList
-        {
-            get
-            {
-                return _dispatchersList;
-            }
-            set
-            {
-
-                _dispatchersList = value;
-                OnPropertyChanged("DispatchersList");
-            }
-        }
-
-        private Dispatcher _selectedDispatcher;
-        public Dispatcher SelectedDispatcher
-        {
-            get
-            {
-                return _selectedDispatcher;
-            }
-            set
-            {
-                _selectedDispatcher = value;
-                OnPropertyChanged("SelectedDispatcher");
-            }
-        }
-
-        #endregion
-
-        public NotificationEditWindowViewModel(NotificationsTabViewModel notificationTabViewModel, NotificationEditWindow notificationEditWindow, Notification notification)
+        public NotificationEditWindowViewModel(NotificationsTabViewModel notificationTabViewModel,
+            NotificationEditWindow notificationEditWindow, Notification notification)
             : base(notificationTabViewModel, notificationEditWindow, notification)
         {
             using (var con = new BaudiDbContext())
@@ -149,7 +20,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 NotificationTargetsList = con.NotificationTargets.ToList();
                 OwnersList = con.Owners.ToList();
                 DispatchersList = con.Dispatchers.ToList();
-                if(Update)
+                if (Update)
                 {
                     Notification = con.Notifications.Find(notification.NotificationID);
                     SelectedNotificationStatus = Notification.Status;
@@ -164,14 +35,12 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
-
         public override bool IsValid()
         {
             if (SelectedNotificationTarget != null && SelectedOwner != null && SelectedDispatcher != null)
                 return true;
             return false;
         }
-
 
         public override void Add()
         {
@@ -194,7 +63,6 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         {
             using (var con = new BaudiDbContext())
             {
-
                 var notificationTarget = con.NotificationTargets.Find(SelectedNotificationTarget.NotificationTargetID);
                 var owner = con.Owners.Find(SelectedOwner.OwnerID);
                 var dispatcher = con.Dispatchers.Find(SelectedDispatcher.OwnerID);
@@ -215,5 +83,115 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 con.SaveChanges();
             }
         }
+
+        #region Properties
+
+        private Notification _notification;
+
+        public Notification Notification
+        {
+            get { return _notification; }
+            set
+            {
+                _notification = value;
+                OnPropertyChanged("Notification");
+            }
+        }
+
+
+        public IEnumerable<NotificationStatus> NotificationStatus
+        {
+            get
+            {
+                return Enum.GetValues(typeof (NotificationStatus))
+                    .Cast<NotificationStatus>();
+            }
+        }
+
+        private NotificationStatus _selectedNotificationStatus;
+
+        public NotificationStatus SelectedNotificationStatus
+        {
+            get { return _selectedNotificationStatus; }
+            set
+            {
+                _selectedNotificationStatus = value;
+                OnPropertyChanged("SelectedNotificationStatus");
+            }
+        }
+
+        private List<NotificationTarget> _notificationTargetsList;
+
+        public List<NotificationTarget> NotificationTargetsList
+        {
+            get { return _notificationTargetsList; }
+            set
+            {
+                _notificationTargetsList = value;
+                OnPropertyChanged("NotificationTargetsList");
+            }
+        }
+
+        private NotificationTarget _selectedNotificationTarget;
+
+        public NotificationTarget SelectedNotificationTarget
+        {
+            get { return _selectedNotificationTarget; }
+            set
+            {
+                _selectedNotificationTarget = value;
+                OnPropertyChanged("SelectedNotificationTarget");
+            }
+        }
+
+        private List<Owner> _ownersList;
+
+        public List<Owner> OwnersList
+        {
+            get { return _ownersList; }
+            set
+            {
+                _ownersList = value;
+                OnPropertyChanged("OwnersList");
+            }
+        }
+
+        private Owner _selectedOwner;
+
+        public Owner SelectedOwner
+        {
+            get { return _selectedOwner; }
+            set
+            {
+                _selectedOwner = value;
+                OnPropertyChanged("SelectedOwner");
+            }
+        }
+
+        private List<Dispatcher> _dispatchersList;
+
+        public List<Dispatcher> DispatchersList
+        {
+            get { return _dispatchersList; }
+            set
+            {
+                _dispatchersList = value;
+                OnPropertyChanged("DispatchersList");
+            }
+        }
+
+        private Dispatcher _selectedDispatcher;
+
+        public Dispatcher SelectedDispatcher
+        {
+            get { return _selectedDispatcher; }
+            set
+            {
+                _selectedDispatcher = value;
+                OnPropertyChanged("SelectedDispatcher");
+            }
+        }
+
+        #endregion
     }
 }

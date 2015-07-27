@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
-using Baudi.Client.View.EditWindows;
 
 namespace Baudi.Client.ViewModels.TabsViewModels
 {
@@ -36,6 +35,7 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             var companyEditWindow = new CompanyEditWindow(this, null);
             companyEditWindow.Show();
         }
+
         public override void Delete()
         {
             using (var con = new BaudiDbContext())

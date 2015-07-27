@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -7,114 +6,12 @@ using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 
-
-
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class CyclicOrderEditWindowViewModel : EditWindowViewModel
     {
-        #region Properties
-        private CyclicOrder _cyclicOrder;
-        public CyclicOrder CyclicOrder
-        {
-            get
-            {
-                return _cyclicOrder;
-            }
-            set
-            {
-                _cyclicOrder = value;
-                OnPropertyChanged("CyclicOrder");
-            }
-        }
-
-        private List<Building> _buildingsList;
-        public List<Building> BuildingsList
-        {
-            get
-            {
-                return _buildingsList;
-            }
-            set
-            {
-                _buildingsList = value;
-                OnPropertyChanged("BuildingsList");
-            }
-        }
-
-        private Company _selectedCompany;
-        public Company SelectedCompany
-        {
-            get
-            {
-                return _selectedCompany;
-            }
-            set
-            {
-                _selectedCompany = value;
-                OnPropertyChanged("SelectedCompany");
-            }
-        }
-
-        private Building _selectedBuilding;
-        public Building SelectedBuilding
-        {
-            get
-            {
-                return _selectedBuilding;
-            }
-            set
-            {
-                _selectedBuilding = value;
-                OnPropertyChanged("SelectedBuilding");
-            }
-        }
-
-
-        private List<Company> _companiesList;
-        public List<Company> CompaniesList
-        {
-            get
-            {
-                return _companiesList;
-            }
-            set
-            {
-                _companiesList = value;
-                OnPropertyChanged("CompaniesList");
-            }
-        }
-
-
-        private List<Menager> _menagersList;
-        public List<Menager> MenagersList
-        {
-            get
-            {
-                return _menagersList;
-            }
-            set
-            {
-                _menagersList = value;
-                OnPropertyChanged("MenagersList");
-            }
-        }
-        private Menager _selectedMenager;
-        public Menager SelectedMenager
-        {
-            get
-            {
-                return _selectedMenager;
-            }
-            set
-            {
-                _selectedMenager = value;
-                OnPropertyChanged("SelectedMenager");
-            }
-        }
-        #endregion
-
-        public CyclicOrderEditWindowViewModel(CyclicOrdersTabViewModel cyclicOrderTabViewModel, CyclicOrderEditWindow cyclicOrderEditWindow, CyclicOrder cyclicOrder)
+        public CyclicOrderEditWindowViewModel(CyclicOrdersTabViewModel cyclicOrderTabViewModel,
+            CyclicOrderEditWindow cyclicOrderEditWindow, CyclicOrder cyclicOrder)
             : base(cyclicOrderTabViewModel, cyclicOrderEditWindow, cyclicOrder)
         {
             using (var con = new BaudiDbContext())
@@ -138,7 +35,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         public override bool IsValid()
         {
-            if(SelectedBuilding != null && SelectedCompany != null)
+            if (SelectedBuilding != null && SelectedCompany != null)
             {
                 return true;
             }
@@ -184,5 +81,95 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 con.SaveChanges();
             }
         }
+
+        #region Properties
+
+        private CyclicOrder _cyclicOrder;
+
+        public CyclicOrder CyclicOrder
+        {
+            get { return _cyclicOrder; }
+            set
+            {
+                _cyclicOrder = value;
+                OnPropertyChanged("CyclicOrder");
+            }
+        }
+
+        private List<Building> _buildingsList;
+
+        public List<Building> BuildingsList
+        {
+            get { return _buildingsList; }
+            set
+            {
+                _buildingsList = value;
+                OnPropertyChanged("BuildingsList");
+            }
+        }
+
+        private Company _selectedCompany;
+
+        public Company SelectedCompany
+        {
+            get { return _selectedCompany; }
+            set
+            {
+                _selectedCompany = value;
+                OnPropertyChanged("SelectedCompany");
+            }
+        }
+
+        private Building _selectedBuilding;
+
+        public Building SelectedBuilding
+        {
+            get { return _selectedBuilding; }
+            set
+            {
+                _selectedBuilding = value;
+                OnPropertyChanged("SelectedBuilding");
+            }
+        }
+
+
+        private List<Company> _companiesList;
+
+        public List<Company> CompaniesList
+        {
+            get { return _companiesList; }
+            set
+            {
+                _companiesList = value;
+                OnPropertyChanged("CompaniesList");
+            }
+        }
+
+
+        private List<Menager> _menagersList;
+
+        public List<Menager> MenagersList
+        {
+            get { return _menagersList; }
+            set
+            {
+                _menagersList = value;
+                OnPropertyChanged("MenagersList");
+            }
+        }
+
+        private Menager _selectedMenager;
+
+        public Menager SelectedMenager
+        {
+            get { return _selectedMenager; }
+            set
+            {
+                _selectedMenager = value;
+                OnPropertyChanged("SelectedMenager");
+            }
+        }
+
+        #endregion
     }
 }
