@@ -96,7 +96,7 @@
             </TabItem>
             <TabItem Name="OrderTypesTab" Header="Słowniki: typy zleceń">
                 <TabItem.Content>
-                    <tabs:OrderTypesTab DataContext="{Binding OrderTypesTabViewModel}" Loaded="OrderTypesTab_Loaded" />
+                    <tabs:OrderTypesTab DataContext="{Binding OrderTypesTabViewModel}"/>
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="SpecializationsTab" Header="Słowniki: specjalizacje">
