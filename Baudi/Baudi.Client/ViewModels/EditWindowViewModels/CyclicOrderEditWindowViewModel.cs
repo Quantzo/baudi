@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -135,52 +136,6 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
-        public override void Save()
-        {
-            if (Update)
-            {
-                using (var con = new BaudiDbContext())
-                {
-                    var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
-                    var company = con.Companies.Find(SelectedCompany.CompanyID);
-                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
-                    
-
-                    var cyclicOrder = con.CyclicOrders.Find(CyclicOrder.ExpenseTargetID);
-                    cyclicOrder.Building = building;
-                    cyclicOrder.Company = company;
-                    cyclicOrder.Cost = CyclicOrder.Cost;
-                    cyclicOrder.Frequency = CyclicOrder.Frequency;
-                    cyclicOrder.Menager = menager;
-
-
-                    con.Entry(cyclicOrder).State = EntityState.Modified;
-
-                    con.SaveChanges();
-                }
-
-            }
-            else
-            {
-                using (var con = new BaudiDbContext())
-                {
-                    var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
-                    var company = con.Companies.Find(SelectedCompany.CompanyID);
-                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
-
-                    CyclicOrder.Building = building;
-                    CyclicOrder.Company = company;
-                    CyclicOrder.Menager = menager;
-
-                    con.CyclicOrders.Add(CyclicOrder);
-                    con.SaveChanges();
-                }
-            }
-
-            ParentViewModel.Update();
-            CloseWindow();
-        }
-
         public override bool IsValid()
         {
             if(SelectedBuilding != null && SelectedCompany != null)
@@ -188,6 +143,46 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 return true;
             }
             return false;
+        }
+
+        public override void Add()
+        {
+            using (var con = new BaudiDbContext())
+            {
+                var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
+                var company = con.Companies.Find(SelectedCompany.CompanyID);
+                var menager = con.Menagers.Find(SelectedMenager.OwnerID);
+
+                CyclicOrder.Building = building;
+                CyclicOrder.Company = company;
+                CyclicOrder.Menager = menager;
+
+                con.CyclicOrders.Add(CyclicOrder);
+                con.SaveChanges();
+            }
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
+            {
+                var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
+                var company = con.Companies.Find(SelectedCompany.CompanyID);
+                var menager = con.Menagers.Find(SelectedMenager.OwnerID);
+
+
+                var cyclicOrder = con.CyclicOrders.Find(CyclicOrder.ExpenseTargetID);
+                cyclicOrder.Building = building;
+                cyclicOrder.Company = company;
+                cyclicOrder.Cost = CyclicOrder.Cost;
+                cyclicOrder.Frequency = CyclicOrder.Frequency;
+                cyclicOrder.Menager = menager;
+
+
+                con.Entry(cyclicOrder).State = EntityState.Modified;
+
+                con.SaveChanges();
+            }
         }
     }
 }

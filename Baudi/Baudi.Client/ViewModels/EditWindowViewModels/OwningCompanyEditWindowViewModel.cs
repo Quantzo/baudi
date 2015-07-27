@@ -57,36 +57,31 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return true;
         }
 
-        public override void Save()
+        public override void Add()
         {
-            if (Update)
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    var owningCompany = con.OwningCompanies.Find(OwningCompany.OwnerID);
-                    owningCompany.Name = OwningCompany.Name;
-                    owningCompany.NIP = OwningCompany.NIP;
-                    owningCompany.City = OwningCompany.City;
-                    owningCompany.Street = OwningCompany.Street;
-                    owningCompany.HouseNumber = OwningCompany.HouseNumber;
-                    owningCompany.LocalNumber = OwningCompany.LocalNumber;
-                    owningCompany.Telephone = OwningCompany.Telephone;
-
-                    con.Entry(owningCompany).State = EntityState.Modified;
-                    con.SaveChanges();
-                }
+                con.OwningCompanies.Add(OwningCompany);
+                con.SaveChanges();
             }
-            else
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    con.OwningCompanies.Add(OwningCompany);
-                    con.SaveChanges();
-                }
-            }
+                var owningCompany = con.OwningCompanies.Find(OwningCompany.OwnerID);
+                owningCompany.Name = OwningCompany.Name;
+                owningCompany.NIP = OwningCompany.NIP;
+                owningCompany.City = OwningCompany.City;
+                owningCompany.Street = OwningCompany.Street;
+                owningCompany.HouseNumber = OwningCompany.HouseNumber;
+                owningCompany.LocalNumber = OwningCompany.LocalNumber;
+                owningCompany.Telephone = OwningCompany.Telephone;
 
-            ParentViewModel.Update();
-            CloseWindow();
+                con.Entry(owningCompany).State = EntityState.Modified;
+                con.SaveChanges();
+            }
         }
     }
 }

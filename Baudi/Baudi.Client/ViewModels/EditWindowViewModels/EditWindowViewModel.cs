@@ -15,14 +15,30 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         protected TabViewModel ParentViewModel { get; set; }
         protected readonly bool Update;
-        private Window EditWindow { get; set; }
+        protected Window EditWindow { get; set; }
         public ICommand ButtonCancel { get; set; }
         public ICommand ButtonSave { get; set; }
 
-        public abstract void Save();
+        public abstract void Add();
+        public abstract void Edit();
+
+        public void Save()
+        {
+            if (Update)
+            {
+                Edit();
+            }
+            else
+            {
+                Add();
+            }
+            CloseWindow();
+
+        }
+        
         public abstract bool IsValid();
 
-        public EditWindowViewModel(TabViewModel parentViewModel, Window editWindow, Object itemToEdit)
+        public EditWindowViewModel(TabViewModel parentViewModel, Window editWindow, object itemToEdit)
         {
             ParentViewModel = parentViewModel;
             EditWindow = editWindow;
@@ -30,6 +46,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             ButtonSave = new RelayCommand(pars => Save(), pars => IsValid());
             Update = itemToEdit != null;
         }
+
 
         protected void CloseWindow()
         {

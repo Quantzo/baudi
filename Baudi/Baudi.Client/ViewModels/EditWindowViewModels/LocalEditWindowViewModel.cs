@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -70,46 +71,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 }
             }
         }
-        public override void Save()
-        {
-            if(Update)
-            {
-                using (var con = new BaudiDbContext())
-                {
-                    var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
 
-                    var local = con.Locals.Find(Local.NotificationTargetID);
-                    local.LocalNumber = Local.LocalNumber;
-                    local.RentValue = Local.RentValue;
-                    local.NumberOfRooms = Local.NumberOfRooms;
-                    local.Area = Local.Area;
-                    local.Building = building;
-
-                    con.Entry(local).State = EntityState.Modified;
-
-                    con.SaveChanges();
-                }
-            }
-            else
-            {
-                using (var con = new BaudiDbContext())
-                {
-                    var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
-
-                    Local.LocalNumber = Local.LocalNumber;
-                    Local.RentValue = Local.RentValue;
-                    Local.NumberOfRooms = Local.NumberOfRooms;
-                    Local.Area = Local.Area;
-                    Local.Building = building;
-
-                    con.Locals.Add(Local);
-                    con.SaveChanges();
-                }
-            }
-
-            ParentViewModel.Update();
-            CloseWindow();
-        }
 
         public override bool IsValid()
         {
@@ -119,6 +81,42 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
             return false;
             
+        }
+
+        public override void Add()
+        {
+            using (var con = new BaudiDbContext())
+            {
+                var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
+
+                Local.LocalNumber = Local.LocalNumber;
+                Local.RentValue = Local.RentValue;
+                Local.NumberOfRooms = Local.NumberOfRooms;
+                Local.Area = Local.Area;
+                Local.Building = building;
+
+                con.Locals.Add(Local);
+                con.SaveChanges();
+            }
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
+            {
+                var building = con.Buildings.Find(SelectedBuilding.NotificationTargetID);
+
+                var local = con.Locals.Find(Local.NotificationTargetID);
+                local.LocalNumber = Local.LocalNumber;
+                local.RentValue = Local.RentValue;
+                local.NumberOfRooms = Local.NumberOfRooms;
+                local.Area = Local.Area;
+                local.Building = building;
+
+                con.Entry(local).State = EntityState.Modified;
+
+                con.SaveChanges();
+            }
         }
     }
 }

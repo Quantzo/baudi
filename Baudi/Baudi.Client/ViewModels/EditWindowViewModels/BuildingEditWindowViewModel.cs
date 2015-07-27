@@ -7,11 +7,13 @@ using Baudi.Client.View.EditWindows;
 using Baudi.DAL;
 using Baudi.DAL.Models;
 using Baudi.Client.ViewModels.TabsViewModels;
+using System;
 
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class BuildingEditWindowViewModel : EditWindowViewModel
     {
+        #region Properties
         private Building _building;
         public Building Building
         {
@@ -25,6 +27,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 OnPropertyChanged("Building");
             }
         }
+        #endregion
 
         public BuildingEditWindowViewModel(BuildingsTabViewModel buildingsTabViewModel, BuildingEditWindow buildingEditWindow,Building building)
             :base(buildingsTabViewModel, buildingEditWindow, building)
@@ -45,37 +48,32 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
-        public override void Save()
-        {
-            if (Update)
-            {
-                using (var con = new BaudiDbContext())
-                {
-                    var building = con.Buildings.Find(Building.NotificationTargetID);
-                    building.City = Building.City;
-                    building.HouseNumber = Building.HouseNumber;
-                    building.Street = Building.Street;
-
-                    con.Entry(building).State = EntityState.Modified;
-                    con.SaveChanges();
-                }
-            }
-            else
-            {
-                using (var con = new BaudiDbContext())
-                {
-                    con.Buildings.Add(Building);
-                    con.SaveChanges();
-                }
-            }
-
-            ParentViewModel.Update();
-            CloseWindow();
-        }
-
         public override bool IsValid()
         {
             return true;
+        }
+
+        public override void Add()
+        {
+            using (var con = new BaudiDbContext())
+            {
+                con.Buildings.Add(Building);
+                con.SaveChanges();
+            }
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
+            {
+                var building = con.Buildings.Find(Building.NotificationTargetID);
+                building.City = Building.City;
+                building.HouseNumber = Building.HouseNumber;
+                building.Street = Building.Street;
+
+                con.Entry(building).State = EntityState.Modified;
+                con.SaveChanges();
+            }
         }
     }
 

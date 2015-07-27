@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -112,47 +113,41 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return false;
         }
 
-        public override void Save()
+        public override void Add()
         {
-            if (Update)
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    var expenseTarget = con.ExpenseTargets.Find(SelectedExpenseTarget.ExpenseTargetID);
-                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
+                var expenseTarget = con.ExpenseTargets.Find(SelectedExpenseTarget.ExpenseTargetID);
+                var menager = con.Menagers.Find(SelectedMenager.OwnerID);
 
+                Expense.ExpenseTarget = expenseTarget;
+                Expense.Menager = menager;
 
-                    var expense = con.Expenses.Find(Expense.PaymentID);
-                    expense.ExpenseTarget = expenseTarget;
-                    expense.Menager = menager;
-                    expense.Date = Expense.Date;
-                    expense.Cost = Expense.Cost;
-                    expense.Paid = Expense.Paid;
-
-
-                    con.Entry(expense).State = EntityState.Modified;
-
-                    con.SaveChanges();
-                }
-
+                con.Expenses.Add(Expense);
+                con.SaveChanges();
             }
-            else
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    var expenseTarget = con.ExpenseTargets.Find(SelectedExpenseTarget.ExpenseTargetID);
-                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
+                var expenseTarget = con.ExpenseTargets.Find(SelectedExpenseTarget.ExpenseTargetID);
+                var menager = con.Menagers.Find(SelectedMenager.OwnerID);
 
-                    Expense.ExpenseTarget = expenseTarget;
-                    Expense.Menager = menager;
 
-                    con.Expenses.Add(Expense);
-                    con.SaveChanges();
-                }
+                var expense = con.Expenses.Find(Expense.PaymentID);
+                expense.ExpenseTarget = expenseTarget;
+                expense.Menager = menager;
+                expense.Date = Expense.Date;
+                expense.Cost = Expense.Cost;
+                expense.Paid = Expense.Paid;
+
+
+                con.Entry(expense).State = EntityState.Modified;
+
+                con.SaveChanges();
             }
-
-            ParentViewModel.Update();
-            CloseWindow();
         }
     }
 }

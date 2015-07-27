@@ -57,37 +57,33 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return true;
         }
 
-        public override void Save()
+
+        public override void Add()
         {
-            if (Update)
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    var person = con.Peoples.Find(Person.OwnerID);
-                    person.Name = Person.Name;
-                    person.Surname = Person.Surname;
-                    person.PESEL = Person.PESEL;
-                    person.City = Person.City;
-                    person.Street = Person.Street;
-                    person.HouseNumber = Person.HouseNumber;
-                    person.LocalNumber = Person.LocalNumber;
-                    person.Telephone = Person.Telephone;
-
-                    con.Entry(person).State = EntityState.Modified;
-                    con.SaveChanges();
-                }
+                con.Peoples.Add(Person);
+                con.SaveChanges();
             }
-            else
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    con.Peoples.Add(Person);
-                    con.SaveChanges();
-                }
-            }
+                var person = con.Peoples.Find(Person.OwnerID);
+                person.Name = Person.Name;
+                person.Surname = Person.Surname;
+                person.PESEL = Person.PESEL;
+                person.City = Person.City;
+                person.Street = Person.Street;
+                person.HouseNumber = Person.HouseNumber;
+                person.LocalNumber = Person.LocalNumber;
+                person.Telephone = Person.Telephone;
 
-            ParentViewModel.Update();
-            CloseWindow();
+                con.Entry(person).State = EntityState.Modified;
+                con.SaveChanges();
+            }
         }
     }
 }

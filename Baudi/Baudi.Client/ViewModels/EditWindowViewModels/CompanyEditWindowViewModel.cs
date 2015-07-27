@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -10,7 +11,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class CompanyEditWindowViewModel : EditWindowViewModel
     {
-        
+        #region Properties     
         private Company _company;
         public Company Company
         {
@@ -39,6 +40,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 OnPropertyChanged("SpecializationList");
             }
         }
+        #endregion
 
 
         public CompanyEditWindowViewModel(CompaniesTabViewModel companiesTabViewModel, CompanyEditWindow companyEditWindow, Company company)
@@ -63,62 +65,55 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         }
 
 
-
-        public override void Save()
-        {
-         if(Update)
-         {
-             using (var con = new BaudiDbContext())
-             {
-                 var specializations = SpecializationList.Where(s => s.IsSelected).ToList();
-                 specializations.ForEach(s => con.Specializations.Attach(s));
-
-                 var company = con.Companies.Find(Company.CompanyID);
-                 company.City = Company.City;
-                 company.HouseNumber = Company.HouseNumber;
-                 company.LocalNumber = Company.LocalNumber;
-                 company.Name = Company.Name;
-                 company.NIP = Company.NIP;
-                 company.Owner = Company.Owner;
-
-
-                 if (specializations.Count == 0)
-                 {
-                     company.Specializations.Clear();
-                 }
-                 else
-                 {
-                     company.Specializations = specializations;
-                 }
-                 company.Street = Company.Street;
-                 company.TelephoneNumber = Company.TelephoneNumber;
-
-                 con.Entry(company).State = EntityState.Modified;
-
-                 con.SaveChanges();
-             }
-
-         }
-         else
-         {
-             using (var con = new BaudiDbContext())
-             {
-                 var specializations = SpecializationList.Where(s => s.IsSelected).ToList();
-                 specializations.ForEach(s => con.Specializations.Attach(s));
-
-                 Company.Specializations = specializations;
-                 con.Companies.Add(Company);
-                 con.SaveChanges();
-             }
-         }
-
-            ParentViewModel.Update();
-            CloseWindow();
-        }
-
         public override bool IsValid()
         {
             return true;
+        }
+
+        public override void Add()
+        {
+            using (var con = new BaudiDbContext())
+            {
+                var specializations = SpecializationList.Where(s => s.IsSelected).ToList();
+                specializations.ForEach(s => con.Specializations.Attach(s));
+
+                Company.Specializations = specializations;
+                con.Companies.Add(Company);
+                con.SaveChanges();
+            }
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
+            {
+                var specializations = SpecializationList.Where(s => s.IsSelected).ToList();
+                specializations.ForEach(s => con.Specializations.Attach(s));
+
+                var company = con.Companies.Find(Company.CompanyID);
+                company.City = Company.City;
+                company.HouseNumber = Company.HouseNumber;
+                company.LocalNumber = Company.LocalNumber;
+                company.Name = Company.Name;
+                company.NIP = Company.NIP;
+                company.Owner = Company.Owner;
+
+
+                if (specializations.Count == 0)
+                {
+                    company.Specializations.Clear();
+                }
+                else
+                {
+                    company.Specializations = specializations;
+                }
+                company.Street = Company.Street;
+                company.TelephoneNumber = Company.TelephoneNumber;
+
+                con.Entry(company).State = EntityState.Modified;
+
+                con.SaveChanges();
+            }
         }
     }
 }

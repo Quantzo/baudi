@@ -116,49 +116,44 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return false;
         }
 
-        public override void Save()
+        public override void Add()
         {
-            if (Update)
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
-                    var employee = con.Employees.Find(SelectedEmployee.OwnerID);
+                var menager = con.Menagers.Find(SelectedMenager.OwnerID);
+                var employee = con.Employees.Find(SelectedEmployee.OwnerID);
 
+                Salary.Menager = menager;
+                Salary.Employee = employee;
 
-
-                    var salary = con.Salaries.Find(Salary.PaymentID);
-
-                    salary.Menager = menager;
-                    salary.Employee = employee;
-
-                    salary.Date = Salary.Date;
-                    salary.Cost = Salary.Cost;
-                    salary.Paid = Salary.Paid;
-
-
-                    con.Entry(salary).State = EntityState.Modified;
-
-                    con.SaveChanges();
-                }
-
+                con.Salaries.Add(Salary);
+                con.SaveChanges();
             }
-            else
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    var menager = con.Menagers.Find(SelectedMenager.OwnerID);
-                    var employee = con.Employees.Find(SelectedEmployee.OwnerID);
+                var menager = con.Menagers.Find(SelectedMenager.OwnerID);
+                var employee = con.Employees.Find(SelectedEmployee.OwnerID);
 
-                    Salary.Menager = menager;
-                    Salary.Employee = employee;
 
-                    con.Salaries.Add(Salary);
-                    con.SaveChanges();
-                }
+
+                var salary = con.Salaries.Find(Salary.PaymentID);
+
+                salary.Menager = menager;
+                salary.Employee = employee;
+
+                salary.Date = Salary.Date;
+                salary.Cost = Salary.Cost;
+                salary.Paid = Salary.Paid;
+
+
+                con.Entry(salary).State = EntityState.Modified;
+
+                con.SaveChanges();
             }
-            ParentViewModel.Update();
-            CloseWindow();
         }
     }
 }

@@ -85,43 +85,39 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return false;
         }
 
-        public override void Save()
+
+        public override void Add()
         {
-            if (Update)
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    var ownership = con.Ownerships.Find(SelectedOwnership.OwnershipID);
+                var ownership = con.Ownerships.Find(SelectedOwnership.OwnershipID);
 
+                Rent.Ownership = ownership;
 
-
-                    var rent = con.Rents.Find(Rent.PaymentID);
-                    rent.Ownership = ownership;
-                    rent.Date = Rent.Date;
-                    rent.Cost = Rent.Cost;
-                    rent.Paid = Rent.Paid;
-
-
-                    con.Entry(rent).State = EntityState.Modified;
-
-                    con.SaveChanges();
-                }
-
+                con.Rents.Add(Rent);
+                con.SaveChanges();
             }
-            else
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    var ownership = con.Ownerships.Find(SelectedOwnership.OwnershipID);
+                var ownership = con.Ownerships.Find(SelectedOwnership.OwnershipID);
 
-                    Rent.Ownership = ownership;
 
-                    con.Rents.Add(Rent);
-                    con.SaveChanges();
-                }
+
+                var rent = con.Rents.Find(Rent.PaymentID);
+                rent.Ownership = ownership;
+                rent.Date = Rent.Date;
+                rent.Cost = Rent.Cost;
+                rent.Paid = Rent.Paid;
+
+
+                con.Entry(rent).State = EntityState.Modified;
+
+                con.SaveChanges();
             }
-            ParentViewModel.Update();
-            CloseWindow();
         }
     }
 }

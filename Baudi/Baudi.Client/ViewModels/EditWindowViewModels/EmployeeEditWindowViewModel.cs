@@ -101,65 +101,6 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
-        public override void Save()
-        {
-            if (Update)
-            {
-                if (OrginalRole != EmployeeRole)
-                {
-                    using (var con = new BaudiDbContext())
-                    {
-                        var orginalEmployee = con.Employees.Find(Employee.OwnerID);
-
-                        PrepareToChangeEmployeeRole(orginalEmployee);
-
-
-                        var employee = EmployeeFactory();
-
-                        CopyEmployeeState(employee);
-
-
-                        employee.Notifications = orginalEmployee.Notifications;
-                        orginalEmployee.Notifications = null;
-                        employee.Ownerships = orginalEmployee.Ownerships;
-                        orginalEmployee.Ownerships = null;
-                        employee.Salaries = orginalEmployee.Salaries;
-                        orginalEmployee.Ownerships = null;
-
-
-                        con.Employees.Remove(orginalEmployee);
-                        con.Entry(orginalEmployee).State = EntityState.Deleted;
-
-                        con.Employees.Add(employee);
-                        con.SaveChanges();
-                    }
-                }
-                else
-                {
-                    using (var con = new BaudiDbContext())
-                    {
-                        var employee = con.Employees.Find(Employee.OwnerID);
-                        CopyEmployeeState(employee);
-                        con.Entry(employee).State = EntityState.Modified;
-                        con.SaveChanges();
-                    }
-                }
-            }
-            else
-            {
-                using (var con = new BaudiDbContext())
-                {
-                    var employee = EmployeeFactory();
-                    CopyEmployeeState(employee);
-                    con.Employees.Add(employee);
-                    con.SaveChanges();
-                }
-            }
-
-            ParentViewModel.Update();
-            CloseWindow();
-        }
-
         private void PrepareToChangeEmployeeRole(Employee orginalEmployee)
         {
             if (OrginalRole == EmployeeRole.Administrator)
@@ -218,6 +159,60 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         public override bool IsValid()
         {
             return true;
+        }
+
+        public override void Add()
+        {
+            using (var con = new BaudiDbContext())
+            {
+                var employee = EmployeeFactory();
+                CopyEmployeeState(employee);
+                con.Employees.Add(employee);
+                con.SaveChanges();
+            }
+        }
+
+        public override void Edit()
+        {
+            if (OrginalRole != EmployeeRole)
+            {
+                using (var con = new BaudiDbContext())
+                {
+                    var orginalEmployee = con.Employees.Find(Employee.OwnerID);
+
+                    PrepareToChangeEmployeeRole(orginalEmployee);
+
+
+                    var employee = EmployeeFactory();
+
+                    CopyEmployeeState(employee);
+
+
+                    employee.Notifications = orginalEmployee.Notifications;
+                    orginalEmployee.Notifications = null;
+                    employee.Ownerships = orginalEmployee.Ownerships;
+                    orginalEmployee.Ownerships = null;
+                    employee.Salaries = orginalEmployee.Salaries;
+                    orginalEmployee.Ownerships = null;
+
+
+                    con.Employees.Remove(orginalEmployee);
+                    con.Entry(orginalEmployee).State = EntityState.Deleted;
+
+                    con.Employees.Add(employee);
+                    con.SaveChanges();
+                }
+            }
+            else
+            {
+                using (var con = new BaudiDbContext())
+                {
+                    var employee = con.Employees.Find(Employee.OwnerID);
+                    CopyEmployeeState(employee);
+                    con.Entry(employee).State = EntityState.Modified;
+                    con.SaveChanges();
+                }
+            }
         }
 
         #region Properties

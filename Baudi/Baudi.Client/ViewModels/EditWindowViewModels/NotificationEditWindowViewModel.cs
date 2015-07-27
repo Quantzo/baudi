@@ -172,55 +172,50 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return false;
         }
 
-        public override void Save()
+
+        public override void Add()
         {
-            if (Update)
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
+                var notificationTarget = con.NotificationTargets.Find(SelectedNotificationTarget.NotificationTargetID);
+                var owner = con.Owners.Find(SelectedOwner.OwnerID);
+                var dispatcher = con.Dispatchers.Find(SelectedDispatcher.OwnerID);
 
-                    SelectedDispatcher = Notification.Dispatcher;
+                Notification.NotificationTarget = notificationTarget;
+                Notification.Owner = owner;
+                Notification.Dispatcher = dispatcher;
 
-                    var notificationTarget = con.NotificationTargets.Find(SelectedNotificationTarget.NotificationTargetID);
-                    var owner = con.Owners.Find(SelectedOwner.OwnerID);
-                    var dispatcher = con.Dispatchers.Find(SelectedDispatcher.OwnerID);
-
-
-                    var notification = con.Notifications.Find(Notification.NotificationID);
-                    notification.Description = Notification.Description;
-                    notification.Dispatcher = dispatcher;
-                    notification.FilingDate = Notification.FilingDate;
-                    notification.LastChanged = Notification.LastChanged;
-                    notification.NotificationTarget = notificationTarget;
-                    notification.Owner = owner;
-                    notification.Status = SelectedNotificationStatus;
-                 
-
-                    con.Entry(notification).State = EntityState.Modified;
-
-                    con.SaveChanges();
-                }
-
+                con.Notifications.Add(Notification);
+                con.SaveChanges();
             }
-            else
+        }
+
+        public override void Edit()
+        {
+            using (var con = new BaudiDbContext())
             {
-                using (var con = new BaudiDbContext())
-                {
-                    var notificationTarget = con.NotificationTargets.Find(SelectedNotificationTarget.NotificationTargetID);
-                    var owner = con.Owners.Find(SelectedOwner.OwnerID);
-                    var dispatcher = con.Dispatchers.Find(SelectedDispatcher.OwnerID);
 
-                    Notification.NotificationTarget = notificationTarget;
-                    Notification.Owner = owner;
-                    Notification.Dispatcher = dispatcher;
+                SelectedDispatcher = Notification.Dispatcher;
 
-                    con.Notifications.Add(Notification);
-                    con.SaveChanges();
-                }
+                var notificationTarget = con.NotificationTargets.Find(SelectedNotificationTarget.NotificationTargetID);
+                var owner = con.Owners.Find(SelectedOwner.OwnerID);
+                var dispatcher = con.Dispatchers.Find(SelectedDispatcher.OwnerID);
+
+
+                var notification = con.Notifications.Find(Notification.NotificationID);
+                notification.Description = Notification.Description;
+                notification.Dispatcher = dispatcher;
+                notification.FilingDate = Notification.FilingDate;
+                notification.LastChanged = Notification.LastChanged;
+                notification.NotificationTarget = notificationTarget;
+                notification.Owner = owner;
+                notification.Status = SelectedNotificationStatus;
+
+
+                con.Entry(notification).State = EntityState.Modified;
+
+                con.SaveChanges();
             }
-
-            ParentViewModel.Update();
-            CloseWindow();
         }
     }
 }
