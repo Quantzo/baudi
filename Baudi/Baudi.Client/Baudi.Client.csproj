@@ -91,6 +91,7 @@
     <Compile Include="ViewModels\TabsViewModels\LocalsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\NotificationsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\OrdersTabViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModels\OwnershipsTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\PeopleTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\OwningCompaniesTabViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModels\RentsTabViewModel.cs" />
@@ -123,6 +124,9 @@
     </Compile>
     <Compile Include="View\EditWindows\OrderEditWindow.xaml.cs">
       <DependentUpon>OrderEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\OwnershipEditWindow.xaml.cs">
+      <DependentUpon>OwnershipEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EditWindows\PersonEditWindow.xaml.cs">
       <DependentUpon>PersonEditWindow.xaml</DependentUpon>
@@ -168,6 +172,9 @@
     </Compile>
     <Compile Include="View\Tabs\OrdersTab.xaml.cs">
       <DependentUpon>OrdersTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\OwnershipsTab.xaml.cs">
+      <DependentUpon>OwnershipsTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Tabs\PeopleTab.xaml.cs">
       <DependentUpon>PeopleTab.xaml</DependentUpon>
@@ -219,6 +226,10 @@
     <Page Include="View\EditWindows\OrderEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditWindows\OwnershipEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditWindows\PersonEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -277,6 +288,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Tabs\OrdersTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\OwnershipsTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

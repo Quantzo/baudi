@@ -52,6 +52,11 @@
                     <tabs:OwningCompaniesTab DataContext="{Binding OwningCompaniesTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
+            <TabItem Name="OwnershipsTab" Header="Posiadania">
+                <TabItem.Content>
+                    <tabs:OwnershipsTab DataContext="{Binding OwnershipsTabViewModel}" />
+                </TabItem.Content>
+            </TabItem>
             <TabItem Name="EmployeesTab" Header="Pracownicy">
                 <TabItem.Content>
                     <tabs:EmployeesTab DataContext="{Binding EmployeesTabViewModel}" />

@@ -195,8 +195,6 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             using (var con = new BaudiDbContext())
             {
 
-                SelectedDispatcher = Notification.Dispatcher;
-
                 var notificationTarget = con.NotificationTargets.Find(SelectedNotificationTarget.NotificationTargetID);
                 var owner = con.Owners.Find(SelectedOwner.OwnerID);
                 var dispatcher = con.Dispatchers.Find(SelectedDispatcher.OwnerID);
