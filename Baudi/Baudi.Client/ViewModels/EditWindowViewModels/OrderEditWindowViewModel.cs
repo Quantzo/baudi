@@ -78,6 +78,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             {
                 _selectedOrderType = value;
                 OnPropertyChanged("SelectedOrderType");
+                provideCompaniesWithCorrectSpecialization();
             }
         }
 
@@ -170,10 +171,10 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         public OrderEditWindowViewModel(OrdersTabViewModel orderTabViewModel, OrderEditWindow orderEditWindow, Order order)
             : base(orderTabViewModel, orderEditWindow, order)
         {
+            CompaniesList = new List<Company>();
             using (var con = new BaudiDbContext())
             {
                 OrderTypesList = con.OrderTypes.ToList();
-                CompaniesList = con.Companies.ToList();
                 MenagersList = con.Menagers.ToList();
                 NotificationsList = con.Notifications.ToList();
                 if (Update)
@@ -183,12 +184,23 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                     SelectedCompany = Order.Company;
                     SelectedMenager = Order.Menager;
                     SelectedNotification = Order.Notification;
+                    provideCompaniesWithCorrectSpecialization();
 
                 }
                 else
                 {
                     Order = new Order();
                 }
+            }
+        }
+
+        public void provideCompaniesWithCorrectSpecialization()
+        {
+            CompaniesList.Clear();
+            using (var con = new BaudiDbContext())
+            {
+                var orderType = con.OrderTypes.Find(SelectedOrderType.OrderTypeID);
+                orderType.Specializations.ForEach(s => CompaniesList.AddRange(s.Companies));
             }
         }
 
