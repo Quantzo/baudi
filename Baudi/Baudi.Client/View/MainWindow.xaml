@@ -94,9 +94,14 @@
                     <tabs:ReportsTab DataContext="{Binding ReportsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
-            <TabItem Name="DictionariesTab" Header="Słowniki">
+            <TabItem Name="OrderTypesTab" Header="Słowniki: typy zleceń">
                 <TabItem.Content>
-                    <tabs:DictionariesTab DataContext="{Binding DictionariesTabViewModel}" />
+                    <tabs:OrderTypesTab DataContext="{Binding OrderTypesTabViewModel}" Loaded="OrderTypesTab_Loaded" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Name="SpecializationsTab" Header="Słowniki: specjalizacje">
+                <TabItem.Content>
+                    <tabs:SpecializationsTab DataContext="{Binding SpecializationsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
         </TabControl>

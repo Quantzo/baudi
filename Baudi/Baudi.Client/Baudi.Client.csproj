@@ -125,6 +125,9 @@
     <Compile Include="View\EditWindows\OrderEditWindow.xaml.cs">
       <DependentUpon>OrderEditWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditWindows\OrderTypeEditWindow.xaml.cs">
+      <DependentUpon>OrderTypeEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditWindows\OwnershipEditWindow.xaml.cs">
       <DependentUpon>OwnershipEditWindow.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,9 @@
     </Compile>
     <Compile Include="View\EditWindows\SalaryEditWindow.xaml.cs">
       <DependentUpon>SalaryEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindows\SpecializationEditWindow.xaml.cs">
+      <DependentUpon>SpecializationEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -173,6 +179,9 @@
     <Compile Include="View\Tabs\OrdersTab.xaml.cs">
       <DependentUpon>OrdersTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Tabs\OrderTypesTab.xaml.cs">
+      <DependentUpon>OrderTypesTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Tabs\OwnershipsTab.xaml.cs">
       <DependentUpon>OwnershipsTab.xaml</DependentUpon>
     </Compile>
@@ -194,6 +203,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Tabs\SpecializationsTab.xaml.cs">
+      <DependentUpon>SpecializationsTab.xaml</DependentUpon>
     </Compile>
     <Page Include="View\EditWindows\BuildingEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -227,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\EditWindows\OrderTypeEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EditWindows\OwnershipEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditWindows\SalaryEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditWindows\SpecializationEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -291,6 +311,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Tabs\OrderTypesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Tabs\OwnershipsTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -312,6 +336,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Tabs\SalariesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tabs\SpecializationsTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
