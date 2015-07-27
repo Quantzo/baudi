@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Nazwa"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding OrderType.Name}"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Specialization.Name}"/>
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="5">
             <Grid.ColumnDefinitions>
