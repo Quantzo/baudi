@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Annotations;
 using Baudi.DAL.Models;
 
 namespace Baudi.DAL
@@ -156,6 +158,11 @@ namespace Baudi.DAL
             #endregion
 
             #region Employees
+
+            modelBuilder.Entity<Employee>()
+                .Property(e => e.Username)
+                .IsRequired()
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Username") {IsUnique = true}));
 
             #region Dispatcher
 

@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToTextConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\BuildingEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\CyclicOrderEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\EditWindowViewModel.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="ViewModels\EditWindowViewModels\RentEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\SalaryEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\SpecializationEditWindowViewModel.cs" />
+    <Compile Include="ViewModels\LoginWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\OwnershipEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\PersonEditWindowViewModel.cs" />

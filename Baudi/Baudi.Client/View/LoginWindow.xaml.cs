@@ -1,22 +1,23 @@
-﻿using System.Windows;
+﻿using System.Security;
+using System.Windows;
+using Baudi.Client.ViewModels;
 
 namespace Baudi.Client.View
 {
-    /// <summary>
-    ///     Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         public LoginWindow()
         {
+            DataContext = new LoginWindowViewModel(this);
             InitializeComponent();
+            
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public SecureString Password
         {
-            var RMW = new MainWindow();
-            RMW.Show();
-            Close();
+            get
+            {
+                return PasswordBox.SecurePassword;
+            }
         }
     }
 }
