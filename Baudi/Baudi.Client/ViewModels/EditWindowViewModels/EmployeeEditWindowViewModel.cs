@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
+using System.Security;
+using Baudi.Client.Helpers;
 using Baudi.Client.View.EditWindows;
 using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL;
@@ -18,6 +20,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         {
             if (Update)
             {
+                EditUser = false;
                 if (employee is Administrator)
                 {
                     Employee = new Administrator
@@ -32,10 +35,11 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                         HouseNumber = employee.HouseNumber,
                         LocalNumber = employee.LocalNumber,
                         BankAccountNumber = employee.BankAccountNumber,
-                        Salary = employee.Salary
+                        Salary = employee.Salary,
+                        Username = employee.Username
                     };
                     EmployeeRole = EmployeeRole.Administrator;
-                    OrginalRole = EmployeeRole.Administrator;
+                    _orginalRole = EmployeeRole.Administrator;
                 }
                 else if (employee is Menager)
                 {
@@ -51,10 +55,11 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                         HouseNumber = employee.HouseNumber,
                         LocalNumber = employee.LocalNumber,
                         BankAccountNumber = employee.BankAccountNumber,
-                        Salary = employee.Salary
+                        Salary = employee.Salary,
+                        Username = employee.Username
                     };
                     EmployeeRole = EmployeeRole.Menager;
-                    OrginalRole = EmployeeRole.Menager;
+                    _orginalRole = EmployeeRole.Menager;
                 }
                 else if (employee is Dispatcher)
                 {
@@ -70,10 +75,11 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                         HouseNumber = employee.HouseNumber,
                         LocalNumber = employee.LocalNumber,
                         BankAccountNumber = employee.BankAccountNumber,
-                        Salary = employee.Salary
+                        Salary = employee.Salary,
+                        Username = employee.Username
                     };
                     EmployeeRole = EmployeeRole.Dispatcher;
-                    OrginalRole = EmployeeRole.Dispatcher;
+                    _orginalRole = EmployeeRole.Dispatcher;
                 }
                 else
                 {
@@ -89,31 +95,33 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                         HouseNumber = employee.HouseNumber,
                         LocalNumber = employee.LocalNumber,
                         BankAccountNumber = employee.BankAccountNumber,
-                        Salary = employee.Salary
+                        Salary = employee.Salary,
+                        Username = employee.Username
                     };
                     EmployeeRole = EmployeeRole.Other;
-                    OrginalRole = EmployeeRole.Other;
+                    _orginalRole = EmployeeRole.Other;
                 }
             }
             else
             {
+                EditUser = true;
                 Employee = new Employee();
             }
         }
 
         private void PrepareToChangeEmployeeRole(Employee orginalEmployee)
         {
-            if (OrginalRole == EmployeeRole.Administrator)
+            if (_orginalRole == EmployeeRole.Administrator)
             {
             }
-            else if (OrginalRole == EmployeeRole.Menager)
+            else if (_orginalRole == EmployeeRole.Menager)
             {
                 (orginalEmployee as Menager).CyclicOrders.Clear();
                 (orginalEmployee as Menager).MenagerExpenses.Clear();
                 (orginalEmployee as Menager).MenagerSalaries.Clear();
                 (orginalEmployee as Menager).Orders.Clear();
             }
-            else if (OrginalRole == EmployeeRole.Dispatcher)
+            else if (_orginalRole == EmployeeRole.Dispatcher)
             {
                 (orginalEmployee as Dispatcher).DispatcherNotifications.Clear();
             }
@@ -131,6 +139,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             employee.LocalNumber = Employee.LocalNumber;
             employee.BankAccountNumber = Employee.BankAccountNumber;
             employee.Salary = Employee.Salary;
+            employee.Username = Employee.Username;
         }
 
         private Employee EmployeeFactory()
@@ -158,7 +167,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         public override bool IsValid()
         {
-            return true;
+            return !(EditWindow as EmployeeEditWindow).Password.Equals("");
         }
 
         public override void Add()
@@ -167,6 +176,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             {
                 var employee = EmployeeFactory();
                 CopyEmployeeState(employee);
+                employee.PasswordSalt = SecurityHelper.GeneratePasswordSalt();
+                employee.Password = SecurityHelper.ComputeHash(employee.PasswordSalt,
+                    (EditWindow as EmployeeEditWindow).Password);
                 con.Employees.Add(employee);
                 con.SaveChanges();
             }
@@ -174,7 +186,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         public override void Edit()
         {
-            if (OrginalRole != EmployeeRole)
+            if (_orginalRole != EmployeeRole)
             {
                 using (var con = new BaudiDbContext())
                 {
@@ -217,9 +229,13 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         #region Properties
 
-        protected readonly EmployeeRole OrginalRole;
+        public bool EditUser { get; set; }
+
+
+        private readonly EmployeeRole _orginalRole;
 
         private EmployeeRole _employeeRole;
+
 
         public EmployeeRole EmployeeRole
         {

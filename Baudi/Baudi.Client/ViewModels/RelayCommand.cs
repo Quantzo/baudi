@@ -15,12 +15,7 @@ namespace Baudi.Client.ViewModels
 
         #region Constructors
 
-        public RelayCommand(Action<object> execute)
-            : this(execute, null)
-        {
-        }
-
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");
@@ -36,7 +31,7 @@ namespace Baudi.Client.ViewModels
         [DebuggerStepThrough]
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null ? true : _canExecute(parameter);
+            return _canExecute?.Invoke(parameter) ?? true;
         }
 
         public event EventHandler CanExecuteChanged

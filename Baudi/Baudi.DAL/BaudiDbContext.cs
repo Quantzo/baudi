@@ -161,6 +161,7 @@ namespace Baudi.DAL
 
             modelBuilder.Entity<Employee>()
                 .Property(e => e.Username)
+                .HasMaxLength(900)
                 .IsRequired()
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Username") {IsUnique = true}));
 

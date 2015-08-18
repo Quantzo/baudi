@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Security;
+using System.Security.Cryptography;
+using System.Text;
 using Baudi.DAL.Models;
 
 namespace Baudi.DAL
@@ -615,7 +619,11 @@ namespace Baudi.DAL
                 Telephone = "12344",
                 Salaries = salary1,
                 MenagerExpenses = allExpenses,
-                MenagerSalaries = allSalaries
+                MenagerSalaries = allSalaries,
+                Username = "Men",
+                Password = SecurityHelper.ComputeHash("12345"),
+                PasswordSalt = "",
+
             };
 
             #region Binding for Cyclic orders
@@ -650,7 +658,10 @@ namespace Baudi.DAL
                 PESEL = "1111",
                 Telephone = "12344",
                 Salaries = salary2,
-                DispatcherNotifications = allNotifications
+                DispatcherNotifications = allNotifications,
+                                Username = "Disp",
+                Password = SecurityHelper.ComputeHash("12345"),
+                PasswordSalt = "",
             };
             buildings[0].Notifactions.ForEach(n => n.Dispatcher = dispatcher);
             buildings[1].Notifactions.ForEach(n => n.Dispatcher = dispatcher);
@@ -674,6 +685,9 @@ namespace Baudi.DAL
                 PESEL = "1111",
                 Telephone = "12344",
                 Salaries = salary3,
+                Username = "Admin",
+                Password = SecurityHelper.ComputeHash("12345"),
+                PasswordSalt = "",
                 Ownerships = new List<Ownership> { buildings[1].Locals[0].Ownerships[0] }
             };
 
@@ -807,6 +821,20 @@ namespace Baudi.DAL
 
             base.Seed(context);
             context.SaveChanges();
+        }
+    }
+
+    internal static class SecurityHelper
+    {
+        public static string ComputeHash(string password)
+        {
+            string computedHash;
+            using (var hash = new SHA512Managed())
+            {
+                computedHash =
+                    Convert.ToBase64String(hash.ComputeHash((Encoding.UTF8.GetBytes(password))));
+            }
+            return computedHash;
         }
     }
 }

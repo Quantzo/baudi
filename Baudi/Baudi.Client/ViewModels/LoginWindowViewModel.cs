@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Security;
 using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Security.Cryptography;
+using Baudi.Client.Helpers;
 using Baudi.Client.View;
 using Baudi.DAL;
 using Baudi.DAL.Models;
@@ -58,7 +60,11 @@ namespace Baudi.Client.ViewModels
                     MessageBox.Show("Złe hasło");
                 }
             }
-            MessageBox.Show("Login jest zły");
+            else
+            {
+                MessageBox.Show("Login jest zły");
+            }
+            
         }
 
 
@@ -75,11 +81,7 @@ namespace Baudi.Client.ViewModels
 
         private bool IsPasswordValid(string hashedPassword, string passwordSalt)
         {
-            string computedHash;
-            using (var hash = new SHA512Managed())
-            {
-                computedHash= Convert.ToBase64String(hash.ComputeHash(Convert.FromBase64String(LoginWindow.Password+passwordSalt)));
-            }
+            var computedHash = SecurityHelper.ComputeHash(passwordSalt, LoginWindow.Password);
             return computedHash.Equals(hashedPassword);
         }
 
@@ -87,7 +89,7 @@ namespace Baudi.Client.ViewModels
         {
             var mainWindow = new MainWindow();
             mainWindow.Show();
-            LoginWindow.Close();
+            ExitWindow();
         }
 
        
@@ -96,7 +98,7 @@ namespace Baudi.Client.ViewModels
 
         private void ExitWindow()
         {
-            
+            LoginWindow.Close();
         }
         public void OnPropertyChanged(string property)
         {

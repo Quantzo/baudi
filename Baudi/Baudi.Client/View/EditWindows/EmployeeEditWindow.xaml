@@ -27,6 +27,7 @@
             <RowDefinition Height="20*" />
             <RowDefinition Height="20*" />
             <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
         </Grid.RowDefinitions>
 
         <Label Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="Imię" />
@@ -38,42 +39,50 @@
                  Text="{Binding Employee.Surname}" />
 
         <Label Grid.Row="2" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
-               Content="PESEL" />
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Employee.PESEL}" />
+               Content="Login" />
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Employee.Username}" />
         <Label Grid.Row="2" Grid.Column="2" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Numer Telefonu" />
-        <TextBox Grid.Row="2" Grid.Column="3" Margin="5" TextWrapping="Wrap" Text="{Binding Employee.Telephone}" />
+               VerticalContentAlignment="Center" Content="Hasło" />
+        <PasswordBox  Grid.Row="2" Grid.Column="3" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="PasswordBox"  IsEnabled="{Binding EditUser}"/>
+
 
         <Label Grid.Row="3" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
-               Content="Miejscowość" />
-        <TextBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="5" TextWrapping="Wrap"
-                 Text="{Binding Employee.City}" />
+               Content="PESEL" />
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Employee.PESEL}" />
+        <Label Grid.Row="3" Grid.Column="2" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Numer Telefonu" />
+        <TextBox Grid.Row="3" Grid.Column="3" Margin="5" TextWrapping="Wrap" Text="{Binding Employee.Telephone}" />
 
         <Label Grid.Row="4" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
-               Content="Ulica" />
+               Content="Miejscowość" />
         <TextBox Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Margin="5" TextWrapping="Wrap"
-                 Text="{Binding Employee.Street}" />
+                 Text="{Binding Employee.City}" />
 
         <Label Grid.Row="5" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
-               Content="Numer Domu" />
-        <TextBox Grid.Row="5" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Employee.HouseNumber}" />
-        <Label Grid.Row="5" Grid.Column="2" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Numer Mieszkania" />
-        <TextBox Grid.Row="5" Grid.Column="3" Margin="5" TextWrapping="Wrap" Text="{Binding Employee.LocalNumber}" />
+               Content="Ulica" />
+        <TextBox Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Margin="5" TextWrapping="Wrap"
+                 Text="{Binding Employee.Street}" />
 
         <Label Grid.Row="6" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
-               Content="Numer Konta" />
-        <TextBox Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Margin="5" TextWrapping="Wrap"
-                 Text="{Binding Employee.BankAccountNumber}" />
+               Content="Numer Domu" />
+        <TextBox Grid.Row="6" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Employee.HouseNumber}" />
+        <Label Grid.Row="6" Grid.Column="2" Margin="5" HorizontalContentAlignment="Right"
+               VerticalContentAlignment="Center" Content="Numer Mieszkania" />
+        <TextBox Grid.Row="6" Grid.Column="3" Margin="5" TextWrapping="Wrap" Text="{Binding Employee.LocalNumber}" />
 
         <Label Grid.Row="7" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
-               Content="Pensja" />
+               Content="Numer Konta" />
         <TextBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Margin="5" TextWrapping="Wrap"
-                 Text="{Binding Employee.Salary}" />
+                 Text="{Binding Employee.BankAccountNumber}" />
 
         <Label Grid.Row="8" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+               Content="Pensja" />
+        <TextBox Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Margin="5" TextWrapping="Wrap"
+                 Text="{Binding Employee.Salary}" />
+
+        <Label Grid.Row="9" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
                Content="Rola" />
-        <ComboBox Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" Margin="5" IsSynchronizedWithCurrentItem="True"
                   SelectedItem="{Binding EmployeeRole}" ItemsSource="{Binding EmployeeRoleValues}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -82,7 +91,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Grid Grid.Row="9" Grid.Column="3" Margin="5">
+        <Grid Grid.Row="10" Grid.Column="3" Margin="5">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

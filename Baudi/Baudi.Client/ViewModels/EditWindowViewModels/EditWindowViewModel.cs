@@ -19,7 +19,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         }
 
         private TabViewModel ParentViewModel { get; set; }
-        private Window EditWindow { get; set; }
+        protected Window EditWindow { get; set; }
         public ICommand ButtonCancel { get; set; }
         public ICommand ButtonSave { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;

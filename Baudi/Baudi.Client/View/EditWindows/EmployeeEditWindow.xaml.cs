@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Security;
+using System.Windows;
 using Baudi.Client.ViewModels.EditWindowViewModels;
 using Baudi.Client.ViewModels.TabsViewModels;
 using Baudi.DAL.Models;
@@ -12,5 +13,6 @@ namespace Baudi.Client.View.EditWindows
             InitializeComponent();
             DataContext = new EmployeeEditWindowViewModel(employeesTabViewModel, this, employee);
         }
+        public SecureString Password => PasswordBox.SecurePassword;
     }
 }
