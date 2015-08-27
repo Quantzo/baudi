@@ -56,6 +56,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.6\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -83,6 +87,10 @@
     <Compile Include="Converters\BoolToTextConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Reports\BuildingReport.cs" />
+    <Compile Include="Reports\Report.cs" />
+    <Compile Include="Reports\SalaryReport.cs" />
+    <Compile Include="Reports\SalaryTableRow.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\BuildingEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\CyclicOrderEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\EditWindowViewModel.cs" />
@@ -415,6 +423,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
