@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Baudi.DAL.Models
@@ -6,8 +7,8 @@ namespace Baudi.DAL.Models
     public class Order : ExpenseTarget
     {
         public double Cost { get; set; }
-        public string LastChanged { get; set; }
-        public string FilingDate { get; set; }
+        public DateTime LastChanged { get; set; }
+        public DateTime FilingDate { get; set; }
         public OrderStatus Status { get; set; }
         public virtual Company Company { get; set; }
         public virtual OrderType OrderType { get; set; }

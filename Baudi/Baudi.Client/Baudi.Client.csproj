@@ -86,11 +86,15 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToTextConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
+    <Compile Include="Helpers\FullNameHelper.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Reports\BuildingReport.cs" />
+    <Compile Include="Reports\RentTable.cs" />
+    <Compile Include="Reports\RentReport.cs" />
+    <Compile Include="Reports\RentTableRow.cs" />
     <Compile Include="Reports\Report.cs" />
     <Compile Include="Reports\SalaryReport.cs" />
     <Compile Include="Reports\SalaryTableRow.cs" />
+    <Compile Include="Reports\TableRow.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\BuildingEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\CyclicOrderEditWindowViewModel.cs" />
     <Compile Include="ViewModels\EditWindowViewModels\EditWindowViewModel.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Baudi.DAL.Models
@@ -6,8 +7,8 @@ namespace Baudi.DAL.Models
     public class Notification
     {
         public int NotificationID { get; set; }
-        public string LastChanged { get; set; }
-        public string FilingDate { get; set; }
+        public DateTime LastChanged { get; set; }
+        public DateTime FilingDate { get; set; }
         public string Description { get; set; }
         public NotificationStatus Status { get; set; }
         public virtual NotificationTarget NotificationTarget { get; set; }
