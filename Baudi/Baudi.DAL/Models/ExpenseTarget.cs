@@ -5,6 +5,7 @@ namespace Baudi.DAL.Models
     public class ExpenseTarget
     {
         public int ExpenseTargetID { get; set; }
+        public string Description { get; set; }
         public virtual List<Expense> Expenses { get; set; } 
     }
 }

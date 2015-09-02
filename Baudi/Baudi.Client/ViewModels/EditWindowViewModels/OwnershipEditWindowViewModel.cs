@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -27,6 +28,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 else
                 {
                     Ownership = new Ownership();
+                    Ownership.PurchaseDate = DateTime.Now;
                 }
             }
         }

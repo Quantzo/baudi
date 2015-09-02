@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Baudi.Client.View.EditWindows;
@@ -29,6 +30,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 else
                 {
                     CyclicOrder = new CyclicOrder();
+                    CyclicOrder.LastRealizationDate = DateTime.Now;
                 }
             }
         }
@@ -73,6 +75,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 cyclicOrder.Company = company;
                 cyclicOrder.Cost = CyclicOrder.Cost;
                 cyclicOrder.Frequency = CyclicOrder.Frequency;
+                cyclicOrder.Description = CyclicOrder.Description;
                 cyclicOrder.Menager = menager;
 
 

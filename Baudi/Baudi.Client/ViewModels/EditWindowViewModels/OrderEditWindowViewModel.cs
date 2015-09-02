@@ -33,6 +33,8 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 else
                 {
                     Order = new Order();
+                    Order.FilingDate = DateTime.Now;
+                    Order.LastChanged = DateTime.Now;
                 }
             }
         }
@@ -97,6 +99,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 order.Cost = Order.Cost;
                 order.LastChanged = Order.LastChanged;
                 order.FilingDate = order.FilingDate;
+                order.Description = order.Description;
 
                 con.Entry(order).State = EntityState.Modified;
 

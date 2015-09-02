@@ -31,6 +31,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 else
                 {
                     Notification = new Notification();
+                    Notification.FilingDate = DateTime.Now;
+                    Notification.LastChanged = DateTime.Now;
+                   
                 }
             }
         }
