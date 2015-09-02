@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baudi.DAL.Models;
+﻿using Baudi.DAL.Models;
 
-namespace Baudi.Client.Reports
+namespace Baudi.Client.Reports.BuildingReport.RentReport
 {
     public class RentTableRow : TableRow
     {

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Baudi.Client.Helpers;
 using Baudi.DAL.Models;
 
-namespace Baudi.Client.Reports
+namespace Baudi.Client.Reports.BuildingReport.RentReport
 {
     public class RentTable
     {

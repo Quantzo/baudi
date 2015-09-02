@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Baudi.DAL;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-namespace Baudi.Client.Reports
+namespace Baudi.Client.Reports.BuildingReport.RentReport
 {
     public class RentReport : BuildingReport
     {
@@ -32,6 +30,8 @@ namespace Baudi.Client.Reports
 
             rentTable.TableRows.ForEach(r => AddRow(table, r));
 
+            document.Add(table);
+
         }
 
         protected override void ConvertDataToPdf(Document document)
@@ -47,7 +47,7 @@ namespace Baudi.Client.Reports
         protected override void FindData(BaudiDbContext con)
         {
             var groupedRents = con.Rents
-                .Where(s =>(s.Ownership.Local.Building.NotificationTargetID == BuildingId) && (s.Date >= DateFrom && s.Date <= DateFrom))
+                .Where(s =>(s.Ownership.Local.Building.NotificationTargetID == BuildingId) && (s.Date >= DateFrom && s.Date <= DateTo))
                 .GroupBy(r => r.Ownership.Owner);
             foreach (var group in groupedRents)
             {

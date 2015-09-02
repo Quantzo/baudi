@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using Baudi.DAL;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-namespace Baudi.Client.Reports
+namespace Baudi.Client.Reports.SalaryReport
 {
     public class SalaryReport : Report
     {
@@ -32,7 +31,7 @@ namespace Baudi.Client.Reports
 
             SalaryTableRows.ForEach(s => AddRow(table, s));
 
-
+            document.Add(table);
         }
 
         protected override void FindData(BaudiDbContext con)

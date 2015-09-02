@@ -1,8 +1,7 @@
-﻿using System.Globalization;
-using Baudi.Client.Helpers;
+﻿using Baudi.Client.Helpers;
 using Baudi.DAL.Models;
 
-namespace Baudi.Client.Reports
+namespace Baudi.Client.Reports.SalaryReport
 {
     public class SalaryTableRow : TableRow
     {

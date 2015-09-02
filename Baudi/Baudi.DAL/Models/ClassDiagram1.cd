@@ -21,7 +21,7 @@
       <FileName>Models\Company.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Baudi.DAL.Models.CyclicOrder" Collapsed="true">
+  <Class Name="Baudi.DAL.Models.CyclicOrder">
     <Position X="15" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAAAAAAAAABAAAIAAAABAAAAABAAAgAA=</HashCode>
@@ -47,7 +47,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AABAACAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EABAACAAAAAACAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Models\Employee.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -61,7 +61,7 @@
   <Class Name="Baudi.DAL.Models.ExpenseTarget">
     <Position X="16.25" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAgAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Models\ExpenseTarget.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -100,7 +100,7 @@
       <FileName>Models\Notifaction.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Baudi.DAL.Models.Order" Collapsed="true">
+  <Class Name="Baudi.DAL.Models.Order">
     <Position X="17.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAAAgAABBAAAAAAQABEAAAABAAAAAA=</HashCode>
@@ -159,7 +159,7 @@
   <Class Name="Baudi.DAL.Models.Specialization" Collapsed="true">
     <Position X="20.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAAAAAAAAAAQAAAAgQAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAQAAAAAAAEAAAAAAAAAQAAAAgQAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Specialization.cs</FileName>
     </TypeIdentifier>
   </Class>
