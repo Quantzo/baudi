@@ -30,6 +30,7 @@ namespace Baudi.Client.Reports.BuildingReport.ExpenseReport
             table.AddCell("Uregulowane");
             table.AddCell("Osoba odpowiedzialna");
 
+            expenseTable.TableRows.ForEach(r => AddRow(table, r));
             document.Add(table);
         }
 
