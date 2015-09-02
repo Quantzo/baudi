@@ -88,6 +88,7 @@
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Helpers\FullNameHelper.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Reports\BuildingReport.cs" />
     <Compile Include="Reports\RentTable.cs" />
     <Compile Include="Reports\RentReport.cs" />
     <Compile Include="Reports\RentTableRow.cs" />
