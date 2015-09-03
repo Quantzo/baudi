@@ -151,20 +151,20 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             if (ReportType == ReportType.SalaryReport)
             {
-                var report = new SalaryReport(DateFrom,DateTo,"1.pdf");
+                var report = new SalaryReport(DateFrom,DateTo,"Pensje"+DateTime.Now+".pdf");
                 report.LoadData();
                 report.PrintPdf();
 
             }
             else if(ReportType == ReportType.ExpenseReport)
             {
-                var report = new ExpenseReport(DateFrom,DateTo,"2.pdf",SelectedBuilding.NotificationTargetID);
+                var report = new ExpenseReport(DateFrom,DateTo,"Wydatki" + DateTime.Now + ".pdf",SelectedBuilding.NotificationTargetID);
                 report.LoadData();
                 report.PrintPdf();
             }
             else if (ReportType == ReportType.RentReport)
             {
-                var report = new RentReport(DateFrom, DateTo,"3.pdf",SelectedBuilding.NotificationTargetID);
+                var report = new RentReport(DateFrom, DateTo,"Czynsze" + DateTime.Now + ".pdf",SelectedBuilding.NotificationTargetID);
                 report.LoadData();
                 report.PrintPdf();
             }
