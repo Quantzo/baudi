@@ -28,6 +28,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                     SelectedCompany = Order.Company;
                     SelectedMenager = Order.Menager;
                     SelectedNotification = Order.Notification;
+                    SelectedOrderStatus = Order.Status;
                     ProvideCompaniesWithCorrectSpecialization();
                 }
                 else
@@ -138,7 +139,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             set
             {
                 _selectedOrderStatus = value;
-                OnPropertyChanged("SelectedOrderStatusStatus");
+                OnPropertyChanged("SelectedOrderStatus");
             }
         }
 
