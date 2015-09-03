@@ -92,8 +92,8 @@ namespace Baudi.DAL
                 new Notification
                 {
                     NotificationID = 1,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Description = "Śmieci poszly",
                     Status = NotificationStatus.Completed,
                     NotificationTarget = buildings[0]
@@ -101,8 +101,8 @@ namespace Baudi.DAL
                 new Notification
                 {
                     NotificationID = 2,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Description = "Pynk tynk",
                     Status = NotificationStatus.InProgress,
                     NotificationTarget = buildings[0]
@@ -113,8 +113,8 @@ namespace Baudi.DAL
                 new Notification
                 {
                     NotificationID = 3,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Description = "Poszło oświetlenie",
                     Status = NotificationStatus.Completed,
                     NotificationTarget = buildings[1]
@@ -122,8 +122,8 @@ namespace Baudi.DAL
                 new Notification
                 {
                     NotificationID = 4,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Description = "Ukradziono substancję rdzeniową",
                     Status = NotificationStatus.Completed,
                     NotificationTarget = buildings[1]
@@ -142,8 +142,8 @@ namespace Baudi.DAL
                 new Notification
                 {
                     NotificationID = 5,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Description = "Kran",
                     Status = NotificationStatus.Completed,
                     NotificationTarget = buildings[0].Locals[0]
@@ -151,8 +151,8 @@ namespace Baudi.DAL
                 new Notification
                 {
                     NotificationID = 6,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Description = "Zlew",
                     Status = NotificationStatus.Completed,
                     NotificationTarget = buildings[0].Locals[0]
@@ -182,7 +182,7 @@ namespace Baudi.DAL
                     ExpenseTargetID = 1,
                     Cost = 400,
                     Frequency = "tydzien",
-                    LastRealizationDate = DateTime.Parse("26-08-2015"),
+                    LastRealizationDate = DateTime.ParseExact("26/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Building = buildings[0]
                 },
                 new CyclicOrder
@@ -190,7 +190,7 @@ namespace Baudi.DAL
                     ExpenseTargetID = 2,
                     Cost = 200,
                     Frequency = "tydzien",
-                    LastRealizationDate = DateTime.Parse("27-08-2015"),
+                    LastRealizationDate = DateTime.ParseExact("27/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Building = buildings[0]
                 },
                 new CyclicOrder
@@ -198,7 +198,7 @@ namespace Baudi.DAL
                     ExpenseTargetID = 3,
                     Cost = 400,
                     Frequency = "tydzien",
-                    LastRealizationDate = DateTime.Parse("28-08-2015"),
+                    LastRealizationDate = DateTime.ParseExact("28/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Building = buildings[0]
                 }
             };
@@ -213,15 +213,15 @@ namespace Baudi.DAL
                 new Ownership
                 {
                     OwnershipID = 1,
-                    PurchaseDate = DateTime.Parse("21-08-2015"),
-                    SaleDate = DateTime.Parse("21-08-2015"),
+                    PurchaseDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    SaleDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Local = buildings[0].Locals[0]
                 },
                 new Ownership
                 {
                     OwnershipID = 2,
-                    PurchaseDate = DateTime.Parse("21-08-2015"),
-                    SaleDate = DateTime.Parse("21-08-2015"),
+                    PurchaseDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    SaleDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Local = buildings[0].Locals[0]
                 }
             };
@@ -232,15 +232,15 @@ namespace Baudi.DAL
                 new Ownership
                 {
                     OwnershipID = 3,
-                    PurchaseDate = DateTime.Parse("21-08-2015"),
-                    SaleDate = DateTime.Parse("21-08-2015"),
+                    PurchaseDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    SaleDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Local = buildings[1].Locals[0]
                 },
                 new Ownership
                 {
                     OwnershipID = 4,
-                    PurchaseDate = DateTime.Parse("21-08-2015"),
-                    SaleDate = DateTime.Parse("21-08-2015"),
+                    PurchaseDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    SaleDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Local = buildings[1].Locals[0]
                 }
             };
@@ -307,8 +307,8 @@ namespace Baudi.DAL
                 {
                     ExpenseTargetID = 4,
                     Cost = 20,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
                     OrderType = spec2.OrderTypes[0],
                     Notification = buildings[0].Notifactions[0]
@@ -317,8 +317,8 @@ namespace Baudi.DAL
                 {
                     ExpenseTargetID = 5,
                     Cost = 500,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
                     OrderType = spec2.OrderTypes[0],
                     Notification = buildings[0].Notifactions[0]
@@ -331,8 +331,8 @@ namespace Baudi.DAL
                 {
                     ExpenseTargetID = 6,
                     Cost = 20,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
                     OrderType = spec2.OrderTypes[0],
                     Notification = buildings[1].Notifactions[0]
@@ -341,8 +341,8 @@ namespace Baudi.DAL
                 {
                     ExpenseTargetID = 7,
                     Cost = 500,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
                     OrderType = spec2.OrderTypes[0],
                     Notification = buildings[1].Notifactions[0]
@@ -362,8 +362,8 @@ namespace Baudi.DAL
                 {
                     ExpenseTargetID = 8,
                     Cost = 20,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
                     OrderType = spec1.OrderTypes[0],
                     Notification = buildings[0].Locals[0].Notifactions[0]
@@ -372,8 +372,8 @@ namespace Baudi.DAL
                 {
                     ExpenseTargetID = 9,
                     Cost = 500,
-                    LastChanged = DateTime.Parse("21-08-2015"),
-                    FilingDate = DateTime.Parse("21-08-2015"),
+                    LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
                     OrderType = spec3.OrderTypes[0],
                     Notification = buildings[0].Locals[0].Notifactions[0]
@@ -393,7 +393,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 1,
                     Cost = 22,
-                    Date = DateTime.Parse("21-08-2015"),
+                    Date = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true,
                     Ownership = buildings[0].Locals[0].Ownerships[0]
                 },
@@ -401,7 +401,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 2,
                     Cost = 22,
-                    Date = DateTime.Parse("22-08-2015"),
+                    Date = DateTime.ParseExact("22/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true,
                     Ownership = buildings[0].Locals[0].Ownerships[0]
                 },
@@ -409,7 +409,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 3,
                     Cost = 22,
-                    Date = DateTime.Parse("23-08-2015"),
+                    Date = DateTime.ParseExact("23/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = false,
                     Ownership = buildings[0].Locals[0].Ownerships[0]
                 }
@@ -421,7 +421,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 4,
                     Cost = 22,
-                    Date = DateTime.Parse("22-09-2015"),
+                    Date = DateTime.ParseExact("22/09/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true,
                     Ownership = buildings[0].Locals[0].Ownerships[1]
                 },
@@ -429,7 +429,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 5,
                     Cost = 22,
-                    Date = DateTime.Parse("24-09-2015"),
+                    Date = DateTime.ParseExact("24/09/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true,
                     Ownership = buildings[0].Locals[0].Ownerships[1]
                 },
@@ -437,7 +437,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 6,
                     Cost = 22,
-                    Date = DateTime.Parse("24-02-2015"),
+                    Date = DateTime.ParseExact("24/02/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = false,
                     Ownership = buildings[0].Locals[0].Ownerships[1]
                 }
@@ -450,7 +450,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 7,
                     Cost = 22,
-                    Date = DateTime.Parse("24-02-2015"),
+                    Date = DateTime.ParseExact("24/02/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true,
                     Ownership = buildings[1].Locals[0].Ownerships[0]
                 }
@@ -471,7 +471,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 8,
                     Cost = 55.4,
-                    Date = DateTime.Parse("21-12-2015"),
+                    Date = DateTime.ParseExact("21/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true,
                     ExpenseTarget = buildings[0].CyclicOrders[0]
                 },
@@ -479,7 +479,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 9,
                     Cost = 55.4,
-                    Date = DateTime.Parse("23-12-2015"),
+                    Date = DateTime.ParseExact("23/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true,
                     ExpenseTarget = buildings[0].CyclicOrders[0]
                 }
@@ -497,7 +497,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 10,
                     Cost = 55.4,
-                    Date = DateTime.Parse("23-12-2015"),
+                    Date = DateTime.ParseExact("23/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true,
                     ExpenseTarget = buildings[0].Notifactions[0].Orders[0]
                 },
@@ -505,7 +505,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 11,
                     Cost = 554.4,
-                    Date = DateTime.Parse("23-12-2015"),
+                    Date = DateTime.ParseExact("23/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = false,
                     ExpenseTarget = buildings[0].Notifactions[0].Orders[0]
                 }
@@ -525,7 +525,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 12,
                     Cost = 55.4,
-                    Date = DateTime.Parse("21-12-2015"),
+                    Date = DateTime.ParseExact("21/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true,
 
                 },
@@ -533,7 +533,7 @@ namespace Baudi.DAL
                 {
                     PaymentID = 13,
                     Cost = 55.4,
-                    Date = DateTime.Parse("22-12-2015"),
+                    Date = DateTime.ParseExact("22/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true
                 }
             };
@@ -548,14 +548,14 @@ namespace Baudi.DAL
                 {
                     PaymentID = 14,
                     Cost = 55.4,
-                    Date = DateTime.Parse("23-12-2015"),
+                    Date = DateTime.ParseExact("23/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true
                 },
                 new Salary
                 {
                     PaymentID = 15,
                     Cost = 55.4,
-                    Date = DateTime.Parse("24-12-2015"),
+                    Date = DateTime.ParseExact("24/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true
                 }
             };
@@ -570,14 +570,14 @@ namespace Baudi.DAL
                 {
                     PaymentID = 16,
                     Cost = 55.4,
-                    Date = DateTime.Parse("25-12-2015"),
+                    Date = DateTime.ParseExact("25/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true
                 },
                 new Salary
                 {
                     PaymentID = 17,
                     Cost = 55.4,
-                    Date = DateTime.Parse("26-12-2015"),
+                    Date = DateTime.ParseExact("26/12/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Paid = true
                 }
             };
