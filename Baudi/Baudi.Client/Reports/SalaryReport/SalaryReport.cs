@@ -18,16 +18,17 @@ namespace Baudi.Client.Reports.SalaryReport
 
         protected override void ConvertDataToPdf(Document document)
         {
-            document.Add(new Paragraph("Pensje w okresie od "+ DateFrom.ToLongDateString()+" do "+DateTo.ToLongDateString()));
+            document.Add(new Paragraph("Pensje w okresie od "+ DateFrom.ToLongDateString()+" do "+DateTo.ToLongDateString(), FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
 
             PdfPTable table = new PdfPTable(6);
+            table.SpacingBefore = 10;
 
-            table.AddCell("Pracownik");
-            table.AddCell("Konto bankowe");
-            table.AddCell("Kwota");
-            table.AddCell("Data");
-            table.AddCell("Uregulowane");
-            table.AddCell("Odpowiedzialny");
+            table.AddCell(new Paragraph("Pracownik", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Konto bankowe", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Kwota", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Data", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Uregulowane", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Odpowiedzialny", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
 
             SalaryTableRows.ForEach(s => AddRow(table, s));
 
@@ -36,19 +37,19 @@ namespace Baudi.Client.Reports.SalaryReport
 
         protected override void FindData(BaudiDbContext con)
         {
-            var salaries = con.Salaries.Where(s => (s.Date >= DateFrom && s.Date <= DateFrom)).Include(s => s.Employee).Include(s => s.Menager).ToList();
+            var salaries = con.Salaries.Where(s => (s.Date >= DateFrom && s.Date <= DateTo)).Include(s => s.Employee).Include(s => s.Menager).ToList();
             salaries.ForEach(s => SalaryTableRows.Add(new SalaryTableRow(s)));
         }
 
 
         private void AddRow(PdfPTable table, SalaryTableRow dataRow)
         {
-            table.AddCell(dataRow.EmployeeName);
-            table.AddCell(dataRow.BankAccount);
-            table.AddCell(dataRow.Cost);
-            table.AddCell(dataRow.Date);
-            table.AddCell(dataRow.Paid);
-            table.AddCell(dataRow.ResposiblePerson);
+            table.AddCell(new Paragraph(dataRow.EmployeeName, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.BankAccount, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.Cost, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.Date, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.Paid, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.ResposiblePerson, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
         }
 
 

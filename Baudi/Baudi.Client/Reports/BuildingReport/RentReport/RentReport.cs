@@ -13,20 +13,22 @@ namespace Baudi.Client.Reports.BuildingReport.RentReport
 
         public RentReport(DateTime dateFrom, DateTime dateTo, string path, int buildingId) : base(dateFrom, dateTo, path, buildingId)
         {
+            RentTables = new List<RentTable>();
         }
 
         private void GenerateRentTable(Document document, RentTable rentTable)
         {
-            document.Add(new Paragraph("Wykaz czynszów dla " + rentTable.Owner));
+            document.Add(new Paragraph("Wykaz czynszów dla " + rentTable.Owner, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
 
-            PdfPTable table = new PdfPTable(6);
+            PdfPTable table = new PdfPTable(6) {SpacingBefore = 10};
 
-            table.AddCell("ID lokalu");
-            table.AddCell("ID Posiadania");
-            table.AddCell("Kwota");
-            table.AddCell("Data");
-            table.AddCell("Uregulowane");
-            table.AddCell("Numer lokalu");
+
+            table.AddCell(new Paragraph("ID lokalu", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("ID Posiadania", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Kwota", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Data", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Uregulowane", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Numer lokalu", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
 
             rentTable.TableRows.ForEach(r => AddRow(table, r));
 
@@ -36,9 +38,9 @@ namespace Baudi.Client.Reports.BuildingReport.RentReport
 
         protected override void ConvertDataToPdf(Document document)
         {
-            document.Add(new Paragraph("Wykaz dla budynku " + BuildingId));
+            document.Add(new Paragraph("Wykaz dla budynku " + BuildingId, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
 
-            document.Add(new Paragraph("Czynsz w okresie od " + DateFrom.ToLongDateString() + " do " + DateTo.ToLongDateString()));
+            document.Add(new Paragraph("Czynsz w okresie od " + DateFrom.ToLongDateString() + " do " + DateTo.ToLongDateString(), FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
             
             RentTables.ForEach(rt => GenerateRentTable(document,rt));
             
@@ -57,12 +59,12 @@ namespace Baudi.Client.Reports.BuildingReport.RentReport
 
         private void AddRow(PdfPTable table, RentTableRow dataRow)
         {
-            table.AddCell(dataRow.LocalId);
-            table.AddCell(dataRow.OwnershipId);
-            table.AddCell(dataRow.Cost);
-            table.AddCell(dataRow.Date);
-            table.AddCell(dataRow.Paid);
-            table.AddCell(dataRow.LocalNumber);
+            table.AddCell(new Paragraph(dataRow.LocalId, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.OwnershipId, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.Cost, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.Date, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.Paid, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.LocalNumber, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
         }
 
 

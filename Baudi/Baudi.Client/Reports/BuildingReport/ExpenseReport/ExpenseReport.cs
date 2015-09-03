@@ -14,21 +14,24 @@ namespace Baudi.Client.Reports.BuildingReport.ExpenseReport
         private List<ExpenseTable> ExpenseTables { get; set; }  
         public ExpenseReport(DateTime dateFrom, DateTime dateTo, string path, int buildingId) : base(dateFrom, dateTo, path, buildingId)
         {
+            ExpenseTables = new List<ExpenseTable>();
         }
 
         private void GenateExpenseTable(Document document, ExpenseTable expenseTable)
         {
-            document.Add(new Paragraph("Wykaz wydatkow dla zlecenia: " + expenseTable.Description));
-            document.Add(new Paragraph("Firma odpowiedzialna za realizację: " + expenseTable.CompanyName));
-            document.Add(new Paragraph("Przewidywany koszt: " + expenseTable.Cost));
-            document.Add(new Paragraph("Osoba odpowiedzialna: " + expenseTable.ResposiblePerson));
+            
 
-            PdfPTable table = new PdfPTable(4);
+            document.Add(new Paragraph("Wykaz wydatkow dla zlecenia: " + expenseTable.Description, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            document.Add(new Paragraph("Firma odpowiedzialna za realizację: " + expenseTable.CompanyName, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            document.Add(new Paragraph("Przewidywany koszt: " + expenseTable.Cost, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            document.Add(new Paragraph("Osoba odpowiedzialna: " + expenseTable.ResposiblePerson, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
 
-            table.AddCell("Kwota");
-            table.AddCell("Data");
-            table.AddCell("Uregulowane");
-            table.AddCell("Osoba odpowiedzialna");
+            var table = new PdfPTable(4) {SpacingBefore = 10};
+
+            table.AddCell(new Paragraph("Kwota", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Data", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Uregulowane", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph("Osoba odpowiedzialna", FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
 
             expenseTable.TableRows.ForEach(r => AddRow(table, r));
             document.Add(table);
@@ -36,9 +39,9 @@ namespace Baudi.Client.Reports.BuildingReport.ExpenseReport
 
         protected override void ConvertDataToPdf(Document document)
         {
-            document.Add(new Paragraph("Wykaz dla budynku " + BuildingId));
+            document.Add(new Paragraph("Wykaz dla budynku " + BuildingId, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
 
-            document.Add(new Paragraph("Wydatki w okresie od " + DateFrom.ToLongDateString() + " do " + DateTo.ToLongDateString()));
+            document.Add(new Paragraph("Wydatki w okresie od " + DateFrom.ToLongDateString() + " do " + DateTo.ToLongDateString(), FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
 
             ExpenseTables.ForEach(et => GenateExpenseTable(document,et));
         }
@@ -64,10 +67,10 @@ namespace Baudi.Client.Reports.BuildingReport.ExpenseReport
 
         private void AddRow(PdfPTable table, ExpenseTableRow dataRow)
         {
-            table.AddCell(dataRow.Cost);
-            table.AddCell(dataRow.Date);
-            table.AddCell(dataRow.Paid);
-            table.AddCell(dataRow.ResposiblePerson);
+            table.AddCell(new Paragraph(dataRow.Cost, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.Date, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.Paid, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
+            table.AddCell(new Paragraph(dataRow.ResposiblePerson, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
         }
 
 
