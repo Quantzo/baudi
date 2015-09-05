@@ -37,10 +37,10 @@
         <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="2" Grid.Row="4" Text="{Binding Company.Street}"/>
 
         <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Grid.Column="1">Nr Domu</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}"  Grid.Column="2" Grid.Row="5" Width="50" Text="{Binding Company.HouseNumber}" Margin="0,0"/>
+        <TextBox Style="{StaticResource TextBoxStyle}"  Grid.Column="2" Grid.Row="5" Width="80" Text="{Binding Company.HouseNumber}" Margin="0,0"/>
 
-        <Label  Style="{StaticResource LabelStyle}" Grid.Column="2" Grid.Row="5" Margin="0,2,100,2">Nr Mieszkania</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="2" Grid.Row="5" Width="50" Text="{Binding Company.LocalNumber}" Margin="202,0,0,0"/>
+        <Label  Style="{StaticResource LabelStyle}" Grid.Column="2" Grid.Row="5" Margin="0,0,80,0">Nr Mieszkania</Label>
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="2" Grid.Row="5" Width="80" Text="{Binding Company.LocalNumber}" HorizontalAlignment="Right" Margin="0,0,2,0"/>
 
         <Label Style="{StaticResource LabelStyle}" Grid.Row="6" Grid.Column="1">Telefon</Label>
         <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="2" Grid.Row="6" Text="{Binding Company.TelephoneNumber}"/>

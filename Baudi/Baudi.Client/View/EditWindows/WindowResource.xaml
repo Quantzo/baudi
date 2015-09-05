@@ -83,7 +83,6 @@
         <Setter Property="BorderBrush" Value="{StaticResource TransparencyBrush}"/>
         <Setter Property="Background" Value="{StaticResource Grey53Brush}"/>
         <Setter Property="Opacity" Value="0.7"/>
-        <!--<Setter Property="Margin" Value="5,5,5,5"/>-->
         <Setter Property="Width" Value="260"/>
         <Setter Property="ColumnHeaderStyle" Value="{StaticResource ColumnHeader}"/>
     </Style>

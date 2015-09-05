@@ -24,7 +24,7 @@
         <Label Style="{StaticResource LabelStyle}" Grid.Row="2">Numer</Label>
         <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="2" Text="{Binding Building.HouseNumber}" />
 
-        <Button Grid.Column="1" Grid.Row="3" Margin="0,5,100,0" Command="{Binding ButtonSave}" Style="{StaticResource ButtonStyle}">Zapisz</Button>
-        <Button Grid.Column="1" Grid.Row="3" Margin="0,5,10,0"  Command="{Binding ButtonCancel}" Style="{StaticResource ButtonStyle}" >Anuluj</Button>
+        <Button Grid.Column="1" Grid.Row="3" Command="{Binding ButtonSave}" Style="{StaticResource SaveButton}">Zapisz</Button>
+        <Button Grid.Column="1" Grid.Row="3" Command="{Binding ButtonCancel}" Style="{StaticResource CancelButton}" >Anuluj</Button>
     </Grid>
 </Window>

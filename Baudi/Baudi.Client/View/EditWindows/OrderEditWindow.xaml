@@ -75,13 +75,12 @@
         <ComboBox Grid.Row="7" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedNotification}" ItemsSource="{Binding NotificationsList}"
                   DisplayMemberPath="NotificationID" />
-        
+
         <Label Style="{StaticResource LabelStyle}" Grid.Row="8" Content="Opis" />
         <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="8" Grid.Column="1" Text="{Binding Order.Description}" />
 
-
-            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="8" Command="{Binding ButtonSave}" Content="Zapisz" />
-            <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="8" Command="{Binding ButtonCancel}" Content="Anuluj" />
+        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="8" Command="{Binding ButtonSave}" Content="Zapisz" />
+        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="8" Command="{Binding ButtonCancel}" Content="Anuluj" />
     </Grid>
 
 </Window>
