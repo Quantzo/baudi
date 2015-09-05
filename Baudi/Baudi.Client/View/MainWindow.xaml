@@ -11,7 +11,7 @@
                     <tabs:NotificationsTab DataContext="{Binding NotificationsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
-            <TabItem Name="CompaniesTab" Header="Firmy">
+            <TabItem Name="CompaniesTab" Header="Firmy" Height="24" VerticalAlignment="Top">
                 <TabItem.Content>
                     <tabs:CompaniesTab DataContext="{Binding CompaniesTabViewModel}" />
                 </TabItem.Content>

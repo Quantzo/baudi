@@ -5,7 +5,7 @@
 
     <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="110*" />
+            <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -19,25 +19,25 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Content="Cena"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="0" Grid.Column="1" Text="{Binding CyclicOrder.Cost}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Cena"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="4" Grid.Column="1" Text="{Binding CyclicOrder.Cost}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Częstotliwość"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding CyclicOrder.Frequency}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Częstotliwość"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding CyclicOrder.Frequency}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Firma"/>
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Firma"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedCompany}" ItemsSource="{Binding CompaniesList}"
                   DisplayMemberPath="Name" />
 
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Budynek"/>
-        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Content="Budynek"/>
+        <ComboBox Grid.Row="0" Margin="5" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedBuilding}" ItemsSource="{Binding BuildingsList}"
                   DisplayMemberPath="NotificationTargetID" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Odpowiedzialny"/>
-        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Odpowiedzialny"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

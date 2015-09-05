@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="OwnershipEditWindow" Height="200" Style="{StaticResource WindowStyle}">
-    <Grid>
+        Title="OwnershipEditWindow" Height="210" MinHeight="210" Style="{StaticResource WindowStyle}">
+    <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*"/>
@@ -20,19 +20,19 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Content="Data kupna" Margin="0,3" Width="71" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding Ownership.PurchaseDate }" Margin="0,3" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Data kupna"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="2" Grid.Column="1" Text="{Binding Ownership.PurchaseDate }" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Data sprzedaży" Margin="0,3" Width="90" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding Ownership.SaleDate }" Margin="0,3" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Data sprzedaży" Margin="0,3" Width="90" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding Ownership.SaleDate }" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Właściciel" Margin="0,3" Width="62" />
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5,5,2,5" IsSynchronizedWithCurrentItem="True"
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Właściciel" Margin="0,3" Width="62" />
+        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5,5,2,5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedOwner}" ItemsSource="{Binding OwnersList}"
                   DisplayMemberPath="OwnerID" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Lokal" Margin="0,3" Width="38" />
-        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5,5,2,5" IsSynchronizedWithCurrentItem="True"
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Content="Lokal" Margin="0,3" Width="38" />
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5,5,2,5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedLocal}" ItemsSource="{Binding LocalsList}"
                   DisplayMemberPath="NotificationTargetID" />
 

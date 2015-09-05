@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="RentEditWindow" Height="200" Style="{StaticResource WindowStyle}">
+        Title="RentEditWindow" Height="210" MinHeight="210" Style="{StaticResource WindowStyle}">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
@@ -19,18 +19,18 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Content="Data" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding Rent.Date}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Data" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding Rent.Date}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Koszt" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1"  Text="{Binding Rent.Cost}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Koszt" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="2" Grid.Column="1"  Text="{Binding Rent.Cost}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Zapłacone" />
-        <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" HorizontalAlignment="Center"
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Zapłacone" />
+        <CheckBox Grid.Row="3" Grid.Column="1" Margin="5" HorizontalAlignment="Center"
                   VerticalContentAlignment="Center" IsChecked="{Binding Rent.Paid}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Posiadanie" />
-        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Content="Posiadanie" />
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedOwnership}" ItemsSource="{Binding OwnershipsList}"
                   DisplayMemberPath="OwnershipID" />
 

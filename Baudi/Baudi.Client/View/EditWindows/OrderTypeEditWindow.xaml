@@ -21,7 +21,7 @@
         <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding OrderType.Name}" />
 
         <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Specjalności" />
-        <DataGrid Style="{StaticResource DataGridStyle}" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SpecializationList}">
+        <DataGrid Style="{StaticResource DataGridStyle}" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SpecializationList}" Width="Auto">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Powiązana" Binding="{Binding IsSelected}" IsReadOnly="False" />
                 <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding SpecializationID}" IsReadOnly="True" />
