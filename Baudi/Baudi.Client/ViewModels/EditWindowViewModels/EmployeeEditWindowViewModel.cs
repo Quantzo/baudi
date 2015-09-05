@@ -107,6 +107,10 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
                 EditUser = true;
                 Employee = new Employee();
             }
+            using (var con = new BaudiDbContext())
+            {
+                _currentUserNames = Update ? con.Employees.Where(e => e.OwnerID != employee.OwnerID).Select(e => e.Username).ToList() : con.Employees.Select(e => e.Username).ToList();
+            }
         }
 
         private void PrepareToChangeEmployeeRole(Employee orginalEmployee)
@@ -167,7 +171,14 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         public override bool IsValid()
         {
-            return !(EditWindow as EmployeeEditWindow).Password.Equals("");
+            return Update
+                ? !CheckIfLoginExist()
+                : ((EmployeeEditWindow) EditWindow).Password.Length != 0 && !CheckIfLoginExist();
+        }
+
+        private bool CheckIfLoginExist()
+        {
+            return _currentUserNames.Contains(Employee.Username,StringComparer.InvariantCultureIgnoreCase);
         }
 
         public override void Add()
@@ -235,6 +246,8 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         private readonly EmployeeRole _orginalRole;
 
         private EmployeeRole _employeeRole;
+
+        private readonly List<string> _currentUserNames; 
 
 
         public EmployeeRole EmployeeRole
