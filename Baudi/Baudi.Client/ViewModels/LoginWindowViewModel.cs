@@ -102,7 +102,7 @@ namespace Baudi.Client.ViewModels
         }
         public void OnPropertyChanged(string property)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(property));
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Baudi.Client.ViewModels
         [DebuggerStepThrough]
         public bool CanExecute(object parameter)
         {
-            return _canExecute?.Invoke(parameter) ?? true;
+            return _canExecute == null || _canExecute(parameter);
         }
 
         public event EventHandler CanExecuteChanged

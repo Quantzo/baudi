@@ -13,6 +13,9 @@ namespace Baudi.Client.View.EditWindows
             InitializeComponent();
             DataContext = new EmployeeEditWindowViewModel(employeesTabViewModel, this, employee);
         }
-        public SecureString Password => PasswordBox.SecurePassword;
+        public SecureString Password
+        {
+            get { return PasswordBox.SecurePassword; }
+        }
     }
 }

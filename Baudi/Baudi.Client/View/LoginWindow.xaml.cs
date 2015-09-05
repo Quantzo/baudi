@@ -12,6 +12,9 @@ namespace Baudi.Client.View
             InitializeComponent();
             
         }
-        public SecureString Password => PasswordBox.SecurePassword;
+        public SecureString Password
+        {
+            get { return PasswordBox.SecurePassword; }
+        }
     }
 }
