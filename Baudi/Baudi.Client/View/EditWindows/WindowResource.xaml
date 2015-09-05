@@ -1,0 +1,75 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="White">#FFFFFFFF</Color>
+    <Color x:Key="Grey23">#FE171717</Color>
+    <Color x:Key="Grey33">#FF212121</Color>
+    <Color x:Key="Grey43">#FF2B2B2B</Color>
+    <Color x:Key="Grey53">#FF353535</Color>
+    <Color x:Key="Transparency">#00000000</Color>
+    
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
+    <SolidColorBrush x:Key="TransparencyBrush" Color="{StaticResource Transparency}"/>
+    <SolidColorBrush x:Key="Grey33Brush" Color="{StaticResource Grey33}"/>
+    <SolidColorBrush x:Key="Grey53Brush" Color="{StaticResource Grey53}"/>
+
+    <LinearGradientBrush x:Key="Gradient" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="{StaticResource Grey43}" Offset="1"/>
+        <GradientStop Color="{StaticResource Grey23}" Offset="0"/>
+    </LinearGradientBrush>
+    
+    <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Background" Value="{StaticResource Gradient}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TransparencyBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Opacity" Value="0.7"/>
+    </Style>
+    
+    <Style x:Key="LabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Background" Value="{StaticResource TransparencyBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>           
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="Auto"/>
+    </Style>
+    
+    <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Background" Value="{StaticResource Grey53Brush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TransparencyBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Opacity" Value="0.7"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    
+    
+    <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Background" Value="{StaticResource Grey33Brush}"/>
+    </Style>
+    
+    <Style x:Key="ColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="Background" Value="{StaticResource Grey43}"/>
+        <Setter Property="Foreground" Value="{StaticResource White}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Opacity" Value="0.7"/>
+    </Style>
+    
+    <Style x:Key="DataGridStyle" TargetType="DataGrid">
+        <Setter Property="IsReadOnly" Value="False"/>
+        <Setter Property="SelectionMode" Value="Extended"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="Foreground" Value="{StaticResource White}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Transparency}"/>
+        <Setter Property="Background" Value="{StaticResource Grey53}"/>
+        <Setter Property="Opacity" Value="0.7"/>
+        <Setter Property="ColumnHeaderStyle" Value="{StaticResource ColumnHeader}"/>
+    </Style>
+</ResourceDictionary>
