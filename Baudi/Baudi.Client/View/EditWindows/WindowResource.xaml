@@ -11,6 +11,7 @@
     <SolidColorBrush x:Key="TransparencyBrush" Color="{StaticResource Transparency}"/>
     <SolidColorBrush x:Key="Grey33Brush" Color="{StaticResource Grey33}"/>
     <SolidColorBrush x:Key="Grey53Brush" Color="{StaticResource Grey53}"/>
+    <SolidColorBrush x:Key="Grey43Brush" Color="{StaticResource Grey43}"/>
 
     <LinearGradientBrush x:Key="Gradient" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="{StaticResource Grey43}" Offset="1"/>
@@ -25,6 +26,14 @@
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="80"/>
         <Setter Property="Opacity" Value="0.7"/>
+    </Style>
+    
+    <Style x:Key="SaveButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
+        <Setter Property="Margin" Value="0,0,100,0"/>
+    </Style>
+    
+    <Style x:Key="CancelButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
+        <Setter Property="Margin" Value="0, 0, 10,0"/>
     </Style>
     
     <Style x:Key="LabelStyle" TargetType="{x:Type Label}">
@@ -44,19 +53,23 @@
         <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="SelectionBrush" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="Opacity" Value="0.7"/>
+        <Setter Property="Width" Value="260"/>
+        <Setter Property="Height" Value="25"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
     
     
     <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
         <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="Background" Value="{StaticResource Grey33Brush}"/>
+        <Setter Property="Width" Value="400"/>
     </Style>
     
     <Style x:Key="ColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
-        <Setter Property="Background" Value="{StaticResource Grey43}"/>
-        <Setter Property="Foreground" Value="{StaticResource White}"/>
+        <Setter Property="Background" Value="{StaticResource Grey43Brush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Opacity" Value="0.7"/>
     </Style>
@@ -66,10 +79,12 @@
         <Setter Property="SelectionMode" Value="Extended"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="CanUserAddRows" Value="False"/>
-        <Setter Property="Foreground" Value="{StaticResource White}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Transparency}"/>
-        <Setter Property="Background" Value="{StaticResource Grey53}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TransparencyBrush}"/>
+        <Setter Property="Background" Value="{StaticResource Grey53Brush}"/>
         <Setter Property="Opacity" Value="0.7"/>
+        <!--<Setter Property="Margin" Value="5,5,5,5"/>-->
+        <Setter Property="Width" Value="260"/>
         <Setter Property="ColumnHeaderStyle" Value="{StaticResource ColumnHeader}"/>
     </Style>
 </ResourceDictionary>

@@ -5,53 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="OwnershipEditWindow" Height="300" Width="300">
+        Title="OwnershipEditWindow" Height="200" Style="{StaticResource WindowStyle}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="120" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="290*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Data kupna" />
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Ownership.PurchaseDate }" />
+        <Label Style="{StaticResource LabelStyle}" Content="Data kupna" Margin="0,3" Width="71" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding Ownership.PurchaseDate }" Margin="0,3" />
 
-        <Label Grid.Row="1" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Data sprzedaży" />
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Ownership.SaleDate }" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Data sprzedaży" Margin="0,3" Width="90" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding Ownership.SaleDate }" Margin="0,3" />
 
-        <Label Grid.Row="2" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Właściciel" />
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Właściciel" Margin="0,3" Width="62" />
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5,5,2,5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedOwner}" ItemsSource="{Binding OwnersList}"
                   DisplayMemberPath="OwnerID" />
 
-        <Label Grid.Row="3" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Lokal" />
-        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Lokal" Margin="0,3" Width="38" />
+        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5,5,2,5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedLocal}" ItemsSource="{Binding LocalsList}"
                   DisplayMemberPath="NotificationTargetID" />
 
-        <Grid Grid.Row="4" Grid.Column="1" Margin="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="0" Margin="5" Command="{Binding ButtonSave}" Content="Zapisz" />
-            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
-
-        </Grid>
-
+        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="4" Command="{Binding ButtonSave}" Content="Zapisz"/>
+        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="4" Command="{Binding ButtonCancel}" Content="Anuluj"/>
     </Grid>
 </Window>

@@ -1,74 +1,49 @@
 ﻿<Window x:Class="Baudi.Client.View.EditWindows.PersonEditWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PersonEditWindow" Height="410" Width="619" MinHeight="440" MinWidth="500">
+        Title="PersonEditWindow" Height="340" Style="{StaticResource WindowStyle}">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="120" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="290*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Imię" />
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Person.Name}" />
+        <Label Style="{StaticResource LabelStyle}" Content="Imię" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding Person.Name}" />
 
-        <Label Grid.Row="1" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Nazwisko" />
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Person.Surname}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Nazwisko" />
+        <TextBox Style ="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding Person.Surname}" />
 
-        <Label Grid.Row="2" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Pesel" />
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Person.PESEL}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Pesel" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="2" Grid.Column="1" Text="{Binding Person.PESEL}" />
 
-        <Label Grid.Row="3" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Miejscowość" />
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Person.City}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Miejscowość" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding Person.City}" />
 
-        <Label Grid.Row="4" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Ulica" />
-        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Person.Street}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Ulica" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="4" Grid.Column="1" Text="{Binding Person.Street}" />
 
-        <Label Grid.Row="5" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Numer domu" />
-        <TextBox Grid.Row="5" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Person.HouseNumber}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Content="Numer domu" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="5" Grid.Column="1" Text="{Binding Person.HouseNumber}" />
 
-        <Label Grid.Row="6" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Numer mieszkania" />
-        <TextBox Grid.Row="6" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Person.LocalNumber}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="6" Content="Numer mieszkania" />
+        <TextBox Style ="{StaticResource TextBoxStyle}" Grid.Row="6" Grid.Column="1" Text="{Binding Person.LocalNumber}" />
 
-        <Label Grid.Row="7" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Numer telefonu" />
-        <TextBox Grid.Row="7" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Person.Telephone}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="7" Content="Numer telefonu" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="7" Grid.Column="1" Text="{Binding Person.Telephone}" />
 
-        <Grid Grid.Row="8" Grid.Column="1" Margin="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="0" Margin="5" Command="{Binding ButtonSave}" Content="Zapisz" />
-            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
-
-        </Grid>
-
+        <Button Style="{StaticResource SaveButton}" Grid.Row="8" Grid.Column="1"  Command="{Binding ButtonSave}" Content="Zapisz" />
+        <Button Style="{StaticResource CancelButton}" Grid.Row="8" Grid.Column="1" Command="{Binding ButtonCancel}" Content="Anuluj" />
     </Grid>
 </Window>

@@ -5,38 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="SalaryEditWindow" Height="300" Width="300">
-    <Grid Margin="10">
+        Title="SalaryEditWindow" Height="250" Style="{StaticResource WindowStyle}">
+    <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="120" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="290*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Data" />
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Salary.Date}" />
+        <Label Style="{StaticResource LabelStyle}" Content="Data" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding Salary.Date}" />
 
-        <Label Grid.Row="1" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Koszt" />
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Salary.Cost}" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Koszt" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding Salary.Cost}" />
 
-        <Label Grid.Row="2" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Zapłacone" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Zapłacone" />
         <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" HorizontalAlignment="Center"
                   VerticalContentAlignment="Center" IsChecked="{Binding Salary.Paid}" />
 
-        <Label Grid.Row="3" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Odpowiedzialny" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Odpowiedzialny" />
         <ComboBox Grid.Row="3" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}">
             <ComboBox.ItemTemplate>
@@ -53,8 +47,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Grid.Row="4" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Pracownik" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Pracownik" />
         <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeesList}">
             <ComboBox.ItemTemplate>
@@ -71,16 +64,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Grid Grid.Row="5" Grid.Column="1" Margin="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="0" Margin="5" Command="{Binding ButtonSave}" Content="Zapisz" />
-            <Button Grid.Column="1" Margin="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
-
-        </Grid>
-
+            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonSave}" Content="Zapisz" />
+            <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
     </Grid>
 </Window>
