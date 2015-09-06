@@ -7,13 +7,13 @@
     <Window.Resources>
         <converters:EnumDescriptionConverter x:Key="EnumConventer" />
     </Window.Resources>
-    <Grid Margin="10,10,10,10">
 
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="120" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="77" />
+            <ColumnDefinition Width="120*" />
+            <ColumnDefinition Width="77" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -67,7 +67,7 @@
         <TextBox Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Text="{Binding Employee.Salary}" />
 
         <Label Grid.Row="9" Content="Rola" />
-        <ComboBox Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" 
                   SelectedItem="{Binding EmployeeRole}" ItemsSource="{Binding EmployeeRoleValues}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

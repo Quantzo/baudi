@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
-        mc:Ignorable="d" Title="OwningCompanyEditWindow" Height="270" Style="{StaticResource WindowStyle}">
-    
-    <Grid Margin="10,10,10,10">
+        mc:Ignorable="d" Title="OwningCompanyEditWindow" Height="270" MinHeight="270" Style="{StaticResource WindowStyle}">
+
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110"/>
-            <ColumnDefinition Width="44*"/>
+            <ColumnDefinition Width="77"/>
             <ColumnDefinition Width="87*" />
-            <ColumnDefinition Width="44*"/>
+            <ColumnDefinition Width="77"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />

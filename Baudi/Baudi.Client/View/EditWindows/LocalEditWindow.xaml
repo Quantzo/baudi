@@ -1,8 +1,9 @@
 ﻿<Window x:Class="Baudi.Client.View.EditWindows.LocalEditWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="OknoEdycjiLokalu" Height="250" Style="{StaticResource WindowStyle}">
-    <Grid Margin="10, 10, 10, 10">
+        Title="OknoEdycjiLokalu" Height="250" MinHeight="250" Style="{StaticResource WindowStyle}">
+
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*"/>
@@ -17,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0">Budynek</Label>
-        <ComboBox Grid.Column="1" Grid.Row="0" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Column="1" Grid.Row="0"
                   ItemsSource="{Binding BuildingsList}" DisplayMemberPath="NotificationTargetID"
                   SelectedValue="{Binding SelectedBuilding}" />
 

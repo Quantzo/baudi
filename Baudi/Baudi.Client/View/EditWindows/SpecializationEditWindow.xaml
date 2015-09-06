@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="SpecializationEditWindow" Height="120" Style="{StaticResource WindowStyle}">
-    <Grid Margin="10,10,10,10">
+        Title="SpecializationEditWindow" Height="120" MinHeight="120" Style="{StaticResource WindowStyle}">
+
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*" />

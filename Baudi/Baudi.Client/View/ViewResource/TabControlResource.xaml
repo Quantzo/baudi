@@ -17,5 +17,27 @@
         <Setter Property="Background" Value="{StaticResource TabGradient}"/>
         <Setter Property="BorderBrush" Value="{StaticResource TransparencyBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource Grey73Brush}"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid>
+                        <Border Name="Border" Background="{StaticResource TabGradient}" BorderBrush="{StaticResource TransparencyBrush}"  BorderThickness="1,1,1,1"  CornerRadius="5,0,0,5" >
+                            <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header"  RecognizesAccessKey="True"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource Grey33Brush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource TabGradient}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource TransparencyBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource WhiteBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

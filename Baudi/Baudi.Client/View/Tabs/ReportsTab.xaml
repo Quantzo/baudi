@@ -11,7 +11,8 @@
     <UserControl.Resources>
         <converters:EnumDescriptionConverter x:Key="EnumConventer" />
     </UserControl.Resources>
-    <Grid Margin="10">
+    
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>

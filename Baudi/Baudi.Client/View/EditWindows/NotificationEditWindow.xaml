@@ -8,7 +8,7 @@
         <converters:EnumDescriptionConverter x:Key="EnumConventer" />
     </Window.Resources>
 
-    <Grid Margin="10,10,10,10">
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*" />
@@ -25,16 +25,17 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="Budynek/lokal" />
-        <ComboBox Grid.Row="0" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="0" Grid.Column="1" 
                   SelectedValue="{Binding SelectedNotificationTarget}" ItemsSource="{Binding NotificationTargetsList}"
                   DisplayMemberPath="NotificationTargetID" />
 
         <Label Grid.Row="1" Content="Zgłaszający" />
-        <ComboBox Grid.Row="1" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="1" Grid.Column="1"
                   SelectedValue="{Binding SelectedOwner}" ItemsSource="{Binding OwnersList}"
                   DisplayMemberPath="OwnerID" />
 
-        <ComboBox Grid.Row="2" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <Label Grid.Row="2" Content="Przyjmujący" />
+        <ComboBox Grid.Row="2" Grid.Column="1"
                   SelectedValue="{Binding SelectedDispatcher}" ItemsSource="{Binding DispatchersList}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -60,7 +61,7 @@
         <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Notification.Description}" />
 
         <Label Grid.Row="6" Content="Status" />
-        <ComboBox Grid.Row="6" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="6" Grid.Column="1"
                   SelectedItem="{Binding SelectedNotificationStatus}" ItemsSource="{Binding NotificationStatus}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -69,7 +70,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         
-        <Label Grid.Row="2" Content="Przyjmujący" />
+
 
         <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="7" Command="{Binding ButtonSave}" Content="Zapisz" />
         <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="7" Command="{Binding ButtonCancel}" Content="Anuluj" />

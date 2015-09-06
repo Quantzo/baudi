@@ -7,7 +7,7 @@
         <converters:EnumDescriptionConverter x:Key="EnumConventer" />
     </Window.Resources>
 
-    <Grid Margin="10,10,10,10">
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*" />
@@ -27,13 +27,13 @@
 
 
         <Label  Grid.Row="0" Content="Zgłoszenie"/>
-        <ComboBox Grid.Row="0" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="0" Grid.Column="1"
                   SelectedValue="{Binding SelectedNotification}" ItemsSource="{Binding NotificationsList}"
-                  DisplayMemberPath="NotificationID" Height="Auto" />
+                  DisplayMemberPath="NotificationID" />
 
         <Label  Grid.Row="1" Content="Odpowiedzialny"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
-                  SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}" Height="Auto">
+        <ComboBox Grid.Row="1" Grid.Column="1"
+                  SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -49,14 +49,14 @@
         </ComboBox>
 
         <Label Grid.Row="2" Content="Typ zlecenia"/>
-        <ComboBox Grid.Row="2" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="2" Grid.Column="1"
                   SelectedValue="{Binding SelectedOrderType}" ItemsSource="{Binding OrderTypesList}"
-                  DisplayMemberPath="Name" Height="Auto" />
+                  DisplayMemberPath="Name" />
 
         <Label  Grid.Row="3"  Content="Wykonawca"/>
-        <ComboBox Grid.Row="3" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="3" Grid.Column="1"
                   SelectedValue="{Binding SelectedCompany}" ItemsSource="{Binding CompaniesList}"
-                  DisplayMemberPath="Name" Height="Auto" />
+                  DisplayMemberPath="Name"/>
 
         <Label Grid.Row="4" Content="Data zgłoszenia"/>
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Order.FilingDate}"/>
@@ -71,8 +71,8 @@
         <TextBox Grid.Row="7"  Grid.Column="1" Text="{Binding Order.Cost}"/>
 
         <Label Grid.Row="8" Content="Status" />
-        <ComboBox Grid.Row="8" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
-                  SelectedItem="{Binding SelectedOrderStatus}" ItemsSource="{Binding OrderStatus}" Height="Auto">
+        <ComboBox Grid.Row="8" Grid.Column="1"
+                  SelectedItem="{Binding SelectedOrderStatus}" ItemsSource="{Binding OrderStatus}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />

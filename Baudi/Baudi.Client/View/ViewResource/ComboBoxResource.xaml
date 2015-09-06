@@ -20,12 +20,10 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <!-- ComboBox TextBox -->
     <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
         <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
     </ControlTemplate>
 
-    <!-- ComboBox style -->
     <Style x:Key="{x:Type ComboBox}" TargetType="ComboBox">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -34,6 +32,8 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="Height" Value="20"/>
         <Setter Property="Margin" Value="5,2.5,5,2.5"/>
+        <Setter Property="IsSynchronizedWithCurrentItem" Value="True"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">

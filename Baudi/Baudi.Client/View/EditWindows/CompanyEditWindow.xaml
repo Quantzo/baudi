@@ -3,13 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="OknoEdycjiFirmy" Height="430" MinHeight="430" Style="{StaticResource WindowStyle}">
 
-    <Grid Margin="10, 10, 10, 10">
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0"/>
             <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="77"/>
             <ColumnDefinition Width="100*"/>
-            <ColumnDefinition Width="290*"/>
-            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="77"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -23,32 +22,32 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="1" >Nazwa</Label>
-        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="0" Text="{Binding Company.Name}"/>
+        <Label Grid.Row="0" Grid.Column="0" Height="26" Margin="0,2" Width="45" >Nazwa</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="0" Text="{Binding Company.Name}" Height="26" Margin="5,2"/>
 
-        <Label  Grid.Row="1" Grid.Column="1" >Właściciel</Label>
-        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="1" Text="{Binding Company.Owner}"/>
+        <Label  Grid.Row="1" Grid.Column="0" Height="26" Margin="0,2" Width="62" >Właściciel</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="1" Text="{Binding Company.Owner}" Height="26" Margin="5,2"/>
 
-        <Label Grid.Row="2" Grid.Column="1">NIP</Label>
-        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="2" Text="{Binding Company.NIP}"/>
+        <Label Grid.Row="2" Grid.Column="0" Height="26" Margin="0,2" Width="29">NIP</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Text="{Binding Company.NIP}" Height="26" Margin="5,2"/>
 
-        <Label Grid.Column="1" Grid.Row="3">Miejscowość</Label>
-        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="3" Text="{Binding Company.City}"/>
+        <Label Grid.Column="0" Grid.Row="3" Height="26" Margin="0,2" Width="77">Miejscowość</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="3" Text="{Binding Company.City}" Height="26" Margin="5,2"/>
 
-        <Label Grid.Row="4" Grid.Column="1">Ulica</Label>
-        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="4" Text="{Binding Company.Street}"/>
+        <Label Grid.Row="4" Grid.Column="0" Height="26" Margin="0,2" Width="36">Ulica</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="4" Text="{Binding Company.Street}" Height="26" Margin="5,2"/>
 
-        <Label Grid.Row="5" Grid.Column="1">Nr Domu</Label>
-        <TextBox Grid.Column="2" Grid.Row="5" Text="{Binding Company.HouseNumber}"/>
+        <Label Grid.Row="5" Grid.Column="0" Height="26" Margin="0,2" Width="59">Nr Domu</Label>
+        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding Company.HouseNumber}" Height="26" Margin="5,2"/>
 
-        <Label  Grid.Column="3" Grid.Row="5">Nr Mieszkania</Label>
-        <TextBox Grid.Column="4" Grid.Row="5" Text="{Binding Company.LocalNumber}"/>
+        <Label  Grid.Column="2" Grid.Row="5" Height="26" Margin="0,2" Width="85">Nr Mieszkania</Label>
+        <TextBox Grid.Column="3" Grid.Row="5" Text="{Binding Company.LocalNumber}" Height="26" Margin="5,2"/>
 
-        <Label Grid.Row="6" Grid.Column="1">Telefon</Label>
-        <TextBox Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="3" Text="{Binding Company.TelephoneNumber}"/>
+        <Label Grid.Row="6" Grid.Column="0" Height="26" Margin="0,2" Width="49">Telefon</Label>
+        <TextBox Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Text="{Binding Company.TelephoneNumber}" Height="26" Margin="5,2"/>
 
-        <Label Grid.Row="7" Grid.Column="1">Specjalności</Label>
-        <DataGrid Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" ItemsSource="{Binding SpecializationList}" Width="Auto">
+        <Label Grid.Row="7" Grid.Column="0" Margin="0,52" Width="75">Specjalności</Label>
+        <DataGrid Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" ItemsSource="{Binding SpecializationList}" Width="Auto">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding SpecializationID}" IsReadOnly="True" />
                 <DataGridCheckBoxColumn Header="Posiadana" Width="60" Binding="{Binding IsSelected}" IsReadOnly="False" />
@@ -56,7 +55,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Style="{StaticResource SaveButton}" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" Command="{Binding ButtonSave}">Zapisz</Button>
-        <Button Style="{StaticResource CancelButton}" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" Command="{Binding ButtonCancel}">Anuluj</Button>
+        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Command="{Binding ButtonSave}" Height="Auto" Margin="0,5,47,5">Zapisz</Button>
+        <Button Style="{StaticResource CancelButton}" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2" Command="{Binding ButtonCancel}" Height="Auto" Margin="0,5,10,5">Anuluj</Button>
     </Grid>
 </Window>

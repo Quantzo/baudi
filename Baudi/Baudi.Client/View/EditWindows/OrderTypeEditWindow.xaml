@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="OrderTypeEditWindow" Height="200" Style="{StaticResource WindowStyle}">
-    <Grid Margin="10,10,10,10">
+        Title="OrderTypeEditWindow" Height="200" MinHeight="200" Style="{StaticResource WindowStyle}">
+
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*" />
@@ -21,7 +22,7 @@
         <TextBox Grid.Column="1" Text="{Binding OrderType.Name}" />
 
         <Label Grid.Row="1" Content="Specjalności" />
-        <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SpecializationList}" Width="Auto">
+        <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SpecializationList}" >
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Powiązana" Binding="{Binding IsSelected}" IsReadOnly="False" />
                 <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding SpecializationID}" IsReadOnly="True" />

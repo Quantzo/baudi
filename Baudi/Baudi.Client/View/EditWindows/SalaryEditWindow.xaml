@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="SalaryEditWindow" Height="250" Style="{StaticResource WindowStyle}">
-    <Grid Margin="10,10,10,10">
+        Title="SalaryEditWindow" Height="250" MinHeight="250" Style="{StaticResource WindowStyle}">
+
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*" />
@@ -27,11 +28,10 @@
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Salary.Cost}" />
 
         <Label Grid.Row="4" Content="Zapłacone" />
-        <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" HorizontalAlignment="Center"
-                  VerticalContentAlignment="Center" IsChecked="{Binding Salary.Paid}" />
+        <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding Salary.Paid}" />
 
         <Label Grid.Row="1" Content="Odpowiedzialny" />
-        <ComboBox Grid.Row="1" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="1" Grid.Column="1"
                   SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -48,7 +48,7 @@
         </ComboBox>
 
         <Label Grid.Row="0" Content="Pracownik" />
-        <ComboBox Grid.Row="0" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="0" Grid.Column="1"
                   SelectedValue="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeesList}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

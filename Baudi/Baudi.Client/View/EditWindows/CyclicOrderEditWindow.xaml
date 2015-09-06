@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="OknoEdycjiZleceniaStale" Height="300" MinHeight="300" Style="{StaticResource WindowStyle}">
 
-    <Grid Margin="10,10,10,10">
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*"/>
@@ -20,19 +20,18 @@
         </Grid.RowDefinitions>
 
         <Label  Grid.Row="0" Content="Budynek"/>
-        <ComboBox Grid.Row="0" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="0" Grid.Column="1"
                   SelectedValue="{Binding SelectedBuilding}" ItemsSource="{Binding BuildingsList}"
                   DisplayMemberPath="NotificationTargetID"/>
 
         <Label  Grid.Row="1" Content="Firma"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="1" Grid.Column="1"
                   SelectedValue="{Binding SelectedCompany}" ItemsSource="{Binding CompaniesList}"
                   DisplayMemberPath="Name" />
 
         <Label  Grid.Row="2" Content="Odpowiedzialny"/>
-        <ComboBox Grid.Row="2" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
-                  SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}" >
-
+        <ComboBox Grid.Row="2" Grid.Column="1" SelectedValue="{Binding SelectedMenager}"
+                  ItemsSource="{Binding MenagersList}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
