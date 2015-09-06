@@ -23,32 +23,32 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}"  Grid.Row="0" Grid.Column="1" >Nazwa</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="0" Text="{Binding Company.Name}"/>
+        <Label Grid.Row="0" Grid.Column="1" >Nazwa</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="0" Text="{Binding Company.Name}"/>
 
-        <Label  Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="1" >Właściciel</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="1" Text="{Binding Company.Owner}"/>
+        <Label  Grid.Row="1" Grid.Column="1" >Właściciel</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="1" Text="{Binding Company.Owner}"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="1">NIP</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="2" Text="{Binding Company.NIP}"/>
+        <Label Grid.Row="2" Grid.Column="1">NIP</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="2" Text="{Binding Company.NIP}"/>
 
-        <Label  Style="{StaticResource LabelStyle}" Grid.Column="1" Grid.Row="3">Miejscowość</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="3" Text="{Binding Company.City}"/>
+        <Label Grid.Column="1" Grid.Row="3">Miejscowość</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="3" Text="{Binding Company.City}"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Grid.Column="1">Ulica</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="4" Text="{Binding Company.Street}"/>
+        <Label Grid.Row="4" Grid.Column="1">Ulica</Label>
+        <TextBox Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="4" Text="{Binding Company.Street}"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Grid.Column="1">Nr Domu</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}"  Grid.Column="2" Grid.Row="5" Text="{Binding Company.HouseNumber}"/>
+        <Label Grid.Row="5" Grid.Column="1">Nr Domu</Label>
+        <TextBox Grid.Column="2" Grid.Row="5" Text="{Binding Company.HouseNumber}"/>
 
-        <Label  Style="{StaticResource LabelStyle}" Grid.Column="3" Grid.Row="5">Nr Mieszkania</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="4" Grid.Row="5" Text="{Binding Company.LocalNumber}"/>
+        <Label  Grid.Column="3" Grid.Row="5">Nr Mieszkania</Label>
+        <TextBox Grid.Column="4" Grid.Row="5" Text="{Binding Company.LocalNumber}"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="6" Grid.Column="1">Telefon</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="3" Text="{Binding Company.TelephoneNumber}"/>
+        <Label Grid.Row="6" Grid.Column="1">Telefon</Label>
+        <TextBox Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="3" Text="{Binding Company.TelephoneNumber}"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="7" Grid.Column="1">Specjalności</Label>
-        <DataGrid Style="{StaticResource DataGridStyle}" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" ItemsSource="{Binding SpecializationList}" Width="Auto">
+        <Label Grid.Row="7" Grid.Column="1">Specjalności</Label>
+        <DataGrid Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" ItemsSource="{Binding SpecializationList}" Width="Auto">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding SpecializationID}" IsReadOnly="True" />
                 <DataGridCheckBoxColumn Header="Posiadana" Width="60" Binding="{Binding IsSelected}" IsReadOnly="False" />

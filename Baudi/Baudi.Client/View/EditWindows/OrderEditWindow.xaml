@@ -22,42 +22,18 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
-            
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="7" Content="Koszt" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="7"  Grid.Column="1" Text="{Binding Order.Cost}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Content="Ostatnia zmiana" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="5" Grid.Column="1" Text="{Binding Order.LastChanged}" />
+        <Label  Grid.Row="0" Content="Zgłoszenie"/>
+        <ComboBox Grid.Row="0" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+                  SelectedValue="{Binding SelectedNotification}" ItemsSource="{Binding NotificationsList}"
+                  DisplayMemberPath="NotificationID" Height="Auto" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Data zgłoszenia" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="4" Grid.Column="1" Text="{Binding Order.FilingDate}" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="8" Content="Status" />
-        <ComboBox Grid.Row="8" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
-                  SelectedItem="{Binding SelectedOrderStatus}" ItemsSource="{Binding OrderStatus}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Typ zlecenia" />
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
-                  SelectedValue="{Binding SelectedOrderType}" ItemsSource="{Binding OrderTypesList}"
-                  DisplayMemberPath="Name" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3"  Content="Wykonawca" />
-        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
-                  SelectedValue="{Binding SelectedCompany}" ItemsSource="{Binding CompaniesList}"
-                  DisplayMemberPath="Name" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Odpowiedzialny" />
-        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
-                  SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}">
+        <Label  Grid.Row="1" Content="Odpowiedzialny"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+                  SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}" Height="Auto">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -72,16 +48,40 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Content="Zgłoszenie" />
-        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
-                  SelectedValue="{Binding SelectedNotification}" ItemsSource="{Binding NotificationsList}"
-                  DisplayMemberPath="NotificationID" />
+        <Label Grid.Row="2" Content="Typ zlecenia"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+                  SelectedValue="{Binding SelectedOrderType}" ItemsSource="{Binding OrderTypesList}"
+                  DisplayMemberPath="Name" Height="Auto" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="6" Content="Opis" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="6" Grid.Column="1" Text="{Binding Order.Description}" />
+        <Label  Grid.Row="3"  Content="Wykonawca"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+                  SelectedValue="{Binding SelectedCompany}" ItemsSource="{Binding CompaniesList}"
+                  DisplayMemberPath="Name" Height="Auto" />
 
-        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="9" Command="{Binding ButtonSave}" Content="Zapisz" />
-        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="9" Command="{Binding ButtonCancel}" Content="Anuluj" />
+        <Label Grid.Row="4" Content="Data zgłoszenia"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Order.FilingDate}"/>
+
+        <Label Grid.Row="5" Content="Ostatnia zmiana"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Order.LastChanged}"/>
+
+        <Label Grid.Row="6" Content="Opis"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Order.Description}"/>
+
+        <Label Grid.Row="7" Content="Koszt"/>
+        <TextBox Grid.Row="7"  Grid.Column="1" Text="{Binding Order.Cost}"/>
+
+        <Label Grid.Row="8" Content="Status" />
+        <ComboBox Grid.Row="8" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+                  SelectedItem="{Binding SelectedOrderStatus}" ItemsSource="{Binding OrderStatus}" Height="Auto">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+         <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="9" Command="{Binding ButtonSave}" Content="Zapisz" Height="Auto" Margin="0,7,100,8" />
+        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="9" Command="{Binding ButtonCancel}" Content="Anuluj" Height="Auto" Margin="0,7,10,8" />
     </Grid>
 
 </Window>

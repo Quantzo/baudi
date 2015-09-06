@@ -20,18 +20,18 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Data" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="2" Grid.Column="1" Text="{Binding Salary.Date}" />
+        <Label Grid.Row="2" Content="Data" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Salary.Date}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Koszt" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding Salary.Cost}" />
+        <Label Grid.Row="3" Content="Koszt" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Salary.Cost}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Zapłacone" />
+        <Label Grid.Row="4" Content="Zapłacone" />
         <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" HorizontalAlignment="Center"
                   VerticalContentAlignment="Center" IsChecked="{Binding Salary.Paid}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Odpowiedzialny" />
-        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Grid.Row="1" Content="Odpowiedzialny" />
+        <ComboBox Grid.Row="1" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -47,8 +47,8 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Content="Pracownik" />
-        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Grid.Row="0" Content="Pracownik" />
+        <ComboBox Grid.Row="0" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeesList}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -64,7 +64,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonSave}" Content="Zapisz" />
-            <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
+        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonSave}" Content="Zapisz" />
+        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
     </Grid>
 </Window>

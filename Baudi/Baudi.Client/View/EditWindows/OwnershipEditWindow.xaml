@@ -20,19 +20,19 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Data kupna"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="2" Grid.Column="1" Text="{Binding Ownership.PurchaseDate }" />
+        <Label Grid.Row="2" Content="Data kupna"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Ownership.PurchaseDate }" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Data sprzedaży" Margin="0,3" Width="90" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding Ownership.SaleDate }" />
+        <Label Grid.Row="3" Content="Data sprzedaży" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Ownership.SaleDate }" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Właściciel" Margin="0,3" Width="62" />
-        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5,5,2,5" IsSynchronizedWithCurrentItem="True"
+        <Label Grid.Row="1" Content="Właściciel"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedOwner}" ItemsSource="{Binding OwnersList}"
                   DisplayMemberPath="OwnerID" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Content="Lokal" Margin="0,3" Width="38" />
-        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5,5,2,5" IsSynchronizedWithCurrentItem="True"
+        <Label Grid.Row="0" Content="Lokal" />
+        <ComboBox Grid.Row="0" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedLocal}" ItemsSource="{Binding LocalsList}"
                   DisplayMemberPath="NotificationTargetID" />
 

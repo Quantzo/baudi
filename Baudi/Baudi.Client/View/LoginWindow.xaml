@@ -14,10 +14,10 @@
         </Grid.RowDefinitions>
 
         <Label Style="{StaticResource LabelStyle}"  Content="Login" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding Username}" HorizontalAlignment="Stretch"/>
+        <TextBox Style="{StaticResource TextBoxStyle}"  Grid.Column="1" Text="{Binding Username}" HorizontalContentAlignment="Center"/>
 
         <Label Style="{StaticResource LabelStyle}" Grid.Row="1"  Content="Hasło" />
-        <PasswordBox  Grid.Row="1" Height="25" Grid.Column="1" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="PasswordBox" />
+        <PasswordBox  Grid.Row="1" Height="25" Grid.Column="1" x:Name="PasswordBox" />
 
         <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonLogin}" Content="Zaloguj" />
         <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonExit}" Content="Anuluj" />

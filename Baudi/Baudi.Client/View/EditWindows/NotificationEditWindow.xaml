@@ -24,37 +24,17 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Ostatnia Zmiana" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="4" Grid.Column="1" Text="{Binding Notification.LastChanged}" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3"  Content="Data zgłoszenia" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding Notification.FilingDate}" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Content="Opis" />
-        <TextBox Style="{StaticResource TextBoxStyle}"  Grid.Row="5" Grid.Column="1" Text="{Binding Notification.Description}" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="6" Content="Status" />
-        <ComboBox Grid.Row="6" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
-                  SelectedItem="{Binding SelectedNotificationStatus}" ItemsSource="{Binding NotificationStatus}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Content="Budynek/lokal" />
-        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Grid.Row="0" Content="Budynek/lokal" />
+        <ComboBox Grid.Row="0" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedNotificationTarget}" ItemsSource="{Binding NotificationTargetsList}"
                   DisplayMemberPath="NotificationTargetID" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Zgłaszający" />
-        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Grid.Row="1" Content="Zgłaszający" />
+        <ComboBox Grid.Row="1" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedOwner}" ItemsSource="{Binding OwnersList}"
                   DisplayMemberPath="OwnerID" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Przyjmujący" />
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <ComboBox Grid.Row="2" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
                   SelectedValue="{Binding SelectedDispatcher}" ItemsSource="{Binding DispatchersList}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -69,6 +49,27 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        
+        <Label Grid.Row="3"  Content="Data zgłoszenia" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Notification.FilingDate}" />
+        
+        <Label Grid.Row="4" Content="Ostatnia Zmiana" />
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Notification.LastChanged}" />
+
+        <Label Grid.Row="5" Content="Opis" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Notification.Description}" />
+
+        <Label Grid.Row="6" Content="Status" />
+        <ComboBox Grid.Row="6" Grid.Column="1" IsSynchronizedWithCurrentItem="True"
+                  SelectedItem="{Binding SelectedNotificationStatus}" ItemsSource="{Binding NotificationStatus}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        <Label Grid.Row="2" Content="Przyjmujący" />
 
         <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="7" Command="{Binding ButtonSave}" Content="Zapisz" />
         <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="7" Command="{Binding ButtonCancel}" Content="Anuluj" />

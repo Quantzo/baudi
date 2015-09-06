@@ -23,26 +23,26 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Content="Nazwa"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Name}" />
+        <Label Content="Nazwa"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Name}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="NIP"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.NIP}"/>
+        <Label Grid.Row="1" Content="NIP"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.NIP}"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Miejscowość"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.City}" />
+        <Label Grid.Row="3" Content="Miejscowość"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.City}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Ulica"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Street}"/>
+        <Label Grid.Row="4" Content="Ulica"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Street}"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Content="Numer domu"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="5" Grid.Column="1"  Text="{Binding OwningCompany.HouseNumber}" />
+        <Label Grid.Row="5" Content="Numer domu"/>
+        <TextBox Grid.Row="5" Grid.Column="1"  Text="{Binding OwningCompany.HouseNumber}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Grid.Column="2" Content="Numer mieszkania" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="5" Grid.Column="3" TextWrapping="Wrap" Text="{Binding OwningCompany.LocalNumber}"/>
+        <Label Grid.Row="5" Grid.Column="2" Content="Numer mieszkania" />
+        <TextBox Grid.Row="5" Grid.Column="3" Text="{Binding OwningCompany.LocalNumber}"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Numer telefonu"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Telephone}"/>
+        <Label Grid.Row="2" Content="Numer telefonu"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Telephone}"/>
 
         <Button Style="{StaticResource SaveButton}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ButtonSave}" Content="Zapisz"/>
         <Button Style="{StaticResource CancelButton}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ButtonCancel}" Content="Anuluj" />

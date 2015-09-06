@@ -30,45 +30,44 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Content="Imię" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding Employee.Name}" Grid.ColumnSpan="3"/>
+        <Label  Content="Imię" />
+        <TextBox  Grid.Column="1" Text="{Binding Employee.Name}" Grid.ColumnSpan="3"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Nazwisko" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Employee.Surname}" />
+        <Label  Grid.Row="1" Content="Nazwisko" />
+        <TextBox  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Employee.Surname}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Login" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,50,0" Text="{Binding Employee.Username}" />
-        
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="2" Content="Hasło" />
-        <PasswordBox  Grid.Row="2" Grid.Column="3" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="PasswordBox"  IsEnabled="{Binding EditUser}"/>
+        <Label  Grid.Row="2" Content="Login" />
+        <TextBox  Grid.Row="2" Grid.Column="1"  Text="{Binding Employee.Username}" />
 
+        <Label  Grid.Row="2" Grid.Column="2" Content="Hasło" />
+        <PasswordBox  Grid.Row="2" Grid.Column="3"  x:Name="PasswordBox"  IsEnabled="{Binding EditUser}"/>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="PESEL" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding Employee.PESEL}" />
-        
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Grid.Column="2" Content="Numer Telefonu" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="3" Text="{Binding Employee.Telephone}" />
+        <Label  Grid.Row="3" Content="PESEL" />
+        <TextBox  Grid.Row="3" Grid.Column="1" Text="{Binding Employee.PESEL}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Miejscowość" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Text="{Binding Employee.City}" />
+        <Label  Grid.Row="3" Grid.Column="2" Content="Numer Telefonu" />
+        <TextBox  Grid.Row="3" Grid.Column="3" Text="{Binding Employee.Telephone}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Content="Ulica" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Text="{Binding Employee.Street}" />
+        <Label Grid.Row="4" Content="Miejscowość" />
+        <TextBox  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Text="{Binding Employee.City}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="6" Content="Numer Domu" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="6" Grid.Column="1" Text="{Binding Employee.HouseNumber}" />
-        
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="6" Grid.Column="2" Content="Numer Mieszkania" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="6" Grid.Column="3" Text="{Binding Employee.LocalNumber}" />
+        <Label Grid.Row="5" Content="Ulica" />
+        <TextBox Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Text="{Binding Employee.Street}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="7" Content="Numer Konta" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Text="{Binding Employee.BankAccountNumber}" />
+        <Label Grid.Row="6" Content="Numer Domu" />
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Employee.HouseNumber}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="8" Content="Pensja" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Text="{Binding Employee.Salary}" />
+        <Label Grid.Row="6" Grid.Column="2" Content="Numer Mieszkania" />
+        <TextBox Grid.Row="6" Grid.Column="3" Text="{Binding Employee.LocalNumber}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="9" Content="Rola" />
-        <ComboBox Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Grid.Row="7" Content="Numer Konta" />
+        <TextBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Text="{Binding Employee.BankAccountNumber}" />
+
+        <Label Grid.Row="8" Content="Pensja" />
+        <TextBox Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Text="{Binding Employee.Salary}" />
+
+        <Label Grid.Row="9" Content="Rola" />
+        <ComboBox Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" IsSynchronizedWithCurrentItem="True"
                   SelectedItem="{Binding EmployeeRole}" ItemsSource="{Binding EmployeeRoleValues}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -77,7 +76,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-            <Button Style="{StaticResource SaveButton}" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="10"  Command="{Binding ButtonSave}" Content="Zapisz" />
-            <Button Style="{StaticResource CancelButton}" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="10" Command="{Binding ButtonCancel}" Content="Anuluj" />
+        <Button Style="{StaticResource SaveButton}" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="10"  Command="{Binding ButtonSave}" Content="Zapisz" />
+        <Button Style="{StaticResource CancelButton}" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="10" Command="{Binding ButtonCancel}" Content="Anuluj" />
     </Grid>
 </Window>

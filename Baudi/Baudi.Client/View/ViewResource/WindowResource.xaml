@@ -6,18 +6,31 @@
     <Color x:Key="Grey43">#FF2B2B2B</Color>
     <Color x:Key="Grey53">#FF353535</Color>
     <Color x:Key="Transparency">#00000000</Color>
-    
+    <Color x:Key="Grey73">#FF494949</Color>
+
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
     <SolidColorBrush x:Key="TransparencyBrush" Color="{StaticResource Transparency}"/>
     <SolidColorBrush x:Key="Grey33Brush" Color="{StaticResource Grey33}"/>
     <SolidColorBrush x:Key="Grey53Brush" Color="{StaticResource Grey53}"/>
     <SolidColorBrush x:Key="Grey43Brush" Color="{StaticResource Grey43}"/>
+    <SolidColorBrush x:Key="Grey23Brush" Color="{StaticResource Grey23}"/>
+    <SolidColorBrush x:Key="Grey73Brush" Color="{StaticResource Grey73}"/>
 
     <LinearGradientBrush x:Key="Gradient" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="{StaticResource Grey43}" Offset="1"/>
         <GradientStop Color="{StaticResource Grey23}" Offset="0"/>
     </LinearGradientBrush>
-    
+
+    <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Background" Value="{StaticResource Gradient}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TransparencyBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Opacity" Value="0.7"/>
+    </Style>
+
     <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Background" Value="{StaticResource Gradient}"/>
@@ -27,25 +40,25 @@
         <Setter Property="Width" Value="80"/>
         <Setter Property="Opacity" Value="0.7"/>
     </Style>
-    
+
     <Style x:Key="SaveButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
         <Setter Property="Margin" Value="0,0,100,0"/>
     </Style>
-    
+
     <Style x:Key="CancelButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
         <Setter Property="Margin" Value="0, 0, 10,0"/>
     </Style>
-    
-    <Style x:Key="LabelStyle" TargetType="{x:Type Label}">
+
+    <Style x:Key="{x:Type Label}" TargetType="{x:Type Label}">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Background" Value="{StaticResource TransparencyBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>           
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="Height" Value="25"/>
         <Setter Property="Width" Value="Auto"/>
     </Style>
-    
-    <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+
+    <Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBox}">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="Background" Value="{StaticResource Grey53Brush}"/>
@@ -53,29 +66,28 @@
         <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="SelectionBrush" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="Opacity" Value="0.7"/>
-        <!--<Setter Property="Width" Value="280"/>-->
         <Setter Property="Margin" Value="5,0,5,0"/>
         <Setter Property="Height" Value="25"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-    
-    
+
+
     <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
         <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="Background" Value="{StaticResource Grey33Brush}"/>
         <Setter Property="Width" Value="400"/>
     </Style>
-    
+
     <Style x:Key="ColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Background" Value="{StaticResource Grey43Brush}"/>
         <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Opacity" Value="0.7"/>
     </Style>
-    
-    <Style x:Key="DataGridStyle" TargetType="DataGrid">
+
+    <Style x:Key="{x:Type DataGrid}" TargetType="{x:Type DataGrid}">
         <Setter Property="IsReadOnly" Value="False"/>
         <Setter Property="SelectionMode" Value="Extended"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
@@ -84,8 +96,34 @@
         <Setter Property="BorderBrush" Value="{StaticResource TransparencyBrush}"/>
         <Setter Property="Background" Value="{StaticResource Grey53Brush}"/>
         <Setter Property="Opacity" Value="0.7"/>
-        <Setter Property="Width" Value="260"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="Margin" Value="5, 5, 5, 5"/>
         <Setter Property="ColumnHeaderStyle" Value="{StaticResource ColumnHeader}"/>
     </Style>
+
+    <Style x:Key="{x:Type CheckBox}" TargetType="CheckBox">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource Grey53Brush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Grey23Brush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+    </Style>
+    
+    <Style x:Key="{x:Type PasswordBox}" TargetType="PasswordBox">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource Grey53Brush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Grey23Brush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Margin" Value="5,0,5,0"/>
+    </Style>
+
+
+
+
+
+
 </ResourceDictionary>

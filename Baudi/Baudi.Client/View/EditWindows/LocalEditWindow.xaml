@@ -16,22 +16,22 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1">Numer lokalu</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding Local.LocalNumber}" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="4">Czynsz</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="4" Text="{Binding Local.RentValue}" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="2">Liczba Pokoi</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="2" Text="{Binding Local.NumberOfRooms}" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="3">Powierzchnia</Label>
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Local.Area}" />
-
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="0"> Budynek</Label>
-        <ComboBox Grid.Column="1" Grid.Row="0" Margin="5" IsSynchronizedWithCurrentItem="True"
+        <Label Grid.Row="0">Budynek</Label>
+        <ComboBox Grid.Column="1" Grid.Row="0" IsSynchronizedWithCurrentItem="True"
                   ItemsSource="{Binding BuildingsList}" DisplayMemberPath="NotificationTargetID"
                   SelectedValue="{Binding SelectedBuilding}" />
+
+        <Label Grid.Row="1">Numer lokalu</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Local.LocalNumber}" />
+
+        <Label Grid.Row="2">Liczba Pokoi</Label>
+        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Local.NumberOfRooms}" />
+
+        <Label Grid.Row="3">Powierzchnia</Label>
+        <TextBox Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Local.Area}" />
+
+        <Label Grid.Row="4">Czynsz</Label>
+        <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Local.RentValue}" />
 
         <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonSave}">Zapisz</Button>
         <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonCancel}">Anuluj</Button>

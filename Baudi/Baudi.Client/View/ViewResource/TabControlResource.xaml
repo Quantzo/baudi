@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <RadialGradientBrush x:Key="TabGradient">
+        <GradientStop Color="#FF171717" Offset="0"/>
+        <GradientStop Color="#FF383737" Offset="1"/>
+    </RadialGradientBrush>
+
+    <Style x:Key="{x:Type TabControl}" TargetType="TabControl">
+        <Setter Property="TabStripPlacement" Value="Left"/>
+        <Setter Property="Background" Value="{StaticResource Grey33Brush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TransparencyBrush}"/>
+    </Style>
+    
+    <Style x:Key="{x:Type TabItem}" TargetType="TabItem">
+        <Setter Property="Background" Value="{StaticResource TabGradient}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TransparencyBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource Grey73Brush}"/>
+    </Style>
+</ResourceDictionary>

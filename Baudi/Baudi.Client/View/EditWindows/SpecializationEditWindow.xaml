@@ -16,8 +16,8 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Content="Nazwa" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding Specialization.Name}" />
+        <Label Content="Nazwa" />
+        <TextBox Grid.Column="1" Text="{Binding Specialization.Name}" />
 
         <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="1" Command="{Binding ButtonSave}" Content="Zapisz" />
         <Button Style="{StaticResource CancelButton}" Grid.Row="1" Grid.Column="1" Command="{Binding ButtonCancel}" Content="Anuluj" />

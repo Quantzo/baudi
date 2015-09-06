@@ -17,18 +17,18 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource LabelStyle}" Content="Nazwa" />
-        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding OrderType.Name}" />
+        <Label Content="Nazwa" />
+        <TextBox Grid.Column="1" Text="{Binding OrderType.Name}" />
 
-        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Specjalności" />
-        <DataGrid Style="{StaticResource DataGridStyle}" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SpecializationList}" Width="Auto">
+        <Label Grid.Row="1" Content="Specjalności" />
+        <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SpecializationList}" Width="Auto">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Powiązana" Binding="{Binding IsSelected}" IsReadOnly="False" />
                 <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding SpecializationID}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Nazwa" Width="Auto" Binding="{Binding Name}" IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>
-            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonSave}" Content="Zapisz" />
-            <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonCancel}" Content="Anuluj" />
+        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonSave}" Content="Zapisz" />
+        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonCancel}" Content="Anuluj" />
     </Grid>
 </Window>
