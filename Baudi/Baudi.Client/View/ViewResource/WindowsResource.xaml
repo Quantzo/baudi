@@ -7,6 +7,7 @@
     <Color x:Key="Grey53">#FF353535</Color>
     <Color x:Key="Transparency">#00000000</Color>
     <Color x:Key="Grey73">#FF494949</Color>
+    <Color x:Key="DisableCombo">#FF0E0E0E</Color>
 
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
     <SolidColorBrush x:Key="TransparencyBrush" Color="{StaticResource Transparency}"/>
@@ -15,10 +16,19 @@
     <SolidColorBrush x:Key="Grey43Brush" Color="{StaticResource Grey43}"/>
     <SolidColorBrush x:Key="Grey23Brush" Color="{StaticResource Grey23}"/>
     <SolidColorBrush x:Key="Grey73Brush" Color="{StaticResource Grey73}"/>
+    <SolidColorBrush x:Key="DisableComboBrush" Color="{StaticResource DisableCombo}"/>
 
     <LinearGradientBrush x:Key="Gradient" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="{StaticResource Grey43}" Offset="1"/>
         <GradientStop Color="{StaticResource Grey23}" Offset="0"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="CalendarGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF646464" Offset="0"/>
+        <GradientStop Color="#FF2D2D2E" Offset="0.16"/>
+        <GradientStop Color="#FF3F3F40" Offset="0.186"/>
+        <GradientStop Color="#FFB0B0B6" Offset="0.996"/>
+        <GradientStop Color="#FF646468" Offset="0.235"/>
     </LinearGradientBrush>
 
     <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}">
@@ -140,4 +150,13 @@
         <Setter Property="Margin" Value="10,10,10,10"/>
     </Style>
 
+    <Style x:Key="CalendarStyle" TargetType="Calendar">
+        <Setter Property="Background" Value="{StaticResource CalendarGradient}"/>
+    </Style>
+    
+    <Style x:Key="{x:Type ListBox}" TargetType="ListBox">
+        <Setter Property="Background" Value="{StaticResource Grey53Brush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Opacity" Value="0.7"/>
+    </Style>
 </ResourceDictionary>

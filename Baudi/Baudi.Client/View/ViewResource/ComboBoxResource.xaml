@@ -14,8 +14,8 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter TargetName="Border" Property="Background" Value="LightGray" />
-                <Setter TargetName="Border" Property="BorderBrush" Value="Gray" />
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisableComboBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisableComboBrush}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

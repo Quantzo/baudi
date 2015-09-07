@@ -8,6 +8,7 @@
                 <ResourceDictionary Source="View\ViewResource\WindowsResource.xaml"/>
                 <ResourceDictionary Source="View\ViewResource\ComboBoxResource.xaml"/>
                 <ResourceDictionary Source="View\ViewResource\TabControlResource.xaml"/>
+                <ResourceDictionary Source="View\ViewResource\DatePickerResource.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
