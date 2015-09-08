@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -151,20 +152,20 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         {
             if (ReportType == ReportType.SalaryReport)
             {
-                var report = new SalaryReport(DateFrom,DateTo,"Pensje"+DateTime.Now+".pdf");
+                var report = new SalaryReport(DateFrom,DateTo,"Pensje"+DateTime.Now.ToString(CultureInfo.InvariantCulture).Replace("/","").Replace(" ", "").Replace(":","") + ".pdf");
                 report.LoadData();
                 report.PrintPdf();
 
             }
             else if(ReportType == ReportType.ExpenseReport)
             {
-                var report = new ExpenseReport(DateFrom,DateTo,"Wydatki" + DateTime.Now + ".pdf",SelectedBuilding.NotificationTargetID);
+                var report = new ExpenseReport(DateFrom,DateTo,"Wydatki" + DateTime.Now.ToString(CultureInfo.InvariantCulture).Replace("/", "").Replace(" ","").Replace(":", "") + ".pdf",SelectedBuilding.NotificationTargetID);
                 report.LoadData();
                 report.PrintPdf();
             }
             else if (ReportType == ReportType.RentReport)
             {
-                var report = new RentReport(DateFrom, DateTo,"Czynsze" + DateTime.Now + ".pdf",SelectedBuilding.NotificationTargetID);
+                var report = new RentReport(DateFrom, DateTo,"Czynsze" + DateTime.Now.ToString(CultureInfo.InvariantCulture).Replace("/", "").Replace(" ", "").Replace(":", "") + ".pdf",SelectedBuilding.NotificationTargetID);
                 report.LoadData();
                 report.PrintPdf();
             }
