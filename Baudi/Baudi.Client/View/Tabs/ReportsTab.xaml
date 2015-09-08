@@ -11,38 +11,33 @@
     <UserControl.Resources>
         <converters:EnumDescriptionConverter x:Key="EnumConventer" />
     </UserControl.Resources>
-    
+
     <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
 
 
 
-        <Label Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center" Content="Od" />
-        <DatePicker Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Center" VerticalContentAlignment="Center" SelectedDate="{Binding
-        Path=DateFrom,
-        Mode=TwoWay,
-        TargetNullValue={x:Static System:DateTime.Now}}" />
+        <Label Grid.Row="0" Grid.Column="1" Content="Od" Width="26" />
+        <DatePicker Grid.Row="0" Grid.Column="2"  SelectedDate="{Binding Path=DateFrom, Mode=TwoWay, TargetNullValue={x:Static System:DateTime.Now}}"/>
 
-        <Label Grid.Row="1" Grid.Column="0" Content="Do" />
-        <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding
-        Path=DateTo,
-        Mode=TwoWay,
-        TargetNullValue={x:Static System:DateTime.Now}}" />
+        <Label Grid.Row="1" Grid.Column="1" Content="Do"/>
+        <DatePicker Grid.Row="1" Grid.Column="2" SelectedDate="{Binding Path=DateTo, Mode=TwoWay, TargetNullValue={x:Static System:DateTime.Now}}"/>
 
-        <Label Grid.Row="2" Grid.Column="0"  Content="Rodzaj raportu" />
-        <ComboBox Grid.Row="2" Grid.Column="1" 
+        <Label Grid.Row="2" Grid.Column="1"  Content="Rodzaj raportu" />
+        <ComboBox Grid.Row="2" Grid.Column="2" 
                   ItemsSource="{Binding ReportTypeValues }" SelectedItem="{Binding ReportType }">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -51,12 +46,12 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Grid.Row="3" Grid.Column="0" Content="Raport dla budynku"  />
-        <ComboBox Grid.Row="3" Grid.Column="1" IsEnabled="{Binding IsBuildingReport}"
+        <Label Grid.Row="3" Grid.Column="1" Content="Raport dla budynku"  />
+        <ComboBox Grid.Row="3" Grid.Column="2" IsEnabled="{Binding IsBuildingReport}"
                   ItemsSource="{Binding BuildingsList}" SelectedValue="{Binding SelectedBuilding}"
                   DisplayMemberPath="NotificationTargetID"/>
 
-        <Button Grid.Row="4" Grid.Column="1" Command="{Binding ButtonGenerate}" Content="Generuj" />
+        <Button Grid.Row="4" Grid.Column="2" Command="{Binding ButtonGenerate}" Content="Generuj" />
 
     </Grid>
 </UserControl>

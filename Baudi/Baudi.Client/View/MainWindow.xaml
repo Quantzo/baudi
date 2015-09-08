@@ -91,7 +91,7 @@
             </TabItem>
             <TabItem Name="ReportsTab" Header="Raporty">
                 <TabItem.Content>
-                    <tabs:ReportsTab DataContext="{Binding ReportsTabViewModel}" />
+                    <tabs:ReportsTab DataContext="{Binding ReportsTabViewModel}"  />
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="OrderTypesTab" Header="Słowniki: typy zleceń">
