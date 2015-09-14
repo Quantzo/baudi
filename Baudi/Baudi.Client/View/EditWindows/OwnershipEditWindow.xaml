@@ -5,39 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="OwnershipEditWindow" Height="210" MinHeight="210" Style="{StaticResource WindowStyle}">
+        Title="OknoEdycjiPosiadania" Height="230" MinHeight="230" Style="{StaticResource WindowStyle}">
 
-    <Grid Style="{StaticResource MainGrid}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="110" />
-            <ColumnDefinition Width="290*"/>
-        </Grid.ColumnDefinitions>
-
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Lokal" />
-        <ComboBox Grid.Row="0" Grid.Column="1" 
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+
+        <Grid Grid.Row="1" Style="{StaticResource MainGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="290*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Content="Lokal" />
+            <ComboBox Grid.Row="0" Grid.Column="1" 
                   SelectedValue="{Binding SelectedLocal}" ItemsSource="{Binding LocalsList}"
                   DisplayMemberPath="NotificationTargetID" />
 
-        <Label Grid.Row="1" Content="Właściciel"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" 
+            <Label Grid.Row="1" Content="Właściciel"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" 
                   SelectedValue="{Binding SelectedOwner}" ItemsSource="{Binding OwnersList}"
                   DisplayMemberPath="OwnerID" />
 
-        <Label Grid.Row="2" Content="Data kupna"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Ownership.PurchaseDate }" />
+            <Label Grid.Row="2" Content="Data kupna"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Ownership.PurchaseDate }" />
 
-        <Label Grid.Row="3" Content="Data sprzedaży" />
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Ownership.SaleDate }" />
+            <Label Grid.Row="3" Content="Data sprzedaży" />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Ownership.SaleDate }" />
 
-        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="4" Command="{Binding ButtonSave}" Content="Zapisz"/>
-        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="4" Command="{Binding ButtonCancel}" Content="Anuluj"/>
+            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="4" Command="{Binding ButtonSave}" Content="Zapisz"/>
+            <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="4" Command="{Binding ButtonCancel}" Content="Anuluj"/>
+        </Grid>
+
     </Grid>
 </Window>

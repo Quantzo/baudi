@@ -5,7 +5,23 @@
         Title="Aplikacja" Height="530" MinHeight="530" Width="800" MinWidth="800" Style="{StaticResource WindowStyle}">
 
     <Grid Style="{StaticResource MainGrid}">
-        <TabControl TabStripPlacement="Left" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+
+
+        <TabControl TabStripPlacement="Left" Grid.Row="1" >
             <TabItem Name="NotificationsTab" Header="Zgłoszenia">
                 <TabItem.Content>
                     <tabs:NotificationsTab DataContext="{Binding NotificationsTabViewModel}" />

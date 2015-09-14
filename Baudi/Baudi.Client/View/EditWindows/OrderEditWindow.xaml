@@ -2,86 +2,103 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:converters="clr-namespace:Baudi.Client.Converters"
-        Title="OknoEdycjiZlecenia" Height="360"  MinHeight="360" Style="{StaticResource WindowStyle}">
+        Title="OknoEdycjiZlecenia" Height="380"  MinHeight="380" Style="{StaticResource WindowStyle}">
     <Window.Resources>
         <converters:EnumDescriptionConverter x:Key="EnumConventer" />
     </Window.Resources>
 
-    <Grid Style="{StaticResource MainGrid}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="110" />
-            <ColumnDefinition Width="290*" />
-        </Grid.ColumnDefinitions>
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
 
-        <Label  Grid.Row="0" Content="Zgłoszenie"/>
-        <ComboBox Grid.Row="0" Grid.Column="1"
+
+        <Grid Grid.Row="1" Style="{StaticResource MainGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="290*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+
+            <Label  Grid.Row="0" Content="Zgłoszenie"/>
+            <ComboBox Grid.Row="0" Grid.Column="1"
                   SelectedValue="{Binding SelectedNotification}" ItemsSource="{Binding NotificationsList}"
                   DisplayMemberPath="NotificationID" />
 
-        <Label  Grid.Row="1" Content="Odpowiedzialny"/>
-        <ComboBox Grid.Row="1" Grid.Column="1"
+            <Label  Grid.Row="1" Content="Odpowiedzialny"/>
+            <ComboBox Grid.Row="1" Grid.Column="1"
                   SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}" >
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="Name" />
-                                <Binding Path="Surname" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Name" />
+                                    <Binding Path="Surname" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-        <Label Grid.Row="2" Content="Typ zlecenia"/>
-        <ComboBox Grid.Row="2" Grid.Column="1"
+            <Label Grid.Row="2" Content="Typ zlecenia"/>
+            <ComboBox Grid.Row="2" Grid.Column="1"
                   SelectedValue="{Binding SelectedOrderType}" ItemsSource="{Binding OrderTypesList}"
                   DisplayMemberPath="Name" />
 
-        <Label  Grid.Row="3"  Content="Wykonawca"/>
-        <ComboBox Grid.Row="3" Grid.Column="1"
+            <Label  Grid.Row="3"  Content="Wykonawca"/>
+            <ComboBox Grid.Row="3" Grid.Column="1"
                   SelectedValue="{Binding SelectedCompany}" ItemsSource="{Binding CompaniesList}"
-                  DisplayMemberPath="Name"/>
+                  DisplayMemberPath="Name" />
 
-        <Label Grid.Row="4" Content="Data zgłoszenia"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Order.FilingDate}"/>
+            <Label Grid.Row="4" Content="Data zgłoszenia"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Order.FilingDate}"/>
 
-        <Label Grid.Row="5" Content="Ostatnia zmiana"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Order.LastChanged}"/>
+            <Label Grid.Row="5" Content="Ostatnia zmiana"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Order.LastChanged}"/>
 
-        <Label Grid.Row="6" Content="Opis"/>
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Order.Description}"/>
+            <Label Grid.Row="6" Content="Opis"/>
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Order.Description}"/>
 
-        <Label Grid.Row="7" Content="Koszt"/>
-        <TextBox Grid.Row="7"  Grid.Column="1" Text="{Binding Order.Cost}"/>
+            <Label Grid.Row="7" Content="Koszt"/>
+            <TextBox Grid.Row="7"  Grid.Column="1" Text="{Binding Order.Cost}"/>
 
-        <Label Grid.Row="8" Content="Status" />
-        <ComboBox Grid.Row="8" Grid.Column="1"
+            <Label Grid.Row="8" Content="Status" />
+            <ComboBox Grid.Row="8" Grid.Column="1"
                   SelectedItem="{Binding SelectedOrderStatus}" ItemsSource="{Binding OrderStatus}" >
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-         <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="9" Command="{Binding ButtonSave}" Content="Zapisz" Height="Auto" Margin="0,7,100,8" />
-        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="9" Command="{Binding ButtonCancel}" Content="Anuluj" Height="Auto" Margin="0,7,10,8" />
+            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="9" Command="{Binding ButtonSave}" Content="Zapisz" Height="Auto" Margin="0,7,100,8" />
+            <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="9" Command="{Binding ButtonCancel}" Content="Anuluj" Height="Auto" Margin="0,7,10,8" />
+        </Grid>
     </Grid>
 
 </Window>

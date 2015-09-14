@@ -8,7 +8,7 @@ using Baudi.DAL.Models;
 
 namespace Baudi.DAL
 {
-    public class BaudiDbInitializer : DropCreateDatabaseAlways<BaudiDbContext>
+    public class BaudiDbInitializer : CreateDatabaseIfNotExists<BaudiDbContext>
     {
         protected override void Seed(BaudiDbContext context)
         {
@@ -182,6 +182,7 @@ namespace Baudi.DAL
                     ExpenseTargetID = 1,
                     Cost = 400,
                     Frequency = "tydzien",
+                    Description = "Zleceni stałe 1",
                     LastRealizationDate = DateTime.ParseExact("26/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Building = buildings[0]
                 },
@@ -190,6 +191,7 @@ namespace Baudi.DAL
                     ExpenseTargetID = 2,
                     Cost = 200,
                     Frequency = "tydzien",
+                    Description = "Zleceni stałe 2",
                     LastRealizationDate = DateTime.ParseExact("27/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Building = buildings[0]
                 },
@@ -198,6 +200,7 @@ namespace Baudi.DAL
                     ExpenseTargetID = 3,
                     Cost = 400,
                     Frequency = "tydzien",
+                    Description = "Zleceni stałe 3",
                     LastRealizationDate = DateTime.ParseExact("28/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Building = buildings[0]
                 }
@@ -310,6 +313,7 @@ namespace Baudi.DAL
                     LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
+                    Description = "Zlecenie 1",
                     OrderType = spec2.OrderTypes[0],
                     Notification = buildings[0].Notifactions[0]
                 },
@@ -320,6 +324,7 @@ namespace Baudi.DAL
                     LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
+                    Description = "Zlecenie 2",
                     OrderType = spec2.OrderTypes[0],
                     Notification = buildings[0].Notifactions[0]
                 }
@@ -334,6 +339,7 @@ namespace Baudi.DAL
                     LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
+                    Description = "Zlecenie 3",
                     OrderType = spec2.OrderTypes[0],
                     Notification = buildings[1].Notifactions[0]
                 },
@@ -344,6 +350,7 @@ namespace Baudi.DAL
                     LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
+                    Description = "Zlecenie 4",
                     OrderType = spec2.OrderTypes[0],
                     Notification = buildings[1].Notifactions[0]
                 }
@@ -365,6 +372,7 @@ namespace Baudi.DAL
                     LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
+                    Description = "Zlecenie 5",
                     OrderType = spec1.OrderTypes[0],
                     Notification = buildings[0].Locals[0].Notifactions[0]
                 },
@@ -375,6 +383,7 @@ namespace Baudi.DAL
                     LastChanged = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     FilingDate = DateTime.ParseExact("21/08/2015", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                     Status = OrderStatus.Completed,
+                    Description = "Zlecenie 6",
                     OrderType = spec3.OrderTypes[0],
                     Notification = buildings[0].Locals[0].Notifactions[0]
                 }
@@ -699,6 +708,7 @@ namespace Baudi.DAL
 
             var company1 = new Company
             {
+                Name = "Firma 1",
                 CompanyID = 1,
                 City = "Gliwice",
                 HouseNumber = "7",
@@ -713,6 +723,7 @@ namespace Baudi.DAL
 
             var company2 = new Company
             {
+                Name = "Firma 2",
                 CompanyID = 2,
                 City = "Zabrze",
                 HouseNumber = "5",
@@ -727,6 +738,7 @@ namespace Baudi.DAL
 
             var company3 = new Company
             {
+                Name = "Firma 3",
                 CompanyID = 3,
                 City = "Gliwice",
                 HouseNumber = "3",

@@ -1,27 +1,44 @@
 ﻿<Window x:Class="Baudi.Client.View.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Logowanie" Height="150" MinHeight="150"  Style="{StaticResource WindowStyle}" Width="350" MinWidth="350">
-   
-    <Grid Style="{StaticResource MainGrid}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="110"/>
-            <ColumnDefinition Width="290*"/>
-        </Grid.ColumnDefinitions>
+        Title="Logowanie" Height="170" MinHeight="170"  Style="{StaticResource WindowStyle}" Width="350" MinWidth="350">
+
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label  Content="Login" />
-        <TextBox  Grid.Column="1" Text="{Binding Username}" HorizontalContentAlignment="Center"/>
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
 
-        <Label  Grid.Row="1"  Content="Hasło" />
-        <PasswordBox  Grid.Row="1" Grid.Column="1" x:Name="PasswordBox" />
 
-        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonLogin}" Content="Zaloguj" />
-        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonExit}" Content="Anuluj" />
+        <Grid Grid.Row="1" Style="{StaticResource MainGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="290*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
 
+            <Label  Content="Login" />
+            <TextBox  Grid.Column="1" Text="{Binding Username}" HorizontalContentAlignment="Center"/>
+
+            <Label  Grid.Row="1"  Content="Hasło" />
+            <PasswordBox  Grid.Row="1" Grid.Column="1" x:Name="PasswordBox" />
+
+            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonLogin}" Content="Zaloguj" />
+            <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonExit}" Content="Anuluj" />
+
+        </Grid>
     </Grid>
 </Window>

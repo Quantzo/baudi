@@ -288,7 +288,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
     public enum EmployeeRole
     {
         [Description("Administrator")] Administrator,
-        [Description("Dispatcher")] Dispatcher,
+        [Description("Dyspozytor")] Dispatcher,
         [Description("Menager")] Menager,
         [Description("Inny")] Other
     }

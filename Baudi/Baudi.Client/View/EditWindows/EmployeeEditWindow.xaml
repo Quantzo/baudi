@@ -8,75 +8,93 @@
         <converters:EnumDescriptionConverter x:Key="EnumConventer" />
     </Window.Resources>
 
-    <Grid Style="{StaticResource MainGrid}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="110" />
-            <ColumnDefinition Width="77" />
-            <ColumnDefinition Width="120*" />
-            <ColumnDefinition Width="77" />
-        </Grid.ColumnDefinitions>
-
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label  Content="Imię" />
-        <TextBox  Grid.Column="1" Text="{Binding Employee.Name}" Grid.ColumnSpan="3"/>
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
 
-        <Label  Grid.Row="1" Content="Nazwisko" />
-        <TextBox  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Employee.Surname}" />
 
-        <Label  Grid.Row="2" Content="Login" />
-        <TextBox  Grid.Row="2" Grid.Column="1"  Text="{Binding Employee.Username}" />
+        <Grid Grid.Row="1" Style="{StaticResource MainGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="77" />
+                <ColumnDefinition Width="120*" />
+                <ColumnDefinition Width="77" />
+            </Grid.ColumnDefinitions>
 
-        <Label  Grid.Row="2" Grid.Column="2" Content="Hasło" />
-        <PasswordBox  Grid.Row="2" Grid.Column="3"  x:Name="PasswordBox"  IsEnabled="{Binding EditUser}"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
 
-        <Label  Grid.Row="3" Content="PESEL" />
-        <TextBox  Grid.Row="3" Grid.Column="1" Text="{Binding Employee.PESEL}" />
+            <Label  Content="Imię" />
+            <TextBox  Grid.Column="1" Text="{Binding Employee.Name}" Grid.ColumnSpan="3"/>
 
-        <Label  Grid.Row="3" Grid.Column="2" Content="Numer Telefonu" />
-        <TextBox  Grid.Row="3" Grid.Column="3" Text="{Binding Employee.Telephone}" />
+            <Label  Grid.Row="1" Content="Nazwisko" />
+            <TextBox  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Employee.Surname}" />
 
-        <Label Grid.Row="4" Content="Miejscowość" />
-        <TextBox  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Text="{Binding Employee.City}" />
+            <Label  Grid.Row="2" Content="Login" />
+            <TextBox  Grid.Row="2" Grid.Column="1"  Text="{Binding Employee.Username}" />
 
-        <Label Grid.Row="5" Content="Ulica" />
-        <TextBox Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Text="{Binding Employee.Street}" />
+            <Label  Grid.Row="2" Grid.Column="2" Content="Hasło" />
+            <PasswordBox  Grid.Row="2" Grid.Column="3"  x:Name="PasswordBox"  IsEnabled="{Binding EditUser}"/>
 
-        <Label Grid.Row="6" Content="Numer Domu" />
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Employee.HouseNumber}" />
+            <Label  Grid.Row="3" Content="PESEL" />
+            <TextBox  Grid.Row="3" Grid.Column="1" Text="{Binding Employee.PESEL}" />
 
-        <Label Grid.Row="6" Grid.Column="2" Content="Numer Mieszkania" />
-        <TextBox Grid.Row="6" Grid.Column="3" Text="{Binding Employee.LocalNumber}" />
+            <Label  Grid.Row="3" Grid.Column="2" Content="Numer Telefonu" />
+            <TextBox  Grid.Row="3" Grid.Column="3" Text="{Binding Employee.Telephone}" />
 
-        <Label Grid.Row="7" Content="Numer Konta" />
-        <TextBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Text="{Binding Employee.BankAccountNumber}" />
+            <Label Grid.Row="4" Content="Miejscowość" />
+            <TextBox  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Text="{Binding Employee.City}" />
 
-        <Label Grid.Row="8" Content="Pensja" />
-        <TextBox Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Text="{Binding Employee.Salary}" />
+            <Label Grid.Row="5" Content="Ulica" />
+            <TextBox Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Text="{Binding Employee.Street}" />
 
-        <Label Grid.Row="9" Content="Rola" />
-        <ComboBox Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" 
+            <Label Grid.Row="6" Content="Numer Domu" />
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Employee.HouseNumber}" />
+
+            <Label Grid.Row="6" Grid.Column="2" Content="Numer Mieszkania" />
+            <TextBox Grid.Row="6" Grid.Column="3" Text="{Binding Employee.LocalNumber}" />
+
+            <Label Grid.Row="7" Content="Numer Konta" />
+            <TextBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Text="{Binding Employee.BankAccountNumber}" />
+
+            <Label Grid.Row="8" Content="Pensja" />
+            <TextBox Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Text="{Binding Employee.Salary}" />
+
+            <Label Grid.Row="9" Content="Rola" />
+            <ComboBox Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" 
                   SelectedItem="{Binding EmployeeRole}" ItemsSource="{Binding EmployeeRoleValues}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource EnumConventer}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-        <Button Style="{StaticResource SaveButton}" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="10"  Command="{Binding ButtonSave}" Content="Zapisz" />
-        <Button Style="{StaticResource CancelButton}" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="10" Command="{Binding ButtonCancel}" Content="Anuluj" />
+            <Button Style="{StaticResource SaveButton}" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="10"  Command="{Binding ButtonSave}" Content="Zapisz" />
+            <Button Style="{StaticResource CancelButton}" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="10" Command="{Binding ButtonCancel}" Content="Anuluj" />
+        </Grid>
     </Grid>
+    
 </Window>

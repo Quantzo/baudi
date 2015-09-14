@@ -25,6 +25,7 @@ namespace Baudi.Client.ViewModels
         private LoginWindow LoginWindow;
         public ICommand ButtonExit { get; set; }
         public ICommand ButtonLogin { get; set; }
+        public ICommand ContextHelp { get; set; }
         private string _username;
         public string Username
         {
@@ -44,6 +45,7 @@ namespace Baudi.Client.ViewModels
             LoginWindow = loginWindow;
             ButtonLogin = new RelayCommand(pars => Login());
             ButtonExit = new RelayCommand(pars => ExitWindow());
+            ContextHelp = new RelayCommand(pars => ContextHelpHelper.ContextHelp());
         }
 
         private void Login()

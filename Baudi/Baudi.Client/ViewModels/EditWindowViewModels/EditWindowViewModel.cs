@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using Baudi.Client.Helpers;
 using Baudi.Client.ViewModels.TabsViewModels;
 
 namespace Baudi.Client.ViewModels.EditWindowViewModels
@@ -11,6 +12,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         public EditWindowViewModel(TabViewModel parentViewModel, Window editWindow, object itemToEdit)
         {
+            ContextHelp = new RelayCommand(pars => ContextHelpHelper.ContextHelp());
             ParentViewModel = parentViewModel;
             EditWindow = editWindow;
             ButtonCancel = new RelayCommand(pars => CloseWindow());
@@ -21,6 +23,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
         private TabViewModel ParentViewModel { get; set; }
         protected Window EditWindow { get; set; }
         public ICommand ButtonCancel { get; set; }
+        public ICommand ContextHelp { get; set; }
         public ICommand ButtonSave { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         public abstract void Add();

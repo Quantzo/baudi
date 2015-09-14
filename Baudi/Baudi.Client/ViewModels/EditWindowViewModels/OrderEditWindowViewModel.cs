@@ -20,16 +20,26 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             {
                 OrderTypesList = con.OrderTypes.ToList();
                 MenagersList = con.Menagers.ToList();
+                CompaniesList = con.Companies.ToList();
                 NotificationsList = con.Notifications.ToList();
                 if (Update)
                 {
                     Order = con.Orders.Find(order.ExpenseTargetID);
                     SelectedOrderType = Order.OrderType;
+
+
+
+                    var companies = new List<Company>();
+                    var orderType = con.OrderTypes.Find(SelectedOrderType.OrderTypeID);
+                    orderType.Specializations.ForEach(s => companies.AddRange(s.Companies));
+                    CompaniesList = companies;
+
+
                     SelectedCompany = Order.Company;
                     SelectedMenager = Order.Menager;
                     SelectedNotification = Order.Notification;
                     SelectedOrderStatus = Order.Status;
-                    ProvideCompaniesWithCorrectSpecialization();
+                   
                 }
                 else
                 {

@@ -5,66 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="SalaryEditWindow" Height="250" MinHeight="250" Style="{StaticResource WindowStyle}">
+        Title="OknoEdycjiPensji" Height="250" MinHeight="250" Style="{StaticResource WindowStyle}">
 
-    <Grid Style="{StaticResource MainGrid}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="110" />
-            <ColumnDefinition Width="290*" />
-        </Grid.ColumnDefinitions>
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="2" Content="Data" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Salary.Date}" />
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
 
-        <Label Grid.Row="3" Content="Koszt" />
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Salary.Cost}" />
 
-        <Label Grid.Row="4" Content="Zapłacone" />
-        <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding Salary.Paid}" />
+        <Grid Grid.Row="1" Style="{StaticResource MainGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="290*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
 
-        <Label Grid.Row="1" Content="Odpowiedzialny" />
-        <ComboBox Grid.Row="1" Grid.Column="1"
+            <Label Grid.Row="2" Content="Data" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Salary.Date}" />
+
+            <Label Grid.Row="3" Content="Koszt" />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Salary.Cost}" />
+
+            <Label Grid.Row="4" Content="Zapłacone" />
+            <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding Salary.Paid}" />
+
+            <Label Grid.Row="1" Content="Odpowiedzialny" />
+            <ComboBox Grid.Row="1" Grid.Column="1"
                   SelectedValue="{Binding SelectedMenager}" ItemsSource="{Binding MenagersList}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="Name" />
-                                <Binding Path="Surname" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Name" />
+                                    <Binding Path="Surname" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-        <Label Grid.Row="0" Content="Pracownik" />
-        <ComboBox Grid.Row="0" Grid.Column="1"
+            <Label Grid.Row="0" Content="Pracownik" />
+            <ComboBox Grid.Row="0" Grid.Column="1"
                   SelectedValue="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeesList}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="Name" />
-                                <Binding Path="Surname" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Name" />
+                                    <Binding Path="Surname" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonSave}" Content="Zapisz" />
-        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
+            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonSave}" Content="Zapisz" />
+            <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="5" Command="{Binding ButtonCancel}" Content="Anuluj" />
+        </Grid>
     </Grid>
 </Window>

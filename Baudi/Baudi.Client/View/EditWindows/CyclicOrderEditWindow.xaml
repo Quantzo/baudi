@@ -1,9 +1,25 @@
 ﻿<Window x:Class="Baudi.Client.View.EditWindows.CyclicOrderEditWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="OknoEdycjiZleceniaStale" Height="300" MinHeight="300" Style="{StaticResource WindowStyle}">
+        Title="OknoEdycjiZleceniaStale" Height="320" MinHeight="320" Style="{StaticResource WindowStyle}">
 
-    <Grid Style="{StaticResource MainGrid}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+
+        <Grid Grid.Row="1" Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="290*"/>
@@ -61,4 +77,5 @@
         <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="7" Command="{Binding ButtonSave}" Content="Zapisz" />
         <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="7" Command="{Binding ButtonCancel}" Content="Anuluj" />
     </Grid>
+        </Grid>
 </Window>

@@ -4,47 +4,65 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
-        mc:Ignorable="d" Title="OwningCompanyEditWindow" Height="270" MinHeight="270" Style="{StaticResource WindowStyle}">
+        mc:Ignorable="d" Title="OknoEdycjiFirmy-Właściciela" Height="290" MinHeight="290" Style="{StaticResource WindowStyle}">
 
-    <Grid Style="{StaticResource MainGrid}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="110"/>
-            <ColumnDefinition Width="77"/>
-            <ColumnDefinition Width="87*" />
-            <ColumnDefinition Width="77"/>
-        </Grid.ColumnDefinitions>
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Nazwa"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Name}" />
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
 
-        <Label Grid.Row="1" Content="NIP"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.NIP}"/>
 
-        <Label Grid.Row="3" Content="Miejscowość"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.City}" />
+        <Grid Grid.Row="1" Style="{StaticResource MainGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="77"/>
+                <ColumnDefinition Width="87*" />
+                <ColumnDefinition Width="77"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
 
-        <Label Grid.Row="4" Content="Ulica"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Street}"/>
+            <Label Content="Nazwa"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Name}" />
 
-        <Label Grid.Row="5" Content="Numer domu"/>
-        <TextBox Grid.Row="5" Grid.Column="1"  Text="{Binding OwningCompany.HouseNumber}" />
+            <Label Grid.Row="1" Content="NIP"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.NIP}"/>
 
-        <Label Grid.Row="5" Grid.Column="2" Content="Numer mieszkania" />
-        <TextBox Grid.Row="5" Grid.Column="3" Text="{Binding OwningCompany.LocalNumber}"/>
+            <Label Grid.Row="3" Content="Miejscowość"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.City}" />
 
-        <Label Grid.Row="2" Content="Numer telefonu"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Telephone}"/>
+            <Label Grid.Row="4" Content="Ulica"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Street}"/>
 
-        <Button Style="{StaticResource SaveButton}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ButtonSave}" Content="Zapisz"/>
-        <Button Style="{StaticResource CancelButton}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ButtonCancel}" Content="Anuluj" />
+            <Label Grid.Row="5" Content="Numer domu"/>
+            <TextBox Grid.Row="5" Grid.Column="1"  Text="{Binding OwningCompany.HouseNumber}" />
+
+            <Label Grid.Row="5" Grid.Column="2" Content="Numer mieszkania" />
+            <TextBox Grid.Row="5" Grid.Column="3" Text="{Binding OwningCompany.LocalNumber}"/>
+
+            <Label Grid.Row="2" Content="Numer telefonu"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding OwningCompany.Telephone}"/>
+
+            <Button Style="{StaticResource SaveButton}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ButtonSave}" Content="Zapisz"/>
+            <Button Style="{StaticResource CancelButton}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ButtonCancel}" Content="Anuluj" />
+        </Grid>
     </Grid>
+    
 </Window>

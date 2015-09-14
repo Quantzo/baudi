@@ -5,31 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="OrderTypeEditWindow" Height="200" MinHeight="200" Style="{StaticResource WindowStyle}">
+        Title="OknoEdycjiTypuZlecenia" Height="360" MinHeight="200" Style="{StaticResource WindowStyle}">
 
-    <Grid Style="{StaticResource MainGrid}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="110" />
-            <ColumnDefinition Width="290*" />
-        </Grid.ColumnDefinitions>
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="100*" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Nazwa" />
-        <TextBox Grid.Column="1" Text="{Binding OrderType.Name}" />
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
 
-        <Label Grid.Row="1" Content="Specjalności" />
-        <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SpecializationList}" >
-            <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Powiązana" Binding="{Binding IsSelected}" IsReadOnly="False" />
-                <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding SpecializationID}" IsReadOnly="True" />
-                <DataGridTextColumn Header="Nazwa" Width="Auto" Binding="{Binding Name}" IsReadOnly="True" />
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonSave}" Content="Zapisz" />
-        <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonCancel}" Content="Anuluj" />
+
+        <Grid Grid.Row="1" Style="{StaticResource MainGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="290*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="100*" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Label Content="Nazwa" />
+            <TextBox Grid.Column="1" Text="{Binding OrderType.Name}" />
+
+            <Label Grid.Row="1" Content="Specjalności" />
+            <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SpecializationList}" >
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Header="Powiązana" Binding="{Binding IsSelected}" IsReadOnly="False" />
+                    <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding SpecializationID}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Nazwa" Width="Auto" Binding="{Binding Name}" IsReadOnly="True" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonSave}" Content="Zapisz" />
+            <Button Style="{StaticResource CancelButton}" Grid.Column="1" Grid.Row="2" Command="{Binding ButtonCancel}" Content="Anuluj" />
+        </Grid>
     </Grid>
+    
 </Window>

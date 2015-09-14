@@ -5,23 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baudi.Client.View.EditWindows"
         mc:Ignorable="d"
-        Title="SpecializationEditWindow" Height="120" MinHeight="120" Style="{StaticResource WindowStyle}">
+        Title="OknoEdycjiSpecjalizacji" Height="140" MinHeight="140" Style="{StaticResource WindowStyle}">
 
-    <Grid Style="{StaticResource MainGrid}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="110" />
-            <ColumnDefinition Width="290*" />
-        </Grid.ColumnDefinitions>
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Nazwa" />
-        <TextBox Grid.Column="1" Text="{Binding Specialization.Name}" />
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pomoc">
+                    <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
 
-        <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="1" Command="{Binding ButtonSave}" Content="Zapisz" />
-        <Button Style="{StaticResource CancelButton}" Grid.Row="1" Grid.Column="1" Command="{Binding ButtonCancel}" Content="Anuluj" />
 
+        <Grid Grid.Row="1" Style="{StaticResource MainGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="290*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Label Content="Nazwa" />
+            <TextBox Grid.Column="1" Text="{Binding Specialization.Name}" />
+
+            <Button Style="{StaticResource SaveButton}" Grid.Column="1" Grid.Row="1" Command="{Binding ButtonSave}" Content="Zapisz" />
+            <Button Style="{StaticResource CancelButton}" Grid.Row="1" Grid.Column="1" Command="{Binding ButtonCancel}" Content="Anuluj" />
+
+        </Grid>
     </Grid>
 </Window>

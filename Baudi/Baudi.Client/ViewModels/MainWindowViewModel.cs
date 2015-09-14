@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Input;
+using Baudi.Client.Helpers;
 using Baudi.Client.ViewModels.TabsViewModels;
 
 namespace Baudi.Client.ViewModels
@@ -8,6 +10,7 @@ namespace Baudi.Client.ViewModels
     {
         public MainWindowViewModel()
         {
+            ContextHelp = new RelayCommand(pars => ContextHelpHelper.ContextHelp());
             Load();
         }
 
@@ -28,10 +31,16 @@ namespace Baudi.Client.ViewModels
         public ReportsTabViewModel ReportsTabViewModel { get; set; }
         public SalariesTabViewModel SalariesTabViewModel { get; set; }
         public SpecializationsTabViewModel SpecializationsTabViewModel { get; set; }
+
+        public ICommand ContextHelp { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void Load()
         {
+            
+
+
             TabsViewModels = new List<TabViewModel>();
             BuildingsTabViewModel = new BuildingsTabViewModel();
             CompaniesTabViewModel = new CompaniesTabViewModel();
@@ -76,7 +85,6 @@ namespace Baudi.Client.ViewModels
                 TabsViewModels.ForEach(vm => vm.Load());
             }
         }
-
         private void OnPropertyChanged(string property)
         {
             if (PropertyChanged != null)

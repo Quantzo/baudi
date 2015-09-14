@@ -86,6 +86,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToTextConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
+    <Compile Include="Helpers\ContextHelpHelper.cs" />
     <Compile Include="Helpers\FullNameHelper.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Reports\BuildingReport\BuildingReport.cs" />
