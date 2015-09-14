@@ -5,12 +5,16 @@
         Title="Aplikacja" Height="530" MinHeight="530" Width="800" MinWidth="800" Style="{StaticResource WindowStyle}">
 
     <Grid Style="{StaticResource MainGrid}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="243*"/>
+            <ColumnDefinition Width="529*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0">
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Pomoc">
                     <MenuItem Header="Pokaż pomoc"  Command="{Binding ContextHelp}"/>
@@ -21,17 +25,18 @@
 
 
 
-        <TabControl TabStripPlacement="Left" Grid.Row="1" >
-            <TabItem Name="NotificationsTab" Header="Zgłoszenia">
-                <TabItem.Content>
-                    <tabs:NotificationsTab DataContext="{Binding NotificationsTabViewModel}" />
-                </TabItem.Content>
-            </TabItem>
+        <TabControl TabStripPlacement="Left" Grid.Row="1" Grid.ColumnSpan="2" >
             <TabItem Name="CompaniesTab" Header="Firmy" VerticalAlignment="Top">
                 <TabItem.Content>
                     <tabs:CompaniesTab DataContext="{Binding CompaniesTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
+            <TabItem Name="NotificationsTab" Header="Zgłoszenia">
+                <TabItem.Content>
+                    <tabs:NotificationsTab DataContext="{Binding NotificationsTabViewModel}" />
+                </TabItem.Content>
+            </TabItem>
+           
             <TabItem Name="OrdersTab" Header="Zlecenia">
                 <TabItem.Content>
                     <tabs:OrdersTab DataContext="{Binding OrdersTabViewModel}" />
@@ -68,14 +73,14 @@
                     <tabs:OwningCompaniesTab DataContext="{Binding OwningCompaniesTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
-            <TabItem Name="OwnershipsTab" Header="Posiadania">
-                <TabItem.Content>
-                    <tabs:OwnershipsTab DataContext="{Binding OwnershipsTabViewModel}" />
-                </TabItem.Content>
-            </TabItem>
             <TabItem Name="EmployeesTab" Header="Pracownicy">
                 <TabItem.Content>
                     <tabs:EmployeesTab DataContext="{Binding EmployeesTabViewModel}" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Name="OwnershipsTab" Header="Posiadania">
+                <TabItem.Content>
+                    <tabs:OwnershipsTab DataContext="{Binding OwnershipsTabViewModel}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" IsHitTestVisible="False" Height="15">
