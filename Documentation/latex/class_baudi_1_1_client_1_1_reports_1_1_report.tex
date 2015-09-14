@@ -1,0 +1,153 @@
+\hypertarget{class_baudi_1_1_client_1_1_reports_1_1_report}{}\section{Baudi.\+Client.\+Reports.\+Report Class Reference}
+\label{class_baudi_1_1_client_1_1_reports_1_1_report}\index{Baudi.\+Client.\+Reports.\+Report@{Baudi.\+Client.\+Reports.\+Report}}
+
+
+Abstract class for report  
+
+
+Inheritance diagram for Baudi.\+Client.\+Reports.\+Report\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.403509cm]{class_baudi_1_1_client_1_1_reports_1_1_report}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_baudi_1_1_client_1_1_reports_1_1_report_a0333d5cd2a35558bcddf6d9e8e93396b}{Report} (Date\+Time date\+From, Date\+Time date\+To, string path)
+\begin{DoxyCompactList}\small\item\em Constructor \end{DoxyCompactList}\item 
+void \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_report_a66ba50137d9f66b555b5ec6c9fd05d7a}{Print\+Pdf} ()
+\begin{DoxyCompactList}\small\item\em Generate pdf \end{DoxyCompactList}\item 
+void \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_report_aaa0eddde1405fc0a80f5f092cabd54fa}{Load\+Data} ()
+\begin{DoxyCompactList}\small\item\em Load data from database \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract void \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_report_a7439932063d4e578b7cf64377707c7af}{Convert\+Data\+To\+Pdf} (Document document)
+\begin{DoxyCompactList}\small\item\em Converts data to pdf \end{DoxyCompactList}\item 
+abstract void \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_report_a321b93e358b8c0c2d86b4dc049a622d6}{Find\+Data} (\hyperlink{class_baudi_1_1_d_a_l_1_1_baudi_db_context}{Baudi\+Db\+Context} con)
+\begin{DoxyCompactList}\small\item\em Find data in database \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Date\+Time \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_report_ae4ecfcfe5f357e99a1ae36d762760b3e}{Date\+From}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Date from \end{DoxyCompactList}\item 
+Date\+Time \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_report_a8c58ed65a345287730db36cc1a1e676b}{Date\+To}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Date to \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class for report 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_baudi_1_1_client_1_1_reports_1_1_report_a0333d5cd2a35558bcddf6d9e8e93396b}{}\index{Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}!Report@{Report}}
+\index{Report@{Report}!Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}}
+\subsubsection[{Report(\+Date\+Time date\+From, Date\+Time date\+To, string path)}]{\setlength{\rightskip}{0pt plus 5cm}Baudi.\+Client.\+Reports.\+Report.\+Report (
+\begin{DoxyParamCaption}
+\item[{Date\+Time}]{date\+From, }
+\item[{Date\+Time}]{date\+To, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}\label{class_baudi_1_1_client_1_1_reports_1_1_report_a0333d5cd2a35558bcddf6d9e8e93396b}
+
+
+Constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date\+From} & Date from\\
+\hline
+{\em date\+To} & Date to\\
+\hline
+{\em path} & Path to save\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_baudi_1_1_client_1_1_reports_1_1_report_a7439932063d4e578b7cf64377707c7af}{}\index{Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}!Convert\+Data\+To\+Pdf@{Convert\+Data\+To\+Pdf}}
+\index{Convert\+Data\+To\+Pdf@{Convert\+Data\+To\+Pdf}!Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}}
+\subsubsection[{Convert\+Data\+To\+Pdf(\+Document document)}]{\setlength{\rightskip}{0pt plus 5cm}abstract void Baudi.\+Client.\+Reports.\+Report.\+Convert\+Data\+To\+Pdf (
+\begin{DoxyParamCaption}
+\item[{Document}]{document}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}\label{class_baudi_1_1_client_1_1_reports_1_1_report_a7439932063d4e578b7cf64377707c7af}
+
+
+Converts data to pdf 
+
+
+\begin{DoxyParams}{Parameters}
+{\em document} & Pdf document\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_building_report_1_1_expense_report_1_1_expense_report_ace54ba9001f278058268c44f5856723d}{Baudi.\+Client.\+Reports.\+Building\+Report.\+Expense\+Report.\+Expense\+Report}, \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_building_report_1_1_rent_report_1_1_rent_report_a718524ddc8faee8c2cc7d24f32d601f6}{Baudi.\+Client.\+Reports.\+Building\+Report.\+Rent\+Report.\+Rent\+Report}, and \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_salary_report_1_1_salary_report_a66ca67406d236a9622c380159557fb80}{Baudi.\+Client.\+Reports.\+Salary\+Report.\+Salary\+Report}.
+
+\hypertarget{class_baudi_1_1_client_1_1_reports_1_1_report_a321b93e358b8c0c2d86b4dc049a622d6}{}\index{Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}!Find\+Data@{Find\+Data}}
+\index{Find\+Data@{Find\+Data}!Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}}
+\subsubsection[{Find\+Data(\+Baudi\+Db\+Context con)}]{\setlength{\rightskip}{0pt plus 5cm}abstract void Baudi.\+Client.\+Reports.\+Report.\+Find\+Data (
+\begin{DoxyParamCaption}
+\item[{{\bf Baudi\+Db\+Context}}]{con}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}\label{class_baudi_1_1_client_1_1_reports_1_1_report_a321b93e358b8c0c2d86b4dc049a622d6}
+
+
+Find data in database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em con} & data context\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_building_report_1_1_expense_report_1_1_expense_report_a71e76a5b8c09c3a8674b4c7aa7065929}{Baudi.\+Client.\+Reports.\+Building\+Report.\+Expense\+Report.\+Expense\+Report}, \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_salary_report_1_1_salary_report_a4c5a47ccb30cd1571bc9fb92194e237a}{Baudi.\+Client.\+Reports.\+Salary\+Report.\+Salary\+Report}, and \hyperlink{class_baudi_1_1_client_1_1_reports_1_1_building_report_1_1_rent_report_1_1_rent_report_a323d6034a727ab74591a625854b5841a}{Baudi.\+Client.\+Reports.\+Building\+Report.\+Rent\+Report.\+Rent\+Report}.
+
+\hypertarget{class_baudi_1_1_client_1_1_reports_1_1_report_aaa0eddde1405fc0a80f5f092cabd54fa}{}\index{Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}!Load\+Data@{Load\+Data}}
+\index{Load\+Data@{Load\+Data}!Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}}
+\subsubsection[{Load\+Data()}]{\setlength{\rightskip}{0pt plus 5cm}void Baudi.\+Client.\+Reports.\+Report.\+Load\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_baudi_1_1_client_1_1_reports_1_1_report_aaa0eddde1405fc0a80f5f092cabd54fa}
+
+
+Load data from database 
+
+\hypertarget{class_baudi_1_1_client_1_1_reports_1_1_report_a66ba50137d9f66b555b5ec6c9fd05d7a}{}\index{Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}!Print\+Pdf@{Print\+Pdf}}
+\index{Print\+Pdf@{Print\+Pdf}!Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}}
+\subsubsection[{Print\+Pdf()}]{\setlength{\rightskip}{0pt plus 5cm}void Baudi.\+Client.\+Reports.\+Report.\+Print\+Pdf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_baudi_1_1_client_1_1_reports_1_1_report_a66ba50137d9f66b555b5ec6c9fd05d7a}
+
+
+Generate pdf 
+
+
+
+\subsection{Property Documentation}
+\hypertarget{class_baudi_1_1_client_1_1_reports_1_1_report_ae4ecfcfe5f357e99a1ae36d762760b3e}{}\index{Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}!Date\+From@{Date\+From}}
+\index{Date\+From@{Date\+From}!Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}}
+\subsubsection[{Date\+From}]{\setlength{\rightskip}{0pt plus 5cm}Date\+Time Baudi.\+Client.\+Reports.\+Report.\+Date\+From\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [protected]}}\label{class_baudi_1_1_client_1_1_reports_1_1_report_ae4ecfcfe5f357e99a1ae36d762760b3e}
+
+
+Date from 
+
+\hypertarget{class_baudi_1_1_client_1_1_reports_1_1_report_a8c58ed65a345287730db36cc1a1e676b}{}\index{Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}!Date\+To@{Date\+To}}
+\index{Date\+To@{Date\+To}!Baudi\+::\+Client\+::\+Reports\+::\+Report@{Baudi\+::\+Client\+::\+Reports\+::\+Report}}
+\subsubsection[{Date\+To}]{\setlength{\rightskip}{0pt plus 5cm}Date\+Time Baudi.\+Client.\+Reports.\+Report.\+Date\+To\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [protected]}}\label{class_baudi_1_1_client_1_1_reports_1_1_report_a8c58ed65a345287730db36cc1a1e676b}
+
+
+Date to 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Baudi.\+Client/\+Reports/Report.\+cs\end{DoxyCompactItemize}
