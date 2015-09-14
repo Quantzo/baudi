@@ -23,6 +23,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public Local SelectedLocal { get; set; }
 
+        /// <summary>
+        /// Load action
+        /// </summary>
         public override void Load()
         {
             using (var con = new BaudiDbContext())
@@ -33,12 +36,18 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             }
         }
 
+        /// <summary>
+        /// Add action
+        /// </summary>
         public override void Add()
         {
             var localEditWindow = new LocalEditWindow(this, null);
             localEditWindow.Show();
         }
 
+        /// <summary>
+        /// Delete action
+        /// </summary>
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
@@ -53,12 +62,19 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             Update();
         }
 
+        /// <summary>
+        /// Edit action
+        /// </summary>
         public override void Edit()
         {
             var localEditWindow = new LocalEditWindow(this, SelectedLocal);
             localEditWindow.Show();
         }
 
+        /// <summary>
+        /// Check if item is selected
+        /// </summary>
+        /// <returns></returns>
         public override bool IsSomethingSelected()
         {
             if (SelectedLocal != null)

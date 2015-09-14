@@ -8,12 +8,18 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 {
     public class SpecializationsTabViewModel : TabViewModel
     {
+        /// <summary>
+        /// Add action
+        /// </summary>
         public override void Add()
         {
             var specializationEditWindow = new SpecializationEditWindow(this, null);
             specializationEditWindow.Show();
         }
 
+        /// <summary>
+        /// Delete action
+        /// </summary>
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
@@ -27,12 +33,19 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             Update();
         }
 
+        /// <summary>
+        /// Edit action
+        /// </summary>
         public override void Edit()
         {
             var specializationEditWindow = new SpecializationEditWindow(this, SelectedSpecialization);
             specializationEditWindow.Show();
         }
 
+        /// <summary>
+        /// Check if item is selected
+        /// </summary>
+        /// <returns></returns>
         public override bool IsSomethingSelected()
         {
             if (SelectedSpecialization != null)
@@ -40,6 +53,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             return false;
         }
 
+        /// <summary>
+        /// Load action
+        /// </summary>
         public override void Load()
         {
             using (var con = new BaudiDbContext())

@@ -10,6 +10,12 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class CompanyEditWindowViewModel : EditWindowViewModel
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="companiesTabViewModel">Company tab view Model </param>
+        /// <param name="companyEditWindow"> Company edit window</param>
+        /// <param name="company">Company</param>
         public CompanyEditWindowViewModel(CompaniesTabViewModel companiesTabViewModel,
             CompanyEditWindow companyEditWindow, Company company)
             : base(companiesTabViewModel, companyEditWindow, company)
@@ -29,11 +35,18 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
+        /// <summary>
+        /// Returns if state is valid
+        /// </summary>
+        /// <returns>Returns if state is valid</returns>
         public override bool IsValid()
         {
             return true;
         }
 
+        /// <summary>
+        /// Adds new item
+        /// </summary>
         public override void Add()
         {
             using (var con = new BaudiDbContext())
@@ -47,6 +60,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
+        /// <summary>
+        /// Edits item
+        /// </summary>
         public override void Edit()
         {
             using (var con = new BaudiDbContext())

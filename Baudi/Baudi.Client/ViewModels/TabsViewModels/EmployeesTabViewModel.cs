@@ -22,6 +22,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public Employee SelectedEmployee { get; set; }
 
+        /// <summary>
+        /// Load action
+        /// </summary>
         public override void Load()
         {
             using (var con = new BaudiDbContext())
@@ -30,12 +33,18 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             }
         }
 
+        /// <summary>
+        /// Add action
+        /// </summary>
         public override void Add()
         {
             var employeeEditWindow = new EmployeeEditWindow(this, null);
             employeeEditWindow.Show();
         }
 
+        /// <summary>
+        /// Delete action
+        /// </summary>
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
@@ -71,12 +80,19 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             Update();
         }
 
+        /// <summary>
+        /// Edit action
+        /// </summary>
         public override void Edit()
         {
             var employeeEditWindow = new EmployeeEditWindow(this, SelectedEmployee);
             employeeEditWindow.Show();
         }
 
+        /// <summary>
+        /// Check if item is selected
+        /// </summary>
+        /// <returns></returns>
         public override bool IsSomethingSelected()
         {
             if (SelectedEmployee != null)

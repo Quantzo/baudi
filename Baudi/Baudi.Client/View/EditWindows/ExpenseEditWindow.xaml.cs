@@ -10,6 +10,11 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class ExpenseEditWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="expensesTabViewModel">Expenses Tab View Model</param>
+        /// <param name="expense">Expense</param>
         public ExpenseEditWindow(ExpensesTabViewModel expensesTabViewModel, Expense expense)
         {
             InitializeComponent();

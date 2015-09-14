@@ -130,6 +130,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
         #endregion
 
 
+        /// <summary>
+        /// Report tab view model constructor
+        /// </summary>
         public ReportsTabViewModel()
         {
             ButtonGenerate = new RelayCommand(pars => Generate(), pars =>IsValid());

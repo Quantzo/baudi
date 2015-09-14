@@ -23,6 +23,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public Rent SelectedRent { get; set; }
 
+        /// <summary>
+        /// Load action
+        /// </summary>
         public override void Load()
         {
             using (var con = new BaudiDbContext())
@@ -33,12 +36,18 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             }
         }
 
+        /// <summary>
+        /// Add action
+        /// </summary>
         public override void Add()
         {
             var rentEditWindow = new RentEditWindow(this, null);
             rentEditWindow.Show();
         }
 
+        /// <summary>
+        /// Delete action
+        /// </summary>
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
@@ -51,12 +60,19 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             Update();
         }
 
+        /// <summary>
+        /// Edit action
+        /// </summary>
         public override void Edit()
         {
             var rentEditWindow = new RentEditWindow(this, SelectedRent);
             rentEditWindow.Show();
         }
 
+        /// <summary>
+        /// Check if item is selected
+        /// </summary>
+        /// <returns></returns>
         public override bool IsSomethingSelected()
         {
             if (SelectedRent != null)

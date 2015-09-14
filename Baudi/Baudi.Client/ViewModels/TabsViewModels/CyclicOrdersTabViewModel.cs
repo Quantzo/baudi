@@ -23,6 +23,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public CyclicOrder SelectedCyclicOrder { get; set; }
 
+        /// <summary>
+        /// Load action
+        /// </summary>
         public override void Load()
         {
             using (var con = new BaudiDbContext())
@@ -34,12 +37,18 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             }
         }
 
+        /// <summary>
+        /// Add action
+        /// </summary>
         public override void Add()
         {
             var cyclicOrderEditWindow = new CyclicOrderEditWindow(this, null);
             cyclicOrderEditWindow.Show();
         }
 
+        /// <summary>
+        /// Delete action
+        /// </summary>
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
@@ -56,12 +65,19 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             Update();
         }
 
+        /// <summary>
+        /// Edit action
+        /// </summary>
         public override void Edit()
         {
             var cyclicOrderEditWindow = new CyclicOrderEditWindow(this, SelectedCyclicOrder);
             cyclicOrderEditWindow.Show();
         }
 
+        /// <summary>
+        /// Check if item is selected
+        /// </summary>
+        /// <returns></returns>
         public override bool IsSomethingSelected()
         {
             if (SelectedCyclicOrder != null)

@@ -7,8 +7,17 @@ using System.Text;
 
 namespace Baudi.Client.Helpers
 {
+    /// <summary>
+    /// Security helper
+    /// </summary>
     public static class SecurityHelper
     {
+        /// <summary>
+        /// Returns hash from password and salt
+        /// </summary>
+        /// <param name="passwordSalt">Salt</param>
+        /// <param name="password">Password</param>
+        /// <returns>Hash</returns>
         public static string ComputeHash(string passwordSalt, SecureString password)
         {
 
@@ -27,6 +36,10 @@ namespace Baudi.Client.Helpers
             return computedHash;
         }
 
+        /// <summary>
+        /// Generaters salt
+        /// </summary>
+        /// <returns>Salt</returns>
         public static string GeneratePasswordSalt()
         {
             byte[] salt = new byte[4096];
@@ -38,6 +51,11 @@ namespace Baudi.Client.Helpers
 
         }
 
+        /// <summary>
+        /// Get bytes from secure string
+        /// </summary>
+        /// <param name="password">Secure string with password</param>
+        /// <returns>Password in byte form</returns>
         public unsafe static byte[] GetBytesFromSecureString(SecureString password)
         {
             byte[] bValue;

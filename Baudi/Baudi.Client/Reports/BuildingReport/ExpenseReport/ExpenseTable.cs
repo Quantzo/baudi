@@ -7,7 +7,7 @@ using Baudi.DAL.Models;
 
 namespace Baudi.Client.Reports.BuildingReport.ExpenseReport
 {
-    public class ExpenseTable
+    internal class ExpenseTable
     {
         public string CompanyName { get; set; }
         public string Description { get; set; }

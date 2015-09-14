@@ -11,6 +11,12 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class CyclicOrderEditWindowViewModel : EditWindowViewModel
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="cyclicOrderTabViewModel">Cyclic order edit window view model</param>
+        /// <param name="cyclicOrderEditWindow">Cyclic order edit window</param>
+        /// <param name="cyclicOrder">Cyclic order</param>
         public CyclicOrderEditWindowViewModel(CyclicOrdersTabViewModel cyclicOrderTabViewModel,
             CyclicOrderEditWindow cyclicOrderEditWindow, CyclicOrder cyclicOrder)
             : base(cyclicOrderTabViewModel, cyclicOrderEditWindow, cyclicOrder)
@@ -35,6 +41,10 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
+        /// <summary>
+        /// Returns if state is valid
+        /// </summary>
+        /// <returns>Returns if state is valid</returns>
         public override bool IsValid()
         {
             if (SelectedBuilding != null && SelectedCompany != null)
@@ -44,6 +54,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return false;
         }
 
+        /// <summary>
+        /// Adds new item
+        /// </summary>
         public override void Add()
         {
             using (var con = new BaudiDbContext())
@@ -61,6 +74,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
+        /// <summary>
+        /// Edits item
+        /// </summary>
         public override void Edit()
         {
             using (var con = new BaudiDbContext())

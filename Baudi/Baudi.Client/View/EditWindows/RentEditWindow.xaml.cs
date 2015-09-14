@@ -10,6 +10,11 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class RentEditWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="rentsTabViewModel">Rents tab view model</param>
+        /// <param name="rent">Rent</param>
         public RentEditWindow(RentsTabViewModel rentsTabViewModel, Rent rent)
         {
             InitializeComponent();

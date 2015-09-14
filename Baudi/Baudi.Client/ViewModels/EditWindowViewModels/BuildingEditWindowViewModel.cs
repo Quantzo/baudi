@@ -6,8 +6,17 @@ using Baudi.DAL.Models;
 
 namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
+    /// <summary>
+    /// BuildingEditWindowViewModel
+    /// </summary>
     public class BuildingEditWindowViewModel : EditWindowViewModel
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="buildingsTabViewModel">Buildings tab view model</param>
+        /// <param name="buildingEditWindow">Building edit window</param>
+        /// <param name="building">Building</param>
         public BuildingEditWindowViewModel(BuildingsTabViewModel buildingsTabViewModel,
             BuildingEditWindow buildingEditWindow, Building building)
             : base(buildingsTabViewModel, buildingEditWindow, building)
@@ -28,11 +37,18 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
+        /// <summary>
+        /// Returns if state is valid
+        /// </summary>
+        /// <returns>Returns if state is valid</returns>
         public override bool IsValid()
         {
             return true;
         }
 
+        /// <summary>
+        /// Adds new item
+        /// </summary>
         public override void Add()
         {
             using (var con = new BaudiDbContext())
@@ -42,6 +58,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
+        /// <summary>
+        /// Edits item
+        /// </summary>
         public override void Edit()
         {
             using (var con = new BaudiDbContext())

@@ -8,7 +8,7 @@ using Baudi.DAL.Models;
 
 namespace Baudi.Client.Reports.BuildingReport.ExpenseReport
 {
-    public class ExpenseTableRow : TableRow
+    internal class ExpenseTableRow : TableRow
     {
         public string ResposiblePerson { get; set; }
         public ExpenseTableRow(Expense expense) : base(expense)

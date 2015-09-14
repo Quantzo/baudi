@@ -9,9 +9,19 @@ using iTextSharp.text.pdf;
 
 namespace Baudi.Client.Reports.BuildingReport.ExpenseReport
 {
+    /// <summary>
+    /// Expense report
+    /// </summary>
     public class ExpenseReport : BuildingReport
     {
-        private List<ExpenseTable> ExpenseTables { get; set; }  
+        private List<ExpenseTable> ExpenseTables { get; set; }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="dateFrom">Date from</param>
+        /// <param name="dateTo">Date to</param>
+        /// <param name="path">Path to save</param>
+        /// <param name="buildingId">Building id in database</param>
         public ExpenseReport(DateTime dateFrom, DateTime dateTo, string path, int buildingId) : base(dateFrom, dateTo, path, buildingId)
         {
             ExpenseTables = new List<ExpenseTable>();
@@ -37,6 +47,10 @@ namespace Baudi.Client.Reports.BuildingReport.ExpenseReport
             document.Add(table);
         }
 
+        /// <summary>
+        /// Converts data to pdf
+        /// </summary>
+        /// <param name="document">Pdf document</param>
         protected override void ConvertDataToPdf(Document document)
         {
             document.Add(new Paragraph("Wykaz dla budynku " + BuildingId, FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
@@ -46,6 +60,10 @@ namespace Baudi.Client.Reports.BuildingReport.ExpenseReport
             ExpenseTables.ForEach(et => GenateExpenseTable(document,et));
         }
 
+        /// <summary>
+        /// Find data in database
+        /// </summary>
+        /// <param name="con">data context</param>
         protected override void FindData(BaudiDbContext con)
         {
             var allCyclicOrders = con.Buildings.Find(BuildingId).CyclicOrders.Where(c => c.Expenses.Any( e => e.Date >= DateFrom && e.Date <= DateTo));

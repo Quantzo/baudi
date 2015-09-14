@@ -3,7 +3,7 @@ using Baudi.DAL.Models;
 
 namespace Baudi.Client.Reports.SalaryReport
 {
-    public class SalaryTableRow : TableRow
+    internal class SalaryTableRow : TableRow
     {
         public string EmployeeName { get; set; }
         public string BankAccount { get; set; }

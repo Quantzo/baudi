@@ -14,6 +14,12 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 {
     public class EmployeeEditWindowViewModel : EditWindowViewModel
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="employeesTabViewModel">Employess tab view model</param>
+        /// <param name="employeeEditWindow">Employee edit window</param>
+        /// <param name="employee">Employee</param>
         public EmployeeEditWindowViewModel(EmployeesTabViewModel employeesTabViewModel,
             EmployeeEditWindow employeeEditWindow, Employee employee)
             : base(employeesTabViewModel, employeeEditWindow, employee)
@@ -169,6 +175,10 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return employee;
         }
 
+        /// <summary>
+        /// Returns if state is valid
+        /// </summary>
+        /// <returns>Returns if state is valid</returns>
         public override bool IsValid()
         {
             return Update
@@ -181,6 +191,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return _currentUserNames.Contains(Employee.Username,StringComparer.InvariantCultureIgnoreCase);
         }
 
+        /// <summary>
+        /// Adds new item
+        /// </summary>
         public override void Add()
         {
             using (var con = new BaudiDbContext())
@@ -195,6 +208,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
+        /// <summary>
+        /// Edits item
+        /// </summary>
         public override void Edit()
         {
             if (_orginalRole != EmployeeRole)
@@ -240,6 +256,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         #region Properties
 
+        /// <summary>
+        /// Checks if utem is edited
+        /// </summary>
         public bool EditUser { get; set; }
 
 
@@ -284,6 +303,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
 
         #endregion
     }
+
 
     public enum EmployeeRole
     {

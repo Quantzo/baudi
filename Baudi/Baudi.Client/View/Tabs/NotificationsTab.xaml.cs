@@ -8,6 +8,9 @@ namespace Baudi.Client.View.Tabs
     /// </summary>
     public partial class NotificationsTab : UserControl
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public NotificationsTab()
         {
             InitializeComponent();

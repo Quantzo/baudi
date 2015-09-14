@@ -7,6 +7,9 @@ namespace Baudi.Client.View.Tabs
     /// </summary>
     public partial class CyclicOrdersTab : UserControl
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public CyclicOrdersTab()
         {
             InitializeComponent();

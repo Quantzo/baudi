@@ -10,6 +10,11 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class SpecializationEditWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="specializationsTabViewModel">Specialization tab view model</param>
+        /// <param name="specialization">Specialization</param>
         public SpecializationEditWindow(SpecializationsTabViewModel specializationsTabViewModel,
             Specialization specialization)
         {

@@ -7,6 +7,9 @@ namespace Baudi.Client.View.Tabs
     /// </summary>
     public partial class SpecializationsTab : UserControl
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public SpecializationsTab()
         {
             InitializeComponent();

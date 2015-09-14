@@ -22,6 +22,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public OwningCompany SelectedOwningCompany { get; set; }
 
+        /// <summary>
+        /// Load action
+        /// </summary>
         public override void Load()
         {
             using (var con = new BaudiDbContext())
@@ -30,12 +33,18 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             }
         }
 
+        /// <summary>
+        /// Add action
+        /// </summary>
         public override void Add()
         {
             var owningCompanyEditWindow = new OwningCompanyEditWindow(this, null);
             owningCompanyEditWindow.Show();
         }
 
+        /// <summary>
+        /// Delete action
+        /// </summary>
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
@@ -49,12 +58,19 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             Update();
         }
 
+        /// <summary>
+        /// Edit action
+        /// </summary>
         public override void Edit()
         {
             var owningCompanyEditWindow = new OwningCompanyEditWindow(this, SelectedOwningCompany);
             owningCompanyEditWindow.Show();
         }
 
+        /// <summary>
+        /// Check if item is selected
+        /// </summary>
+        /// <returns></returns>
         public override bool IsSomethingSelected()
         {
             if (SelectedOwningCompany != null)

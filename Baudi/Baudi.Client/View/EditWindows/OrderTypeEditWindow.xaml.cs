@@ -10,6 +10,11 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class OrderTypeEditWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="orderTypesTabViewModel">Order types tab view model</param>
+        /// <param name="orderType">Order type</param>
         public OrderTypeEditWindow(OrderTypesTabViewModel orderTypesTabViewModel, OrderType orderType)
         {
             InitializeComponent();

@@ -50,7 +50,7 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
-        public void ProvideCompaniesWithCorrectSpecialization()
+        private void ProvideCompaniesWithCorrectSpecialization()
         {
             using (var con = new BaudiDbContext())
             {
@@ -61,6 +61,10 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
+        /// <summary>
+        /// Returns if state is valid
+        /// </summary>
+        /// <returns>Returns if state is valid</returns>
         public override bool IsValid()
         {
             if (SelectedOrderType != null && SelectedCompany != null && SelectedMenager != null &&
@@ -71,6 +75,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             return false;
         }
 
+        /// <summary>
+        /// Adds new item
+        /// </summary>
         public override void Add()
         {
             using (var con = new BaudiDbContext())
@@ -90,6 +97,9 @@ namespace Baudi.Client.ViewModels.EditWindowViewModels
             }
         }
 
+        /// <summary>
+        /// Edits item
+        /// </summary>
         public override void Edit()
         {
             using (var con = new BaudiDbContext())

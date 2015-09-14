@@ -14,6 +14,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             orderTypeEditWindow.Show();
         }
 
+        /// <summary>
+        /// Delete action
+        /// </summary>
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
@@ -27,12 +30,19 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             Update();
         }
 
+        /// <summary>
+        /// Edit action
+        /// </summary>
         public override void Edit()
         {
             var orderTypeEditWindow = new OrderTypeEditWindow(this, SelectedOrderType);
             orderTypeEditWindow.Show();
         }
 
+        /// <summary>
+        /// Check if item is selected
+        /// </summary>
+        /// <returns></returns>
         public override bool IsSomethingSelected()
         {
             if (SelectedOrderType != null)
@@ -40,6 +50,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             return false;
         }
 
+        /// <summary>
+        /// Load action
+        /// </summary>
         public override void Load()
         {
             using (var con = new BaudiDbContext())

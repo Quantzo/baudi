@@ -10,6 +10,11 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class SalaryEditWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="salariesTabViewModel">Salaries tab view model</param>
+        /// <param name="salary">Salary</param>
         public SalaryEditWindow(SalariesTabViewModel salariesTabViewModel, Salary salary)
         {
             InitializeComponent();

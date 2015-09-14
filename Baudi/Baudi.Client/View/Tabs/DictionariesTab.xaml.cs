@@ -7,6 +7,9 @@ namespace Baudi.Client.View.Tabs
     /// </summary>
     public partial class DictionariesTab : UserControl
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public DictionariesTab()
         {
             InitializeComponent();

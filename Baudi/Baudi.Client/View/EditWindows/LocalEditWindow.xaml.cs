@@ -7,6 +7,11 @@ namespace Baudi.Client.View.EditWindows
 {
     public partial class LocalEditWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="localsTabViewModel">Locals tab view Model</param>
+        /// <param name="local">Local</param>
         public LocalEditWindow(LocalsTabViewModel localsTabViewModel, Local local)
         {
             InitializeComponent();

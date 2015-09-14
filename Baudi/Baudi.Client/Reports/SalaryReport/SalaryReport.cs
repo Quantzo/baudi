@@ -8,14 +8,27 @@ using iTextSharp.text.pdf;
 
 namespace Baudi.Client.Reports.SalaryReport
 {
+    /// <summary>
+    /// Salary report
+    /// </summary>
     public class SalaryReport : Report
     {
-        private List<SalaryTableRow> SalaryTableRows { get; set; } 
+        private List<SalaryTableRow> SalaryTableRows { get; set; }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="dateFrom">Date from</param>
+        /// <param name="dateTo">Date to</param>
+        /// <param name="path">Path to save</param>
         public SalaryReport(DateTime dateFrom, DateTime dateTo, string path) : base(dateFrom, dateTo, path)
         {
             SalaryTableRows = new List<SalaryTableRow>();
         }
 
+        /// <summary>
+        /// Converts data to pdf
+        /// </summary>
+        /// <param name="document">Pdf document</param>
         protected override void ConvertDataToPdf(Document document)
         {
             document.Add(new Paragraph("Pensje w okresie od "+ DateFrom.ToLongDateString()+" do "+DateTo.ToLongDateString(), FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 10)));
@@ -35,6 +48,10 @@ namespace Baudi.Client.Reports.SalaryReport
             document.Add(table);
         }
 
+        /// <summary>
+        /// Find data in database
+        /// </summary>
+        /// <param name="con">data context</param>
         protected override void FindData(BaudiDbContext con)
         {
             var salaries = con.Salaries.Where(s => (s.Date >= DateFrom && s.Date <= DateTo)).Include(s => s.Employee).Include(s => s.Menager).ToList();

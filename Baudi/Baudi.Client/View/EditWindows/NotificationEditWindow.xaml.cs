@@ -7,6 +7,11 @@ namespace Baudi.Client.View.EditWindows
 {
     public partial class NotificationEditWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="notificationsTabViewModel">Notification tab view model</param>
+        /// <param name="notification">Notification</param>
         public NotificationEditWindow(NotificationsTabViewModel notificationsTabViewModel, Notification notification)
         {
             InitializeComponent();

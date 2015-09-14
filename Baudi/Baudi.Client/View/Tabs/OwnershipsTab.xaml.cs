@@ -7,6 +7,9 @@ namespace Baudi.Client.View.Tabs
     /// </summary>
     public partial class OwnershipsTab : UserControl
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public OwnershipsTab()
         {
             InitializeComponent();

@@ -7,6 +7,9 @@ namespace Baudi.Client.View.Tabs
     /// </summary>
     public partial class PeopleTab : UserControl
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public PeopleTab()
         {
             InitializeComponent();

@@ -7,6 +7,11 @@ namespace Baudi.Client.View.EditWindows
 {
     public partial class CompanyEditWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="companiesTabViewModel"> Companies tab view Model</param>
+        /// <param name="company">Company</param>
         public CompanyEditWindow(CompaniesTabViewModel companiesTabViewModel, Company company)
         {
             InitializeComponent();

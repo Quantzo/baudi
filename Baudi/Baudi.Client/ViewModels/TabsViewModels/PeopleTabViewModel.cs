@@ -22,6 +22,9 @@ namespace Baudi.Client.ViewModels.TabsViewModels
 
         public Person SelectedOwner { get; set; }
 
+        /// <summary>
+        /// Load action
+        /// </summary>
         public override void Load()
         {
             using (var con = new BaudiDbContext())
@@ -30,12 +33,18 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             }
         }
 
+        /// <summary>
+        /// Add action
+        /// </summary>
         public override void Add()
         {
-            var PersonEditWindow = new PersonEditWindow(this, null);
-            PersonEditWindow.Show();
+            var personEditWindow = new PersonEditWindow(this, null);
+            personEditWindow.Show();
         }
 
+        /// <summary>
+        /// Delete action
+        /// </summary>
         public override void Delete()
         {
             using (var con = new BaudiDbContext())
@@ -77,12 +86,19 @@ namespace Baudi.Client.ViewModels.TabsViewModels
             Update();
         }
 
+        /// <summary>
+        /// Edit action
+        /// </summary>
         public override void Edit()
         {
-            var PersonEditWindow = new PersonEditWindow(this, SelectedOwner);
-            PersonEditWindow.Show();
+            var personEditWindow = new PersonEditWindow(this, SelectedOwner);
+            personEditWindow.Show();
         }
 
+        /// <summary>
+        /// Check if item is selected
+        /// </summary>
+        /// <returns></returns>
         public override bool IsSomethingSelected()
         {
             if (SelectedOwner != null)

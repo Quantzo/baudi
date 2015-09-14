@@ -10,6 +10,11 @@ namespace Baudi.Client.View.EditWindows
     /// </summary>
     public partial class OwningCompanyEditWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="owningCompaniesTabViewModel">Owning companies tab view model</param>
+        /// <param name="owningCompany">Owning company</param>
         public OwningCompanyEditWindow(OwningCompaniesTabViewModel owningCompaniesTabViewModel,
             OwningCompany owningCompany)
         {
